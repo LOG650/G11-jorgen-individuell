@@ -1,0 +1,20 @@
+GT,NT,LOA (m),Reg. Length (m),Beam (m),Draft (m),Air Draft (m),Fuel consumption (L/h),Loskrav (LOA>70m),Størrelses-kategori,yacht_id,yacht_id_base
+52.92,52.92,23.98,21.59,5.95,2.5,,30,Nei,Liten,yacht_1,yacht_1
+51.9,51.9,18.9,18.9,10.0,1.55,32.0,25,Nei,Liten,yacht_2-1,yacht_2
+51.9,51.9,18.9,18.9,10.0,2.88,32.0,25,Nei,Liten,yacht_2-2,yacht_2
+51.9,51.9,18.9,18.9,10.0,2.88,32.0,25,Nei,Liten,yacht_2-3,yacht_2
+206.0,61.0,36.5,29.4,8.1,4.0,42.0,80,Nei,Mellomstor,yacht_3,yacht_3
+2407.0,722.0,77.4,70.14,13.63,7.2,25.0,500,Ja,Stor,yacht_4,yacht_4
+98.0,29.0,33.0,28.6,7.1,3.7,40.0,50,Nei,Mellomstor,yacht_5,yacht_5
+2149.0,644.0,79.2,65.78,13.25,4.2,26.0,450,Ja,Stor,yacht_6,yacht_6
+161.84,,28.58,23.97,13.3,2.143,14.0,60,Nei,Mellomstor,yacht_7,yacht_7
+658.0,197.0,50.0,44.31,9.35,3.1,16.5,150,Nei,Mellomstor,yacht_8,yacht_8
+95.0,95.0,23.96,23.96,12.22,2.134,,45,Nei,Liten,yacht_9,yacht_9
+497.0,149.0,53.25,50.88,9.2,3.05,17.0,130,Nei,Mellomstor,yacht_10,yacht_10
+1143.0,342.0,60.2,56.8,11.0,3.7,19.7,250,Nei,Stor,yacht_11,yacht_11
+143.0,43.0,34.99,33.47,8.0,4.0,49.0,55,Nei,Mellomstor,yacht_12,yacht_12
+496.0,148.0,46.96,41.62,9.27,3.56,,120,Nei,Mellomstor,yacht_13,yacht_13
+99.0,34.0,30.02,30.02,6.7,4.0,44.0,45,Nei,Liten,yacht_14,yacht_14
+138.0,41.0,31.59,28.91,6.02,3.0,15.0,55,Nei,Mellomstor,yacht_15,yacht_15
+1161.0,348.0,62.5,56.03,10.3,3.5,,260,Nei,Stor,yacht_16,yacht_16
+,,24.85,22.14,6.22,2.84,,20,Nei,Liten,yacht_17,yacht_17
