@@ -1,2 +1,3 @@
 .claude/
 catboost_info/
+__pycache__/
