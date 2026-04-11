@@ -9,6 +9,8 @@ Usage:
 """
 
 import argparse
+import shutil
+import tempfile
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
@@ -19,7 +21,11 @@ BASE = Path(__file__).parent
 ART  = BASE / 'artifacts'
 
 # ── Load artifacts ──────────────────────────────────────────────
-model       = lgb.Booster(model_file=str(ART / 'lgbm_final_full.txt'))
+# LightGBM's C library cannot open paths with non-ASCII characters (e.g. ø),
+# so we copy the model file to a temp path for loading.
+_tmp_model = Path(tempfile.gettempdir()) / 'lgbm_final_full.txt'
+shutil.copy2(ART / 'lgbm_final_full.txt', _tmp_model)
+model       = lgb.Booster(model_file=str(_tmp_model))
 meta        = joblib.load(ART / 'model_meta_final.joblib')
 yacht_stats = pd.read_parquet(ART / 'yacht_stats.parquet')
 

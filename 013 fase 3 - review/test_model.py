@@ -3,6 +3,8 @@ Load the saved LightGBM model and run predictions on the merged dataset.
 Usage:  python test_model.py
 """
 
+import shutil
+import tempfile
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
@@ -14,7 +16,9 @@ ART  = BASE / 'artifacts'
 DATA = BASE / '..' / '004 data' / 'costs_merged.csv'
 
 # ── Load artifacts ──────────────────────────────────────────────
-model = lgb.Booster(model_file=str(ART / 'lgbm_final_full.txt'))
+_tmp_model = Path(tempfile.gettempdir()) / 'lgbm_final_full.txt'
+shutil.copy2(ART / 'lgbm_final_full.txt', _tmp_model)
+model = lgb.Booster(model_file=str(_tmp_model))
 meta  = joblib.load(ART / 'model_meta_final.joblib')
 yacht_stats = pd.read_parquet(ART / 'yacht_stats.parquet')
 
