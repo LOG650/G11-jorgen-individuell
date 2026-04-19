@@ -43,7 +43,6 @@ def build_features(df):
     df['gt_x_stay']   = df['gt'].fillna(0) * df['stay_days'].fillna(0)
     df['loa_x_stay']  = df['loa_m'].fillna(0) * df['stay_days'].fillna(0)
     df['fuel_x_stay'] = df['fuel_lph'].fillna(0) * df['stay_days'].fillna(0)
-    df['log_gt']      = np.log1p(df['gt'].fillna(0))
 
     size_svc_stats, size_stats, port_stats = agg_stats
     df = df.merge(size_svc_stats, on=['size_category', 'service_category'], how='left')
@@ -51,15 +50,12 @@ def build_features(df):
     df = df.merge(port_stats, on='arrival_port', how='left')
 
     for col in ['size_svc_mean_charge', 'size_svc_median_charge', 'size_svc_count',
-                'size_mean_charge', 'size_count', 'port_mean_charge', 'port_median_charge']:
+                'port_mean_charge', 'port_median_charge']:
         if col in df.columns:
             df[col] = df[col].fillna(df[col].median() if df[col].notna().any() else 0)
 
     cmt = df['invoice_comments'].fillna('').astype(str).str.lower()
-    df['cmt_len']        = cmt.str.len().astype('int16')
-    df['cmt_has_urgent'] = cmt.str.contains('urgent|asap|rush', regex=True).astype('int8')
-    df['cmt_has_repair'] = cmt.str.contains('repair|fix|broken', regex=True).astype('int8')
-    df['cmt_has_fuel']   = cmt.str.contains('fuel|diesel|bunker', regex=True).astype('int8')
+    df['cmt_len'] = cmt.str.len().astype('int16')
     return df
 
 def predict_charge(raw_df):
