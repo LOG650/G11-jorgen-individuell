@@ -128,6 +128,21 @@ if len(val) > 0:
         print(f"  {svc_cat:<22s} {mask.sum():>5,} {cat_mae:>12,.0f} {cat_mape:>7.1f}%")
     print()
 
+    print("-" * 60)
+    print("  Per size category (2025 — leaky, in training data)")
+    print("-" * 60)
+    print(f"  {'Size':<22s} {'n':>5s} {'MAE':>12s} {'MAPE':>8s}")
+    print("  " + "-" * 49)
+    for size_cat in sorted(val['size_category'].unique()):
+        mask = val['size_category'].values == size_cat
+        if mask.sum() == 0:
+            continue
+        a, p = actuals_val[mask], preds_val[mask]
+        sz_mae = np.mean(np.abs(a - p))
+        sz_mape = np.mean(np.abs((a - p) / np.maximum(a, 500))) * 100
+        print(f"  {size_cat:<22s} {mask.sum():>5,} {sz_mae:>12,.0f} {sz_mape:>7.1f}%")
+    print()
+
 # ── Train metrics (reference only) ──────────────────────────────
 print("-" * 60)
 print("  Train set (leaky — for reference only)")
