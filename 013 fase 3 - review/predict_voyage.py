@@ -1,7 +1,7 @@
 """
 NautiCost Voyage Cost Predictor
-Estimate total voyage cost by simulating typical service transactions
-using the trained LightGBM per-transaction model.
+Estimate total voyage cost using trained LightGBM per-transaction model,
+calibrated against historical voyage-level cost distributions.
 
 Usage:
   python predict_voyage.py --gt 2407 --loa 77.4 --beam 13.6 --draft 7.2 \
@@ -25,12 +25,14 @@ ART  = BASE / 'artifacts'
 # so we copy the model file to a temp path for loading.
 _tmp_model = Path(tempfile.gettempdir()) / 'lgbm_final_full.txt'
 shutil.copy2(ART / 'lgbm_final_full.txt', _tmp_model)
-model       = lgb.Booster(model_file=str(_tmp_model))
-meta        = joblib.load(ART / 'model_meta_final.joblib')
-yacht_stats = pd.read_parquet(ART / 'yacht_stats.parquet')
-
-# Median yacht_mean_charge by size category (from training data)
-SIZE_MEDIAN_CHARGE = {'Liten': 19563, 'Mellomstor': 12388, 'Stor': 34801}
+model     = lgb.Booster(model_file=str(_tmp_model))
+meta      = joblib.load(ART / 'model_meta_final.joblib')
+agg_stats = (
+    pd.read_parquet(ART / 'size_svc_stats.parquet'),
+    pd.read_parquet(ART / 'size_stats.parquet'),
+    pd.read_parquet(ART / 'port_stats.parquet'),
+)
+baseline_predictions = joblib.load(ART / 'baseline_predictions.joblib')
 
 # ── Feature engineering (identical to modeling notebook) ────────
 def build_features(df):
@@ -41,12 +43,18 @@ def build_features(df):
     df['gt_x_stay']   = df['gt'].fillna(0) * df['stay_days'].fillna(0)
     df['loa_x_stay']  = df['loa_m'].fillna(0) * df['stay_days'].fillna(0)
     df['fuel_x_stay'] = df['fuel_lph'].fillna(0) * df['stay_days'].fillna(0)
-    df = df.merge(yacht_stats, on='yacht_id', how='left')
-    missing = df['yacht_mean_charge'].isna()
-    if missing.any():
-        df.loc[missing, 'yacht_mean_charge'] = df.loc[missing, 'size_category'].map(
-            SIZE_MEDIAN_CHARGE).fillna(df['yacht_mean_charge'].median())
-    df['yacht_visit_count'] = df['yacht_visit_count'].fillna(0)
+    df['log_gt']      = np.log1p(df['gt'].fillna(0))
+
+    size_svc_stats, size_stats, port_stats = agg_stats
+    df = df.merge(size_svc_stats, on=['size_category', 'service_category'], how='left')
+    df = df.merge(size_stats, on='size_category', how='left')
+    df = df.merge(port_stats, on='arrival_port', how='left')
+
+    for col in ['size_svc_mean_charge', 'size_svc_median_charge', 'size_svc_count',
+                'size_mean_charge', 'size_count', 'port_mean_charge', 'port_median_charge']:
+        if col in df.columns:
+            df[col] = df[col].fillna(df[col].median() if df[col].notna().any() else 0)
+
     cmt = df['invoice_comments'].fillna('').astype(str).str.lower()
     df['cmt_len']        = cmt.str.len().astype('int16')
     df['cmt_has_urgent'] = cmt.str.contains('urgent|asap|rush', regex=True).astype('int8')
@@ -274,7 +282,6 @@ PORT_TEMPLATES = {
 }
 
 # Historical voyage cost percentiles by (port, size_category): (P25, P50, P75)
-# Used to provide realistic cost ranges alongside model predictions
 HISTORICAL_RANGES = {
     ('Bergen', 'Mellomstor'):    (4_479, 9_683, 23_038),
     ('Bergen', 'Stor'):          (7_389, 21_819, 59_272),
@@ -329,7 +336,7 @@ def estimate_fuel(gt, level='medium'):
     idx = {'low': 0, 'medium': 1, 'high': 2}[level]
     return fuel_table[size][idx]
 
-# ── Single-port voyage prediction ─────────────────────────────
+# ── Single-port voyage prediction (hybrid: model + historical) ──
 def predict_port(gt, loa_m, beam_m, draft_m, fuel_lph,
                  arrival_port, stay_days, month):
     office = PORT_OFFICE[arrival_port]
@@ -356,7 +363,7 @@ def predict_port(gt, loa_m, beam_m, draft_m, fuel_lph,
     df = pd.DataFrame(rows)
     preds = predict_charge(df)
 
-    # Aggregate by service category
+    # Raw model aggregate (sum of prediction * expected_txn)
     cat_totals = {}
     for i, (svc_cat, svc_type, exp_txn) in enumerate(template):
         weighted = preds[i] * exp_txn
@@ -364,7 +371,24 @@ def predict_port(gt, loa_m, beam_m, draft_m, fuel_lph,
             cat_totals[svc_cat] = 0.0
         cat_totals[svc_cat] += weighted
 
-    total = sum(cat_totals.values())
+    model_total = sum(cat_totals.values())
+
+    # Hybrid calibration: anchor to historical median, adjust by model ratio
+    key = (arrival_port, size_cat)
+    baseline_key = (arrival_port, size_cat)
+    baseline = baseline_predictions.get(baseline_key, 0)
+
+    if key in HISTORICAL_RANGES and baseline > 0:
+        _, hist_p50, _ = HISTORICAL_RANGES[key]
+        ratio = model_total / baseline  # captures yacht-specific + seasonal variation
+        calibrated_total = hist_p50 * ratio
+        # Scale category breakdown proportionally
+        scale = calibrated_total / model_total if model_total > 0 else 1.0
+        cat_totals = {k: v * scale for k, v in cat_totals.items()}
+        total = calibrated_total
+    else:
+        total = model_total
+
     return cat_totals, total, size_cat, loskrav
 
 # ── Country-level voyage prediction (weighted average) ────────
@@ -428,12 +452,12 @@ def main():
 
     # Model-based service breakdown
     print()
-    print(f"{'Service Category':<25s} {'Weighted Estimate':>18s}")
-    print("-" * 45)
+    print(f"{'Service Category':<25s} {'Calibrated Estimate':>20s}")
+    print("-" * 47)
     for svc_cat in sorted(category_totals, key=lambda k: -category_totals[k]):
-        print(f"{svc_cat:<25s} {category_totals[svc_cat]:>18,.0f}")
-    print("-" * 45)
-    print(f"{'MODEL ESTIMATE':<25s} {grand_total:>18,.0f} NOK")
+        print(f"{svc_cat:<25s} {category_totals[svc_cat]:>20,.0f}")
+    print("-" * 47)
+    print(f"{'MODEL ESTIMATE':<25s} {grand_total:>20,.0f} NOK")
 
     # Historical cost ranges per port
     print()
@@ -458,7 +482,7 @@ def main():
     print("  " + "-" * 62)
     print(f"  {'WEIGHTED RANGE':<16s} {'':>6s} {w_low:>12,.0f} {w_mid:>14,.0f} {w_high:>12,.0f} NOK")
     print()
-    print("Note: Historical ranges are based on actual voyage costs (2020-2025).")
+    print("Note: Model estimate is calibrated against historical voyage costs (2020-2025).")
     print("      Voyage costs vary widely depending on services requested.")
     print()
 
