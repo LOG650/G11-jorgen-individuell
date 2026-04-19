@@ -1,6 +1,6 @@
 """
 NautiCost Voyage Cost Predictor
-Estimate total voyage cost using trained LightGBM per-transaction model,
+Estimate total voyage cost using trained LightGBM+CatBoost ensemble,
 calibrated against historical voyage-level cost distributions.
 
 Usage:
@@ -14,6 +14,7 @@ import tempfile
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
+from catboost import CatBoostRegressor
 import joblib
 from pathlib import Path
 
@@ -25,8 +26,11 @@ ART  = BASE / 'artifacts'
 # so we copy the model file to a temp path for loading.
 _tmp_model = Path(tempfile.gettempdir()) / 'lgbm_final_full.txt'
 shutil.copy2(ART / 'lgbm_final_full.txt', _tmp_model)
-model     = lgb.Booster(model_file=str(_tmp_model))
+lgb_model = lgb.Booster(model_file=str(_tmp_model))
+cb_model  = CatBoostRegressor()
+cb_model.load_model(str(ART / 'catboost_final.cbm'))
 meta      = joblib.load(ART / 'model_meta_final.joblib')
+ensemble_w = meta.get('ensemble_weight', 0.5)
 agg_stats = (
     pd.read_parquet(ART / 'size_svc_stats.parquet'),
     pd.read_parquet(ART / 'size_stats.parquet'),
@@ -40,6 +44,15 @@ def build_features(df):
     df['quarter']     = ((df['month'] - 1) // 3 + 1).astype('int8')
     df['is_summer']   = df['month'].isin([6, 7, 8]).astype('int8')
     df['is_shoulder'] = df['month'].isin([5, 9]).astype('int8')
+
+    if 'arrival_date' in df.columns:
+        arr = pd.to_datetime(df['arrival_date'], errors='coerce')
+        df['day_of_week'] = arr.dt.dayofweek.fillna(2).astype('int8')
+        df['week_of_year'] = arr.dt.isocalendar().week.astype('int8')
+    else:
+        df['day_of_week'] = np.int8(2)
+        df['week_of_year'] = ((df['month'] - 1) * 4 + 2).clip(1, 52).astype('int8')
+
     df['gt_x_stay']   = df['gt'].fillna(0) * df['stay_days'].fillna(0)
     df['loa_x_stay']  = df['loa_m'].fillna(0) * df['stay_days'].fillna(0)
     df['fuel_x_stay'] = df['fuel_lph'].fillna(0) * df['stay_days'].fillna(0)
@@ -63,7 +76,12 @@ def predict_charge(raw_df):
     for c in meta['cat_features']:
         feats[c] = feats[c].astype('category')
     X = feats[meta['features']]
-    return np.expm1(model.predict(X))
+    lgb_pred = lgb_model.predict(X)
+    X_cb = X.copy()
+    for c in meta['cat_features']:
+        X_cb[c] = X_cb[c].astype(str).fillna('NA')
+    cb_pred = cb_model.predict(X_cb)
+    return np.expm1(ensemble_w * lgb_pred + (1 - ensemble_w) * cb_pred)
 
 # ── Lookup tables ───────────────────────────────────────────────
 PORT_OFFICE = {
