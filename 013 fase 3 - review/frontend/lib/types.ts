@@ -4,20 +4,12 @@ export interface VoyageRequest {
   beam: number;
   draft: number;
   fuel: string;
-  country: string;
+  port: string;
   stay: number;
   month: number;
 }
 
-export interface PortDetail {
-  total: number;
-  weight: number;
-  p25: number | null;
-  p50: number | null;
-  p75: number | null;
-}
-
-export interface WeightedRange {
+export interface HistoricalRange {
   p25: number;
   p50: number;
   p75: number;
@@ -29,8 +21,8 @@ export interface VoyageResponse {
   size_category: string;
   loskrav: string;
   fuel_lph: number;
-  port_details: Record<string, PortDetail>;
-  weighted_range: WeightedRange;
+  port: string;
+  historical_range: HistoricalRange | null;
 }
 
 export interface OptionsResponse {

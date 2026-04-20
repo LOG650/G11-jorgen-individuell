@@ -7,41 +7,47 @@ function formatNOK(n: number): string {
 }
 
 export default function CostSummary({ result }: { result: VoyageResponse }) {
-  const { grand_total, weighted_range, size_category, loskrav, fuel_lph } = result;
-  const { p25, p75 } = weighted_range;
+  const { grand_total, historical_range, size_category, loskrav, fuel_lph, port } = result;
 
-  // Range bar: position the estimate marker relative to the P25-P75 range
-  const rangeWidth = p75 - p25;
-  const markerPct = rangeWidth > 0
-    ? Math.min(100, Math.max(0, ((grand_total - p25) / rangeWidth) * 100))
+  const markerPct = historical_range
+    ? (() => {
+        const rangeWidth = historical_range.p75 - historical_range.p25;
+        return rangeWidth > 0
+          ? Math.min(100, Math.max(0, ((grand_total - historical_range.p25) / rangeWidth) * 100))
+          : 50;
+      })()
     : 50;
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
       <div className="text-center mb-6">
-        <p className="text-sm text-gray-500 mb-1">Estimated Voyage Cost</p>
+        <p className="text-sm text-gray-500 mb-1">Estimated Voyage Cost — {port}</p>
         <p className="text-4xl font-bold text-gray-900">{formatNOK(grand_total)} NOK</p>
       </div>
 
-      {/* Range bar */}
-      <div className="mb-6">
-        <div className="flex justify-between text-xs text-gray-500 mb-1">
-          <span>Low (P25)</span>
-          <span>High (P75)</span>
+      {historical_range ? (
+        <div className="mb-6">
+          <div className="flex justify-between text-xs text-gray-500 mb-1">
+            <span>Low (P25)</span>
+            <span>High (P75)</span>
+          </div>
+          <div className="relative h-3 bg-gradient-to-r from-green-200 via-yellow-200 to-red-200 rounded-full">
+            <div
+              className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md"
+              style={{ left: `calc(${markerPct}% - 8px)` }}
+            />
+          </div>
+          <div className="flex justify-between text-xs font-medium text-gray-700 mt-1">
+            <span>{formatNOK(historical_range.p25)} NOK</span>
+            <span>{formatNOK(historical_range.p75)} NOK</span>
+          </div>
         </div>
-        <div className="relative h-3 bg-gradient-to-r from-green-200 via-yellow-200 to-red-200 rounded-full">
-          <div
-            className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 border-2 border-white rounded-full shadow-md"
-            style={{ left: `calc(${markerPct}% - 8px)` }}
-          />
-        </div>
-        <div className="flex justify-between text-xs font-medium text-gray-700 mt-1">
-          <span>{formatNOK(p25)} NOK</span>
-          <span>{formatNOK(p75)} NOK</span>
-        </div>
-      </div>
+      ) : (
+        <p className="text-xs text-gray-400 text-center mb-6">
+          No historical baseline for {port} / {size_category}. Showing raw model estimate.
+        </p>
+      )}
 
-      {/* Yacht classification badges */}
       <div className="flex gap-3 justify-center flex-wrap">
         <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
           {size_category}

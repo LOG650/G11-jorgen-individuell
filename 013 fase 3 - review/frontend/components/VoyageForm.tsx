@@ -16,7 +16,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
   const [beam, setBeam] = useState("");
   const [draft, setDraft] = useState("");
   const [fuel, setFuel] = useState("medium");
-  const [country, setCountry] = useState(options.countries[0] || "Norway");
+  const [port, setPort] = useState(Object.values(options.ports).flat()[0] || "Bergen");
   const [stay, setStay] = useState("5");
   const [month, setMonth] = useState("7");
 
@@ -28,7 +28,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
       beam: parseFloat(beam),
       draft: parseFloat(draft),
       fuel,
-      country,
+      port,
       stay: parseFloat(stay),
       month: parseInt(month),
     });
@@ -109,15 +109,19 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Country
+              Port
             </label>
             <select
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
+              value={port}
+              onChange={(e) => setPort(e.target.value)}
               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
             >
-              {options.countries.map((c) => (
-                <option key={c} value={c}>{c}</option>
+              {Object.entries(options.ports).map(([countryName, countryPorts]) => (
+                <optgroup key={countryName} label={countryName}>
+                  {countryPorts.map((p) => (
+                    <option key={p} value={p}>{p}</option>
+                  ))}
+                </optgroup>
               ))}
             </select>
           </div>
