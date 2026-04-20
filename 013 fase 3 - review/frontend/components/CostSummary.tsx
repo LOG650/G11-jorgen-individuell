@@ -7,7 +7,7 @@ function formatNOK(n: number): string {
 }
 
 export default function CostSummary({ result }: { result: VoyageResponse }) {
-  const { grand_total, historical_range, size_category, loskrav, fuel_lph, port } = result;
+  const { grand_total, historical_range, size_category, loskrav, fuel_lph } = result;
 
   const markerPct = historical_range
     ? (() => {
@@ -21,7 +21,7 @@ export default function CostSummary({ result }: { result: VoyageResponse }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
       <div className="text-center mb-6">
-        <p className="text-sm text-gray-500 mb-1">Estimated Voyage Cost — {port}</p>
+        <p className="text-sm text-gray-500 mb-1">Estimated Voyage Cost</p>
         <p className="text-4xl font-bold text-gray-900">{formatNOK(grand_total)} NOK</p>
       </div>
 
@@ -44,7 +44,7 @@ export default function CostSummary({ result }: { result: VoyageResponse }) {
         </div>
       ) : (
         <p className="text-xs text-gray-400 text-center mb-6">
-          No historical baseline for {port} / {size_category}. Showing raw model estimate.
+          No historical baseline — one or more stops lack data for {size_category} yachts.
         </p>
       )}
 

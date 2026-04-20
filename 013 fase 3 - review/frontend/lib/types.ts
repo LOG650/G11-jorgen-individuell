@@ -1,12 +1,16 @@
+export interface PortStop {
+  port: string;
+  month: number;
+  stay_days: number;
+}
+
 export interface VoyageRequest {
   gt: number;
   loa: number;
   beam: number;
   draft: number;
   fuel: string;
-  port: string;
-  stay: number;
-  month: number;
+  stops: PortStop[];
 }
 
 export interface HistoricalRange {
@@ -15,13 +19,21 @@ export interface HistoricalRange {
   p75: number;
 }
 
+export interface StopResult {
+  port: string;
+  month: number;
+  stay_days: number;
+  total: number;
+  historical_range: HistoricalRange | null;
+}
+
 export interface VoyageResponse {
   category_totals: Record<string, number>;
   grand_total: number;
   size_category: string;
   loskrav: string;
   fuel_lph: number;
-  port: string;
+  stops: StopResult[];
   historical_range: HistoricalRange | null;
 }
 
