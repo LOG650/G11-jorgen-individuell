@@ -9,20 +9,23 @@ interface Props {
   loading: boolean;
 }
 
-type StayUnit = "days" | "weeks" | "months";
-
 interface StopRow {
   port: string;
   arrivalDate: string;
-  stay: string;
-  stayUnit: StayUnit;
+  months: string;
+  weeks: string;
+  days: string;
 }
 
-const UNIT_TO_DAYS: Record<StayUnit, number> = {
-  days: 1,
-  weeks: 7,
-  months: 30.4375,
-};
+const DAYS_PER_MONTH = 30.4375;
+
+function stopToDays(s: StopRow): number {
+  return (
+    (parseFloat(s.months) || 0) * DAYS_PER_MONTH +
+    (parseFloat(s.weeks) || 0) * 7 +
+    (parseFloat(s.days) || 0)
+  );
+}
 
 function todayIso(): string {
   const d = new Date();
@@ -40,7 +43,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
 
   const firstPort = Object.values(options.ports).flat()[0] || "Bergen";
   const [stops, setStops] = useState<StopRow[]>([
-    { port: firstPort, arrivalDate: todayIso(), stay: "5", stayUnit: "days" },
+    { port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" },
   ]);
 
   function updateStop(idx: number, patch: Partial<StopRow>) {
@@ -50,7 +53,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
   function addStop() {
     setStops((prev) => [
       ...prev,
-      { port: firstPort, arrivalDate: todayIso(), stay: "5", stayUnit: "days" },
+      { port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" },
     ]);
   }
 
@@ -69,7 +72,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
       stops: stops.map((s) => ({
         port: s.port,
         month: new Date(s.arrivalDate).getMonth() + 1,
-        stay_days: parseFloat(s.stay) * UNIT_TO_DAYS[s.stayUnit],
+        stay_days: stopToDays(s),
       })),
     });
   }
@@ -78,7 +81,7 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
     gt && loa && beam && draft && parseFloat(gt) > 0 &&
     parseFloat(loa) > 0 && parseFloat(beam) > 0 && parseFloat(draft) > 0;
   const stopsValid = stops.every(
-    (s) => s.port && s.arrivalDate && s.stay && parseFloat(s.stay) > 0,
+    (s) => s.port && s.arrivalDate && stopToDays(s) > 0,
   );
   const valid = specsValid && stopsValid;
 
@@ -219,29 +222,49 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Duration</label>
-                <div className="flex gap-2">
-                  <input
-                    type="number"
-                    value={stop.stay}
-                    onChange={(e) => updateStop(idx, { stay: e.target.value })}
-                    placeholder="e.g. 5"
-                    min="0.1"
-                    step="any"
-                    required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                  />
-                  <select
-                    value={stop.stayUnit}
-                    onChange={(e) =>
-                      updateStop(idx, { stayUnit: e.target.value as StayUnit })
-                    }
-                    className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                  >
-                    <option value="days">Days</option>
-                    <option value="weeks">Weeks</option>
-                    <option value="months">Months</option>
-                  </select>
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
+                    <input
+                      type="number"
+                      value={stop.months}
+                      onChange={(e) => updateStop(idx, { months: e.target.value })}
+                      placeholder="0"
+                      min="0"
+                      step="any"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                    />
+                    <span className="block text-center text-xs text-gray-500 mt-1">Months</span>
+                  </div>
+                  <div>
+                    <input
+                      type="number"
+                      value={stop.weeks}
+                      onChange={(e) => updateStop(idx, { weeks: e.target.value })}
+                      placeholder="0"
+                      min="0"
+                      step="any"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                    />
+                    <span className="block text-center text-xs text-gray-500 mt-1">Weeks</span>
+                  </div>
+                  <div>
+                    <input
+                      type="number"
+                      value={stop.days}
+                      onChange={(e) => updateStop(idx, { days: e.target.value })}
+                      placeholder="0"
+                      min="0"
+                      step="any"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                    />
+                    <span className="block text-center text-xs text-gray-500 mt-1">Days</span>
+                  </div>
                 </div>
+                {stopToDays(stop) > 0 && (
+                  <p className="text-xs text-gray-500 mt-2">
+                    Total: {stopToDays(stop).toFixed(1)} days
+                  </p>
+                )}
               </div>
             </div>
           ))}
