@@ -9,10 +9,8 @@ from pydantic import BaseModel, Field
 from model import (
     predict_voyage,
     estimate_fuel,
-    get_size_category,
     COUNTRY_PORTS,
     PORT_TEMPLATES,
-    HISTORICAL_RANGES,
     meta,
     ensemble_w,
 )
@@ -39,20 +37,12 @@ class VoyageRequest(BaseModel):
     beam: float = Field(..., gt=0, description="Beam width (m)")
     draft: float = Field(..., gt=0, description="Draft depth (m)")
     fuel: str = Field("medium", description='Fuel: "low", "medium", "high", or a number in L/h')
-    country: str = Field(..., description="Country (Norway, Sweden, Denmark)")
+    port: str = Field(..., description="Arrival / call port (e.g. Bergen, Tromsø, Stockholm)")
     stay: float = Field(..., gt=0, description="Stay duration (days)")
     month: int = Field(..., ge=1, le=12, description="Month (1-12)")
 
 
-class PortDetail(BaseModel):
-    total: float
-    weight: float
-    p25: float | None
-    p50: float | None
-    p75: float | None
-
-
-class WeightedRange(BaseModel):
+class HistoricalRange(BaseModel):
     p25: float
     p50: float
     p75: float
@@ -64,8 +54,8 @@ class VoyageResponse(BaseModel):
     size_category: str
     loskrav: str
     fuel_lph: float
-    port_details: dict[str, PortDetail]
-    weighted_range: WeightedRange
+    port: str
+    historical_range: HistoricalRange | None
 
 
 # ── Endpoints ───────────────────────────────────────────────────
@@ -95,10 +85,10 @@ def options():
 
 @app.post("/api/predict", response_model=VoyageResponse)
 def predict(req: VoyageRequest):
-    if req.country not in COUNTRY_PORTS:
+    if req.port not in PORT_TEMPLATES:
         raise HTTPException(
             status_code=400,
-            detail=f"Unknown country '{req.country}'. Valid: {', '.join(sorted(COUNTRY_PORTS))}",
+            detail=f"Unknown port '{req.port}'. Valid: {', '.join(sorted(PORT_TEMPLATES))}",
         )
 
     if req.fuel in ("low", "medium", "high"):
@@ -115,7 +105,7 @@ def predict(req: VoyageRequest):
         beam_m=req.beam,
         draft_m=req.draft,
         fuel_lph=fuel_lph,
-        country=req.country,
+        port=req.port,
         stay_days=req.stay,
         month=req.month,
     )

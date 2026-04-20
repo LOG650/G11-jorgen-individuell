@@ -397,62 +397,27 @@ def predict_port(gt, loa_m, beam_m, draft_m, fuel_lph,
     return cat_totals, total, size_cat, loskrav
 
 
-# ── Country-level voyage prediction ─────────────────────────────
+# ── Single-port voyage prediction ───────────────────────────────
 def predict_voyage(gt, loa_m, beam_m, draft_m, fuel_lph,
-                   country, stay_days, month):
-    if country not in COUNTRY_PORTS:
-        valid = ", ".join(sorted(COUNTRY_PORTS))
-        raise ValueError(f"Unknown country '{country}'. Valid: {valid}")
+                   port, stay_days, month):
+    if port not in PORT_TEMPLATES:
+        valid = ", ".join(sorted(PORT_TEMPLATES))
+        raise ValueError(f"Unknown port '{port}'. Valid: {valid}")
 
-    ports = COUNTRY_PORTS[country]
-    total_traffic = sum(ports.values())
+    cat_totals, port_total, size_cat, loskrav = predict_port(
+        gt, loa_m, beam_m, draft_m, fuel_lph, port, stay_days, month)
 
-    category_totals: dict[str, float] = {}
-    port_details: dict[str, dict] = {}
-    size_cat = loskrav = None
-
-    for port, traffic in ports.items():
-        weight = traffic / total_traffic
-        cat_totals, port_total, size_cat, loskrav = predict_port(
-            gt, loa_m, beam_m, draft_m, fuel_lph, port, stay_days, month)
-
-        key = (port, size_cat)
-        hist = HISTORICAL_RANGES.get(key)
-        port_details[port] = {
-            "total": round(port_total, 2),
-            "weight": round(weight, 4),
-            "p25": hist[0] if hist else None,
-            "p50": hist[1] if hist else None,
-            "p75": hist[2] if hist else None,
-        }
-        for svc_cat, subtotal in cat_totals.items():
-            category_totals[svc_cat] = category_totals.get(svc_cat, 0.0) + subtotal * weight
-
-    grand_total = sum(category_totals.values())
-
-    # Weighted historical range
-    w_low = w_mid = w_high = 0.0
-    for port, detail in port_details.items():
-        w = detail["weight"]
-        if detail["p25"] is not None:
-            w_low += detail["p25"] * w
-            w_mid += detail["p50"] * w
-            w_high += detail["p75"] * w
-        else:
-            w_low += detail["total"] * w
-            w_mid += detail["total"] * w
-            w_high += detail["total"] * w
+    hist = HISTORICAL_RANGES.get((port, size_cat))
 
     return {
         "category_totals": {k: round(v, 2) for k, v in
-                            sorted(category_totals.items(), key=lambda x: -x[1])},
-        "grand_total": round(grand_total, 2),
+                            sorted(cat_totals.items(), key=lambda x: -x[1])},
+        "grand_total": round(port_total, 2),
         "size_category": size_cat,
         "loskrav": loskrav,
-        "port_details": port_details,
-        "weighted_range": {
-            "p25": round(w_low, 2),
-            "p50": round(w_mid, 2),
-            "p75": round(w_high, 2),
-        },
+        "port": port,
+        "historical_range": (
+            {"p25": float(hist[0]), "p50": float(hist[1]), "p75": float(hist[2])}
+            if hist else None
+        ),
     }
