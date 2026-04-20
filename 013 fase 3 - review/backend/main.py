@@ -83,16 +83,22 @@ def options():
     }
 
 
+# Case-insensitive lookup: "bergen", "BERGEN", "BerGen" -> "Bergen"
+_PORT_LOOKUP = {p.casefold(): p for p in PORT_TEMPLATES}
+
+
 @app.post("/api/predict", response_model=VoyageResponse)
 def predict(req: VoyageRequest):
-    if req.port not in PORT_TEMPLATES:
+    port = _PORT_LOOKUP.get(req.port.strip().casefold())
+    if port is None:
         raise HTTPException(
             status_code=400,
             detail=f"Unknown port '{req.port}'. Valid: {', '.join(sorted(PORT_TEMPLATES))}",
         )
 
-    if req.fuel in ("low", "medium", "high"):
-        fuel_lph = estimate_fuel(req.gt, req.fuel)
+    fuel = req.fuel.strip().casefold()
+    if fuel in ("low", "medium", "high"):
+        fuel_lph = estimate_fuel(req.gt, fuel)
     else:
         try:
             fuel_lph = float(req.fuel)
@@ -105,7 +111,7 @@ def predict(req: VoyageRequest):
         beam_m=req.beam,
         draft_m=req.draft,
         fuel_lph=fuel_lph,
-        port=req.port,
+        port=port,
         stay_days=req.stay,
         month=req.month,
     )
