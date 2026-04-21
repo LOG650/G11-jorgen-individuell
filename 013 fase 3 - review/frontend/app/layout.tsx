@@ -28,10 +28,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-gray-50">
+      <body className="min-h-full flex flex-col">
         <SiteHeader />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-gray-200 bg-white py-4">
+        <footer className="border-t border-gray-200/60 bg-white/60 backdrop-blur-sm py-4">
           <p className="text-center text-xs text-gray-400">
             NautiCost &mdash; Voyage Cost Prediction &mdash; LOG650 Research Project
           </p>

@@ -238,7 +238,7 @@ export default function VoyageForm({
             <select
               value={fuel}
               onChange={(e) => setFuel(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
             >
               {options.fuel_levels.map((f) => (
                 <option key={f} value={f}>{f.charAt(0).toUpperCase() + f.slice(1)}</option>
@@ -254,7 +254,7 @@ export default function VoyageForm({
           {stops.map((stop, idx) => (
             <div
               key={idx}
-              className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-3"
+              className="rounded-lg border border-gray-200 bg-gray-50/70 p-4 space-y-3"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
@@ -276,7 +276,7 @@ export default function VoyageForm({
                 <select
                   value={stop.port}
                   onChange={(e) => updateStop(idx, { port: e.target.value })}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                  className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
                 >
                   {Object.entries(options.ports).map(([countryName, countryPorts]) => (
                     <optgroup key={countryName} label={countryName}>
