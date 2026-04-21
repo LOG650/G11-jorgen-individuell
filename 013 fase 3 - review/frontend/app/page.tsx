@@ -9,6 +9,7 @@ import ResultsPanel from "../components/ResultsPanel";
 export default function Dashboard() {
   const [options, setOptions] = useState<OptionsResponse | null>(null);
   const [result, setResult] = useState<VoyageResponse | null>(null);
+  const [lastRequest, setLastRequest] = useState<VoyageRequest | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,6 +25,7 @@ export default function Dashboard() {
     try {
       const res = await predictVoyage(req);
       setResult(res);
+      setLastRequest(req);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Prediction failed");
     } finally {
@@ -81,8 +83,8 @@ export default function Dashboard() {
             </div>
           )}
 
-          {result ? (
-            <ResultsPanel result={result} />
+          {result && lastRequest ? (
+            <ResultsPanel request={lastRequest} result={result} />
           ) : (
             <div className="flex items-center justify-center min-h-[400px] bg-white rounded-xl border border-gray-200 border-dashed">
               <div className="text-center text-gray-400">

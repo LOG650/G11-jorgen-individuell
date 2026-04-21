@@ -39,6 +39,9 @@ export default function RootLayout({
                 <Link href="/" className="text-gray-600 hover:text-gray-900">
                   Dashboard
                 </Link>
+                <Link href="/registry" className="text-gray-600 hover:text-gray-900">
+                  Registry
+                </Link>
                 <Link href="/about" className="text-gray-600 hover:text-gray-900">
                   About
                 </Link>
