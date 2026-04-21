@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { VoyageRequest, VoyageResponse, OptionsResponse } from "../lib/types";
 import { fetchOptions, predictVoyage } from "../lib/api";
 import { addEntry } from "../lib/registry";
-import VoyageForm from "../components/VoyageForm";
+import VoyageForm, { type VoyageFormSubmitOpts } from "../components/VoyageForm";
 import ResultsPanel from "../components/ResultsPanel";
 
 export default function Dashboard() {
@@ -20,7 +20,7 @@ export default function Dashboard() {
       .catch(() => setError("Could not connect to backend. Is the API server running on port 8000?"));
   }, []);
 
-  async function handleSubmit(req: VoyageRequest, opts: { save: boolean; yachtName: string }) {
+  async function handleSubmit(req: VoyageRequest, opts: VoyageFormSubmitOpts) {
     setLoading(true);
     setError(null);
     setSavedNotice(null);
@@ -38,9 +38,10 @@ export default function Dashboard() {
           fuelLph: res.fuel_lph,
           sizeCategory: res.size_category,
           loskrav: res.loskrav,
+          itinerary: opts.itinerary,
           stops: res.stops,
           estimatedTotal: res.grand_total,
-          actualTotal: null,
+          actualTotal: opts.actualCost,
         });
         setSavedNotice(`Saved ${opts.yachtName} to the registry.`);
       }

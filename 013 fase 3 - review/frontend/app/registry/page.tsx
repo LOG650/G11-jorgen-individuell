@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { listEntries, updateEntry, removeEntry, type RegistryEntry } from "../../lib/registry";
+import EditRegistryModal from "../../components/EditRegistryModal";
 
 function formatNOK(n: number): string {
   return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
@@ -36,6 +37,7 @@ export default function RegistryPage() {
   const [editValue, setEditValue] = useState("");
   const [editingNameId, setEditingNameId] = useState<string | null>(null);
   const [editNameValue, setEditNameValue] = useState("");
+  const [modalEntry, setModalEntry] = useState<RegistryEntry | null>(null);
 
   function refresh() {
     setEntries(listEntries());
@@ -209,18 +211,34 @@ export default function RegistryPage() {
                     {formatDate(e.createdAt)}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <button
-                      onClick={() => handleRemove(e.id)}
-                      className="text-xs text-red-600 hover:text-red-700"
-                    >
-                      Delete
-                    </button>
+                    <div className="flex justify-end gap-3">
+                      <button
+                        onClick={() => setModalEntry(e)}
+                        className="text-xs font-medium text-blue-600 hover:text-blue-700"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleRemove(e.id)}
+                        className="text-xs text-red-600 hover:text-red-700"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+      )}
+
+      {modalEntry && (
+        <EditRegistryModal
+          entry={modalEntry}
+          onClose={() => setModalEntry(null)}
+          onSaved={refresh}
+        />
       )}
     </div>
   );

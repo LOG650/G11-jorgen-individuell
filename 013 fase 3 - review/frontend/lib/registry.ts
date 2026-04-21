@@ -2,6 +2,14 @@ import type { StopResult } from "./types";
 
 const STORAGE_KEY = "nauticost.registry.v1";
 
+export interface RegistryItineraryStop {
+  port: string;
+  arrivalDate: string;
+  months: string;
+  weeks: string;
+  days: string;
+}
+
 export interface RegistryEntry {
   id: string;
   yachtName: string;
@@ -13,6 +21,7 @@ export interface RegistryEntry {
   fuelLph: number;
   sizeCategory: string;
   loskrav: string;
+  itinerary: RegistryItineraryStop[];
   stops: StopResult[];
   estimatedTotal: number;
   actualTotal: number | null;

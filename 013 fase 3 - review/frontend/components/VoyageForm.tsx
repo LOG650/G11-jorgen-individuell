@@ -3,18 +3,41 @@
 import { useState } from "react";
 import type { VoyageRequest, OptionsResponse } from "../lib/types";
 
-interface Props {
-  options: OptionsResponse;
-  onSubmit: (req: VoyageRequest, opts: { save: boolean; yachtName: string }) => void;
-  loading: boolean;
-}
-
-interface StopRow {
+export interface StopRow {
   port: string;
   arrivalDate: string;
   months: string;
   weeks: string;
   days: string;
+}
+
+export interface VoyageFormInitial {
+  yachtName?: string;
+  gt?: string;
+  loa?: string;
+  beam?: string;
+  draft?: string;
+  fuel?: string;
+  stops?: StopRow[];
+  actualCost?: string;
+}
+
+export interface VoyageFormSubmitOpts {
+  save: boolean;
+  yachtName: string;
+  itinerary: StopRow[];
+  actualCost: number | null;
+}
+
+interface Props {
+  options: OptionsResponse;
+  onSubmit: (req: VoyageRequest, opts: VoyageFormSubmitOpts) => void;
+  loading: boolean;
+  initial?: VoyageFormInitial;
+  mode?: "create" | "edit";
+  primaryLabel?: string;
+  showActualCost?: boolean;
+  showAddToRegistry?: boolean;
 }
 
 const DAYS_PER_MONTH = 30.4375;
@@ -34,18 +57,30 @@ function todayIso(): string {
   return `${d.getFullYear()}-${m}-${day}`;
 }
 
-export default function VoyageForm({ options, onSubmit, loading }: Props) {
-  const [yachtName, setYachtName] = useState("");
-  const [gt, setGt] = useState("");
-  const [loa, setLoa] = useState("");
-  const [beam, setBeam] = useState("");
-  const [draft, setDraft] = useState("");
-  const [fuel, setFuel] = useState("medium");
+export default function VoyageForm({
+  options,
+  onSubmit,
+  loading,
+  initial,
+  mode = "create",
+  primaryLabel,
+  showActualCost = false,
+  showAddToRegistry = true,
+}: Props) {
+  const [yachtName, setYachtName] = useState(initial?.yachtName ?? "");
+  const [gt, setGt] = useState(initial?.gt ?? "");
+  const [loa, setLoa] = useState(initial?.loa ?? "");
+  const [beam, setBeam] = useState(initial?.beam ?? "");
+  const [draft, setDraft] = useState(initial?.draft ?? "");
+  const [fuel, setFuel] = useState(initial?.fuel ?? "medium");
+  const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
 
   const firstPort = Object.values(options.ports).flat()[0] || "Bergen";
-  const [stops, setStops] = useState<StopRow[]>([
-    { port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" },
-  ]);
+  const [stops, setStops] = useState<StopRow[]>(
+    initial?.stops && initial.stops.length > 0
+      ? initial.stops
+      : [{ port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" }],
+  );
 
   function updateStop(idx: number, patch: Partial<StopRow>) {
     setStops((prev) => prev.map((s, i) => (i === idx ? { ...s, ...patch } : s)));
@@ -75,7 +110,14 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
         stay_days: stopToDays(s),
       })),
     };
-    onSubmit(req, { save, yachtName: yachtName.trim() });
+    const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
+    const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
+    onSubmit(req, {
+      save,
+      yachtName: yachtName.trim(),
+      itinerary: stops,
+      actualCost: actualValid ? parsedActual : null,
+    });
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -324,6 +366,27 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
         </div>
       </div>
 
+      {showActualCost && (
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Actual Cost</h2>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Actual voyage cost (NOK)
+          </label>
+          <input
+            type="number"
+            value={actualCost}
+            onChange={(e) => setActualCost(e.target.value)}
+            placeholder="Leave blank for N/A"
+            min="0"
+            step="any"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Leave blank if the actual cost is not yet known.
+          </p>
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={!valid || loading}
@@ -335,14 +398,14 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
-            Estimating...
+            {mode === "edit" ? "Saving..." : "Estimating..."}
           </span>
         ) : (
-          "Estimate Voyage Cost"
+          primaryLabel ?? "Estimate Voyage Cost"
         )}
       </button>
 
-      {hasAnySpec && (
+      {showAddToRegistry && hasAnySpec && (
         <button
           type="button"
           onClick={() => submit(true)}
