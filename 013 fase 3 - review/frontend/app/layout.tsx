@@ -42,6 +42,9 @@ export default function RootLayout({
                 <Link href="/registry" className="text-gray-600 hover:text-gray-900">
                   Registry
                 </Link>
+                <Link href="/forecast" className="text-gray-600 hover:text-gray-900">
+                  Forecast
+                </Link>
                 <Link href="/about" className="text-gray-600 hover:text-gray-900">
                   About
                 </Link>
