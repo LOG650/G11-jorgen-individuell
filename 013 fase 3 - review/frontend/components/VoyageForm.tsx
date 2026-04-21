@@ -5,7 +5,7 @@ import type { VoyageRequest, OptionsResponse } from "../lib/types";
 
 interface Props {
   options: OptionsResponse;
-  onSubmit: (req: VoyageRequest) => void;
+  onSubmit: (req: VoyageRequest, opts: { save: boolean; yachtName: string }) => void;
   loading: boolean;
 }
 
@@ -35,6 +35,7 @@ function todayIso(): string {
 }
 
 export default function VoyageForm({ options, onSubmit, loading }: Props) {
+  const [yachtName, setYachtName] = useState("");
   const [gt, setGt] = useState("");
   const [loa, setLoa] = useState("");
   const [beam, setBeam] = useState("");
@@ -61,9 +62,8 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
     setStops((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    onSubmit({
+  function submit(save: boolean) {
+    const req: VoyageRequest = {
       gt: parseFloat(gt),
       loa: parseFloat(loa),
       beam: parseFloat(beam),
@@ -74,7 +74,13 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
         month: new Date(s.arrivalDate).getMonth() + 1,
         stay_days: stopToDays(s),
       })),
-    });
+    };
+    onSubmit(req, { save, yachtName: yachtName.trim() });
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    submit(false);
   }
 
   const specsValid =
@@ -84,12 +90,26 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
     (s) => s.port && s.arrivalDate && stopToDays(s) > 0,
   );
   const valid = specsValid && stopsValid;
+  const hasAnySpec = Boolean(yachtName.trim() || gt || loa || beam || draft);
+  const canSaveToRegistry = valid && yachtName.trim().length > 0;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Yacht Specifications</h2>
         <div className="grid grid-cols-2 gap-4">
+          <div className="col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Yacht Name
+            </label>
+            <input
+              type="text"
+              value={yachtName}
+              onChange={(e) => setYachtName(e.target.value)}
+              placeholder="e.g. Serenity"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Gross Tonnage (GT)
@@ -296,6 +316,18 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
           "Estimate Voyage Cost"
         )}
       </button>
+
+      {hasAnySpec && (
+        <button
+          type="button"
+          onClick={() => submit(true)}
+          disabled={!canSaveToRegistry || loading}
+          className="w-full rounded-lg border border-blue-600 bg-white px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 disabled:border-gray-300 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
+          title={!yachtName.trim() ? "Enter a yacht name first" : !valid ? "Fill in all specs and at least one stop" : ""}
+        >
+          + Add to Registry
+        </button>
+      )}
     </form>
   );
 }

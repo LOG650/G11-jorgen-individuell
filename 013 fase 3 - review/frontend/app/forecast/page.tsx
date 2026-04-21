@@ -206,11 +206,46 @@ export default function ForecastPage() {
         </div>
       </div>
 
+      {/* Yachts in Registry */}
+      {entries.length > 0 && (
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-sm font-semibold text-gray-900">Yachts in Registry</h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Estimated vs. actual cost per yacht. Edit actuals on the{" "}
+              <Link href="/registry" className="text-blue-600 hover:underline">registry page</Link>.
+            </p>
+          </div>
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+              <tr>
+                <th className="text-left px-6 py-3 font-medium">Yacht</th>
+                <th className="text-right px-6 py-3 font-medium">Estimated (NOK)</th>
+                <th className="text-right px-6 py-3 font-medium">Actual Cost (NOK)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {entries.map((e) => (
+                <tr key={e.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-900">{e.yachtName}</td>
+                  <td className="px-6 py-3 text-right text-gray-700">
+                    {formatNOK(e.estimatedTotal)}
+                  </td>
+                  <td className={`px-6 py-3 text-right ${e.actualTotal === null ? "text-gray-400 italic" : "text-gray-900 font-medium"}`}>
+                    {e.actualTotal === null ? "N/A" : formatNOK(e.actualTotal)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
       {entries.length === 0 && (
         <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800">
           No entries in the registry yet. Run a prediction on the{" "}
-          <Link href="/" className="underline font-medium">dashboard</Link> and click
-          &quot;Save to registry&quot; so this page has something to aggregate.
+          <Link href="/" className="underline font-medium">dashboard</Link>
+          {" "}and click &quot;Add to Registry&quot; so this page has something to aggregate.
         </div>
       )}
     </div>

@@ -3,15 +3,16 @@
 import { useEffect, useState } from "react";
 import type { VoyageRequest, VoyageResponse, OptionsResponse } from "../lib/types";
 import { fetchOptions, predictVoyage } from "../lib/api";
+import { addEntry } from "../lib/registry";
 import VoyageForm from "../components/VoyageForm";
 import ResultsPanel from "../components/ResultsPanel";
 
 export default function Dashboard() {
   const [options, setOptions] = useState<OptionsResponse | null>(null);
   const [result, setResult] = useState<VoyageResponse | null>(null);
-  const [lastRequest, setLastRequest] = useState<VoyageRequest | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [savedNotice, setSavedNotice] = useState<string | null>(null);
 
   useEffect(() => {
     fetchOptions()
@@ -19,13 +20,30 @@ export default function Dashboard() {
       .catch(() => setError("Could not connect to backend. Is the API server running on port 8000?"));
   }, []);
 
-  async function handleSubmit(req: VoyageRequest) {
+  async function handleSubmit(req: VoyageRequest, opts: { save: boolean; yachtName: string }) {
     setLoading(true);
     setError(null);
+    setSavedNotice(null);
     try {
       const res = await predictVoyage(req);
       setResult(res);
-      setLastRequest(req);
+      if (opts.save && opts.yachtName) {
+        addEntry({
+          yachtName: opts.yachtName,
+          gt: req.gt,
+          loa: req.loa,
+          beam: req.beam,
+          draft: req.draft,
+          fuel: req.fuel,
+          fuelLph: res.fuel_lph,
+          sizeCategory: res.size_category,
+          loskrav: res.loskrav,
+          stops: res.stops,
+          estimatedTotal: res.grand_total,
+          actualTotal: null,
+        });
+        setSavedNotice(`Saved ${opts.yachtName} to the registry.`);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Prediction failed");
     } finally {
@@ -83,8 +101,14 @@ export default function Dashboard() {
             </div>
           )}
 
-          {result && lastRequest ? (
-            <ResultsPanel request={lastRequest} result={result} />
+          {savedNotice && (
+            <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+              <p className="text-green-800 text-sm">{savedNotice}</p>
+            </div>
+          )}
+
+          {result ? (
+            <ResultsPanel result={result} />
           ) : (
             <div className="flex items-center justify-center min-h-[400px] bg-white rounded-xl border border-gray-200 border-dashed">
               <div className="text-center text-gray-400">
