@@ -34,6 +34,8 @@ export default function RegistryPage() {
   const [entries, setEntries] = useState<RegistryEntry[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
+  const [editingNameId, setEditingNameId] = useState<string | null>(null);
+  const [editNameValue, setEditNameValue] = useState("");
 
   function refresh() {
     setEntries(listEntries());
@@ -53,6 +55,19 @@ export default function RegistryPage() {
     if (parsed !== null && (isNaN(parsed) || parsed < 0)) return;
     updateEntry(id, { actualTotal: parsed });
     setEditingId(null);
+    refresh();
+  }
+
+  function startEditName(entry: RegistryEntry) {
+    setEditingNameId(entry.id);
+    setEditNameValue(entry.yachtName);
+  }
+
+  function saveEditName(id: string) {
+    const trimmed = editNameValue.trim();
+    if (!trimmed) return;
+    updateEntry(id, { yachtName: trimmed });
+    setEditingNameId(null);
     refresh();
   }
 
@@ -106,7 +121,38 @@ export default function RegistryPage() {
             <tbody className="divide-y divide-gray-100">
               {entries.map((e) => (
                 <tr key={e.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 font-medium text-gray-900">{e.yachtName}</td>
+                  <td className="px-4 py-3 font-medium text-gray-900">
+                    {editingNameId === e.id ? (
+                      <div className="flex gap-1">
+                        <input
+                          type="text"
+                          value={editNameValue}
+                          onChange={(ev) => setEditNameValue(ev.target.value)}
+                          autoFocus
+                          className="w-32 rounded border border-gray-300 px-2 py-1 text-xs"
+                        />
+                        <button
+                          onClick={() => saveEditName(e.id)}
+                          className="rounded bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => setEditingNameId(null)}
+                          className="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => startEditName(e)}
+                        className="hover:text-blue-600 underline decoration-dotted underline-offset-2"
+                      >
+                        {e.yachtName}
+                      </button>
+                    )}
+                  </td>
                   <td className="px-4 py-3 text-gray-600">
                     <div>GT {e.gt} · LOA {e.loa}m</div>
                     <div className="text-xs text-gray-400">

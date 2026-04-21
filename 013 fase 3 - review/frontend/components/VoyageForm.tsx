@@ -86,10 +86,29 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
   const specsValid =
     gt && loa && beam && draft && parseFloat(gt) > 0 &&
     parseFloat(loa) > 0 && parseFloat(beam) > 0 && parseFloat(draft) > 0;
-  const stopsValid = stops.every(
+  const stopsFieldsValid = stops.every(
     (s) => s.port && s.arrivalDate && stopToDays(s) > 0,
   );
-  const valid = specsValid && stopsValid;
+
+  // Per-stop overlap error: a stop's arrival must be on/after the previous stop's end date.
+  const stopErrors: (string | null)[] = stops.map((stop, idx) => {
+    if (idx === 0) return null;
+    if (!stop.arrivalDate) return null;
+    const prev = stops[idx - 1];
+    if (!prev.arrivalDate) return null;
+    const prevStayDays = stopToDays(prev);
+    if (prevStayDays <= 0) return null;
+    const prevEnd = new Date(prev.arrivalDate);
+    prevEnd.setDate(prevEnd.getDate() + Math.ceil(prevStayDays));
+    const thisStart = new Date(stop.arrivalDate);
+    if (thisStart < prevEnd) {
+      const endIso = prevEnd.toISOString().slice(0, 10);
+      return `Arrival overlaps with previous stop at ${prev.port}. Earliest possible arrival is ${endIso}.`;
+    }
+    return null;
+  });
+  const hasOverlap = stopErrors.some((e) => e !== null);
+  const valid = specsValid && stopsFieldsValid && !hasOverlap;
   const hasAnySpec = Boolean(yachtName.trim() || gt || loa || beam || draft);
   const canSaveToRegistry = valid && yachtName.trim().length > 0;
 
@@ -286,6 +305,12 @@ export default function VoyageForm({ options, onSubmit, loading }: Props) {
                   </p>
                 )}
               </div>
+
+              {stopErrors[idx] && (
+                <div className="rounded-md bg-red-50 border border-red-200 px-3 py-2">
+                  <p className="text-xs text-red-700">{stopErrors[idx]}</p>
+                </div>
+              )}
             </div>
           ))}
 

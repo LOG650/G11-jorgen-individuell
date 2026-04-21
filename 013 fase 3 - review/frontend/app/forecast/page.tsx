@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { listEntries, type RegistryEntry } from "../../lib/registry";
+import { listEntries, updateEntry, type RegistryEntry } from "../../lib/registry";
 import { loadForecastConfig, saveForecastConfig } from "../../lib/forecast";
 
 function formatNOK(n: number): string {
@@ -12,6 +12,20 @@ function formatNOK(n: number): string {
 function pct(part: number, whole: number): number {
   if (whole <= 0) return 0;
   return Math.min(999, (part / whole) * 100);
+}
+
+function diffPctLabel(actual: number | null, estimated: number): { text: string; tone: string } {
+  if (actual === null || estimated <= 0) {
+    return { text: "—", tone: "text-gray-400" };
+  }
+  const diff = actual - estimated;
+  const p = (diff / estimated) * 100;
+  const sign = diff >= 0 ? "+" : "";
+  const tone =
+    Math.abs(p) < 10 ? "text-green-600"
+      : Math.abs(p) < 25 ? "text-yellow-600"
+      : "text-red-600";
+  return { text: `${sign}${p.toFixed(1)}%`, tone };
 }
 
 function Bar({ value, max, tone }: { value: number; max: number; tone: "blue" | "purple" }) {
@@ -31,13 +45,32 @@ export default function ForecastPage() {
   const [entries, setEntries] = useState<RegistryEntry[]>([]);
   const [target, setTarget] = useState("");
   const [stretch, setStretch] = useState("");
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editValue, setEditValue] = useState("");
+
+  function refreshEntries() {
+    setEntries(listEntries());
+  }
 
   useEffect(() => {
-    setEntries(listEntries());
+    refreshEntries();
     const cfg = loadForecastConfig();
     setTarget(cfg.targetRevenue > 0 ? String(cfg.targetRevenue) : "");
     setStretch(String(cfg.stretchPct));
   }, []);
+
+  function startEdit(entry: RegistryEntry) {
+    setEditingId(entry.id);
+    setEditValue(entry.actualTotal !== null ? String(entry.actualTotal) : "");
+  }
+
+  function saveEdit(id: string) {
+    const parsed = editValue.trim() === "" ? null : parseFloat(editValue);
+    if (parsed !== null && (isNaN(parsed) || parsed < 0)) return;
+    updateEntry(id, { actualTotal: parsed });
+    setEditingId(null);
+    refreshEntries();
+  }
 
   function commitConfig(nextTarget: string, nextStretch: string) {
     const t = parseFloat(nextTarget);
@@ -212,8 +245,8 @@ export default function ForecastPage() {
           <div className="px-6 py-4 border-b border-gray-200">
             <h2 className="text-sm font-semibold text-gray-900">Yachts in Registry</h2>
             <p className="text-xs text-gray-500 mt-1">
-              Estimated vs. actual cost per yacht. Edit actuals on the{" "}
-              <Link href="/registry" className="text-blue-600 hover:underline">registry page</Link>.
+              Click an actual cost to edit it. Leave it blank to keep as{" "}
+              <span className="italic">N/A</span>.
             </p>
           </div>
           <table className="w-full text-sm">
@@ -222,20 +255,59 @@ export default function ForecastPage() {
                 <th className="text-left px-6 py-3 font-medium">Yacht</th>
                 <th className="text-right px-6 py-3 font-medium">Estimated (NOK)</th>
                 <th className="text-right px-6 py-3 font-medium">Actual Cost (NOK)</th>
+                <th className="text-right px-6 py-3 font-medium">Difference</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {entries.map((e) => (
-                <tr key={e.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-900">{e.yachtName}</td>
-                  <td className="px-6 py-3 text-right text-gray-700">
-                    {formatNOK(e.estimatedTotal)}
-                  </td>
-                  <td className={`px-6 py-3 text-right ${e.actualTotal === null ? "text-gray-400 italic" : "text-gray-900 font-medium"}`}>
-                    {e.actualTotal === null ? "N/A" : formatNOK(e.actualTotal)}
-                  </td>
-                </tr>
-              ))}
+              {entries.map((e) => {
+                const dp = diffPctLabel(e.actualTotal, e.estimatedTotal);
+                return (
+                  <tr key={e.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-3 font-medium text-gray-900">{e.yachtName}</td>
+                    <td className="px-6 py-3 text-right text-gray-700">
+                      {formatNOK(e.estimatedTotal)}
+                    </td>
+                    <td className="px-6 py-3 text-right">
+                      {editingId === e.id ? (
+                        <div className="flex justify-end gap-1">
+                          <input
+                            type="number"
+                            value={editValue}
+                            onChange={(ev) => setEditValue(ev.target.value)}
+                            autoFocus
+                            placeholder="blank = N/A"
+                            min="0"
+                            step="any"
+                            className="w-32 rounded border border-gray-300 px-2 py-1 text-xs text-right"
+                          />
+                          <button
+                            onClick={() => saveEdit(e.id)}
+                            className="rounded bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={() => setEditingId(null)}
+                            className="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => startEdit(e)}
+                          className={`underline decoration-dotted underline-offset-2 hover:text-blue-600 ${e.actualTotal === null ? "text-gray-400 italic" : "text-gray-900 font-medium"}`}
+                        >
+                          {e.actualTotal === null ? "N/A" : formatNOK(e.actualTotal)}
+                        </button>
+                      )}
+                    </td>
+                    <td className={`px-6 py-3 text-right text-xs font-medium ${dp.tone}`}>
+                      {dp.text}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
