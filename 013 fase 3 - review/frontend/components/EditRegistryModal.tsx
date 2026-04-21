@@ -16,28 +16,43 @@ interface Props {
   onSaved: () => void;
 }
 
+function toIsoDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 function entryToInitial(entry: RegistryEntry): VoyageFormInitial {
-  const stops: StopRow[] = entry.itinerary && entry.itinerary.length > 0
-    ? entry.itinerary.map((s) => ({
+  let stops: StopRow[];
+  if (entry.itinerary && entry.itinerary.length > 0) {
+    stops = entry.itinerary.map((s) => ({
+      port: s.port,
+      arrivalDate: s.arrivalDate,
+      months: s.months,
+      weeks: s.weeks,
+      days: s.days,
+    }));
+  } else {
+    // Legacy entries without itinerary: reconstruct dates sequentially so the
+    // result doesn't trigger the overlap validator.
+    const year = new Date().getFullYear();
+    let cursor: Date | null = null;
+    stops = entry.stops.map((s) => {
+      const candidate = new Date(`${year}-${String(s.month).padStart(2, "0")}-01T00:00:00`);
+      const arrive = cursor && candidate < cursor ? cursor : candidate;
+      const nextCursor = new Date(arrive);
+      nextCursor.setDate(nextCursor.getDate() + Math.ceil(s.stay_days));
+      cursor = nextCursor;
+      return {
         port: s.port,
-        arrivalDate: s.arrivalDate,
-        months: s.months,
-        weeks: s.weeks,
-        days: s.days,
-      }))
-    : entry.stops.map((s) => {
-        // Legacy entries without itinerary: reconstruct as date in the recorded month of this year + all days.
-        const now = new Date();
-        const year = now.getFullYear();
-        const mm = String(s.month).padStart(2, "0");
-        return {
-          port: s.port,
-          arrivalDate: `${year}-${mm}-01`,
-          months: "",
-          weeks: "",
-          days: String(s.stay_days),
-        };
-      });
+        arrivalDate: toIsoDate(arrive),
+        months: "",
+        weeks: "",
+        days: String(s.stay_days),
+      };
+    });
+  }
 
   return {
     yachtName: entry.yachtName,
