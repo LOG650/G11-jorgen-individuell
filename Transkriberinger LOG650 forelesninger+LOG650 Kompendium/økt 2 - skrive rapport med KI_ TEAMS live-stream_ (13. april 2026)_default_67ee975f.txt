@@ -1,0 +1,307 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - skrive rapport med KI_ TEAMS live-stream_ (13. april 2026)_default_67ee975f
+Date: 4/20/2026
+Duration: 2949 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 2
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Nå har vi kommet til time nr. 2. Da er du på hvilken her? Du er på teori eller på diskusjon?
+
+Speaker 2: Her er jeg akkurat nå på teori.
+
+Speaker 1: Teori, ok. Så når du trykker på enter, så starter den.
+
+Speaker 2: Ja, er du klar? Har du tatt opp?
+
+Speaker 1: Jo da, man har ikke trykket på enter og latt AI-en begynne å ta teorien.
+
+Speaker 2: Nei, ikke det. Så langt nå har jeg da skrevet ferdig prompten for kapittel 9, diskusjon. Vi ser at vi er i Worktree-diskusjon, så vi vet vi er på rett plass. Her er alle stegene vi skal gjennomføre, som vi har planlagt tidligere i planleggingsfasen. Der ser du hvor behagelig det egentlig er å ha hatt en planleggingsfase. Nå er det veldig kjekt dette her, hva er det som er gjort for hårdhold? Og det vi må passe på er at det å gjennomføre review og lukkeaktiviteten, det skal ikke denne AN her gjøre. For han skal ikke lage en review av seg selv. Så her skriver han, jeg ønsker at du nå skal gjennomføre aktivitet 3.8, skrive kapittel 9, diskusjon, se statusemnet. Sett deg godt inn i kapittel 6, 7 og 8 for å få all konteksten du trenger. For å gjennomføre diskusjon. Du skal her drøfte resultatene, både styrker og svakestiller ved analysen og modellen, og tolker resultatene. Du skal ikke gjennomføre review og lukkeaktiviteten. Det er et manuelt steg. Ok? Legg merke.
+
+Speaker 1: Til det. Grunnen til at det er et manuelt steg er at vi ønsker å gå igjennom det som har blitt gjort på diskusjonskapitlet, og slik at vi manuelt sjekker det før vi huker av på avviklingslista til venstre. Manuelt og manuelt.
+
+Speaker 2: Vi skal ha en annen AI til å gjøre det da. Men det er ikke denne AIen som skal gjøre den oppgaven. Da får du bare veldig positivt. Så da trykker jeg på Enter der. Den er i planmodus, så den bare planlegger. Da går vi over til teori mens den brenner. Dette er jo fordelen av å ha to sånne work trees, for nå kan de begynne å jobbe her igjen, mens den andre jobber. Så slipper vi å bare sitte og kikke oppi taket mens A1 jobber. Her har han beskrevet alt han vil gjøre, funnet en del referanser. Nice. Primærkilde gjennom hele kapittelet, full A1-referanse, nydelig. Dette blir bra. Vi må selvfølgelig gå over referansene til slutt uansett, så vi trenger ikke tenke så mye på det. Har litt random kapittelstruktur, tidsserier, stasjonalitet, alt du trenger å kunne for å forstå Sarima. Men jeg glemte å si at du må passe på å ikke gjennomføre review og luka kvaliteten, så jeg skrev det i tillegg her. Les også. Slik at notasjonen i teorien stemmer godt overens med modell og analyse. Det er litt dumt hvis teorien beskriver ting på en måte, og så bruker du modellen og analysen på en helt annen metode. Det bør være et visst samsvar der. Det er.
+
+Speaker 1: En liten ting. Der står det at vi er på teori. Ja, det står.
+
+Speaker 2: Det. Så nå brenner begge to. La oss se om den er kommet ferdig her. Nei. Så nå sitter vi og venter. Nå trinner vi domler. Det er jo veldig typisk med AI. Egentlig, jo flinkere du blir med AI, til syvende og siste, så er det du menneske som er rask i halsen. Jeg klarer ikke å komme på mer idéer nå, så jeg klarer ikke å sette i gang en tredje AI da. Kunne ha gjort det da, kunne ha satt i gang litteraturen liksom. Men som sagt, det skal vi vente med da. Alright, da er vi ferdige her. Da er det bare å trykke yes, og clear context. Nei, jeg vil ikke gjøre det her, siden det var bare brukt 7 %. Hvis det kommer opp i 20 %, så bruker jeg Clearer Context. Hvorfor.
+
+Speaker 1: Det? Skal det ikke være opp til.
+
+Speaker 2: 100? Ja, men som jeg viste i en figur før, så vil Context Rot, som det heter, allerede skje mye tidligere, selv om du får fortsette. Så jeg har en grense på cirka 20 prosent. Da bruker jeg jo Clear Context. Men her er det bare brukt sju, så da kjører jeg på. Bypass Permission. Så nå begynner han å jobbe på kapittel tre. Og husk, den vil nå jobbe under WorkTrees Theory. Det er der han jobber. Hvorfor ikke klare over det? Og se her. Her planlegger han ennå å lage plan for diskusjon.
+
+Speaker 1: Ja.
+
+Speaker 2: Men vi har i hvert fall to AIA-sving nå, og det er.
+
+Speaker 1: Bra det. Ja da. Det er bra, og husk på at nå er to AIA-sving som tar litt lang tid, fordi at det er store oppgaver vi bør gjøre. Og der er vi nødt til å sette seg inn i veldig mye, for å kunne ta stilling til det vi ønsker. Så det er bra vanskelig bruk av dette her, altså. Kjempebra.
+
+Speaker 2: Egentlig veldig bra. Jeg har ikke vært så veldig spesifikt når det gjelder referansene om hvordan man skal gjøre ting, som vi kan få litt av hvert nå, men det får vi bare leve med. Vi skal likevel uansett... Ja, gå vi gjennom.
+
+Speaker 1: Får bare en ny iterasjon og så,.
+
+Speaker 2: Da. Ja, vi skal uansett rydde opp i referansene på neste samling da, på slutten av april, som vi har da. Det er forresten da vi skal ha peer review, Vi må få Erik til å planlegge peer review i forhold til hvem som skal lage review av hvem. Det kan vi egentlig bare tilordne. Da tenker jeg at det vi gjør er å bare legge inn rapporten fra de andre inn i Enten det, eller at man får tilgang. For alle har jo tilgang til GitHub Repo.
+
+Speaker 1: Kan vi ta selve reklamasjonen,.
+
+Speaker 2: Og hva han sier her? Han holder på å jobbe her, da. La oss se om han er ferdig på den andre siden. Ikke helt enda. Code er jo ganske omstendelig, men også ganske god. Den bruker som regel mer tid på plan enn på gjennomføring. Og min erfaring er det at selv om det tar litt tid på planlegging, så er det bare å streve, for da får du færre iterasjoner som du har inne på PK. Treff bedre på første rett og slett. Søk en del på netteserien. Her står det «search» som bruker Søke motoren sin til å søke på nettet etter kilder. Det er ikke så veldig vanlig å bruke referanser i diskusjon,- med mindre du skal sammenligne med resultat som har skjedd før,- som andre har fått. Det er lite aktuelt her, tenker jeg. Hvis du skriver en rapport hvor du for eksempel prøver å gjøre noe bedre- enn det noen andre har gjort,- så er det aktuelt å ta det med i en diskusjon, hvor du da refererer til den andre parten da, når du skriver diskusjonen din da, for eksempel. Men akkurat her så, diskusjon er på en måte en personlig ting, sant? Det er dine personlige tolkninger av resultatet. De er ofte viktige, og de er ofte dine, sant? Og nå la vi jo en AI gjøre det for oss. Så det er veldig viktig at når vi er ferdige med AI-stegen, når alt er generert av AI, så er det jo deres jobb å gå over hele greia, selvfølgelig. Ja,.
+
+Speaker 1: For det må være en human check til slutt, da. Det er sannsynlig sagt da, at hvis også Aftenposten og VG og sånn gjør, denne oppsummingen er laget av AI, men sjekket av våre journalister.
+
+Speaker 2: Manuelt. Ja, det er helt desentert, og det er på en måte det dere skal bruke hele mai på, egentlig, i vår plan, da. Dere skal bruke en god del av perioden deres til å gå over alt som AN har generert. Dere kan godt få AN til å rette det opp, men det er dere som legger merke til endringene. Det er dere som er sjefen her som skal tenke på om dette ble bra. Stemmer dette? Skal vi se hvordan den står til her. Den er snart ferdig her, ser dere. Her har det kommet opp noen referanser. Dickey O'Fullerad, den vet de ganske kjent. Og legg merke til at her får du fra 1979, og det er et godt tegn egentlig, for det er da en ganske tidlig referanse, som betyr at den er ganske fundamental. Så det er litt forskjellig mellom tidlig og gamle referanser her. Men her ser vi for eksempel Box, og vi husker jo da at metoden heter Box-Jenkins. Så det er et godt tegn at den kommer med disse tradisjonelle referansene. Det blir spennende å se om vi faktisk lager en oppsummering for hver ... For hver referanse. Det var litt kjapt der, synes jeg, men vi kan få se.
+
+Speaker 1: Kan du se om det har kommet.
+
+Speaker 2: Noe i mappa? Det ser du, for under theory her, lysen er grønt, ser.
+
+Speaker 1: Du? Ja, det er grønt,.
+
+Speaker 2: Ja. Under references her, her står alle referansene. Her er alle referansene,.
+
+Speaker 1: Ja. Men du ser at man laver andre, jeg synes ikke det er så bra, egentlig ønsker jeg ikke en En oppsummering da. Egentlig så ønsker jeg pdf'a, men da fordeler.
+
+Speaker 2: Vi ikke på den eneste pdf'a. Ja, jeg sa ikke det spesifikt heller. Det synes jeg.
+
+Speaker 1: Er mye bedre egentlig enn at du ser den faktiske pdf'en da. Det er enda større verdier, mener jeg da.
+
+Speaker 2: Det er sant. Men det er ikke alltid at det finnes en pdf, men hvis det gjør det, så er det definitivt mulig å gjennomføre det. Men da er ikke den søkebiten den beste i klåd. Da er det vanlig å bruke en ekstra sterk søkemotor, og derfor hadde jeg tenkt å utsette det.
+
+Speaker 1: Til neste gang. Vi skal bare manuelt sjekke om vi kan finne denne Dickey.
+
+Speaker 2: Og Fuller. Ja, den kan ikke finnes, for den har jeg hørt.
+
+Speaker 1: Om før. Ja, den finnes sikkert, om man skal se om den eksisterer, og lett å finne ved et enkelt Google-søk, er det ikke det jeg sier? Ja, jeg gjorde.
+
+Speaker 2: Det nå. Den er på open access, så den kunne vi ha lastet ned da. Ja, den kunne.
+
+Speaker 1: Vi ha lastet ned selv da.
+
+Speaker 2: Men skal vi finne den egentlige, så må vi nå, skal vi se nå, Den egentlige Journal of the American.
+
+Speaker 1: Statistics. Ja, jeg er på den samme, ja. Riktig. Så.
+
+Speaker 2: Det var egentlig den der vi må søke etter, da. Ja. Sånn, og så.
+
+Speaker 1: Var det et prøve i her. Sånn, sånn, sånn. Og så skriver vi PDF for å se om vi vil det. Ja, jeg fant en PDF-versjon i, altså. Ja da,.
+
+Speaker 2: Så det er ikke umulig.
+
+Speaker 1: Å... Selv om det ligger bak betalingsmura, det har jeg faktisk litt erfaring med da. Selv om det ligger bak betalingsmura, så er det så mange som legger det ut på Researchgate eller på andre serverer. Så hvis du bare googler det, eller Google Scholar,.
+
+Speaker 2: Med.
+
+Speaker 1: Titel og litt info, og så pdf til slutt, så er det mange virkelande å finne det på. Ja, her er.
+
+Speaker 2: I hvert fall den... Den er i hvert fall på Google Scholar, så da er det et sterkt tenk på at den er finnest. Det er den der. Og den ser du ganske mye sitert. Ja.
+
+Speaker 1: Det som er greit, det som er regelen her, det vi ønsker da, det er at hvis du kjører alt for mange referanser, så det å finne PDF-en og laste den ned på 003 References og ha en komplett liste der, det er det.
+
+Speaker 2: Vi anbefaler. Ja, så kan du søke internett Og eventuelt laste ned pdf-filene for de enkelte referansene. Jeg er ikke sikker på om man har mulighet til å gjøre det, skjønner.
+
+Speaker 1: Du? Nei, det er jeg usikker på, det er derfor vi blir presset til å gjøre det, og showmen får dette, og så får vi svare på det. Da er jeg ikke sikker om man får det, ja.
+
+Speaker 2: Det er ikke sikkert søkemotoren her klarer.
+
+Speaker 1: Å gjøre det. Nei, det er ikke.
+
+Speaker 2: Sikkert. Nå ser du at den søker etter PDF-er. Ja, det gjør det. Det er to utfordringer, eller det er et par utfordringer med det. Disse PDF-ene kan være ganske store, og hvis de er store, så får ikke den til å lese, så får ikke Cloud Code har en lesegrense på hvor mye token den kan lese på en gang. Og da kan du få sånn «kan ikke lese» fordi at du «exceed token limit». Men det er visst de gamle.
+
+Speaker 1: Referansene som for eksempel «scan 9» da? Nei, ikke størrelsen.
+
+Speaker 2: På megabyte, men antall tokens. Så antall ord i PDF-en er det som kan.
+
+Speaker 1: Være. Og nå leser vi ikke PDF-partiet selv, men laster ned tidligere. Nei, jeg håper.
+
+Speaker 2: At den ikke leser. Nå begynner den å laste ned, ser dere. Så her kommer det ting. Boks, for eksempel. Ja,.
+
+Speaker 1: Nå ser dere at dette er det jeg er mer glad i. Ja, Boks 2025. Ja, der ser dere PDF-a. Og det synes jeg er bra. Det synes jeg er bra. Her ser.
+
+Speaker 2: Dere at det kommer direktesending. Ja, dette.
+
+Speaker 1: Synes jeg er bra. Der har vi det. Yes? Ja, da er.
+
+Speaker 2: Vi klar til å finne noe igjen. Da.
+
+Speaker 1: Er vi ikke i tvil om at.
+
+Speaker 2: Dette er reelt. Nei, da er vi ikke i tvil om at det er reelt, og det er det som er poenget. Vi skal få komme oss forbi den her nå. Den har noe... Den har noe problemer med at man spinner opp fiktive referanser. Og min erfaring er at dette fungerer veldig bra, egentlig. Her kommer det en lungbokser, den er jo veldig kjent. Så det virker som om den er god her. Dette er helt.
+
+Speaker 1: Supert.
+
+Speaker 2: Så AI, folk som står der og klager på at AI hallucinerer, den tid er egentlig forbi, spesielt hvis du bruker et så skarpt verktøy som Cloud Code er. Ja, det er riktig å bruke.
+
+Speaker 1: Det rette verktøyet og håndtere det rette verktøyet og gjøre det et skikkelig AI-arbeid, altså god styring av AI. Så dette her...
+
+Speaker 2: Ja, altså... Jeg har et søsken barn. Han drev på med kul og diskos. Og sto fram... Han var i Olympiatoppen, og sto fram som... I doping... Ble doping tatt. Og sto fram og innrømte det. Tok dobbeltsider i veget for mange år siden. Og han hadde egentlig vært en sånn ganske sterk motstander av doping da, så det var litt overraskende den tid. Og så spørte de en da, ja, hvorfor tok du doping når du egentlig var imot det, og kanskje heller ikke, ikke sant? Hvorfor gjorde du det hvis du var imot det, liksom? Og så sa han det at, og hvorfor ble du tatt, spørte de, ikke sant? Han sa følgende, som jeg synes er ganske bra. Han ble tatt fordi han var desperat. Og det er veldig salt, sant? Det er litt det samme her med AI. Hvis du er desperat, du har dårlig tid, og du ikke gidder å gå over skikkelig i referansene dine, da kan du bli tatt. Men så lenge du gjør jobben, går over, og sørger for at de referansene du har faktisk eksisterer, så blir du aldri tatt. Da har du dobbeltsjekket at referansene er til stede. Så that's it, og så er vi ferdige med diskusjonen, i min verden. Her har vi en del referanser i hvert fall. Ikke sikkert vi fikk alle. Her står det da hvilke to som mangler. Her kan man laste ned mer om bibliotekstilgang og sånt. Men allerede nå har vi jo sterke tenk på at hvert fall seks av dem finnes. Vi vet jo at ikke fulle finnes. Så dette her er rimelig safe greier. Vi får se om vi har oppdatert statusen. Yes, det har han. Herlig. Han har oppdatt i tid 3. Legg merke til at de nå har åpnet statusfila under theory. Så det er bra. Ok, da skal vi gjennomføre en review. Jeg lurer på hvordan vi ... Jeg lurer på hvordan vi fortsetter i samme ... For å lage en review må vi gjøre noe lurt, for vi skal i prinsippet bruke en egen AI, og da må vi passe på at vi er i theory. Så jeg tar å nå åpne Reveal in File Explorer. Dette er jo litt avansert, men legg merke til at vi er under Cloud Verbtrees der.
+
+Speaker 1: Vi anvender den, og så merger vi, slik at vi har bare én sak å forholde oss til, og så driver.
+
+Speaker 2: Vi etter det. Ja, vi kan gjøre det. Det.
+
+Speaker 1: Tror jeg kanskje er enklere. At vi bare blir ferdige, vi lar den siste punktet gjenstå, og så bare merger vi, slik at vi har bare én mappa for å forholde oss til, ikke senere.
+
+Speaker 2: For to. Da er vi i prinsippe ferdige. La oss se på rapporten om hva som har skjedd her. Vi må ta og sette i gang den andre forresten.
+
+Speaker 1: Ja, det var diskusjonene. Ja.
+
+Speaker 2: Yes, 8 prosent, det er greit. Kjører bare på. Bypass permissions. Så begynner han å jobbe imens, sant? Ja, det er bra det. Det er jo ikke poeng å ha parallelle prosesser hvis det kommer jobb i parallell, sier.
+
+Speaker 1: Jeg. Nei, men det er spennende på rapporten, faktisk, på det her med teori.
+
+Speaker 2: Ja, så la oss se på teori-rapporten her. Da er det under report, rapport. Fittserier. Her ser vi dekomponeringen. Stasjonaritet. Log-transformasjon. Differensiering. Litt lite figurer her. Ja. Ikke sant? Ja. Han har glemt figurerne.
+
+Speaker 1: Noen relevante og pedagogiske, sånne ting bruker jeg å si da, for at dette her er noen relevante og pedagogiske figurer. La meg være tydelig på hva vi er på jakt etter.
+
+Speaker 2: Og da må vi huske det at vi har faktisk en annen folder som heter Analysis, som går under Aktiviteter. Bruk gjerne Python-kode. Bruk viktive data som du selv genererer. Nå.
+
+Speaker 1: Ser jeg at det ikke er ligningsnummer her, men det er sånne bakataller vi kan ta senere. Det.
+
+Speaker 2: Er ikke så lett igjen det. Det er lettere i Latex eller Word. Her setter jeg på planmodus igjen. Nå har vi kommet opp i en kontekst på 14, muligens vi skal nærme oss en ny Sesjonen er nå. La oss se hvordan den andre gjør det samtidig. Held på å jobbe, ja. Bra. Da er det i diskusjon det skjer.
+
+Speaker 1: Ja, kult.
+
+Speaker 2: Her har han lagd noen figurer og sånn, helhetsfigurer. Det er bra. Se der, ja. Den liker jeg. Den viser prognosen samt historikken.
+
+Speaker 1: Så han viser altså i teorien, da tar han altså egentlig det som vi har for resultatet og datene våre som vi har simulert, eller datene som vi har, tar det inn i teorien. Så det er en figur som vi har nesten sett før? Ja, det.
+
+Speaker 2: Var den jeg hadde lagd i komponiment. Men den figuren der har vi ikke tidligere i rapporten. Vi har noe som likner den, men.
+
+Speaker 1: Ikke akkurat den. Dette er bare et eksempel.
+
+Speaker 2: Dette er de 12 neste månader fra 1981, eller 2. Men har dette.
+
+Speaker 1: Noe med eksempelet vårt som vi er her på med i rapporten nå? Eller har det noe med boka å gjøre? Er det det.
+
+Speaker 2: Samme? Dette eksempelet er det.
+
+Speaker 1: Samme, vet du. Men det som er greia, det er at egentlig så i teorien så har vi ikke spesifikke data fra, det er kanskje litt sånn Kanskje litt misvisende og litt forvirrende dette her da, at i teorien som ender, da skal det være på en måte generell teori da. Vi skal ikke anvende en spesifik på eksempelet da, sånn som vi gjør.
+
+Speaker 2: Det nå. Nei, det er for å gjøre banen om å generere dataene selv da. Ja. Det er jo bare for å vise teori liksom, illustrere teori. Ja, det er det ikke. Da skal.
+
+Speaker 1: Vi ikke bruke egentlig grafen til det spesifikke eksemplet.
+
+Speaker 2: Vi ser på. Nei, nei, nei. I teorikapittelet skal du forberede leseren på å forstå biografen. Ja, det er det. Der er den ferdig, ser du. Hvis vi nå går inn under her, så ser vi at vi har theory, og så discussion. Her ser vi endringene i discussion. Her ser vi endringene under theory. Ganske mye under theory, for vi hadde alle disse referansene. Nå har han laget noen figurer. Det blir spennende å se hvordan de ser ut. Vi har noen figurer her. Ikke tekstediter. Den skal vi bevise. Vil den ikke.
+
+Speaker 1: Automatisk skjønne hva slags type fil det er? Nei, det.
+
+Speaker 2: Er en feil justering i programmet mitt. Vi kan se hvordan den så ut i selve rapporten.
+
+Speaker 1: Jeg bare skal gå i rapporten og se det. Det blir enklere å oversikte det.
+
+Speaker 2: Hvis vi går i rapport, det er der. Gjennomføring med det. Her er en.
+
+Speaker 1: 005-Report.
+
+Speaker 2: Her har vi noen eksempler. Her har vi et prinsipp med tidsserie og dekomponering. Darimo-modeller, modellindikasjon, validering, FIAS-korreksjon, ja. Nydelig. Jeg synes dette var bra. Dette er jo under theory, så da kan vi be noen om å formitte alle endringene. Da er kommitten selvfølgelig det work-treeet, ikke sant? Ja. Forsvinner.
+
+Speaker 1: Det work-treeet etterpå når du har kommittet.
+
+Speaker 2: Det og mørket det? Ja. Ikke mørking ennå. Nå er det bare kommitte innenfor den egne bransjen. Ja. Da kan vi se på den her. Yes, bra. Det var da diskusjon. La oss se på den. Discussion theory. Discussion. Da er det også Report. Her er teorien tom, ser dere. Som den skal være. Vi har ikke jobbet med teori i det workflowet. Det vi har jobbet med her, det er kapittel 9, diskusjon. Her er det diskusjon. Han har litt vanskelig ord, det er jeg ikke så glad i, men det kan vi fikse. Det er sånn som jeg mener man skal fange opp i etterkant når man går over. Sånn, ja, prognoseemne, bias i test... Bra, tabell, begrensninger, yes. Samle ut vurdering opp mot problemstillingen. Kjempebra. Dette synes jeg ser bra ut. Så da sier vi til ham også, kommitte endringene, sant? Jeg ber Einar om å gjøre det, for da vet jeg at du får en god kommittemelding.
+
+Speaker 1: Ja, du gjør det. Du må ikke be at du får Einar å gjøre det.
+
+Speaker 2: Så da skal det bli interessant å se hvordan man... Skal vi se hvordan vi slår det sammen, da. Men jeg bare egentlig ber Einar om å gjøre det, da.
+
+Speaker 1: Ja, det er det jeg tenker på. Du tenker på å merke nå,.
+
+Speaker 2: Eller? Ja. Nå begynner vi med merking.
+
+Speaker 1: Og hva gjør du det fra? Gjør du det fra det ene eller det andre? Jeg må gjøre det.
+
+Speaker 2: Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre Jeg må det. Gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gjøre det. Jeg må gj Det er jo en egen bransj, så det er disse poengene, den er bare en bransj.
+
+Speaker 1: Ja, men da må vi gjøre det, møte Worktree-teori, må vi gjøre det, og så møte Worktree-diskursjon. Vi må møte manuelt begge to. Ja,.
+
+Speaker 2: Så nå prøver vi det på main, så ser vi hvordan det går. Ja,.
+
+Speaker 1: Det er først på teori, og så til main, ja. Og så gjør vi tilsvaren etter på diskursjon, da, sikkert.
+
+Speaker 2: Men jeg er inne her nå med akt 7-endringene. La oss sjekke det. Da går vi bare inn i hovedkoden. Går vi på report. Her burde vi nå ha teori. Og det har vi. Og da kjører vi det samme med her. Så sier vi bare merge endringene. Ja, for nå er jeg på discussion. Fra dette filmet. Her kan det skje konflikter, fordi det kan hende at vi har endret piler på samme plass. Så vi får se. Der skjedde det noe. Det skjedde ingen problemer. Her er en ny diskusjon på plass, hører dere. Ja. Det er kult. Det.
+
+Speaker 1: Er kult, ja. Og den ting, når vi nå har mørda begge, så er det mørkslig igjen. Ja. Er de borte? Det er jo slik at vi har bare meg nå for å holde.
+
+Speaker 2: Oss til. Nei. De er her nå, men vi trenger dem ikke lenger nå. Nei. Så de er her.
+
+Speaker 1: Vi kan godt ha det. Vi trenger ikke dette lenger, kan vi da fjerne det vi ikke trenger? Slik at jeg vil at A1 skal gjøre det, for hvis det bare ligger der, så blir det så mye filer, at om noen utkaster glemmer det, hva det er. Så jeg kan tenke meg å rydde det litt opp der da, og få til A1 å rydde opp det.
+
+Speaker 2: Det de gjør nå er at de prøver å gå ut da. For eksempel, jeg tror det er noe som heter... Quit, er det det man tror? Exit. Exit, sånn. Og her kommer en. Her får du spørsmålet som du ba om, Pekka.
+
+Speaker 1: Ja, det gjør det faktisk. Remove.
+
+Speaker 2: Worktree. Ja, ja. Kjempegreier. Så nå har vi jo allerede merget den, da. Ja. Så da kan vi remove det, sant? Ja, ja. Da vil theory forsvinne.
+
+Speaker 1: For det er veldig bra å rydde om det, for hvis du får for mange sånne worktree, og for mange sånne doble fira, så går det i ball for å sette kvart, altså. Da går.
+
+Speaker 2: Det i sur. Riktig. Så trykker jeg «exit» her, og så sier det bare «remove». Da får jeg veit at jeg har mørt noe. Veldig forsiktig med «remove» hvis ikke du har mørt noe her nå. Ja, det er viktig. Sånn. Nå ser dere, under «worked» som er her oppe, så er det ingen lenger. De er borte. Det er viktig å gjøre dette her. Det er ikke bare å «delete» folderen, fordi GIT-systemet har fremdeles da referanser til den. Så det er ikke... Lurt, og du må aldri fjerne disse WorkTree-folderene manuelt. Grunnen til det er at det er såkalte hidden files her. Jeg kan vise dere det, hvis vi ser Reveal in Explorer her nå. Her er vi inne i folderet. Her er det faktisk enda en fil her, som vi ikke ser for lett. Ser du hva jeg gjør nå? Skal vi gjøre det en gang til? Ja, gjør det en gang til. Ja. Inni her, inni den folderen her, så.
+
+Speaker 1: Er det.
+
+Speaker 2: En hidden folder. Ja. En folder du ikke ser. Den heter .git. Ja. Så hvis du nå trykker slash og så skriver du bare .git her nå, så går du inn i den folderen. Og her ser dere alle git-filaene som styrer git-systemet. Og de finnes jo, og her inne så har du referanser til dette worktreeet. Så hvis du bare fjerner folderen, så oppdaterer du ikke noe her, slik at det som skjer da er at du får en hel haug med feilmeldinger fra git, fordi at den tror worktreeet finnes, og så finner den den ikke. Så jeg vet ikke om det ga mening for dere, Jeg.
+
+Speaker 1: Tenkte at det som var løsningen på dette var egentlig bare å få AI til å gjøre ting. For da har AI en del som remove skal, og beholder det som holdet skal. Ja, det AI.
+
+Speaker 2: Gjør er at den kjører riktige git-kommandoer som automatisk rydder opp sånn som det skal. Ja,.
+
+Speaker 1: Og det er derfor jeg vil at AI skal gjøre det, at vi ikke prøver å gjøre dette manuelt og finne ut hvordan kommandoet skal gjøres. Jeg hadde nok ikke tenkt på.
+
+Speaker 2: Dette der. Så det er lett å gå i feller og bare delete disse folderene selv. Ikke gjør det. Ikke gjør det, for da blir det rotig i systemet. Starte i AN på nytt igjen, en fresje. Lurer på om vi lagde en kommando eller noe sånt, eller en skill som het Review. Vi lagde en Review Act. Det er deilig, for nå kan vi da kjøre Review.
+
+Speaker 1: Bare.
+
+Speaker 2: Ved å trykke slash review. Review activity. Da må vi skrive aktivitet i det, for eksempel. Hva het den aktiviteten? Den var status fil. Status, status, der. Den het 3-7. Da tar vi det første. Sånn. Der.
+
+Speaker 1: Hva vil du si i denne.
+
+Speaker 2: Sammenhengen, å sjekke? Ja, det er siste steg, gjennomføre.
+
+Speaker 1: Reviewer. Ja, riktig, de siste stegene. Du bruker samme AI, men en ny session? Ny session, ja. Men samme AI? Jeg.
+
+Speaker 2: Gjør den samme AI, men optimalt sett så skulle du gjerne ha brukt en annen AI også. Men uansett så er det bra at du i hvert fall starter en helt ny session, slik at Claude ikke vet at det er Claude som har gjort det. Ja. Sånn. Ja. Og nå brukte jeg en sånn ferdig laget skill, som vi lagde forrige gang, som heter review, eller før der igjen, som var en review med review-mal, og den forteller hvor du skal lagre reviewen og alt mulig. Vi husker at vi gjorde dette her. Her er reviews, ser du. Ja. Nå skal det komme en 3.7 eller noe sånt da. Og da skal det også være sånn at den skal fikse det for oss. Endringene eventuelt. Det er klart at jo mer arbeid dere bruker i disse review-malene og sånt, dere har ikke nødt til å kopiere den som vi har. Dere kan jo fint tilpasse den så godt dere vil. Hvor streng dere ønsker å være, slik at man får enda bedre resultater. Jeg har vært litt tjapp i ringene. Her vil jeg for eksempel kunne ha brukt kraver i rapporten, for eksempel, eller hva som, ja, god rapportskriving, for eksempel. Tatt ei lærebok i vitenskapelig skriving og matet den inn i A1 og bedde A1 om å lage en review basert på det, for eksempel. Det er sånne ting vi vil ha gjort, men det tar litt tid, så vi har jo bare brukt en enkel review. Mal her, som dere husker, er den dere ser her. Metodikk, språk, svakheter, forbedringsforslag, samsvar med prosjektplan og krav, og så videre. Samlet vurdering, det var en sånn. Det burde komme noe her snart. Det burde komme her noe snart. Men jeg har ikke lyst til å kjøre dem samtidig. Nettopp fordi jeg ikke vil ha sånn kollisjonsproblem.
+
+Speaker 1: Jeg skjønner.
+
+Speaker 2: Da har vi, hvis vi bruker litt ekstra tid, sånn fem, seks, kanskje ti minutter over tida, så blir vi ferdige, tenker jeg. Ja, vi må prøve på det. Ja, bare slik at vi får landet reviewen nå. Vi får.
+
+Speaker 1: En naturlig oppvikling, ja. Ja. Da er.
+
+Speaker 2: Vi ferdige med to nye kapittel, og kan starte på litteratur og konklusjoner og innledning, da. Disse sluttkapittelene, som bør ses i en helhet, da. I litteraturen er det ikke en helhetssak. Den tar vi først, og så tar vi sluttkapitlene til slutt. Innledning og konklusjon. Det er mer lurt å ta når alt annet er skrevet. Vi vil nok bruke litt tid på litteratur, men det vil bli litt sånn i samme ... Samme kategori som vi gjorde her, med referanser. Her ville jeg rydda litt. For eksempel referanser, så skulle jeg skrive en kapittkap. For eksempel theory, og samle alle teori. Under der, så ville jeg for eksempel lage en ny folder som heter pdf. Samle alle pdf-ene der. Ja, dette kan jo be A ennå gjøre,.
+
+Speaker 1: For eksempel. Ja, jeg tenkte at det var det samme. Det kommer be A ennå å gjøre.
+
+Speaker 2: Så var det den. New folder. Markdown. Som dere sikkert husker, så leser A en bedre markdown enn B. PDF, men det begynner å bli marginalt. Mange av disse PDF-ene kan for eksempel være bildet i stedet for tekst, og det kan være problematisk. Det kan være scannet PDF. Da blir det tøffere. Da er han ferdig med en agent som har gjort en del jobb. La meg lese ferdig, for å gi deg en precis oppsummering. Har han gjort noen endringer her da, i bortsettet.
+
+Speaker 1: Av det jeg gjorde?
+
+Speaker 2: Tar av. Stage student. Sånn. Det var bare den kopieringen jeg gjorde. Jeg kunne kanskje ikke gjort det med en gang, men jeg gjorde det enda. Så jeg komitterer dem for seg selv, slik at de ikke blir slått sammen og kommitteret. «Han befall prioritering. Rett grammatisk kveld. Fint pris om du kan styrke oppgitt det.» Ja, så sier jeg bare... Det skriver bare at det skal gjennomføres. Ja.
+
+Speaker 1: Men det var ikke mye rart, egentlig, for hvis det er bare grammatikk og fin puss, så var det ingen fundamentale.
+
+Speaker 2: Ting, da. Ja. Det manglet litt den her grammatiske feil forbedring. Jo, men det var.
+
+Speaker 1: Ingen fundamentale ting, da, om det var e-levant, eller om det var dårlig diskusjon, eller det var, liksom, sirkelargument, eller litt sånn alvorlige ting, da. Altså, skrivefeil er jo kanskje det... Det var.
+
+Speaker 2: En del da, fem stykker ser dere, fire sånne V-a som de kalte det, og fem F-a, jeg husker ikke helt hva vi la i det, men vi la ... Det er ikke.
+
+Speaker 1: Noe med filamentale ting da, at det var liksom ... Ikke kritisk. Ikke kritiske.
+
+Speaker 2: Punkter, nei. Nei, da er det må. Vi hadde to bør. Vi hadde to bør, og så hadde vi ... Ja, vi hadde en bør, og så hadde vi fire kan da. Ingen må, da. Så da ser vi av og til hva som er kritiske feil her, i forhold til det han fant. Men vær oppspåret at klodet kan være litt biased, da, siden det var klodet som skrev det. Hadde vi brukt kodex her, så hadde det kanskje vært bedre, da. Kanskje det. Jeg nevnte, jeg legger meg ned, da. Det er jo klart, det er luksus å ha mange AIA, så det koster så mye penger. Så vi kan ikke forvente at folk... Skal vi.
+
+Speaker 1: Bare ta oss en tredje time, som er bare et kvarter? Kan vi heller bare gjøre det? Jeg tror kanskje det er bedre, Bård. Få denne her bare å jobbe nå, når de er ferdige. Og så begynner vi igjen på en kvart over, så tar vi bare et kvarter. Vi må ha litt om planleggingen hvordan vi skal gjøre videre med at de kommer til oss og kommer ut med brukere og sånne ting, så de kan faktisk begynne studentene å gjøre rapporten, for at de kan ikke gjøre det før vi har gitt dem brukere og sånne ting, så det er litt som står igjen da. Så i stedet for å presse etter at det her plutselig blir en og en halv timers forelesning, så tar vi oss ti minutter pause nå til kvart over, og så tar vi et kvart i 20 minutter av 30 timer, og så er vi ferdig. Ja, men da.
+
+Speaker 2: Sette i gang reviewen i så fall, bare sikkert det jeg har gjort. Hva, hva sier jeg? Sette i gang den andre reviewen imellom. Ja,.
+
+Speaker 1: Ok, greit, jeg gjør det. Og så tar vi oss en pause, og så tar vi heller en.
+
+Speaker 2: Kvart 30 timer. I Ja, vi tar pause til kvart over da, 12 minutter.
+
+Speaker 1: Greit det. Ja, vi tar kort over det.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

@@ -1,0 +1,441 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - skrive rapport med KI_ TEAMS live-stream_ (25. mars 2026)_default_669de031
+Date: 3/28/2026
+Duration: 3051 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 5
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Velkommen alle sammen til dagens forelesning. Vi tar sikte på to forelesninger i dag. Stemmer ikke det, Bård Inge?
+
+Speaker 2: Ja.
+
+Speaker 1: Grunnen til det er at vi kjører hardt på nå.
+
+Speaker 3: Det har vært mange forelesninger, er at vi er inne i den perioden der vi er det mest sensisielle i kurset vi holder på med, og så er det gjennomføringer, rapportskriving og analyse, og derfor ønsker vi å komme gjennom den mileperlen før påske. Derfor tar vi to timer nå og prøver å fortsette der vi var sist gang. Du ser Bård Inge holder på å rigge, og du ser at Det er en rigda mellom hver gang å komme tilbake igjen, så det er bra å ha et status.markdown-fil.
+
+Speaker 1: Der ser du at vi har.
+
+Speaker 3: Fått an til å tikke av alle de punktene som vi er ferdige med. Der står det også hva.
+
+Speaker 1: Vi skal ha som neste aktiviteter.
+
+Speaker 3: Vi.
+
+Speaker 1: Forstår også at det.
+
+Speaker 3: Kan bli litt vanskelig å forstå alle aspekter ved de metodene vi har. Det er en del av utfordringene og kanskje en del av basisferdighetene som er i det kurset her. Det er faktisk å selv ha evne og en indre drive til å kunne sette seg inn i, og egentlig bruke også AI til å sette seg inn i det som trengs av modeller, og diskutere med AI. For det er det som vi gjør både i dette prosjektet her, veldig mye, når vi skriver bøker nå og reopererer, og også med teoretisk fysikk som vi holder på med, kvantefysikk, så diskuterer vi veldig mye med Det er en enormt god diskusjonspartner. Men det er nødd å styres av oss. Det må være som det er med analogier. Og inisiativet å komme fra oss mennesker. Men når det er gjort, så er A&A veldig sterk. Og dem som også har hatt prosjektledelse, så.
+
+Speaker 1: Ser du at det er jo bare.
+
+Speaker 3: Prosjektleder. Det er da du må ha en drive og overordnet ansvar for gjennomføring av prosjektet. Så her er det de egenskapene som kanskje de fleste av dere har, og som kanskje de fleste av dere har hatt prosjektledelse, for å teste seg litt. Så dette her, mener jeg, er et godt fag som er helt nymotens, som er helt nyttig i kjølebane av A1 og den styrken og kraften som den representerer. Også der vi får nå testet det prosjektleder- og gjennomføringsgradene våre. I tillegg til de tekniske utfordringene. Så det er mange ting her vi får teste, og også dem som hadde IBE 160, dem får også teste egenskapene sine. Vi må ha mange aspekter her.
+
+Speaker 1: Så jeg kan si at vi.
+
+Speaker 3: Har purret på Dekan for å få lisenser. Jeg har ikke hørt noe fra han, så jeg skal purre NR som er slået ned på Teams nå.
+
+Speaker 4: Ja. Det er.
+
+Speaker 2: Vanskelig å få tak i den, det.
+
+Speaker 4: Kan være. Rett og slett. Jeg holder på å bare gjøre.
+
+Speaker 2: Litt opprydning i forhold til- noen klådkommandoer som jeg bruker. Ja. Jeg er flink at jeg ikke gjentar meg selv helt, ja.
+
+Speaker 4: Så vi.
+
+Speaker 2: Hadde en- En skill som heter Review Activity eller Review Act. For hver gang vi er ferdig med en aktivitet i statuslinja vår, så skal vi gjennomføre review- og lukkeaktiviteten. Da bruker vi Review Act, som er på en måte en lagret prompt, slik at vi slipper å skrive opp igjen den prompten hele tiden. Og så har vi en som heter.
+
+Speaker 4: Prime. Hvor vi skal hente oss inn.
+
+Speaker 2: Igjen i forhold til hva vi gjorde siste gang.
+
+Speaker 3: Review, eller review.
+
+Speaker 1: Act.
+
+Speaker 4: Disse.
+
+Speaker 2: Har slash kommandoene som man bruker- Klodd har nå blitt overført til å kun bruke skills. Den ønsker egentlig at vi skal lage en skill ut av den. Så da har vi to kommandoer. Buklatek, der trenger vi ikke, ser jeg.
+
+Speaker 3: Ja, for det er veldig bra at vi rydder litt opp og ser hvor mange filer vi faktisk bruker og vi faktisk trenger. Det er mange ting å forholde oss til, men som sagt da, det vi har det er Cloud og Agent og Skills og Review Act. Det er viktig å si at det er de tre som er de tre viktigste når det.
+
+Speaker 2: Gjelder... Ja, altså nå, det kommer an på hvilken AI du bruker da. Så hvis du bruker Cloud, så må du ha fokus på Cloud-folderen. Hvis du bruker Codex, så må du ha fokus på Codex-folderen da. Men jeg har nå brukt Cloud.
+
+Speaker 3: Foreløpig. Ja, men skils det på tvers.
+
+Speaker 2: Av AI? Ja, for så vidt, men litt avhengig av hvor du legger dem hen. Så nå har jeg skils her under Cloud, og så har jeg skils under Codex også. Og så går det an å slå dem sammen litt, men da mister du noen funksjonaliteter. Jeg liker egentlig å ha skilsen i den AI som man bruker. Ja, det betyr jo at skilsen.
+
+Speaker 1: Som er der nå, er egentlig samme, bare til litt mer tilpasset hvilken dag det er.
+
+Speaker 4: Riktig, spot on. Ja, og det samme.
+
+Speaker 1: Med agent og klode. Markdown er for klode, og agent er for.
+
+Speaker 2: Kodex. Riktig, og saken er jo det at man har en felles standard for en skill. Så alle AIA bruker en felles standard. Men den standarden er minst.
+
+Speaker 4: Felles.
+
+Speaker 2: Den er på en måte et subset av alle. Ikke sant? Sånn at Cloud for eksempel har ekstra features med en skill som du ikke vil fange opp i Codex. Du har et minst felles skjema for skill, og så har du.
+
+Speaker 4: Spesialiteter.
+
+Speaker 2: For hvert av AI, så det er like å ha dem i sin egen folder, for da kan vi bruke det direkte av vår klåd. Da kan vi utnytte de ekstra egenskapene som klåd har, som ikke de andre har. Ja, men det betyr det.
+
+Speaker 1: At skills, det er ikke noe som studentene kan kopiere og bruke, de må lage sin egen versjon av skills basert på sitt eget specifikke prosjekt. Ja,.
+
+Speaker 4: Det er riktig. Ja. Kan du bare.
+
+Speaker 1: Si helt kort hva som er forskjellen, sa du, på en skills som er under Clod for eksempel, og Clod.markdown som er helt nederst? Ja, det skal jeg gjøre. De er komplementære, de er ikke overlappende, eller?
+
+Speaker 2: Nei, det er ikke det. Jeg kan prøve å vise deg litt, mens vi... Jeg tror vi må tilbake igjen til tegnebletter, for at folk skal forstå dette her godt. Skal vi se, jeg skal stoppe sharing der, og det gjør ikke noe, for at i mellomtiden så står AI nå og gjør jobb litt. Men det er et godt spørsmål til deg også. Det er viktig å forstå... Vi skal jo lære å bruke AI her samtidig, og AI har utviklet siden sist. Man hadde IB 160, så.
+
+Speaker 1: Derfor... Jeg tror ikke du har delt.
+
+Speaker 2: I. Jeg prøvde det der. Der. Nå.
+
+Speaker 1: Har du delt, ja. Da ser vi.
+
+Speaker 4: Først har man en.
+
+Speaker 2: Skill. Og det er da bare rett og slett en lagrett prompt.
+
+Speaker 5: Hvorfor.
+
+Speaker 4: Kjøper du igjen? Fyrstiv. Hæ? Fyrstiv. Skal ikke du.
+
+Speaker 2: Gjøre den? En lagrett prompt man kan gjenbruke. Det er poenget med en skill. Man starter den ved å skrive for eksempel slashen og navnet på skillene, for eksempel review. Slashen er det som det er på 7-tallet? Ja, og det er den som aktiverer skillen, og da vil den bruke den lagret prompten på nytt igjen. Her kan du ha med argument. Typisk her vil du fortelle hvilken aktivitet det er. For eksempel, den der.
+
+Speaker 4: Kan være like akt 3-3. Så det.
+
+Speaker 2: Er hensikt med en skill. Og så har vi en standard for hvordan en skill skal beskrives. Den er felles. Den kan du tenke at det er en standard her,.
+
+Speaker 4: Som sier hvordan innholdet.
+
+Speaker 2: I en skild skal skrives. Dette vet gjerne AN, så jeg bare ber AN skrive det. Men standarden er felles for alle, men så har.
+
+Speaker 4: Du Klodd. Den har.
+
+Speaker 2: Flere felter som den kan godta. Og så har du for eksempel kodex. Ja, det var feil. Alle har...
+
+Speaker 1: Om man holder CTRL-Z.
+
+Speaker 3: På, så forsvinner CTRL-Z. Å ja. Og.
+
+Speaker 4: Så kan du ha kodex her, for.
+
+Speaker 2: Eksempel. Men alle inneholder standard, fellestandard. Alle oppfylles fellestandard, men så har de sine egne... Spesialiteter i tillegg, og derfor liker jeg å ha hver skill spesialdesignet for en gitt AI. Og denne her kjøres.
+
+Speaker 5: Enten.
+
+Speaker 4: Explicit,.
+
+Speaker 5: Slik at.
+
+Speaker 2: Du skriver «review» sånn som dette, Da kjører du den. Men den kan også startes automatisk av A1. Og det er fordi at du har sånne stikkord i en.
+
+Speaker 4: Sånn fil. Stikkord slår.
+
+Speaker 2: Til. Så hvis du i en Hvis du for eksempel i teksten skriver bare «Lag en review av ACT33», så kan det godt hende at AN skjønner at du skal kjøre den kommandoen. Det kommer av at du har en stikkordsliste eller en beskrivelse. Denne her kan du kjøre så ofte som du vil. Du kan gjøre det om igjen og om igjen og om igjen. Du får ny aktivitet. Det er en repetert oppgave.
+
+Speaker 4: Så nevnte du clod.md eller agents.md.
+
+Speaker 2: Hva er det for noe? Det er en instruksjonsfyl. Ja. Dette er.
+
+Speaker 4: For klåde. Og.
+
+Speaker 2: Dette er for kodex. Og det er da en instruksjonsfil, som leses.
+
+Speaker 4: En gang, ved oppstart av.
+
+Speaker 2: En ny.
+
+Speaker 4: Sesjon. Det.
+
+Speaker 2: Er ofte det jeg kalte for, det kan også tenkes på som en systemprompt.
+
+Speaker 4: Så når du starter en ny Når.
+
+Speaker 2: Du starter en ny sesjon,.
+
+Speaker 4: Så kan du anta at Claude.
+
+Speaker 2: Vet hva som står i den filen.
+
+Speaker 1: Når du åpner en ny sesjon, så betyr det at når.
+
+Speaker 2: Du for.
+
+Speaker 3: Eksempel la åpne opp VS Code på nytt, og så lastet.
+
+Speaker 2: Du opp.
+
+Speaker 3: Filene av det prosjektet som du hjelper med, og så går du inn i det prosjektet, så leser da Agents, eller så leser.
+
+Speaker 2: Da Claude, for å vite hva det dreier seg om. Dette er en engangsfil som har instruksjoner, mens en skill er noe du kan bruke omgjennomgjenn, som da har en egenskap. Nå skal jeg gå ut igjen herfra,.
+
+Speaker 4: Så går jeg inn igjen derfra. Jeg.
+
+Speaker 2: Har laget tre skills. I vårt prosjekt. Den ene heter Review Act, som gjør den reviewen vår. Den andre heter Prime, som da skal starte opp. Hva gjorde vi siste gang og sånne ting, så kan du slippe å skrive opp igjen det hele tida. Så kan du bare kjøre Prime. Handoff er en spesiell ting. Det er en måte når du skal levere en oppgave videre til en annen agent. Den har jeg ikke brukt foran nå, men jeg har den med, just in case. Så la oss ta et eksempel her. Nå bare går jeg ut av den der. Går inn igjen. Og nå skal vi begynne, sant? Og jeg kan alltid gå inn og sjekke hva jeg har gjort og sånne ting. Jeg ser statusfyll og sånne ting, men la oss se om Prime fungerer nå. Da trykker jeg bare slash, og så ser jeg om jeg finner Prime.
+
+Speaker 4: Sånn. Last.
+
+Speaker 2: Inn Powerhorse prosjektkontekst. Ja, bra. Så da gjør vi det. Nå må vi se hva han kommer med. Og hvis den ikke er så bra, så kan vi forbedre den. Men hensikten er nå å komme up to speed. Hvor står vi her? Men jeg har ingen idé om at den fungerer sånn som vi ønsker. Men jeg vil gjerne lese nå at vi har gjennomført akt 3.3,- og at vi skal begynne på aktivitet.
+
+Speaker 4: 3.4. Det ønsker jeg å se. Først.
+
+Speaker 2: Skal jeg gitt statusen.
+
+Speaker 4: Jeg kom på at jeg må bare ordne dem der.
+
+Speaker 2: Fullført. Ikke startet. Neste kritisk aktivitet, 3-4. Så her ser dere at vi fikk et ganske fint sammendrag. Så jeg synes den fungerer bra. Nå kan jeg bruke Prime, i stedet for at jeg hele tiden må skrive. – Må skrive den setningen. Så jeg sparer meg litt tid. Og nå kan jeg over tid forbedre den prime, slik at det blir enda bedre og bedre, – – og mer to the point etter hvert som jeg ser at jeg skulle gjerne.
+
+Speaker 4: Hatt med det opp. Nå.
+
+Speaker 2: Er A1 klar til å jobbe videre, og hva skal vi ta fatt på? Ja, det er jo aktivitet 3-4, lage prognoser. Så da sier de bare det, og da går de inn i planmodus.
+
+Speaker 3: Som vanlig. Det var CTRL-SHIFT eller CTRL-TAB?
+
+Speaker 2: CTRL-SHIFT-TAB.
+
+Speaker 4: Ja. CTRL-SHIFT-TAB. SHIFT-TAB to cycle.
+
+Speaker 3: 3-4, Ikke 4-3. Ja.
+
+Speaker 5: Så.
+
+Speaker 2: Nå er vi inne på resultater. Så vi kan jo ta og sjekke oss selv.
+
+Speaker 5: Rapportene.
+
+Speaker 4: Der er den. Dette er testperioden. Her har han tatt med.
+
+Speaker 2: Usikkerhets... Det ser veldig bra ut. Konfidensintervaller. Prediksjonsintervaller. Det er kjempebra, sant? Ja, det.
+
+Speaker 1: Er veldig bra.
+
+Speaker 2: Hadde disse arealene vært veldig breie nå, så hadde prognosen vært usikker. Så det virket jo ganske bra. Nå skal vi da gå over til 82.
+
+Speaker 4: Jeg kan godt gi den et.
+
+Speaker 2: Bedre navn på ... Eller avsnittet, for eksempel prognoser. Dette er jo for eksisterende data, det er derfor vi får et prediksjonsintervall, for eksempel. For at vi kan teste det mot de datene som fantes. Dette er testvalidering. Resultatet fra testsettet. For å evaluere hvor gode prognoser er. Det vi skal gjøre nå er å lage en faktisk prognose. Vi skal bruke den for fremtiden. Så klåd bruker som vanlig god tid, men er også veldig god.
+
+Speaker 5: Vi skal.
+
+Speaker 2: Lage en plan. Dette delkapitlet skal presentere den endelige prognosen for aktivitet 3-4, med tilrønne.
+
+Speaker 4: Nøkkeltall og figurer. Da skal.
+
+Speaker 2: Vi gå over til diskusjon.
+
+Speaker 4: Når vi er.
+
+Speaker 2: Ferdige med diskusjon, kanskje det blir rekke å begynne å kjøre inn innledning. Da kan vi begynne å gå tilbake til innledning og begynne å skrive innledning.
+
+Speaker 4: Så vi får se hvor mye vi rekker. Legg.
+
+Speaker 2: Merke til at det er innmari behagelig nå, i hvert fall synes jeg det. Det er innmari behagelig å ha denne statusen, denne prosjektplanen. Det er utrolig deilig, for nå har jeg en kjøreplan som jeg kan bare få pusha gjennom A1. Så den jobben alle har gjort nå i februar, mars, med å planlegge hva vi skal gjøre, det er utrolig viktig når vi kommer hit. Slik at det ikke blir på en måte litt sånn at vi veiver frem og tilbake, og at vi har en sånn fast prosjektplan vi skal følge. Det kjenner vi at det er veldig behagelig. Det som.
+
+Speaker 3: Vi også ser generelt i prosjektet her, at det som er en del av ferdighetene vi skal prøve å få her, det er å rett og slett rigge opp filstrukturen. Vi har jo sagt filstrukturen nok her, men alle de filene vi må forholde oss til å gjøre, det er faktisk viktig da. Akkurat det bor ingen si noe med status. Det er ei fil som vi har, og det er kanskje en ny tankegjenge at vi har så mange filer å forholde oss til, i sammenligning med andre fag. Vi har agent, vi har clod, Vi har Skills, vi har Handoff, vi har Prime, vi har Review Act. Og det der gjør at det er mange filer vi har å forholde oss til. Så det er en del av det å kunne styre AE på en litt komplisert måte. Så dette her er en helt annen business enn bare det å holde på å skjøtte med AE og prate som en kompis eller prate som en fagperson. Så jeg synes i alle fall at dette er innmari spennende og kult, for her er det mer robusta. Bygge opp skills, ha virkelig god planlegging, og så tikker vi av her nå slik at vi vet hva vi skal gjøre. Så det er viktig å bruke tid på.
+
+Speaker 1: Planlegging, for den planen der, den følger oss gjennom hele prosjektet. Ja, det er.
+
+Speaker 2: Helt klart. I min verden er planlegging 90 prosent av jobben. Gjennomføring, da er det bare å få annet å følge den planen så godt som mulig. Men planlegging er så viktig hvis du skal klare å komme det gjennom hele greia. Som sagt, så ser vi at det er veldig behagelig å jobbe nå i dette prosjektet. Jeg føler at jeg har ganske god kontroll. Så det synes jeg er absolutt bra. I ser her at når vi kommer til aktivitet 3.5, så ser dere at den er ganske stor. For at den skal da skrive kapittel 2, 3, 8, 9, 10 og sånne ting. Jeg har lyst til å splitte alle de der oppi sin egen aktivitet. For jeg synes hver av dem er ganske store og viktige. Så det skal vi få gjort før vi starter på aktivitet 3-5, så vil jeg egentlig ha aktivitet 3-5, 3-6, 3-7, hvor vi har da tatt hver av dem og delt dem opp i hver sine egne aktiviteter. For det er jo viktige kapittel i i rapportene, så alle er egentlig en aktivitet, og det skal vi få ordne etter at den er ferdig her.
+
+Speaker 5: Skal.
+
+Speaker 2: Vi se, den bruker god tid her. Nå har han alltid en trengstørrelse, så da må vi skrive den endelige planen. Da er det typisk slik at når den er planlagt godt nå, vi har ikke fått noen spørsmål, så det betyr at AN er ganske sikker på oppgavene. Når han først får planen, så føler jeg at han er ganske flink til å gjennomføre planen ganske kjapt. Og at vi slipper å gjøre mange endringer. Så du sparer likevel tid i etterkant, fordi den bruker god tid på planen her. Her ser vi planene, ganske omfattende. Og som alltid, når dere skal jobbe med dette her, sørg for å lese planen. Jeg gjør ikke det nå, fordi da går ryktiden selvfølgelig. Men hadde jeg jobbet på dette nivået her, så hadde jeg lest planen. Det er bare en veldig viktig kommentar.
+
+Speaker 1: Men det der betyr at vi har den der status.md-filen.
+
+Speaker 3: ECK3-4, lag prønose og anbefalinger. Så der.
+
+Speaker 1: Har vi cirka fem punkter vi skal tikse av. Men du ser at vi ber også, selv om det er planen, og det er det vi skal gjøre,.
+
+Speaker 3: Så ber vi likevel A-ing om å.
+
+Speaker 1: Lage en plan for ECK3-4. Så vi lager en plan for planen.
+
+Speaker 2: Eller? Ja, det er riktig. Så A1 har jo lest alle disse punktene her, men den har laget sin egen interne plan nå da.
+
+Speaker 1: Ja, så vi lager mer sånn interne plan, altså nesten plan for planer da, for å ta, som er på status A grov plan, og det som er.
+
+Speaker 3: Til høyre her er detaljplan. Det er.
+
+Speaker 2: En detaljplan, ja. Så vi kunne ha planlagt detaljene her i prosjektet også, men som.
+
+Speaker 4: Dere ser så har jo.
+
+Speaker 2: Få dette innebygget i seg, så det mener jeg er unødvendig. Her får vi da spørsmålet om om vi kan klive kontekst, og vi har 6% just, men det er faktisk 60.000 tokens, så jeg velger å starte og begynne på blanke ark når vi skal gjøre denne planen.
+
+Speaker 1: Så gjør du det når det er faktisk 94% igjen? Ja,.
+
+Speaker 2: Men husk på det at den har 1 MB kontekst nå, Det betyr altså at den har allerede fylt opp 60 000 tokens, som er litt mye nok. Jo mindre du har brukt, jo bedre kvalitet får du på jobben. Og denne er ganske...
+
+Speaker 1: Ok, så vi bare har.
+
+Speaker 3: 6 Prosent, så anbefaler.
+
+Speaker 1: Du å bare klære å starte på.
+
+Speaker 2: Nytt? Akkurat i dette planen her så anbefaler jeg det, for den planen er ganske stor. Den står opp til 7 steg, og den har til å gjøre med reviewen easy, ser dere. Ja, men det betyr at.
+
+Speaker 1: Det forstås ikke noe spesielt da, å bare gå til en ny session, for han tar med seg det han trenger på andre sider likevel.
+
+Speaker 2: Ja, han husker planen, og den planen, altså Claude lager jo en plan som er på en måte stand-alone. Du kan starte fra scratch, helt blank i hodet, les planen, gjennomføre planen. Trenger ikke ekstra konteksten. Og det er sånn den planlegg da. Så dette sier ja til. Nå ser dere at vi fikk 0 her igjen. Vi har brukt 0 tokens nå. Så begynner den på nytt igjen. I stedet for at vi startet på 6 prosent. Ja, det er en detalj, men når planen er såpass god som den er, og den er så stor, så velger jeg å gjøre det. Noen ganger så bare kjører jeg videre. Hvis planen er liten, da kan jeg bare fortsette i den sesjonen du har. Nå begynner den med aktivitet 3-4. Det kommer til å ta litt tid.
+
+Speaker 4: Jeg.
+
+Speaker 2: Lurer på om vi skal starte en ny AI her. Slik at den kan begynne å planlegge. For det som er fint med plan, det er at den endrer ingen filer. For nå så jobber jo en annen AI her og endrer masse filer. Og for eksempel oppdaterer rhythm og status. Og da vil ikke ha kollisjon. Jeg vet ikke hvorfor han kom med den. Men jeg ønsker ikke at den kolliderer i koden da, siden vi har gitt... Hvis to AIA endrer en fil samtidig, så kan det bli veldig mye rot. Derfor liker jeg når den ene endrer og gjennomfører en plan, så starter den andre i planmode. For da vet jeg at i planmode så endres ingen filer. Da kan vi begynne.
+
+Speaker 4: Å planlegge her. Jeg ønsker å dele.
+
+Speaker 2: Opp aktivitet.
+
+Speaker 4: Fem. Mindre aktiviteter. Denne er alt for omfattende.
+
+Speaker 2: En aktivitet.
+
+Speaker 4: En aktivitet per kapittel i rapporten. Status og oppdater nødvendige JSON-filer i planen vår. Vi har sånne.
+
+Speaker 2: JSON-datafiler her som vil endre seg siden vi endrer sjølve prosjektplanen. Men nå har jeg den på planmodus, så jeg vet at den vil ikke endre noen filer. Den vil ikke skrive inn noen filer. Den vil bare planlegge. Så det er en sånn dry run, som dette kalles. Det er veldig fint å gjøre mens den jobber her på den andre. Nå har den kommet langt allerede. Det er fordi at den har planlagt godt, så den kan bare gjennomføre det. Hadde man bare hoppet over plansteget som vi gjorde her, så hadde resultatet sannsynligvis blitt mye dårligere, og samtidig så måtte vi ha sikkert kjørt flere runder og sånne ting. Så totalt sett så tror jeg det hadde tatt lengre tid. Det eneste han ikke har gjort nå er å gjennomføre review og lukke aktiviteten. Da skal vi få en 3-4 her, lage prognoser og anbefalinger. Det skal jo bli interessant å se. Jeg er ikke en stor fan av at den samme A1 som gjør reviewen, var den som gjorde endringene. Den vil være litt biased.
+
+Speaker 4: En måte å gjøre det på, er.
+
+Speaker 2: Å bruke en såkalt sub-agent til å gjøre det. Dette er en typisk sub-agent-oppgave, hvor sesjonen kan delegere jobben til en ny sub-agent, som er en totalt ny cloud-agent, som kan gjennomføre review-act. Så det kunne jeg ha tatt med neste gang, at.
+
+Speaker 4: Den bare kan kjøre den. Vi kan.
+
+Speaker 2: Faktisk prøve å gjøre det allerede nå.
+
+Speaker 4: Der trykkte jeg på Escape, og.
+
+Speaker 2: Da ser dere at det er interrupted. What.
+
+Speaker 4: Should Claude do instead? Da sier vi start en Subagent for å gjennomføre Review Act. Review med Review Act skill. Dette gjøres fordi Vi skal unngå bias. I validering, eller i review.
+
+Speaker 2: Bias betyr at du er faktisk eller forut inntatt. Du er allerede positiv til det du selv har skrevet, på en måte. Du er litt innhabil, kan.
+
+Speaker 1: Du kanskje det her vil si? Litt.
+
+Speaker 2: Innhabil, ja. Nå ber jeg Claude å kjøre en såkalt sub-agent for å gjennomføre review med Review Act-skill. Man skjønner.
+
+Speaker 1: Egentlig hva slags act det er vi snakker om. Det er det vi snakker om nå, som er 3-4. Det skjønner han.
+
+Speaker 2: Det har han fordi han har en skill her.
+
+Speaker 4: Som heter Review Act. Og her ser.
+
+Speaker 2: Du at du gjennomfører en systematisk... Her ser du en description, ser dere. Bruk når en aktivitet skal reviewes og lykkes. Triggering av reviewaktivitet. Ikke sant? Og slik at.
+
+Speaker 4: Han har en sånn triggersett.
+
+Speaker 2: Linje da. Som Claude har, og det vil også en sub-agent ha, og så ønsker jo at han forteller direkte at han skal bruke Review Act. Så jeg håper at han gjør det nå, så får vi se hva som.
+
+Speaker 3: Skjer. Så bunnlinjen her er at han skjønner egentlig hva slags, hvor vi er.
+
+Speaker 1: Her, at vi er på ekt 3-4, og at det er denne.
+
+Speaker 3: Som skal ta Review av? Ja.
+
+Speaker 2: Der står det, godt poeng, Review bør ikke være samme agent, og nå starter den en agent, ser dere? Dette er utrolig kult. Og det som skjer nå er at konteksten vil ikke øke her. Fordi denne agenten er en ny Cloud Code-sersjon, som vil gjennomføre hele oppgaven. Og der ser du Cloud Skills Review Act, så han har allerede skjønt hva han skal gjøre. Dette skjer i en sideprosess. Hvor Claude delegerer oppgaver til en annen agent som har et helt friskt memory, og en helt frisk kontekst på én million. Så det er utrolig kraftig. Så dette synes jeg er innmari kult. Så nå venter Og venten på svaret fra agenten, så vil agenten for eksempel skrive denne filen, og så vil agenten avslutte, og så vil sesjonen se hva agenten har gjort, og konkludere om man skal fortsette å forbedre ting.
+
+Speaker 4: Eller ikke. Det er ganske kult.
+
+Speaker 2: Subagenta gikk vi gjennom i IBE 160, så det forventes at det er litt kjent. Vi gikk gjennom det teoretisk, men.
+
+Speaker 4: Vi brukte det ikke så mye i.
+
+Speaker 2: IBE 160, siden det er en avansert funksjon i klåda. Så man kan for eksempel starte subagenter opp til 15-20 subagenter samtidig. Da får du gjort arbeid. Da vil de jobbe samtidig. Det som er viktig da, når du har agenter som jobber samtidig, er at du må passe på at de ikke endrer samme filene. Du må på en måte ha forskjellige eierskap i kodebasen din, slik at de ikke jobber på felles filer, for da kan det bli rot. Så.
+
+Speaker 4: Det er... Nå skal det bli interessant.
+
+Speaker 2: Å se. Jeg tror han har skrevet.
+
+Speaker 4: Noe på rapporten nå. Her ser dere.
+
+Speaker 2: Prognoser.
+
+Speaker 1: Og for enda, har han helpt.
+
+Speaker 3: Med noe å skrive på 82 i.
+
+Speaker 2: Selve rapporten? Det har han allerede gjort.
+
+Speaker 1: Ja, jeg ser det faktisk.
+
+Speaker 4: Du ser at rapporten er ganske.
+
+Speaker 1: Kort. Det er ikke veldig mye, og det er det vi egentlig ønsker da, at det er ikke mer prat og det er ikke mer tekst og det er ikke mer figurer enn det det bør være, så det er ikke veldig mange sider og veldig mye tekst, men dette er innmari bra for det, det er.
+
+Speaker 3: Det vi ønsker med en rapport. Så egentlig.
+
+Speaker 1: Så kort som mulig, men ikke mindre.
+
+Speaker 2: Enn det. Ja, vi mangler ennå en del av avsnittet eller kapittel, vi mangler... Ja, vi gjør.
+
+Speaker 1: Det, men hvis vi ser bare på ett spesifikt avsnitt da, for eksempel 82, så er ikke det siden opp og siden ned, det er ganske kort. Det.
+
+Speaker 2: Er sant, og det synes vi er bra. Det er viktig å være to the point, på en måte.
+
+Speaker 4: Det tenker jeg. Og igjen så har.
+
+Speaker 2: Den med sånne konfidensintervaller- som måler på en måte litt usikkerheten. Det synes jeg er bra. Hvis jeg kaller.
+
+Speaker 1: Det prediksjonsintervaller, så har kanskje andre teknologier. Det kan vi spørre om etter hvert, men ikke noe man sier med det. Det.
+
+Speaker 2: Er sånne ting du kan legge inn i teori, for eksempel. Hvor stort skal teori-kapitlet bli? Det kan man... Laget så stort eller lite som man vil, men teorikapitlet skal jo på en måte sette leseren i stand til å forstå lesen. Vanligvis, som vi nevnte siste gang, så antar vi jo at dette kan dem. Leser kan fagfeltet, men i bacheloroppgave, masteroppgave og sånne ting, så er det vanlig å ha med teorikapitlet. Kan vi.
+
+Speaker 1: Ikke bare ta en kort oppsummering på de tre A1 som du har? For nå har du tre A1 oppe i.
+
+Speaker 2: CV. Ja, men det er to som gjør noe, tror.
+
+Speaker 1: Jeg. Ja, ok. Hva var det? Den ene var?
+
+Speaker 2: Den ene er jo som gjennomfører opp aktivitet 3-4, sant? Ja, det er den vi er på nå. Den andre planlegger neste aktivitet, som er status, og da er det 3-5 som vi hadde lyst.
+
+Speaker 1: Til at den skulle... 8-5, Ja. Nei,.
+
+Speaker 2: Det er 3-5, ja. 3-5, Hvor den skal dele opp,.
+
+Speaker 3: Da? Riktig, for det er litt mer omfattende,.
+
+Speaker 1: For den er ganske stor, den 3-5, stemmer det?
+
+Speaker 2: Ja, så alt etter aktivitet 3-4, tenker jeg. Så her planlegger han, mens den andre gjennomfører. Veldig behagelig, for da vet de at ting ikke... Så her nå ser vi det at A-inn, den subagenten, har begynt å produsere ting. Dette er da review-aktivitet, sant? Og her kan det jo hende at det er noen svakheter her, ser dere? Og da ønsker vi at det skal gjennomføres,.
+
+Speaker 4: Sant?
+
+Speaker 2: Så det synes jeg er veldig fint med reviewen, at da.
+
+Speaker 4: Kan vi bare si «fiks det». Vi.
+
+Speaker 2: Får nå se hvordan det skal skje.
+
+Speaker 1: Ja, vi får ikke med overgripingsliste av hver foreslåte tiltak, så det er innmari bra det.
+
+Speaker 2: Her er den ferdig, og vi har fullført uavhengig agent. Her er oppsummeringen. Så nå er agenten slått ned igjen. Så det var en egen klådkodesesjon. Den jobba, den gjorde den skulle, gikk ut igjen. Så står vi tilbake igjen. Her står det «review fullført av uavhengig agent». Her er oppsummeringen.
+
+Speaker 4: «Fem styrker,.
+
+Speaker 2: Tre svakheter, fire forbedringspåslag bør fikses». «Mindre forbedringer som kan håndteres i 3-5», så sier vi bare «håndter.
+
+Speaker 4: Alle nå».
+
+Speaker 1: Ja, det er veldig bra at du spør meg, slik at du ikke er veldig kommanderende, for kommanderende så gjør den, men hvis du spør spørrende, så er det meg at da kommer den med sine egne anbefalinger og sine egne vurderinger, og det kan være bra å gjøre, slik at.
+
+Speaker 3: Du ikke er forcende og kommanderende å gjøre.
+
+Speaker 4: Det. Da er vi på overtid, så.
+
+Speaker 2: Vi kan ta pause. Vi ligger bra an i dag da for å nå det målet vi skulle. Da tar vi pause i 15 minutter. Ja, vi gjør det.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

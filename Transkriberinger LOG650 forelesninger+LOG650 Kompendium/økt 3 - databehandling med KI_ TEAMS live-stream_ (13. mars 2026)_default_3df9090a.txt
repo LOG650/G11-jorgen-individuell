@@ -1,0 +1,533 @@
+WhisperAI Transcription Report
+
+Title: økt 3 - databehandling med KI_ TEAMS live-stream_ (13. mars 2026)_default_3df9090a
+Date: 3/16/2026
+Duration: 3358 seconds
+Language: no
+Speaker Detection: Enabled
+Number of Speakers: 5
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Da er vi i gang med ettere og siste time for i dag.
+
+Speaker 2: Vi har generert fine figurer med forskjellige grafer og sånne ting. Ganske greie tabeller og sånne ting. Vi er nok fornøyd med disse datagenererte tingene her. Igjen så ser dere liksom styrken i det å bruke AI. Så lenge vi kjenner de overordnede strukturerne, vi vet vi skal bruke Python og sånne ting, så klarer vi å styre AI til å produsere ganske kompliserte grafer som tar oss lang tid, som vi nå kan produsere ganske kjapt. En utfordring med dette her er jo at er jo at vi får en 006-analysis her. Den kan fort bli ekstremt stor med masse filer og veldig sånn rot etter. Det er ikke bra for hverken oss som skal ha hodet på plass, men heller ikke så bra for AN som har mange filer den må forholde seg til og sånt. Så det jeg har gjort, det er at jeg har spurt AN om å komme opp med en forslag til å strukturere disse analyser folderen her, slik at den er samsvarende med prosjektplanen. Det kjørte mens vi var på pause, og så har jeg da kommet med følgende. Jeg har nå den faktiske fase 3-strukturen. Det viktigste designvalget er om 006 skal styres av aktiviteten i planen eller av mileperlene, siden det avgjør hvor lett det blir å jobbe i mappa til daglig. Hvordan vil du at toppnivå i 006-analysen skal speile prosjektplanen? Aktiviteter først, og det er recommended, gir en arbeidsmarked per fase 3 aktivitet, med tydelige skriptfigurer og resultater i hver aktivitet. Det er ingen tvil om at den er like best. Jeg tror at Miele-Pell blir for stor, og så får du veldig sånn rotete fylstrukturer. Så jeg kjører på recommended her. Foreløpig ser alt veldig bra ut med figurer og resultat, men det kommer til å bli masse, folkens. Når det blir så mye, da blir det veldig viktig å strukturere godt slik at man har kontrollen på hva som lages når og hva som tilhører hvor.
+
+Speaker 1: Det som også er veldig bra her, vi har nå i Vi har egen tillatelse til å gjøre en del ting, så kan vi be egen opprette mappa og undermappa, og putte filene ned i de rette mappene. Så vi kan bare si i prompten hva vi ønsker, og så opprette mappa og sånne ting. Så det er innmari bra at vi gir egen tillatelse til å gjøre flere endringer i filstrukturen vår.
+
+Speaker 2: Her har han kjempemessig. Her har vi planen. Jeg gidder ikke lese engang, jeg ser det ikke bra. Så nå har han liksom delt opp i aktiviteterne i stedet for, slik at vi får subfoldere av hula midten. Da kjører jeg på med yes. Og nå vil han gjøre ganske kraftige endringer her. Og dette mener jeg er viktig å gjøre fra starten av, slik at hver
+
+Speaker 3: fil på en måte havner der den tilhører.
+
+Speaker 2: Ryddig filstruktur blir et ryddig hue som blir en ryddig rapport. Og ja, det er veldig enkelt at det går over stokk og stein. Jeg har nettopp en masterstudent som jeg hadde veiledning med i dag, jeg og en annen kollega. Han er flink, han jobber knallhardt, men hver gang vi kommer på møte, så blir han sittende i 15 minutter, bare å lete etter sine egne filer. Det er lite effektivt, da kaster han bort tida, verdifull tid, som han kunne ha brukt med oss, på faktisk veiledning. I stedet så står han der og klør seg i havet, for han vet ikke hvilke filer er hvor og så videre, når vi spør spørsmålet. Så det er et klassisk eksempel på at han har rot i systemet, og det er duplikater av filer, og resultat hamner her og der, og nei, det er bare kaos. Så det er liksom minus, da, kan du si. Selv om ikke det nødvendigvis er... Det er ikke noe karakter på det, da, ikke sant? Så lenge resultatet blir bra, så blir det jo bra. Men han taper noe på det i den forstanden at Både vi som skal hjelpe ham, og han selv, bruker mye tid på å finne fram ting. Og usikkerheten om du brukte rett fil og så videre. Det er så fort å hamne i den verdenen der. Vær det fra første stund av å få A inn på å lage en plan, som vi gjør nå. For vi har allerede laget en prosjektplan. Bruk den til å strukturere dette analysebiten her. Jeg har opplevd så mange ganger at
+
+Speaker 3: det blir et sant kaos ut av alt sammen. Så det er jo et hjertelig råd
+
+Speaker 2: til dere når dere begynner med disse analysene her. Og dere må huske på det at dette case som vi ser på her, det er jo et forenklet case i forhold til virkelige data. Da må det ofte gjøres mye med. Så det kan dere tenke på at det er viktig. Her har vi aktiviteter med rense og struktureret data, det er det vi holder på nå. Her er disse grafene vi har allerede generert, så det er helt supert. Det er litt mer filstruktur, men samtidig er det litt mer ryddig. Resultat og figurer er bare gamle folder, så man egentlig burde fjerne dem. Litt om milepælene. Første analysutkast, hovedutkast, peer review.
+
+Speaker 3: Ja, det ser bra ut.
+
+Speaker 2: Der fjernet han de gamle håndene.
+
+Speaker 4: Ja, han gjorde faktisk det automatisk, det var imponerende.
+
+Speaker 2: Ja da.
+
+Speaker 4: Han rytter opp det, så det er ymmerlig bra det. Han ser litt totaliteten i det, så det er imponerende komfort.
+
+Speaker 2: Ja, det er ganske bra dette her. Nå ser jeg det at jeg ikke har en git- Get Ignore her, og det er vittig å ha med. Hvis ikke så begynner dere å... Ja, nå er ikke den med likevel, men jeg vil legge inn en Get Ignore, da.
+
+Speaker 3: Vi får se om det...
+
+Speaker 2: Ja, antar heldigvis ikke mer, da, men jeg vil likevel ha det med, da. Legg inn. Det er bare bedre enn å legge ned en klassisk Python gitignore-file for 006-analyser, slik at den ikke tar med sånne Python-filer som vi ikke skal ha med opp til GitHub.
+
+Speaker 3: Sånn som Pycache og alle disse kjørefoldere
+
+Speaker 2: som vi ikke trenger å lagre i skyen. Da skal vi nå se på fasene. Dereport. Det var det ikke. Det var plan.
+
+Speaker 3: Status. Status.
+
+Speaker 2: Da oppdater jeg status. Det kan jeg nå gjøre selv. Jeg kan bare si sånn, så er det oppdatert. Det er en ting vi mangler, og det er
+
+Speaker 3: testdata.
+
+Speaker 2: For når man skal lage en prognose, så skal du lage prognosen av noen data, men så skal du teste det for andre data. Og det har vi ikke. Så det betyr i prinsippet at dette datasettet som dere ser her, en del av datasettet må gå til estimering, en annen del må gå til testing, for å se hvor god prognosen fungerer på data som den ikke har blitt lagd basert på. Går det i mening?
+
+Speaker 4: Ja, jeg tror det.
+
+Speaker 2: Skjønte dere hva jeg skulle si? Så det vi i prinsippet må gjøre, er å dele opp disse datene i to deler. Så her kan vi skrive.
+
+Speaker 4: En ting til for testingen. Det er det testen, gjør vi det test på data, så måtte vi vet svaret på, så vi kan sjekke om det fungerer.
+
+Speaker 2: Riktig, så vi bruker Vi bruker prognosen for å se hvor god den er på fremtidige data.
+
+Speaker 4: Det er veitsvaret for å teste hvor god den er?
+
+Speaker 2: Det er veitsvaret, men vi har ikke brukt de dataene til å lage prognosen.
+
+Speaker 4: Da kan vi ikke bruke de dataene vi har her, for den har vi ikke brukt.
+
+Speaker 2: Det du typisk må gjøre, er at du må ta datasetter ditt, og så må du dele dem opp i to deler. En estimeringsdel, og en testdel. Dette er ganske standard. Så her har vi 211...
+
+Speaker 4: Men blir det en reell test? Hvis vi tar den datan som vi
+
+Speaker 1: faktisk brukte for å lage grafen til
+
+Speaker 4: å bare splitte dem i to, må vi ikke ta helt andre data, helt
+
+Speaker 1: uavhengig av dette der?
+
+Speaker 2: Nei, altså det må jo være salgsdata da.
+
+Speaker 4: Ja, det må det jo være, men helt uavhengig av det. Vi tar andre sorgsdata som ikke har noe med den sorgsdata vi har her å gjøre.
+
+Speaker 2: Ja, det er litt sånn som Erik sier. Jeg skjønte ikke helt hvor vi landet på, men Erik sier splitter data før trening, og det er det han retter.
+
+Speaker 4: Ok, greit.
+
+Speaker 2: Du må trene på ene sette, og så må du teste på andre setter.
+
+Speaker 4: Ok, greit. Jeg skjønner, jeg skjønner.
+
+Speaker 2: For å se om inferensen fram i tid er korrekt. Ja. Det er ikke uvanlig, da.
+
+Speaker 4: Ok, greit.
+
+Speaker 2: Legg inn.
+
+Speaker 3: Her nå.
+
+Speaker 5: Nå
+
+Speaker 3: må vi flytte.
+
+Speaker 4: OK, jeg skjønner. 80 kan gå til trening, og resten brukes til test.
+
+Speaker 2: OK. Ja, men da kan vi gjøre det sånn at vi tar 80 til trening, og 20 til test. Det kan vi nå gjøre. Så vi kan jo følge Erik sitt forslag. Det er veldig viktig at når dere gjør sånne ting, så er det viktig å ikke ødelegge rådataene deres. Så Sales CSV, den fila der, det er rådata. Den skal dere i prinsippet aldri gjøre noe så helst med. Hvis dere må transformere dataene i en eller annen form eller farge, sånn som vi for eksempel nå skal lage to nye filer fra den, vi skal liksom ha et treningssett og et testsett, så må dere lage nye filer. Aldri. Gjør noe med sales.csv. Hvis vi skulle ha gjort transformasjon eller rydding av data og datakvalitet og sånne ting, så måtte dere ha gjort det i
+
+Speaker 3: en ny fil. Da hadde
+
+Speaker 2: det hatt sales.renset for eksempel. Det er veldig viktig å kommentere. Det skjønner
+
+Speaker 1: vi. Det stemmer med
+
+Speaker 2: intusjon, så det forstår vi. Det var greit å nevne
+
+Speaker 1: det.
+
+Speaker 2: Da gjør den den jobben også.
+
+Speaker 3: Da kan vi bruke måltall
+
+Speaker 2: som for eksempel MSE og MAD, eller hva vi skal bruke, til å måle hvor god den blir på det testsettet. Hvor mye bommer vi gjennomsnittlig og sånt. Da har vi måledata i tillegg. Du skal aldri måle, I prinsippet bør du ikke måle en metode på de samme dataene du trente metoden på. Du ønsker å teste inferensen på hvor god han er til å gjøre nye ting. Ikke det samme som han alltid har gjort. Da heter det Sales Test og Sales Train. Bra. Legg inn dette. Jeg vil gjerne dokumentere at de
+
+Speaker 3: gjorde det, for
+
+Speaker 2: denne var ikke med i prosjektplanen i utgangspunktet. Statusplanen hadde ikke akkurat det steget der i seg, så jeg vil helst at den skal prøve å skvise inn et lite punkt her, samt også inn i prosjektsystemet. Så jeg gjør en smal oppdatering, legger steg inn i schedulet, og legger inn en avbygget punkt i statusemnet, midt i blinken. Midt i blinken er det jo kanskje. Så jeg begynner å bli så smart, altså. Ja, og det som
+
+Speaker 4: er også bra her da, er at vi bare sagt hva vi ville. Vi tenkte å ha veldig sterke føringer med hvilket navn du skal ha på CSV-kilden, for eksempel. For da kom den på veldig gode navn selv. SalesTest, SalesTrain. Vi må selv trene oss på å bli gode på hva vi eksplicit skal gjøre, og hva vi ikke skal gjøre, og gi den veldig sterke føringen på. For da kommer den kanskje opp med gode forslag, for eksempel filenavn
+
+Speaker 2: og sånne ting. Det du sier der, Pekka, er veldig viktig. Den balansen mellom hvor mye og hvor detaljert skal du skrive prompten din, og hvor mye skal du bare overlate til A1, det er en klassisk sånn. Det må du bare prøve å
+
+Speaker 4: lære. Det må du prøve å feile, og det blir ikke med erfaring å gjøre. Du må bare bruke A1
+
+Speaker 1: for å finne den fine tuningen. Det
+
+Speaker 2: er superviktig. Over tid sparer du mye tid og krefter på dette ved at du ikke står og betalestyrer for mye,- for da kan faktisk resultatet bli dårligere enn dersom du hadde bare latt A1 få gjøre det A1 kan. Ja, faktisk. Det er en veldig godt poeng der,
+
+Speaker 3: Pekka. Nå er det to lite bråk
+
+Speaker 2: her. I sitter og jobber, gutta. Da er vi ferdige med... Vi har gjort en del ting. Nå er det på tide å ta en...
+
+Speaker 3: Egentlig burde jeg ha lagt
+
+Speaker 2: inn GitHub for hvert steg her. Jeg har ikke vært helt
+
+Speaker 3: flink. Jeg kan ikke bruke
+
+Speaker 2: for mye tid på sånt her. Har
+
+Speaker 4: du tenkt på at du er opptatt av å
+
+Speaker 2: pushere? Ja. Egentlig ville jeg gjort det for hvert avhukningssteg her. Nå tok det litt mange flenger og sånne ting.
+
+Speaker 3: Det
+
+Speaker 2: tar litt tid i en foreløsning, så det er for å gjøre litt snarveia.
+
+Speaker 3: Det tar litt snarveia, folkens. Husk å bare
+
+Speaker 2: bruke sunt vett når det gjelder Git og sånne ting, og hver gang dere huker av noe, så ber dere bare være enige om å formitte det, og pushe det
+
+Speaker 4: for eksempel. Ja, jeg har gjort det.
+
+Speaker 2: Da er det neste. Dokumentere datakvaliteten. Det finnes ingen
+
+Speaker 3: direkte...
+
+Speaker 4: Da har jeg fått det med de pullene her, så har jeg fått det siste.
+
+Speaker 2: Ja, så datakvalitet kan være et stort punkt for mange. Men her finnes det ingen direkte kilde som sier noe om hvor god kvaliteten er,- og da må du bare sette inn det som en antakelse i rapporten din. Du må anta at datene er gode og at de er kvalitetssjekka. Men ofte her må du kanskje skrive masse tekst- for å beskrive kvaliteten på datene
+
+Speaker 3: dine.
+
+Speaker 5: Jeg
+
+Speaker 2: bare skyndte meg, for jeg har lyst til å komme til neste punkt, som er at... Hvorfor forsvant den da? Ja, vi ser litt her.
+
+Speaker 5: Nå
+
+Speaker 2: kan vi se hvilke filer som kom, status og der. Det er greit. De bare la inn det som et eget punkt der, ja. Det jeg vil derimot gjøre
+
+Speaker 3: nå, da,- Jeg merket
+
+Speaker 2: at denne planen er sånn at den skal først gjøre grunnlaget, og så begynner vi å skrive senere. Det kommer igjen senere. Skrive rapportutkast her. Den vil jeg avvike litt herifra, for jeg vil skrive litt nå underveis. Jeg vil begynne å få litt mat inn i rapporten. Så jeg vil få an til å legge en det. En ny aktivitet. Jeg
+
+Speaker 3: kan ta den første. Jeg
+
+Speaker 2: bare huker den, for den er gjort. Det er bare en manuell sak.
+
+Speaker 3: Legg inn.
+
+Speaker 2: Jeg hadde egentlig gjerne arbeidspåkker
+
+Speaker 3: av en påsk.
+
+Speaker 2: Slik at vi ser utviklingen
+
+Speaker 3: av rapporten underveis.
+
+Speaker 2: En god ting med det er at nå husker jo AN også hva vi har gjort. Vi trenger ikke å begynne på nytt igjen når vi skal generere rapporten. AN har jo hele historikken vår nå, så derfor er det fint
+
+Speaker 3: å ta den her og nå. Ikke vente
+
+Speaker 2: med å skrive rapporten. Nå sier de at de først skal legge inn en aktivitet som vi skal legge inn
+
+Speaker 3: i rapporten. Litt fram og tilbake med
+
+Speaker 2: aktiviteter. Det er ofte vanskelig å preplanlegge absolutt alle aktiviteter inn. Da må dere bare gå inn og utvide prosjektplanen etter hvert som dere går.
+
+Speaker 3: Når
+
+Speaker 2: man gjør sånne utvidelser, så skal man alltid sjekke om... I prinsippet så skal du sjekke at kritisk sti er fremdeles innenfor leveransen og sånne ting, men som dere sikkert skjønner, så går jo dette lynenes forta i forhold til hvis det skulle vært manuelt. Så betyr
+
+Speaker 4: det at AN gjør veldig mange oppdateringer både på status.md og på aktiviteter
+
+Speaker 1: og sånne ting. Filmappa der. Han gjør
+
+Speaker 4: alle endringer på alle plassene som er
+
+Speaker 2: nødvendige. Ja, spot on. Det er utrolig bra, slik at vi slipper å begynne å inn i prosjektfila. Prosjektfila skal dokumentere hvordan du gjorde hele analysen, og det er viktig å ha med deg. Men her dokumenterer vi den litt underveis for at det kommer en endring. Men hadde dette vært et byggeprosjekt nå, for eksempel, og det kom inn en sånn endring, da må du alltid ta høyde. Da vil kritisk sti kunne endre seg, og du må ha godkjenning for å legge inn endringer. Nå gjorde jeg alt selv. Jeg sa ok, jeg vil gjøre den endringen, og jeg godkjente den. Og den vil ha lite å si på kritisk sti-prosjektet, for den er straks gjort. Så dere ser forskjellen her da. Der ser dere at den endrer både schedulen, altså JSON-fila, status.md, som Peko sa, og vi får et nytt punkt her. Sett inn tekst og figurer på
+
+Speaker 3: Falle Stein. På rett plass.
+
+Speaker 2: For irriterende, jeg må prøve å finne ut det etterhvert. I report-rapport,
+
+Speaker 1: sant? Hvis du gjør det manuelt,
+
+Speaker 4: greier noe, greier noe. Hva står det egentlig? Pågående? Pågående, ja, selvfølgelig pågående. Hvis du endrer det om en dag, greier det å skjønne pengene.
+
+Speaker 2: Det er denne kviten her som gjør et eller annet gærent. Vi kan jo sjekke hva som står der pågående, men jeg tipper det bare står en vanlig å
+
+Speaker 3: der. Skal vi se.
+
+Speaker 2: Pågående.
+
+Speaker 3: Skal vi se pågående. Ser du? Den burde
+
+Speaker 2: jo vært ø, da.
+
+Speaker 3: Det burde jo vært et fiksbart dette her, da. Da burde du klare
+
+Speaker 4: det, da. Se hva han har gjort der på H3. Der er det korrekt. På H3 er det pågående skrevetrikt. Det gjør tilsvarende andre plasser. Men vi skal ikke kjempe for mye tid på dette nå. I H3,
+
+Speaker 1: for eksempel.
+
+Speaker 3: Det er irriterende,
+
+Speaker 2: det kan vi være enige om. Det er litt nytt for meg, men det som er vanlig i en sånn ting, er faktisk å legge det inn.
+
+Speaker 5: Det
+
+Speaker 2: er viktig å få en til å huske sånne ting. Det som skaper problemer er måten han får... Han kjører sånne rekommender og da endres det på veien
+
+Speaker 3: da. Så jeg tror ikke han vet
+
+Speaker 2: helt hvordan han skal
+
+Speaker 4: gjøre det. Nei, vi bruker ikke mer tid på å ta noe.
+
+Speaker 2: Jeg vet ikke. Jeg må forske litt på den da. Det må jeg
+
+Speaker 3: gjøre. All right! Jeg må jo bli ferdig nå da. Han kan jobbe lenge
+
+Speaker 2: med denne greia der, ser du. Da går det lenge med å ta det.
+
+Speaker 3: Så kjørende. Hva
+
+Speaker 4: var det du jobbet med nå? Det var å sette inn
+
+Speaker 1: i rapporten figurer og litt sånn?
+
+Speaker 2: Nei, nå prøvde vi å fikse det her også. Nå er det ikke, ser du. Så vi driter det, men vi må forske litt på det, for det skal være viktig for de fleste.
+
+Speaker 3: Jeg liker
+
+Speaker 2: å endre noe, for nå
+
+Speaker 3: vil jeg se hva den gjør. Da
+
+Speaker 2: er jeg på plan igjen, folkens. Veldig viktig å bruke planmodus når du skal generere nye ting inni
+
+Speaker 1: plan. Hvordan gjør du det for
+
+Speaker 4: å endre modus? Trykker du på tab
+
+Speaker 2: eller noe sånt, eller hvordan endrer du modus? Du bare detogler
+
+Speaker 3: da, switch. Ok. Nei, det
+
+Speaker 2: er det ikke. Hvordan går det ut av planmodus, det vet jeg ikke egentlig. Hvordan får
+
+Speaker 4: du inn i planmodus da? Er det slash, og så begynner du med plan, og så kommer det forslag, og så bare tabber du og fullfører?
+
+Speaker 5: Oi. Oi.
+
+Speaker 2: Nå gjorde jeg tykkert dumme ting.
+
+Speaker 3: Who to quit?
+
+Speaker 2: Det må jeg også sjekke ut, faktisk. Jeg bruker aldri å gå ut av planmodus med vilje, hvis du skjønner. Så det må jeg nesten sjekke ut. Det finnes helt tykkert
+
+Speaker 3: en måte å gjøre det på. Jeg
+
+Speaker 2: må bare spørre, jeg må søke det. Men nå er vi i planmodus, det er viktig. Vi skal nå gjøre neste task. Sette
+
+Speaker 3: inn tekst og figurer. Det blir spennende. Det blir spennende. Det blir
+
+Speaker 2: bra.
+
+Speaker 1: Ja, den trykker på krøndalen for,
+
+Speaker 4: og fort så kommer det opp en forslag som du bare kan tebbe,
+
+Speaker 2: slik at du... Ja, veldig, og da trenger du ikke skrive, liksom, styr, bare skrive etter hva annet, så
+
+Speaker 4: finner han det. Ja, kult. Utrolig bra, utrolig bra.
+
+Speaker 2: Nå sier det bare å komme forslag på hvorfor jeg skal skrive hva. Jeg vet jo allerede hvor ting skal hen, men det er ikke sikkert dere vet det. Da spør jeg inn og prøver å komme i en dialog. Er dere usikre på disse tingene, så les i sjelve report. Eller les også den blekka vi la ut på videnskapelig skriving. Så nå er vi på Report her, og denne rapporten ser jo sånn ut.
+
+Speaker 5: Så
+
+Speaker 2: vi ser allerede at den er på feil spor på en plass, men riktig på to da. La oss se hva planen innebærer. For aktivitet 3.1 bør du skrive inn innhold i tre deler av rapporten. 1.4.4 er antakelse, datakvalitetsantakelsen. Det synes jeg høres bra ut, synes du ikke? Ja. At vi legger til grunn om at dataene er kvalitetssjekket. Ja, så den
+
+Speaker 4: antakelsen er det bare å få inn
+
+Speaker 2: så fort som mulig. 5.1 og 5.2, hva dere gjorde med datasettet. Det er riktig. Men 7. Analyse. Det er ikke helt riktig, for dette er egentlig ikke en analyse. Dette er en beskrivelse. Og hvor i rapporten er det en beskrivelse?
+
+Speaker 3: Det står kapittel 4, casebeskrivelse. Her skal problemer
+
+Speaker 2: utproduseres for den bedriften du samarbeider med. Ta med alle relevante informasjoner som er nødvendige. Så her skal vi på en måte presentere case og hvordan ting ser ut i dag på en måte. Salgsdata er klassiske ting som her det er sist, ikke sant?
+
+Speaker 4: Ja, for vi har ikke gjort noe analyser. Vi har bare visualisert rådataen som var med, og så har vi bare vasket den riktig natta, eller ikke gjort det, for den var så god. Så her har vi ikke gjort noe analyse og manipulasjoner eller transformasjoner, vi har bare regnplåtta det, og dette er case og dette
+
+Speaker 2: er visualiseringen. Ja, så dette tilhører case da, der du skal presentere bedriftene og hva som har skjedd og hvordan den ser ut og problemstillingene de har da. Typisk vil casebeskrivelsen være ganske stor egentlig. Her er det masse info som kan komme, men vi kjenner jo ikke til så mye, så dette blir jo et kort kapittel for oss. Men det er naturlig at alt som har med bedriftene å gjøre, som er spesifikt for det case dere ser på, skal inn der. Og blant annet den type data som dere så nå. Så her må vi si fra til A1 at nyhet,
+
+Speaker 3: dette er ikke, vi
+
+Speaker 2: har ikke gjort,
+
+Speaker 3: kun beskrevet,- bedriftens faktiske data. Så analysen vil handle om prognosene. Prognosen. Så hvor foreslår du?
+
+Speaker 2: Jeg vet jo det, men jeg har lyst til å se om hun skjønner at hun skal
+
+Speaker 3: putte det inn i kapittel 4. Ja,
+
+Speaker 1: det blir spennende.
+
+Speaker 5: Som
+
+Speaker 3: dere
+
+Speaker 2: ser, så må vi, når det gjelder om man skal skrive en hel... Jeg klarer det ikke ennå. Når man skal beskrive en hel rapport, så må A1 ha hjelp av oss til å strukturere ting. Vi er sjefen over strukturen, og her ser du at den trenger hjelp. Da foreslår jeg i 5-2, men dette her er feil. Det er ikke riktig. I kapittel 5.1 og 5.2 er det bare metodikk og hvor dataene blir hentet fra, integriteten av dataene, hva slags data det er. Det er i casebeskrivelsen. Så nå vil jeg gjerne at den skal være enig, da.
+
+Speaker 3: Så skal
+
+Speaker 2: vi se om den blir enig, da.
+
+Speaker 3: Ja, hva er case 4? Jeg var
+
+Speaker 4: det 4, ja, egentlig.
+
+Speaker 2: Ja, jeg skrev feil, jeg skrev feil. Ja. It's been a long day.
+
+Speaker 1: Ja, det kan hende at den greier å forstå.
+
+Speaker 3: Ja, han skjønte det. Ja, jeg
+
+Speaker 2: er enig, ja. Se der, ja. Det
+
+Speaker 3: var ikke verst. Ja, nå har jeg
+
+Speaker 4: ikke hatt det med Åstad.
+
+Speaker 2: Dette er jo kjempebra. Legger Åstad inn. Det er ofte viktig å begrunne hvorfor vi gjør det vi gjør, og det er jo klart at denne bedriften har noen utfordringer. Dette datasettet gir utfordringer til bedriften, og... Urfordringer.
+
+Speaker 4: Ja, han skjønner det, han skjønner
+
+Speaker 3: det. Hoppe, det er ordentlig.
+
+Speaker 2: De la inn et siste avsnitt under case-beskrivelse, hvilke utfordringer de møter og sånne ting, som er med å bygge opp under hvorfor vi gjør dette. Hva er oppsida og nedsida? Implement this plan. Yes. Go for it. Nå kjører vi på. Her får vi da generert en del av teksten i rapporten, lovlig, er det ikke?
+
+Speaker 1: Ja, og det er trolig spennende av sjåkosten at du begynner å si at det er litt Tarformen av rapporten, og med litt figurer og sånt, synes jeg er spennende å se hvor bra eller dårlig de blir
+
+Speaker 3: implementert i rapporten. Så han skjønner at den skal
+
+Speaker 2: fjerne den generiske malteksten med prosjektspesifikt
+
+Speaker 4: innhold? Ja, det
+
+Speaker 2: er bra. Setter inn figuren og tabellen der de gjør det hjemme, og typisk nå så gjør de litt feil av når de skal linke opp til siste av figurerne. Så det må vi sannsynligvis joke litt til før vi blir ferdige. Vi er litt på overtid, men jeg har lyst til å bare konkludere den siste biten her før vi tar kveld. Ja,
+
+Speaker 4: det hadde vært enveldig
+
+Speaker 1: bra, for nå får vi en naturlig slutta som vi kan fortsette med på mandag.
+
+Speaker 2: Her har vi plutselig dukket opp ting som orker. Oi, så fint det er. Det
+
+Speaker 4: ser veldig bra ut, ja. Ja, ja, ja. Her er det egentlig bra. Og der er det en så liten ting jeg har lyst til å kommentere på, folkens. Se på figur 4 igjen. Her ser vi at den har noen
+
+Speaker 1: føringer, og vet hvordan figurtekster som skal være standardene for det, er jo inne i malen vår, som vi har nå tatt inn i MD-filene. For det er viktig at det er gode figurtekster beskrivende. Så en figur skal være stand-alone, Det betyr at en person skal greie å forstå det som er i figuren, bare på å lese figurteksten og se på figuren, uten å være tvunget til å gå til hovedteksten for å forstå innholdet i figuren. Det er liksom regelen. Og da har du en setning eller to i figurteksten. Så nå ser vi allerede at rapporten begynner å ta litt annen form, selv om vi ikke har begynt på mange av tingene, som analys og sånne ting, som vi skal
+
+Speaker 3: se på senere. Så et par ting
+
+Speaker 2: som jeg har lyst til å gjøre her. Jeg har lyst til å gjøre bildene litt mindre. Så klikker jeg på at de ikke tar hele. Det blir litt sånn. Det er vanlig at bildene er litt mindre.
+
+Speaker 3: 70
+
+Speaker 2: prosent, skal vi si
+
+Speaker 3: det. Ja, vi kan bare prøve
+
+Speaker 1: på det. Og så en ting til her, så vi ikke skal bruke for mye tid på nå, men vi bare nevner det, det er at jeg synes det ble bra når jeg og du holdt på å oppdatere dere kompandiet vårt i logg 16-tida, at vi tok litt mindre tekst på figurteksten enn sammenlignet med hovedteksten. Det så litt mer proff og bedre ut da, men det skal ikke bruke for mye tid på nå, men det kan jo være Det er en forbedringspotensial.
+
+Speaker 3: Ja, så da bare ga jeg den litt sånn... Litt sånn... Ok, nesten.
+
+Speaker 2: Og
+
+Speaker 1: så må vi kanskje si at den må sentrere, da. Det blir det
+
+Speaker 3: neste.
+
+Speaker 1: Vi gjenner kanskje litt lengre å ha litt lengre figurer, men det kan vi komme tilbake til på mandag.
+
+Speaker 3: Hva var det I satt der? 70-80%? Ja, det kan
+
+Speaker 4: være det.
+
+Speaker 5: Sånn.
+
+Speaker 2: Vi ser om vi klarer det.
+
+Speaker 5: Ja,
+
+Speaker 2: og klarte bildet, men klarte
+
+Speaker 3: ikke helt teksten. Men det er
+
+Speaker 1: ofte en greie da, for når du gjør det gang nummer to, så skjønner du at du må ha en annen innfallsvinkel, og prøve enn å gå litt andre veier enn det du gjorde først.
+
+Speaker 2: Ja, så har han gått ut med figurteksten, vil at den skal være sentrert og slentet.
+
+Speaker 3: Her ja! Fikk han det til? Kjempe masse altså! Ja, supert! Jeg hadde
+
+Speaker 4: måttet ha vekt av gamle figurteksten selv da, han har to fig... Nei, nei, det er hele hovedteksten,
+
+Speaker 2: ja! Ja, dette er hovedteksten, ja. Ja,
+
+Speaker 1: det der er hovedteksten,
+
+Speaker 2: ja. Da har jeg gjort figurteksten litt mindre nå, da. Ja,
+
+Speaker 1: og sentrert, for da ser du hva som ... Egentlig er det å skille hovedtekst fra figurtekst. Ja.
+
+Speaker 2: Da kunne jeg jukket litt på tabellene og gjort dem litt finere, da, men dere må huske på det at dette markdown er ikke det endelige som dere skal levere inn, da, så dere trenger egentlig ikke bruke alt for mye tid på sånn form og farge, da, selv om det er greit å gjøre sånn som jeg gjorde her. Nå har vi laget en del ting. Jeg har lyst til å gjøre en siste ting, som er veldig viktig, før vi tar kvelden. Det er at jeg skal lage en spesifik
+
+Speaker 3: fil, som
+
+Speaker 2: heter Agents, med store bokstaver. Den filen, kodex, leser den alltid når den starter.
+
+Speaker 5: Så
+
+Speaker 2: det jeg gjør nå er at jeg får A1 til å huske det. Vi har jo rettleder A1 på flere områder nå, og nå gir jeg A1 hukommelsen slik at den leser agents MD-fila. Hver gang jeg starter kodex på nytt igjen, så vil den da ikke gjøre de samme feilene. Nå vil skriver det at heretter så skal bildene sentrere, så du skal bruke mindre font og det skal ha italic. Vi skal bruke pass på æ og å, og så videre. Du kaller også den
+
+Speaker 1: filen på agents da, og ikke skills
+
+Speaker 2: for eksempel? Ja, skills har vi en annen plass. Det er oppe her i kodex. Her kan man legge inn skills da. Det er relativt nysagt, men det kommer vi til etter hvert da. Ja,
+
+Speaker 1: men altså det vi ønsker nå, slik at når vi kommer til neste gang vi restarter AI, så slik at vi slipper å starte på nytt igjen, det er mer naturlig, mener du, å ha i en ega-separat
+
+Speaker 4: fil som du kaller
+
+Speaker 1: agent, og ikke naturlig å ha det
+
+Speaker 2: i skills? Skills er jo en ny folderstruktur til disse agentene, men den er sånn at den leses on demand. Så det er ikke sånn at man nødvendigvis har lest det som står i en skill. Men agents.md er et fil den alltid leser.
+
+Speaker 4: Ok, så det er en standard det
+
+Speaker 2: altså? Det er noe jeg vil at AN alltid skal huske. Er
+
+Speaker 1: det en standard som er globalt, eller er det bare vi lokalt? Det er lokalt for
+
+Speaker 2: dette. Det er globalt, ja, altså Agents er en standard for kodex da. Clod har tilsvarende, da heter den clod.md, og Gemini har gemini.md. Ok, og kodex
+
+Speaker 1: har Agents altså, ok. Ja.
+
+Speaker 2: Nå er jeg ferdig, så nå tar jeg å si OK. Dere må jo selvfølgelig lese over det Einar har gjort, og innmari lurt å bare se på diffen. Hadde jeg nå bare hatt...
+
+Speaker 3: Ja, det
+
+Speaker 2: var synd da. Han bruker den her nå. Hadde vi kunne sett på diffet nå, skulle det vært fint, men det
+
+Speaker 3: klarte vi ikke. Alle steiner, altså.
+
+Speaker 2: Jeg
+
+Speaker 3: skulle gjerne hatt tekstformatet
+
+Speaker 2: nå, da. Anyway.
+
+Speaker 3: På midtet. Nå er
+
+Speaker 2: vi ferdige igjen. Så nå, da. La oss nå si at nå er jeg ferdig, så nå går jeg ut av Codex. Så når jeg nå, la oss si at neste gang nå på mandag, så starter jeg igjen. Skriver bare Codex YOLO. Nå har Codex lest denne filen her allerede. Så nå vet Codex hvordan bildene skal sentreres
+
+Speaker 3: og alegnes. Slik at den ikke gjør
+
+Speaker 2: den feilen på nytt igjen. For hvis det ikke, så måtte vi ha gjort dette på nytt igjen, og nytt igjen, og nytt igjen, og nytt igjen, og om igjen, og om igjen, og om igjen. Da gir vi bare oss mer arbeid til oss selv. Nå vil A1 huske at jeg skal lage bilder med kursiv bildetekst på denne måten. Very good. Så det som
+
+Speaker 1: er riktig er at vi må pushe opp i GitHub-sida når vi er ferdige med arbeidet før vi tar helg. Da kan vi andre bare pulle det her ned, og så får vi oppdatering av dem som vil gå og shoppe. Helt
+
+Speaker 2: riktig, Pekka. La oss gjøre det til det aller siste vi gjør her nå. Vi går til GitHub. Og så går vi til Log 650. Repositories. Og der er jo mitt case. Og dette er jo åpent for alle. Så hvis dere har lyst til å se hva jeg har gjort her og nå i dag, så er det bare å trykke på den, ta med HTTPS, spiller den og klone prosjektet hos
+
+Speaker 1: dere. Jeg vil ha sagt noe på denne enkelte måte, Bård, faktisk, som du gjorde før, da, for at Bård Inger vil ikke flinke litt å ta med, da. I
+
+Speaker 4: stedet for at jeg gikk bare på A1, så sa jeg, klon
+
+Speaker 1: deg for meg. Ja, det kan du
+
+Speaker 2: også gjøre, men da må du passe på å si at du skal ha det i en riktig folder og sånn, da. Ja, så
+
+Speaker 1: det var en riktig folder, ja, så jeg gikk på den riktige folderen, og så tenkte jeg at jeg visste at jeg var på rett sted, og så sa jeg, klon, klon, gjør deg for meg. Men du kan gjøre det manuelt, sånn som Bård Inger også gjør, da.
+
+Speaker 2: Så da tenker jeg at vi er ferdige for i dag, og så får vi fortsette på mandag, sette opp klokka 12 til 3. Jeg har
+
+Speaker 1: allerede sendt en rommestilling, så du Erik, kan gjerne sende ut en kundgjøring før du tar helg hvis det er mulighet, og si at vi starter også på mandag om tre timer da, og ønsker en god helg da, slik at han vet og er psykisk forbedret på at jeg melder på mandag da.
+
+Speaker 2: Ja, og nå har vi gjort unna mye av infrastrukturen, folkens. Så på mandag så kan vi nesten gå i gang direkte på neste steg, og bare begynne å generere modellene og resultatene, og vi skal få det banka inn i rapporten. Hei, Rune. Takk for i dag, og god helg. Det var bra at det ble bra. Håper at dette skal hjelpe på videre, og så kjører vi på på mandag også. Takk for i dag.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

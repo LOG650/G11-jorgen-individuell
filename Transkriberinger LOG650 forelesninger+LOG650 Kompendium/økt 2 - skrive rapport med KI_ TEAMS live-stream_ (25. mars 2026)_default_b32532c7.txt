@@ -1,0 +1,305 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - skrive rapport med KI_ TEAMS live-stream_ (25. mars 2026)_default_b32532c7
+Date: 3/28/2026
+Duration: 3744 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Dagens andre time. Vi satser på at det blir andre og siste før vi tar påskeferie. Vi har kommet inn et spørsmål her. Hvordan kan Python-koden som er generert etterprøves med nytt dataset?
+
+Speaker 2: Jeg er litt usikker på hva som menes. Thomas? Men koden finnes jo her. Den finner du under 06-analysis-aktiviteter. Dette var den viktige filstrukturen vi snakket om. Hvor vi har en ganske god struktur på hva som gjøres og sånne ting. Både med figurer, resultater og skript. Her er jo Python-koden. Som genereres, som følger jo det samme strukturen hele tiden når han kjører en aktivitet.
+
+Speaker 1: Altså han følger her rett og slett planlegginga, dette er ekten, sånn 3-1-3-2-3-3-3-4-1?
+
+Speaker 2: Ja, det er riktig.
+
+Speaker 1: Så han får altså kapittelindeling eller subseksjonindeling da i henhold til planlegginga?
+
+Speaker 2: Ja, det er riktig. Om du kan etterprøve koden, så denne koden er jo spesifikt generert for akkurat dette case da. Så når du skal gjøre ditt case, så får du en helt annen kode med helt andre modeller og så videre. Men poenget er at du har jo generert en Python kode. Og da sier vi gjerne det at at kodene er generert og kan gis ut etter behovet, kaller de det.
+
+Speaker 1: Etter ønsket.
+
+Speaker 2: Etter ønsket, ja. Så kan jo noen, hvis noen har lyst til å utfordre om Python-kodene er korrekte eller ikke, så må man, så har man koden man kan etterprøve, som du sier. Men som sagt, denne her er veldig spesifikk for keiser. Så det er vanskelig å bruke koden til et helt annet case. Det er veldig avhengig av caseet ditt. Det er mer metodikken her som er viktig, og ikke koden. Men koden er viktig for å påpeke korrektheter. All right. Vet ikke om det var et godt svar, Thomas. Det beste jeg klarte å tolke utifra spørsmålet ditt. Ok, så har jeg nå, som dere husker, så har jeg splitt deg opp aktiviteterne. Så la oss ta en titt på dem nå. Sånn her ja, så står det å skrive kapittel 1, 2, 3, 8, 9 og 10. Men jeg ønsker ikke å ha de i denne rekkefølgen der. Jeg ønsker først å ta kapittel 9, så å ta 8, så kan jeg gå til innledning. I status må jeg bare si hva det er. Som dere ser så bruker jeg ganske mye tid på prosjektledelse. Det er det jeg driver på med nå. Jeg styrer prosjektet mitt. Og det er faktisk viktig, og det er jo en stor del av dette kurset også. Det er ikke bare å skrive rapporten, man skal også styre prosjektet. Så det er en stor del av hele faget egentlig, og derfor er det helt ok å bruke tid på dette her. Så i den filen la vi prioritert Nå er det om du skal endre akt i det, at den igjen eller gjennomføringsrekkefølgen. Så jeg ønsker egentlig at vi skal flytte kapittel 8 og 9 opp, for at innledning skriver du, og innledning og litteratur og teori og sånne ting, det skriver du gjerne når du er ferdig med... Altså, nå har jeg gått rett på modell, løsning, Og resultat og diskusjon. Vi går på hjertet først, og så skriver vi innledning og sånne ting.
+
+Speaker 1: Ja, så legg merke til det. Når vi følger for eksempel Compendium Akademisk skriving kronologisk, så presenterer vi det i den rekkefølgen en rapport gjør, med overskritt, abstrakt, innledning, teori, litteratur og kronologisk rekkefølge. Men rekkefølgen vi som skriver rapporten er egentlig omvandt. For da starter vi med kjernen, med analyse og resultat, og diskusjon og konklusjon, og så starter vi med det som er sist. Når vi er ferdig med kjernen av rapporten, som er slutten av rapporten, da går vi i begynnelsen, for da vet vi hva vi skal si i innledningen. Så vi er nødt til å bli ferdig med hovedsaken. Legg merke til det at gjennomføringen er en annen rekkefølge enn den kronologiske i en rapport.
+
+Speaker 2: Ja, det er riktig det. Det kunne vi ha hatt som et endringspunkt i selve Compendia PK. At vi kunne ha spesifert det der.
+
+Speaker 1: Ja, faktisk. Det kunne vi.
+
+Speaker 2: Kanskje vi skulle ha skrevet det ned til oss, så vi ikke glemmer det.
+
+Speaker 1: Ja, jeg skal prøve å skrive det ned.
+
+Speaker 2: Da skal vi se. Han brukte lang tid på å planlegge dette. Jeg synes det var egentlig en ganske grei sak. Vi kan se på rapporten imens. Den var litt interessant. Den deler opp svakheter og forbedringsforslag. Svakhet er koblet til V. Men et forbedringsforslag, det tror jeg er F. Og alle disse F-endringene her, nå er vi i reviewen også. De er egentlig mer ... De er mer forslag til drøfting, ser dere. Det er snakk om drøfting der, diskusjonskapitlet, ikke sant? Sånn at dette er ting som kommer i neste steg. Og da må vi på en måte... Så jeg ønsker ikke at vi skal begynne å gjøre disse F-ene her nå. Ikke sant? For vi har ikke skrevet kapittel 9 enda. Dette her er informasjon som burde bli med inn når vi skal planlegge kapittel 9. Går det mening på det også?
+
+Speaker 1: Ja, jeg tror det.
+
+Speaker 2: Ja, håper det. Mens disse V-ene her, det er faktiske endringer som vi bør gjøre her og nå. For aktivitet 3.4. Da har jeg forberedt denne, og sagt ifra. Så her står det kritiske filer, V1, V2 og V3, de skal gjennomføres, mens legg til F1 til F4 som aktivitet 3.5-sjektpunkter. Nå håper jeg at 3.5 blir Håper at 3.5 blir nå kapittel 9. Så vi kan kjøre den først. Litt komplisert dette her, men det er viktig å kjøre det i riktig rekkefølge nå. Først så endrer vi aktiviteter, så må vi overføre disse F-forslagene her, eller til riktig aktivitet. Når vi starter den, så tar den med seg disse forslagene fra Review. Eller så går de og glemmer boka da. For alle disse F-ene her, det handler om diskusjonskapitlet, tror jeg dere. Dette har.
+
+Speaker 1: Vel ikke kommet ennå.
+
+Speaker 2: Nå venter vi bare på at den skal ordne statusfila, slik at det står kapittel 9 her, i stedet for 1. Kapittel 9 er nå neste, og så er det kapittel 8 som er etter der. I den rekkefølgen, synes de. Så vi får på at vi skal skrive om dette. Grunnen til at vi bruker ganske mye tid, er at vi må også skrive om disse data-filaene. Disse JSON-filaene. Og de er ganske store. La oss se på schedule, for eksempel. Den består av tusen linjer. Så det er en ganske stor fil. Så det tar kanskje litt tid. Se på denne, den er egentlig klar til å gjennomføre, men jeg har ikke lyst til å gjøre denne før jeg er ferdig med denne omskrivningen av aktivitetene, for hvis ikke så blir det feil. Man skal jo plassere disse F1 til F4 innenunder 3.5, men per i dag er det 3.5 kapittel 1 og ikke 9, så det blir gærent. Her må dere være litt på vaks da når dere endrer opp sånne ting. Når det gjelder, jeg kan jo nevne dette her med at vi har jo en, vi skal jo, man skal jo gjøre en trekking i prosjektet sitt etter hvert som dere jobber. Da vil jeg påpeke det at per i dag for dere så er det et manuelt arbeid. Så når dere er ferdige for dagen så går dere inn i, inn i prosjekt, MS-prosjektfilen deres og huker av hvor langt dere har kommet i de forskjellige aktiviteterne. Bare slik at det er nevnt da. Kalten er ikke helt ferdig med tre.
+
+Speaker 3: Fem.
+
+Speaker 2: Skulle jeg egentlig tenkt meg at han lot den bli en del av 3-4. Det var litt dumt at han gjorde. Jeg vil ha bort den 3,5-læreren, den er ikke riktig. Det som er poenget er at han ser at vi ikke er ferdige med en, og så lager han en ny aktivitet. Men det som er poenget er at vi venter med å fullføre den her, til han har gjort jobben sin. Så det er en klassisk AI-misunderstanding. Han skjønner ikke at jeg er klar til å trykke på gjennomfør-knappen. Det forstår han ikke. Nå skal han fjerne den 3-5 og renummerere.
+
+Speaker 3: Jeg.
+
+Speaker 2: Vil helst at diskusjonen skal være 3-5. Diskusjonskapittlet. Det er jo ofte et kapittel hvor du diskuterer funn av fraanalysen, og tolkning, og hvordan du kan benytte dette her. Og den biten er ofte en del av det du kommer med. Det er ditt bidrag. Og at du diskuterer bidraget ditt på en måte. Det er en slags kunst, egentlig, hvor du må tolke, forklare og prøve å vurdere hele analysen din. Det kan være litt utfordrende, og det kan også være utfordrende for AN, for det er ikke helt alltid at AN skjønner hva den skal diskutere. Det kan bli litt teknisk. For eksempel ønsker jeg å drøfte funn opp mot problemstilling og litteratur. Men vi har ikke skrevet problemstilling og litteratur her nå. Så det kan være en utfordring, egentlig. Jeg lurer på om vi skal...
+
+Speaker 1: Literatur, det har vi jo ikke gjort, men problemstilling har vi ikke skrevet i rapporten kanskje forløpig, men det ligger bare der et sted i filene, gjør det ikke det?
+
+Speaker 2: Problemstilling? Ja, la oss se på rapporten da. Så står det her problemstilling. Det står ingenting, ser dere. Kanskje vi skal... Altså, når du diskuterer, så skal du diskutere opp mot problemstillingen, det er riktig. Så kanskje vi skal prøve å få skrevet litt av innledningen først, egentlig. Slik at den biten er faktisk skrevet da. La oss se på statusen. Her har vi den. Nå skal jeg ta og lukke den her først. Da har jeg bare clear context hvordan den er ferdig. Nå har jeg skrevet den på riktig form. Så nå vil han lukke aktivitet 3-4, fikse disse feilene, eller svakhetene, og legge inn F1-F4 inni aktivitet 3-5. Men så vil jeg egentlig hoppe til aktivitet 3-7 først, og da orker jeg ikke å begynne å bytte på det igjen. Så da bare sier jeg hopp til aktivitet 3-7 og gjør den først. Grunnen til det, er det at når du skal diskutere noe, når du skal skrive diskusjon, så skal du trekke kobling tilbake igjen til problemstillingen din. Har du svart på problemstillingen din? Og i hvilken grad har du da svart på problemstillingen din? Det er veldig, veldig viktig at du har tråden i rapporten din. Du har beskrevet en problemstilling tidlig i rapporten, i diskusjon er det da du skal trekker den opp igjen, og har du egentlig svart på oppgavet. Så det er veldig viktig. Og egentlig litteratur også, men vi har ikke gjort litteraturkapitlet. Så her, aktivitet 3.5, nå kommer vi inn med flere punkter i forhold til det vi var enige om her. Men, som sagt, jeg vil gjøre kapittel 1 først. Kanskje vi til og med skulle ha gjort kapittel 2. Men kapittel 2 er litt mer krevende. Vi har jo aldri hørt i nyheteren hvordan AI skriver feil referanser. Så vi må ha en ... En god prosess rundt det å skrive litteratur. Det er ikke bare å gjøre aktivitet 3-8, og så er du ferdig. Da må du gjøre en ganske stor sjekkarbeid, og sjekke om alle kildene er til stede. Så vi skal da lage en egen rutine for å gjøre det. Og en av rutinerne for å gjøre det, det er blant annet å rett og slett, laste ned artiklene. Slik at du er sikker på at de eksisterer. De eksisterer i artiklene. Og det kan være vanskelig, for noen er jo bak en betalingsmul mens andre åpner. De som er bak en betalingsmur, dem må du kanskje gjøre noe manuelt arbeid og få skaffet fra bibliotek og sånne ting for å få lest. Men til syvende og siste så måler jeg at du har en pdf av hver enkelt referanse. Jeg kan nevne.
+
+Speaker 1: Deg at selv om artiklet ligger bak en betalingsmur, så kan du bare google med den exakte tittelen ved Google eller Google Scholar. Og da får du tak i alternative plasser, for de ligger ofte ute i en eller annen versjon, selv om de ligger bak en betalingsmur. Så alle tog er ikke godt selv om de gjør det. Så vi har funnet mange artikler da som Høgskolen i Mållegg ikke abonnerer på, men som andre har likevel lagt ut på nettet da. Kanskje en sånn preprint som det heter, eller på arkivet som det heter. Så det går an å finne det selv om det er en artikler som du egentlig må betale for, så finnes det også muligheter til å.
+
+Speaker 2: Ikke gi opp mailene. Ja, og så tenker jeg også at jeg hadde egentlig planlagt å ta den litteratur- delen over på Skaraft, for å vise hvordan vi gjør litteratur.
+
+Speaker 3: Så.
+
+Speaker 2: Jeg tenker at nå gjør vi den her, Og så gjør vi kapittel 1. Og så tenker vi at vi kan begynne på nummer 2 før vi tar diskusjon. For i en diskusjon skal du både trekke inn problemstillingene dine,- men du kan også koble dem mot eksisterende litteratur og funn. De burde være på plass faktisk før du- Følger gjør diskusjonen når de tenker gjennom. Skal vi se. Da har vi gjort... Han har også kommittet, ja. Og gjennomført review. All right. Da kan vi... En ting jeg har lyst til å si, da. Hvor var det han brukte subagenten han hadde her?
+
+Speaker 3: Da.
+
+Speaker 2: Sier bare, Memory. Dette er en veldig god funksjon. Jeg ønsker at Claude skal huske en ting, slik at jeg slipper å si det på nytt igjen. Det jeg ønsker at Claude skal huske, er at han alltid skal starte en subagent når han skal gjøre en review. Husker du ikke det? Og da kan vi bruke en funksjon som heter Memory, som bare forteller at, ok, legg dette i minnet ditt. Så husk til neste gang du skal kjøre en review av en Ved hjelp av Preview Factskill, så må du starte en egen sub-agent for dette. Det er kjekt, for da vet jeg at den vil huske det neste gang. Så slipper jeg å stoppe prosessen, og så sier det på nytt igjen. Dette er Project Memory. Da lander jeg inn i Claude, tror jeg. Det var litt rart. Jeg skjønte ikke helt hva han gjorde, men han åpna og klåd fila.
+
+Speaker 3: Ok,.
+
+Speaker 2: Der kom han tilbake igjen igjen. Jeg tror at fila var åpen, så det var et problem.
+
+Speaker 1: Man kan gjøre endringer på en fil selv om den er åpen i Viasco? Ikke alltid. Ok.
+
+Speaker 3: Så.
+
+Speaker 2: Langt er det nå her da? Det gjorde den ikke. Fuck, altså. Hvorfor får ikke jeg bort den dritten her, altså? Nå er den på maskinen min og kneler litt. Skal vi se. Han hadde noen problemer med editoren, jeg vet ikke hvorfor. Det jeg vil nå er at han skal endre Claude her. Ser du? Claude. Det er ikke vits å bruke den, men det han har lagt til nå er at når en aktivitet skal reviues med Review Act-skillen, starter alltid en egen subagent. Sånn at han husker det til neste gang. Det er liksom hendelig da. Og så gå midt i det. Så får vi se om noen skal gjøre review av neste aktivitet nå, og så vil den gjøre jobbet. Da tar jeg Clear her. Nå hopper vi til kapittel 1, eller innledning, altså aktivitet 3-7. Trykker på planmodus og kjører på.
+
+Speaker 3: Skulle.
+
+Speaker 2: Jeg kanskje ha primet først? Det glemte jeg. Var litt kjapp i svingen. La oss se hva det kommer til. Det var opp til speeda, altså hva som hadde blitt gjort forrige gang. For nå tok jo Clearer Memory inn, fordi den glemte alt den hadde gjort. Og da er det lurt å trykke.
+
+Speaker 1: Prime først da. Bare tenk noe. Nå sier vi at vi skal gjøre 32 skriver kapittel 1 av grunn av som vi nevnt, fordi vi trenger blant annet problemskriving og sånne ting. Men nå setter vi inn i gang til å planlegge det. Men burde vi ikke da oppdatere den der marknaden filen der, status.md? Slik at det blir på en måte den rekkefølgen som skal gjennomføres? Eller bare lar vi det bare stå litt sånn, og så styrer vi det selv manuelt?
+
+Speaker 2: Jeg skjønner, i overstyrten, det mest, og grunnen var jo det at jeg allerede brukte tid på å rotere disse aktiviteterne.
+
+Speaker 1: Det er greit det, bare slik at vi vet det, så det er greit det. Det var bare.
+
+Speaker 2: For ikke å tape mer tid, egentlig. Egentlig så burde vi gjort endringer her da.
+
+Speaker 1: Ja, det burde kanskje det, men greit. Nå gjør vi det bare sånn, for det viktige nå er å få på plass innledninger der i blant, også problemstilling og antakel og så videre, før vi kan begynne å gå over på diskusjon. Riktig.
+
+Speaker 3: Men nå er det.
+
+Speaker 1: På planmål, det jeg sier, så nå bare planlegge.
+
+Speaker 2: Det da. Ja, ja. Så jeg burde kanskje ha skrevet 3.5 og 3.6 der likevel, men det var litt tjopp i.
+
+Speaker 1: Svingen. Ja, men jeg bare tenker, jeg bare husker det ikke, hvor er det problemstillinga står da? For det står et sted der det er rett store filstrukturer vi har, så egentlig er det bare å gå dit og hente det, og så skrive et bra problemstilling basert på det. For det var jo en del av det som studentene skulle gjøre i fase 1, var det det?
+
+Speaker 2: Det står i project plan. Ja. Det står i prosjektplan for det blant annet. Ja. Og det står også i planfilene. Så det er der du finner det. Vi lagde jo også en proposal der vi skrev problemstillingen. Ja. Jeg tok den proposalen, den er her da, under fas 1, proposal. Den brukte de til å generere prosjektplaner. Ja. Her er målet, ser du. Ja. Så det finnes i planfilene. Så spørsmålet er om man klarer å lese dette her nå.
+
+Speaker 3: Og.
+
+Speaker 2: Jeg ønsker egentlig at den gjør det litt sånn reverse, at den leser også. Det er det vi har gjort. Jeg ønsker at han leser rapportene. Her står det mye, og det er viktig informasjon når du skriver problemstillinger. Slik at ting er i samsvar med hverandre. Det skal han få lov til å gjøre når han er ferdig med å jobbe her. Men jeg er enig i at vi burde bytte om disse aktivitets-ID-ene. Det er bare at det tar tid. Det var rett og slett litt kjapp i svingen.
+
+Speaker 3: Han.
+
+Speaker 2: Bruker mye krefter på planen. Han gjør ingen endringer. Det er ingen endringer her. Nei. Men vi skal klare å få skrevet innledningen nå, før vi blir ferdige i dag. Det må vi gjøre. Ja, og da tenker jeg at neste steg er å begynne å se på litteraturen, og det kan vi gjøre over.
+
+Speaker 1: Påske. Ja, riktig. Så du tenker på å ta litteraturen før... Ja, for vi trenger også litteraturen før vi tar diskusjon. Strengt.
+
+Speaker 2: Tatt best å ha litteraturen på plass når du tar diskusjonen, ja. Det som har.
+
+Speaker 1: Vært litt kult, hvis vi har ett minutt mens vi venter, det er faktisk å skrive ned, det er bare litt som på impuls nå, hva som er rekkefølgen på gjennomføringen.
+
+Speaker 2: Av.
+
+Speaker 1: Rekkefølgen på gjennomføringen Så hva er det vi egentlig gjør først her? Altså, vi har innledning, vi har litteratur, vi har teori, vi har casebeskrivelse, vi har metode og data, vi har modell, analyser, resultat, diskusjon, konklusjon. Så hva er det vi egentlig starter med? Skal vi ta en sånn liten diskusjon, eller har vi tida til det, eller skal vi bare koncentrere oss og bli ferdig med innledningen? Ja da,.
+
+Speaker 2: Jeg ber om å endre disse aktivitetsnummerene ennå for å holde på bare på planleggingen likevel. Men det kan vi nå ta da. Så strengt tatt. Da kan vi nå, mens den her på jobb er, så kan jeg dele skjermen på den andre. Slik at man ser. Poenget er at jeg har hoppet litt. Og det er fordi at jeg har hoppet til den biten jeg hadde vært vanskeligst for studentene. Ja. Først. Men de har, la oss se på, bare ta et bilde av innholdsfortegnelsen. Jeg skulle gjøre det for.
+
+Speaker 1: Deg, nå bare, jeg skal gjøre det for deg, Bård. Jeg er på vei ut å gjøre det. Ja, men.
+
+Speaker 2: Barn her er det, det går fint det. Ja, ok, greit,.
+
+Speaker 1: Greit. Akkurat det jeg gjorde, nå fant jeg ut at jeg tenkte bare å.
+
+Speaker 3: Gjøre det. Sånn.
+
+Speaker 1: Nei, det var et skudd.
+
+Speaker 2: Før vi. Ja, bra. Allways. Og i mellomtiden så tar vi og bytter 3,5 og 3,7 og sånn. Bare slik at vi får det riktig rekkefølge, for det er eldre. Så, hva gjøres nå?
+
+Speaker 1: Altså gjennomføringsrekkefølger, det var det egentlig vi snakket.
+
+Speaker 2: Om der. Ja. Så det vi gjorde, det var at vi skrev prosjektplan, sant? Ja. Med aktiviteter og så videre. Sånn, et cetera. Og så gikk vi rett til kapittel 4. Så denne var den første. Det var det første vi gjorde. Deretter gjorde vi kapittel 5. Det var den. Deretter 6.
+
+Speaker 3: Som.
+
+Speaker 2: Var modellering. Og så var det analyse. Og så har vi nå gjort 5. Så dette var den rekkefølgen vi gjorde ting i her på video. Og så er dette her jo helt blankt. Så spørsmålet er hva skulle vi gjøre nå? Det vi skal gjøre nå er at nå så går vi og hopper opp igjen til innledning. Så skriver vi 6 der, og så er det 7 der. Teori er ikke så viktig. Diskusjon og den. Og så tar vi for eksempel teori senere. Teorien er veldig isolert. Så dette er det vi gjorde. Hvis vi nå ser på en annen, litt mer vanlig måte å gjøre det på. Anbefalt. Det er jo ikke så farlig å gjøre ting i forskjellige rekkefølger, fordi at problemstillingen står allerede i prosjektplanen. Så den er en plass. Nå har vi gjort.
+
+Speaker 1: Det ganske tidlig, bare på hånd på plass, så det er faktisk.
+
+Speaker 2: Veldig farlig. Jeg synes dette her er ganske OK. Og det er fordi at problemstillingen står allerede i prosjektplanen. Så AN har jo tilgang til den. Men et alternativt løp, kan dere tenke dere, som er mer vanlig, Det er slik at dette er nummer én, men et enkelt draft. Det er ikke ferdig. Dere har et midlertidig innledningskapittel. Bare sånn på overordnet nivå. Så er det vanlig å kjøre to. Deretter...
+
+Speaker 1: Altså, du kan tenke på en enkel draft av hva av rapporten, tenker du på, av hele rapporten?
+
+Speaker 2: Hva sa du? Ja? Du stod på pot 1.
+
+Speaker 1: Her, så enkel draft. Draft.
+
+Speaker 2: Av hva? Draft av innledninger, da. Av innledninger, ja. Riktig. Draft. Riktig. Ja, ok. Det er ikke ferdig, da.
+
+Speaker 1: Og det er jo bare basert på problemstillinger og proposer som studentene har i fase 1, så hvilke greier lager draft basert.
+
+Speaker 2: På det? Ja, så du kan ta det som står i prosjektbeskrivelsen og lage et draft av nummer 1 der, det er mulig, det er vanlig. Og så går man gjerne over til litteraturen. Men litteraturen er tidkrevende, og det er ikke den jeg har ansett som viktigst her og nå, fordi jeg vil gjerne gå rett på analysen når det viser hvordan. Så jeg gjorde ikke denne rekkefølgen her. Men jeg synes at begge rekkefølgene fungerer fint i dette tilfellet. Så når denne er ferdig, da vil jeg hoppe til 4, 5, 6, 7, 8, 9, 10. Bibliografien er også på nummer 2, da, pluss biblio. Sånn, når jeg er ferdig der, så vil jeg gå tilbake til 11 her til slutt.
+
+Speaker 1: Det betyr da, Bård, at det som er anbefalt, det er nesten å bare følge et kronologisk lekefølge. Bortsett fra teori, med et par unntak da, for eksempel da, teori da som kommer slutt, og så bibliografi er egentlig fortløpende, vil jeg påstå. Men bortsett fra det.
+
+Speaker 2: Så er det nesten kronologisk da. Ja, nå skrev vi aldri tre her i da, det var noe for irriterende. Så det blir noe feil det da. Ja, det skjønner.
+
+Speaker 1: Jeg. Men det du sier da i disse hovedmeldingene her, det er da at det er nesten, med noen unntak da, som teori, så er det nesten kronologisk,.
+
+Speaker 2: Er ikke det følget da? Ja. Så det er da 3 der, 4 der, 5 der, 6 der, 7 der, 8 der, 9 der. Den er samtidig med litteraturen, så det er 2 der. Og så er det 1, 2, 3, 4, 5, 6, 7, 8, 9. Og så er det 10 teori, og så er det 11 kvullfører. 10. Teori. Og så er det 11. Fullfør innledning. Så det er det siste du gjør. Det er at du fullførr innledningen. Dette er den vanlige måten å jobbe på. Men her ser du at vi hopper litt også. Men dette er den vi er mer vant til. Skal vi se om den har fått byttet. Yes, den har byttet nå, ser dere. Da må jeg bare gå tilbake den her. Jeg har endret navn på, eller ID, 37 til aktivitet 35. Sånn. Bare slik at den vet at den skal gjøre aktiviteter. Så nå er de lett rekkefølge, men nei, i del jo ikke. Ja, vi må bytte skjerm igjen. Ja, bytte skjerm. Der. Så ser dere at nå har mellomtiden, så har jo AN byttet om i riktig rekkefølge.
+
+Speaker 1: Igjen. Ja, bra. Det er ryddigere. Planen.
+
+Speaker 2: Skal gjelde 3.5? Nei.
+
+Speaker 1: Det kan hende.
+
+Speaker 2: At den roter litt da nå. Det er prisen for at I roter. Det er sjeldent A-inn sin feil at det blir rot. Det er min feil. Men la oss se om en skjønner det da. Jeg bare trykker «interrupted» og så skriver jeg bare «les statusfila på nytt».
+
+Speaker 1: Vi begynner å tenke på avrydninga og kommitting og pushing.
+
+Speaker 2: Ja, vi trenger kanskje ti minutter til, så har han ordnet det. Vi får tåle det. Før påska kommer. Hva står jeg? Plan status på nytte. Så bare slik at den ikke roter. Så nå er han straks klart for å gjennomføre 3.5. Der er han ja. Men jeg vil også si at han skal lese prosjektplanen. Og løsningspilene i den.
+
+Speaker 3: Så.
+
+Speaker 2: Jeg vil at man skal lese alt de har med prosjektet, for der står visse målsetninger og hva man skal gjøre, slik at vi ikke går glipp av noe informasjon her. Ja. Da prøver vi å se da. For der kan det jo stå noe som ikke vi har fått med oss så langt. Nå er jo ikke denne oppgaven her sånn veldig scientific i den forstånden at du skal lage en prognose, så problemstillingen blir ganske enkel. Men poenget er å se strukturen. Da har han gjort det, og da kan vi clear context. Det gjør vi, så kjører vi på. Nå begynner han å jobbe på aktivitet 3.5. Da skal det bli spennende å se. Om den gjennomfører review og lukker aktiviteten. Når den skal da kjøre subagentene, om man faktisk kjører subagentene av seg selv. Jeg husker vi hadde det som en sånn.
+
+Speaker 1: Memory. Jeg hadde tenkt på at man skriver en innledning, og så gjør den faktisk, altså gjennomfører reviuen automatisk uten at vi sier det.
+
+Speaker 2: Ja, men at den da starter en subagent.
+
+Speaker 1: Subagent, ja, jeg skjønner at det er noe man kanskje husker på, slik at vi forstår.
+
+Speaker 2: Det blir interessant å se om han klarer å huske.
+
+Speaker 1: Det. Ja, det blir også interessant å se om han gjør det. Han blir grei av å observere om han gjør.
+
+Speaker 2: Det eller ikke. Ja, han har det. Review i subagent står det. Ja, det.
+
+Speaker 1: Står faktisk der, i 8. Nå husker.
+
+Speaker 2: Han det. Så denne memoryen vi hadde...
+
+Speaker 1: Pekk på det, så andre ser det. Jeg så det. Det går nesten ut av bildet nå, hvis vi helt oversteier med Pillar Rewards, så ser vi at review i subagent punkt 8, som nå er ferdig med å gå ut.
+
+Speaker 2: Gjennom vinduet til høyre. Ja, her står det. Det er behagelig å kunne bruke disse små, men utrolig gode funksjonene i Claw, hvor du kan bare huske det. Man har i Codex samme funksjon? Ja, Codex har samme memory. Den heter da Agents. Nå er disse to her ute av sync, og det jeg egentlig bare gjør da, er å trykke Ctrl-A, Ctrl-C, Kontroll A, V, sant? Eller er de to bare helt like? Ja, for.
+
+Speaker 1: Vi sjongler litt mellom klod og kodet, men dere har sannsynligvis bare en A i.
+
+Speaker 2: Å forholde dere til. Ja da. Akkurat hvilken det blir, det får vi se på. Men viktig funksjonalitet er den samme. Da har han begynt å gjøre ting, og jeg skal begynne med reviewen. Da skal han starte en subagent, oppdaterer JSON-filaen, det er kjempebra, til Completed Past og kriteriene. Dette er kjempebra. Started at, completed at. Og da ser dere at da fang jo når vi starta og når vi slutta, eller spesifikt hvilken dag det var da. Slik at vi kan trekke det i prosjektet vårt.
+
+Speaker 1: Da. Da går vi på reporten og ser om vi begynner å skrive noe på her. Det er bare en liten skjæring å se om vi har begynt å skrive noe. Jeg har den.
+
+Speaker 2: Helt sikkert gjort. Her står problemstillingen. Ja,.
+
+Speaker 1: Så er vi allerede i gang.
+
+Speaker 2: Nice.
+
+Speaker 1: Herlig. Og avgrensninger, altså. Yes.
+
+Speaker 2: Antakelser? Nei, dette synes jeg er kjempebra. Dette er ganske kort,.
+
+Speaker 1: Da. Dette der, for eksempel på antakelser, har bare tre ting. Men det synes vi er bra. Kort er bra,.
+
+Speaker 2: Altså.
+
+Speaker 1: Det kan hende det blir litt lengre, da. Men aldri vær redd for at ting er... Altså, ikke vær redd for at ting er kort. Bare ta med det dere mener, og så... Hvor fort er det da for at det blir langt.
+
+Speaker 2: Opp lellen? Dette er midt i blinken. Du skal ikke skrive mer fjasen. Det er det du trenger, på en måte. Dette synes jeg er bra. Unyvariat, det betyr at det er kun tida som er forklaringsfaktor.
+
+Speaker 1: Du har altså case-in-file, altså java, skrift, objektnotasjon. Hva er altså rollen med denne filen? Fordi sikkert alle har hatt IB 160 og har det.
+
+Speaker 2: Helt under huden. Den rollen de har er å være et dataset for prosjektledelsen. Så i stedet for å jobbe direkte med MS Project, som er et litt vanskeligere som er på en måte uleselig. Cloud Code vet ikke hvordan man skal lese en MS Project-fil. Nei, men tok vi.
+
+Speaker 1: Ikke da å lage en markdown-fil i stedet for en MS Project-fil da? Eller var det en JSON-fil vi tok i stedet for en MS Project-fil?
+
+Speaker 2: Nei, det vi gjorde var å vi lagde en Python-fil faktisk, som oversett da til generate-plan.xml. Så vi oversett, vi tar disse JSON-filene våre, Og så oversettet vi den til en såkalt MS Project kompatibel dataformat. Og så importerte vi det inn i MS Project. Og den kan jeg nå kjøre på nytt igjen nå etter at jeg har oppdatert disse JSON-filene. Og det er derfor jeg er ganske interessert i å oppdatere JSON-filene. Vi har altså.
+
+Speaker 1: MS Project, og så bruker vi Python til å lage.
+
+Speaker 2: XML-fil? Ja. Og denne XML-filen kan vi da importere til MS Project. Vi gjorde det siste.
+
+Speaker 1: Gang. Vi har altså en XML-fil der vi kontinuerlig oppdaterer planene, og når vi oppdaterer planene så ber vi Python om å oppdatere oss fra XML-filen og inn i MS.
+
+Speaker 2: Project. Ja, så prosjektfiler da, ikke sant? Vi ser her. Så det vi har bedt dere om å gjøre, det er at dere skal ha en MS Project-fil. Fil, sant? Det er det vi har bedt dere om å gjøre. Problemet med en MS Project-fil, det er at AI har litt vanskeligheter med å lese og endre en sånn.
+
+Speaker 1: Skriv. Ja, det finner vi oss. Ja.
+
+Speaker 2: Klarer dere ikke å lese denne filen så bra? Men enhver MS Project-fil har et dataformat. Det heter MPXML3-formatet. Det er et XML-format. Dataformat. MP, altså PM, står det.
+
+Speaker 3: XML.
+
+Speaker 2: Dataformat som MS Project kan lese, importere. Det som er utfordringen med en sånn XML-filt er at det kan bli veldig store. XML er tjettig. XML er et sånt språk som blir fort veldig stort. Og da vet vi at det å lese store filer, det er ikke så bra, sant? Så det vi gjør nå, vi går andre veien vi. Så det vi har gjort, er at vi startet her nede, så startet vi med et egetdefinert JSON-format.
+
+Speaker 3: Vi.
+
+Speaker 2: Har egendefinerte filer her, som Jenspeiler MPXML. Så de datafeltene som er i det formatet kan også overføres til det andre formatet. Og det vi gjør nå, det er at vi har laget en Python-oversetter, som da oversetter til en file der. Sånn at når vi jobber nå, så Cloud Code, kodex, endrer, oppdaterer, oppdaterer JSON-filene. For den er mindre chatty, og jeg har delt dem opp i mindre filer. Da er det enklere for A1 å håndtere. Så den endrer de. Når vi da vil, så kan vi da bruke den Python-oversetteren til å generere XML-formatet, som er et større, chatty fil. Og så kan vi da importere den tilbake igjen dit. Og disse filene, disse JSON-filene her, de finnes jo i i repositoriet vårt, så her kan dere bare stjelde de filene, og så sier det lag for mitt case, ikke sant? Så kan man gå inn og endre alt sammen og gjøre det for akkurat deres case. Man kan bare tenke på at,.
+
+Speaker 1: Bård, kan studentene bare importere dere G00-eksempelmapper, og så si at, se hvordan det gjordes i dette eksempelet, gjør tilsvarende i vår sammenheng? Riktig,.
+
+Speaker 2: Det er akkurat det jeg anbefaler. Og da har dere også den genererte plan.xml-python-fila, den er også der. Så den er jo bare å kjøre, så vil den da lage den plan.xml-fila. Her er den plan.xml-fila. Denne xml-fila er nå stale, altså den er utdatert, og vil komme mer her. Pluss at denne inneholder ikke... Den er litt enkel, så vi må nesten forbedre den, for at problemet med denne er at den inneholder ikke disse sub-pakkene her. Den har bare aktiviteten som, men den har ikke de enkelte pakkene for å gjennomføre. Så det burde vi hatt med. Det hører med i prosjektet. Så den burde utvides litt av den da. Da er vi ferdige, tror jeg. Ja, bare en.
+
+Speaker 1: Liten ting jeg bare tenker høyt nå. Det vi skal gjøre nå, det er å komme hit og pushe. Men før vi gjør det, La oss gjøre det først slik at vi får den unna. Så vi får ha en liten avslutende kommentar på hjertet før vi gir oss for i dag. Men da ser vi nå at kapittel 1 og innledning av antallet ser ut til å være gjennomført. Og da kan vi bare komme hit.
+
+Speaker 2: Til å kurse. Vi får høre om.
+
+Speaker 1: Vi har fikset det svaket først.
+
+Speaker 2: Jeg ønsker at han skal ordne dem, men ja, nice, ja. Så da ser vi at han er ferdig med kapittel 1, så han kjørte en fikserunde, kan vi si. Hvis vi har rapporten nå, da. Så jeg vet ikke helt hva han har ordnet, men han har hvertfall gjort noe. Om det var noe spesifikt i innholdsfortrengelsen eller innledningen, det vet jeg ikke. Nice. Når den er nå ferdig, så tar vi å pushe, slik at alle kan få endringene sine. Da er jeg kommittet, og da kan vi pushe. Ok, så du pusher.
+
+Speaker 1: Manuelt. Jeg brukte faktisk å få Ainn til å pushe, men du bare går inn i Cloud Code og gjør det sånn. Ja, det er.
+
+Speaker 2: Liksom greit. Ja, noe manuelt må vi fremdeles ha. Nå er vi ferdige?
+
+Speaker 1: Ja, jeg har et spørsmål til slutt. Nå ser vi på planene våre at vi har igjen i dag, og så har vi i slutten av april. Vi har egentlig bare en sesjon igjen, en mandag og onsdag igjen. Så hvordan ser du for deg at vi gjør det framover i forhold til dette, og hvordan skal det tilgjengelige og sånne ting? Tiden går jo fortere, og det er jo ikke lenge igjen.
+
+Speaker 2: Ja, altså jeg tenker at vi starter igjen etter påsken. For nå er det sånn at studenter kan jobbe litt med å komme til det punktet her. Og hvis vi ser i april, så betyr det mandag 6. Da, og onsdag 8. For eksempel. De to dagene der kan vi sette opp. Så vi kan da sette første gjennomgang mandag 6. Da. Nei, det er helgedag det. Da må vi sette onsdag da. Onsdag 8. Ja, for mandag.
+
+Speaker 1: 6. Det er andre påskedager. Det er.
+
+Speaker 2: Det, vet du. Så onsdag 8. Da, tenker jeg. Og da får vi gjort litteraturen. Og så trenger vi sannsynligvis en runde til for å lukke hele greia.
+
+Speaker 1: Skal jeg bare ta å sette opp da? Skal jeg bare ta å sette opp onsdag 8. April? Skal vi ta en 3-timers da?
+
+Speaker 2: Ja, det kan vi godt gjøre. Ja, og skal.
+
+Speaker 1: Vi sette opp noe mer da, eller skal vi bare ta... For det som står på kalenderen da, det er at da er det i slutten av april neste gang, som er da månedag 27. Og 29. April. Skal vi ha noe mellom der, eller skal vi bare vurdere det på slutten av dagen 8. April?
+
+Speaker 2: Vi tror det er 80. Men vi skal se hvor langt vi kommer på den onsdagen, og så setter vi opp derifra, jeg tenker.
+
+Speaker 1: Ja, sette opp derifra. Ok, greit. Men da skal du gjøre tre timer i onsdag 8. April. Ja, så.
+
+Speaker 2: Neste runde så tenker jeg at vi kommer til å bruke tre timer bare på litteratur og bibliografi, for det er ganske omfattende. Ja, greit. Og så tar vi diskusjon, konklusjon til slutt. Ja, og så tar vi da bibliografi, Vi anslår to runder til, to forelesningsdager til, vil jeg anslå.
+
+Speaker 1: Ok, da er vi ferdige for i dag. Tusen takk for å oppmøte folkens. Håper dere har lært noe i dag. Også får dere ha riktig god påske, alle sammen. Takk for i dag, ja. Riktig god påske. Også ses vi rett over påske. Ja,.
+
+Speaker 2: Vi skal dele det med oss. Legg ut melding. Jep. Herlig. Ha det.
+
+Speaker 1: Bra. Takk for i dag.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

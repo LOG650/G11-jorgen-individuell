@@ -1,0 +1,435 @@
+WhisperAI Transcription Report
+
+Title: økt 3 - programmering med KI_ TEAMS live-stream_ (18. mars 2026)_default_775ca40d
+Date: 3/22/2026
+Duration: 1532 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 4
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Den andre er kapittel 7.
+
+Speaker 2: Så har jeg allerede jukset litt, for å bare snakke litt om den. Så så jeg at den ville ha validering mot testdata i kapittel 7-5.
+
+Speaker 3: Da spurte jeg om
+
+Speaker 2: det egentlig ikke burde være i kapittel 8 om resultatet.
+
+Speaker 3: For da tester vi prognoser, ikke sånn som vi fikk.
+
+Speaker 2: Kapittel 7 har kun med analyse og
+
+Speaker 3: estimering av parametre ukjente,- -"mens kapittel 8 er kortere, men har med hvordan prognosen fungerer." Da fikk jeg et spørsmål. Svaret
+
+Speaker 2: på spørsmålet er ja. Men den strukturen blir kapittel 7, rent analyskapittel, mens kapittel 8 svarer på hvor godt traffe modellen på testsetet. Hva ble den egentlige prognosen? Jeg synes faktisk dette er en sterkere struktur enn forrige forslag, nettopp fordi den fjerner tvilen
+
+Speaker 3: om hvor testprognosen hører hjemme. Det synes jeg gir mening. Da blir aktivitetene
+
+Speaker 2: for å fullføre kapittel 7, splitt til dagens 7-3, ridde 7-3 til bare estimering om parameter og resultater, opprette 7-4 for å stoppe kapittel der. Vil jeg komme med en kapp?
+
+Speaker 4: Vil
+
+Speaker 2: jeg legge den ned der? Jeg bare spør om vi skal ha et litt sånn overgangsavsnitt, sant? Som overgangen fra... For
+
+Speaker 3: nå stopper den bare brutalt på kapittel 7-4, da. Ja. Så kapittel 7, det stod det, ja. Kapittel... 7-4, ja. Ja.
+
+Speaker 4: Legg inn
+
+Speaker 2: et kort overgangsavsnitt fra kapittel
+
+Speaker 1: 7 til
+
+Speaker 3: kapittel 8. Ja. Nydelig. Dette ser bra ut. Skjør vi på. Nice. For det
+
+Speaker 2: vi gjør
+
+Speaker 1: nå, det er bare å implementere og oppdatere
+
+Speaker 3: planene
+
+Speaker 1: vi eksekverer ikke forløpig. Nå eksekverer vi
+
+Speaker 3: planene, ja. Implementer planene. Ok, så nå endrer vi på rapporten, da? Ja, det er sånn det er med det, ja. Vi kan nå se det live her ved at den gjør
+
+Speaker 2: ting i kapittel 7-3 og kapittel 7-4.
+
+Speaker 1: Ja, det er litt kult å se det live da, hvis du har opp det der igjen. Da skal det komme ting i kapittel 8 da, hvis du ser på kapittel 8, det er egentlig
+
+Speaker 2: litt å se da. Nei, ikke så mye i kapittel 8, men det kommer
+
+Speaker 3: nytt kapittel 7-4 her, da. Ja, så vi
+
+Speaker 1: får se om det kommer det. Ja,
+
+Speaker 2: dette kapittlet her, 7-3, hva er egentlig et kapitt, alle avsnitt som inneholder
+
+Speaker 3: to ting da, samtidig? Du vil ha
+
+Speaker 2: lyst til å splitte det til 7-3
+
+Speaker 3: og 7-4? Ja. Hva er det man
+
+Speaker 1: gjør da?
+
+Speaker 3: La oss se. Det er
+
+Speaker 2: litt som en holder på med det,
+
+Speaker 3: ja.
+
+Speaker 4: Skal vi se.
+
+Speaker 1: Det
+
+Speaker 2: er lanindel. Her så det skjeddere ting,
+
+Speaker 3: ser du. Ja. Her er 7,4, ja. Ja, der ser jeg det. Ja, nå
+
+Speaker 1: ser jeg det.
+
+Speaker 3: Ja, det er mye bedre. Ja, det ble bedre, ja. Det er enklere
+
+Speaker 1: når
+
+Speaker 2: det er korte, konkrete
+
+Speaker 1: avsnitt, slik at du ikke selser samme
+
+Speaker 3: ting, da. Jeg er enig
+
+Speaker 2: i det. Dette ble bra. Der
+
+Speaker 1: ser du at 8 her kommer, ser
+
+Speaker 3: du? Ja, ja, ja. Dette er bare
+
+Speaker 1: skelettet. Ja, men det gir oss en liten pekepinn på hvordan
+
+Speaker 3: kostnerettningen går. Her skal vi bruke det testdatasettet,
+
+Speaker 2: for vi delte
+
+Speaker 3: opp i 80-20 eller noe sånt. Ja. Skal vi bare prøve oss å bare gjøre...
+
+Speaker 4: Ja,
+
+Speaker 2: jeg vil ha gjort noe sånn, men vi skal ha en sånn review da.
+
+Speaker 3: Til slutt her da. Og det er vel nå sikkert... Vi skal
+
+Speaker 2: etter hvert gjøre en review, og da tenker jeg
+
+Speaker 3: at vi kan få inn litt flere effekter. Fordi at, ja... Fyllet har vel hatt med litt sånne greier. Ser bra ut. Jeg
+
+Speaker 2: synes den begynner litt rett på her.
+
+Speaker 3: Oi. Synes ikke jeg får gå? Ja, jeg forstår. Begynner
+
+Speaker 2: tersetninga med
+
+Speaker 3: figuren, det er ikke så bra. Nei, sånne ting
+
+Speaker 1: kan vi kanskje illustrere etter slutt her, eller skal vi bare
+
+Speaker 3: ta det nå? Ja, jeg synes
+
+Speaker 2: den var litt brutalt
+
+Speaker 3: da. Ja, ok. Jeg liker ikke helt
+
+Speaker 2: titlene. Jeg vil bare ha
+
+Speaker 3: kalt det validering. 24? 24, tenker du på? Ja, jeg vil ha kalt det validering. For det er det som står i planen.
+
+Speaker 4: Ja,
+
+Speaker 1: det ble litt bedre nå.
+
+Speaker 2: Det er sånne små ting som man kan gjøre. Det var litt fine tuning jeg, jeg er enig i det. Sånne åpenbare ting liker jeg å ta der og da,
+
+Speaker 1: men så har jeg en hardig minne. Ja, det er helt greit. Vi skal
+
+Speaker 2: gjøre en sånn uavhengig... Code skal jo da få lov til å gjøre en sånn uavhengig review av hele kapittelet, sant? Så det er greit,
+
+Speaker 3: da.
+
+Speaker 2: Skal vi påkoste oss åtte, eller tenker du at vi stopper
+
+Speaker 1: der? Vi skal gjøre det. Fortsette litt, for vi har tid. Men husk å få en god avslutning, så vi vet hvor vi skal fortsette på måndag. Og så må vi også pushe.
+
+Speaker 4: Ja.
+
+Speaker 2: Da vil jeg avslutte.
+
+Speaker 3: Så jeg
+
+Speaker 2: vil bare at den oppdaterer statusfila og prosjektsfila
+
+Speaker 3: for det vi nå har gjort. Hvis vi skal begynne på åtte, så bør vi gjøre noe nytt. Det bør betyre at den huker av den der også.
+
+Speaker 2: Den der har vi
+
+Speaker 3: gjort
+
+Speaker 2: også. Dokumenteret
+
+Speaker 3: i kapittel 7-4 har vi gjort.
+
+Speaker 4: Det
+
+Speaker 3: hadde den gjort, ja. Det var bra.
+
+Speaker 2: Nå kommer den til å endre. Jeg synes det er viktig å gjøre sånne ting først, slik
+
+Speaker 3: at det ikke blir hengende. Selv om man alltid
+
+Speaker 2: kan vurdere om det er nødvendig, men jeg liker å ha den ryddigheten. Å gjøre
+
+Speaker 1: hva først, tenker du på?
+
+Speaker 2: Ja, dette her er jo litt bug-keeping, det
+
+Speaker 3: jeg gjør nå. Passer på at huket er korrekt og sånne ting. Og her
+
+Speaker 2: står det jo et punkt, da kjører eventuelt supplerer en diagnostisk test for resultatet. Så hvis du ikke har gjort det, så må jeg spørre om det
+
+Speaker 3: er viktig å gjøre det. Ja. Så
+
+Speaker 2: jeg bare spør noe om dette er noe vi burde gjøre?
+
+Speaker 3: Ja. Why not? Skal vi utvide den valideringsbiten her litt nå, da? Ja. Ja. Ja, og det har jo litt
+
+Speaker 2: med det vi oppdaget da, ikke sant? At vi ser det at det er
+
+Speaker 3: en sånn hetere og... Ja, det ser
+
+Speaker 1: jeg. Kvitt støyen forsvinner etter 1974 år.
+
+Speaker 3: Vi tenker at...
+
+Speaker 4: Vi tenker
+
+Speaker 2: at det kan være bra,
+
+Speaker 3: men
+
+Speaker 2: jeg vil bare
+
+Speaker 3: nevne dette. For at du... At vi... Jeg tenker at jeg kan
+
+Speaker 2: vente
+
+Speaker 3: til diskusjonen, men... Ja, men det er veldig bra å spørre
+
+Speaker 1: slik at vi ikke gir for tekke føringer- om hva vi mener slik
+
+Speaker 3: at vi får en reell test om hva AIG mener. Men på riktig nivå, ja. Enig? Ja, så 4 svarer på
+
+Speaker 2: finnes-hetero, og 9 svarer på hva
+
+Speaker 3: det betyr. Vi begynner
+
+Speaker 2: å bruke mye kontekst nå, og nå begynner vi å nærme oss
+
+Speaker 3: det som kalles for kontekstrotta. Du ser
+
+Speaker 2: at vi er på 77 prosent nå. Men du må huske at dette her er en megabyte kontekst, så det er ganske mye da. Vi er på 250.000 tokens
+
+Speaker 3: nå da. Så det er AN begynner
+
+Speaker 2: å bli mettet, ikke sant? Ja. Vi sender inn en bibel for hver gang vi
+
+Speaker 3: sender data, sant? Ja. Og så forventer
+
+Speaker 2: vi at den skal skjønne hver ene linje.
+
+Speaker 3: Så vi kan få litt kontekst for åtte
+
+Speaker 2: nå. Det er på tide å klare
+
+Speaker 3: dette. Når vi begynner på åtte nå,
+
+Speaker 2: så er det viktig å
+
+Speaker 3: klare det først.
+
+Speaker 1: Ja, men det kan være en greie å bare fylle på det du skal gjøre nå, og
+
+Speaker 3: så pushe,
+
+Speaker 1: og så tar vi kveld, og så
+
+Speaker 3: fortsetter vi på mandag.
+
+Speaker 2: Så endrer han litt, ja.
+
+Speaker 4: Ja.
+
+Speaker 3: Supert. Det blir en planlegge først. Nå
+
+Speaker 2: ønsker jeg å gjennomføre de to tingene, for det tror jeg jeg har med kapittel
+
+Speaker 3: 7 å gjøre. Kapittel 7 blir litt
+
+Speaker 2: mer omfattende.
+
+Speaker 3: Da burde vi se...
+
+Speaker 2: Nå er det på plan her nå, men alltid lurt å planlegge, slik at vi får noen spørsmål her. Når vi
+
+Speaker 3: er ferdige med det, så kjører vi på... Jeg er litt redd for konteksten
+
+Speaker 2: nå.
+
+Speaker 1: Ja, jeg skjønner. Den gikk ned fra 77 til 74. Ja,
+
+Speaker 2: det betyr at den leser mye data
+
+Speaker 3: nå. Så dette blir det siste vi
+
+Speaker 2: gjør, og så får vi la Claude Coates gjøre en vurdering neste gang. Da kjører vi på. Det blir siste implementasjonen vi gjør.
+
+Speaker 3: Nå kjører han flere
+
+Speaker 2: tester på andre residual, altså på forskjellige
+
+Speaker 3: biter. Så jeg er ikke sikker på om han- Ikke sikker på, men ... Der kom den, sant? Ja.
+
+Speaker 4: Men
+
+Speaker 2: vi kunne tenkt å ha hatt en tabell på selve testene
+
+Speaker 3: her, da. Ja, det er det. For
+
+Speaker 2: det er jo viktige
+
+Speaker 3: data, det. Det er sånn tabell som
+
+Speaker 2: det er her, med p-verdi og z-verdi.
+
+Speaker 3: Det står det, ja. Kanskje det kommer noe. Der, ja. Det er bra.
+
+Speaker 2: Her har
+
+Speaker 3: vi gjort en test
+
+Speaker 2: om homoskedastisitet, som er motsatt av hetero. Det betyr at det finnes hetero.
+
+Speaker 4: Lm-testen
+
+Speaker 2: gir sterk støtte til heteroskedastisitet
+
+Speaker 3: i residualene. Supert!
+
+Speaker 2: Det
+
+Speaker 3: var bra, sant? For nå visste vi så en ting. Det er følelsene av noe,
+
+Speaker 2: men nå brukte vi en test for å lande det på en måte. Det er ikke noe tvil her. Dataene sier akkurat dette. Her er det helt råske
+
+Speaker 1: data. Det er veldig god vitenskapelig tilnemning etter det her. For dette her er ikke hverken følelse eller elvemål av noen ting som helst. Men nå har vi dokumentert det på en måte som jeg tror har med
+
+Speaker 3: vitenskapelig tilnemmelse.
+
+Speaker 2: Og at der status og planfylling har kommet.
+
+Speaker 4: Dette
+
+Speaker 3: var bra, synes jeg. Det var
+
+Speaker 2: liksom, vi følte at det ble litt lett eller tynt, altså nå tenkte jeg at her fikk vi inn datene for testene. Og også for den her heteroskedastisiteten
+
+Speaker 3: da. Og det er sånn, det som du
+
+Speaker 2: sier Pekka, dette er en mer sånn vitenskapelig,- Bevist, kaller jeg, for det vi ser. Det forventes
+
+Speaker 3: i en vitenskapelig rapport. Hvis ikke, kan du bli utfordret på det.
+
+Speaker 2: Nå er det bare sånn bukkrypping igjen. Du syntes
+
+Speaker 1: at den ikke fikk
+
+Speaker 3: kommitt der, men ja, det gjorde den. Supert. Ja. Da skal han ha oppstatert
+
+Speaker 2: statusen også.
+
+Speaker 3: Det er han, ser du.
+
+Speaker 2: Da har vi igjen dette her, men det er bio kapittel åtte, da. Ja.
+
+Speaker 3: Skal vi ta og pushe, da? Ja, da kan vi pushe. Det er riktig, Pekka. Push. Så er endringene der oppe. Ja, og
+
+Speaker 2: det jeg har lyst til å gjøre
+
+Speaker 1: nå, og det er fantastisk, det er å gå på mysinget og skrive fragbuller for å se om jeg har fått alt det her på eksempel under log 650 og eksempel
+
+Speaker 3: 00- eksempel. For å se om det
+
+Speaker 1: er på med. Skal
+
+Speaker 3: vi se om den er ferdig å
+
+Speaker 1: pushe. Er den ferdig nå, eller er den på?
+
+Speaker 3: Ja, ferdig.
+
+Speaker 2: Ok,
+
+Speaker 1: da sier vi om vi kan pushe. Jeg fulgte politiet,
+
+Speaker 3: så nå må vi komme ned
+
+Speaker 1: her.
+
+Speaker 3: Får A1 til å gjøre det, ja. Sånn, altså, hello, yes. Vi bruker
+
+Speaker 1: å klå den når han responderer,
+
+Speaker 3: da. Yes. Hva sa han? Yes, super yes. Det er for mye tid igjen. Herlig. Da har dere
+
+Speaker 1: det, og da har dere andre det.
+
+Speaker 2: Så på mandag så begynner vi på åtte resultat, og ny diskusjon, og konklusjoner og efterkortet, og så har vi også en del ting vi skal gjøre på bibliografien, men det tror jeg vi må ta en ny dag igjen på. Ja, og det må ikke være
+
+Speaker 3: etter påske. Ja, det tror jeg vi kan
+
+Speaker 2: trygt vente til etter påske med, for det er sånn som vi vil at folk skal gjøre i etterkant, og bare passe på at alle referanser
+
+Speaker 3: er i orden og sånt. Men mandag
+
+Speaker 2: da, Så får vi gjort åtte og
+
+Speaker 3: ni i hvert fall, og kanskje ti også. Herlig.
+
+Speaker 2: Da har vi kommet
+
+Speaker 3: på oss. Da har vi kommet på
+
+Speaker 1: oss i gang, ja. Og da kan vi da påskeferie med god samvittighet etter det. Ja, absolutt. Etter neste uke.
+
+Speaker 3: Ja. Supert. Men da tenker jeg at vi sier takk for nå. Takk for
+
+Speaker 1: i dag, ja. Så snakkes vi på
+
+Speaker 3: mandag. Fekt at vi har noen som
+
+Speaker 2: kommer da, så vi slipper å... Ja, vi henter
+
+Speaker 3: det noen som er i hvert fall. Vi skal prate til hverandre, sier jeg. Vi gjør
+
+Speaker 2: det nok i løpet av dagen til.
+
+Speaker 3: Vi gjør det nok, ja. Ok, takk
+
+Speaker 2: for i dag.
+
+Speaker 3: Ha det bra.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

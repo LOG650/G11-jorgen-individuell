@@ -1,0 +1,231 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - databehandling med KI_ TEAMS live-stream_ (13. mars 2026)_default_32c13d93
+Date: 3/16/2026
+Duration: 2813 seconds
+Language: no
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Velkommen til time nummer to. Da bare fortsetter vi fra der vi startet fra time 1.
+
+Speaker 2: Så jeg spurte A1 hva er det neste jeg skal gjøre. Og så spør han til slutt. Hvis du vil kan jeg også gjøre dette til en konkret sjekkliste- for hva dere må fullføre før dere kan starte på velgårdige estimermodell. Så det tenker jeg er ganske fint. Så ja, jeg gjør dette. Og legg sjekk-listen inn etter garantstatus i statusfilen. Legg gjerne inn alle. Absolutt alle. Også de som ... Fullført. Da får jeg en bedre oversikt. Dette er bare Miele-Pæls oversikt, ser dere. Men disse mindre arbeidspakkerne, de er ikke ... De er ikke med her. Så mens den jobber, så tenkte jeg å vise litt mer. Så det vi holder på med nå, det er jo data-biten. Og i et prosjekt, dere kan jo spørre AN selvfølgelig,- men i rapporten ser det noen plasser der dere skal snakke om datene. Dere skal presentere datene, og så videre. Så da er spørsmålet hvor i rapporten skal dette med databeskrivelsen ligge. Legg merke til at i kapittel 5 står det kapittel 5.1 er 2D og 5.2 data. Så her er det åpenbart noe som skal komme inn. Her beskriver du hvilke dater du har brukt, hvordan du har fått tak i de, og hvordan lesere eventuelt kan få tak i datene om nødvendig. Hvordan er datene samlet inn og så videre. Så beskrive dataene. Hvilke data har du, og hvordan har du fått dem ifra? Så denne bitten skal vi få inn nå, for nå er vi på dataområdet. Men her skal ikke figuren være. Her skal du bare beskrive dataene dine og hvordan de har kommet ifra. Grunnen til at det er viktig å ha et sånt datasett, er at når noen leser en rapport, så må jo datene være veldefinert. Det var akkurat disse datene som ble brukt. Det skal kunne trekkes tilbake igjen nøyaktig hvilke data du har brukt. Og det er veldig viktig. For hvis noen begynner å utfordre analysen din, og så sier de det at det datagrunnlagret var helt feil, Eller så spør de, ja, men forresten, har du datene? Hva er datagrunnlaget her? Hvis de skal tro på hva du skriver, så må de se datene, for eksempel. Sånne spørsmål kan man få. Det skal være
+
+Speaker 1: etterprøvebart da, det er regelen. Og da må datene være tilgjengelige, så det
+
+Speaker 2: kan være etterprøvebart. Ja, og inni 5.2 der, så beskriver du nettopp datene for at man skal kunne etterprøve disse datene. Man trenger det for å ha det med. Så kan vi se. Da hadde den gjort statusen. Her ser dere ... Jeg var dårlig på åene, da. Men det er også for å
+
+Speaker 3: sette den ...
+
+Speaker 2: Jeg får ikke til disse åene, sånn. Men her kan vi da huka, sant? Dette er en enkel AI. Det skreves en måte å gjøre det på. Rens å strukturere data. Nå må jeg påpeke en siste gang at når dere gjør dette, må dere passe på å oppdatere scenariet i Microsoft Project samtidig. Den skal dere levere inn, husk det. Det må jeg bare være veldig tydelig på. At dere skal hver gang kontrollere observasjoner hver måned. Hvis dere har en aktivitet, så heter det det. Og når dere har gjort den, så må dere hukke den av i MPP-fila. Ok, og
+
+Speaker 1: det må gjøres manuelt da, eller?
+
+Speaker 2: Ja, det gjøres gjerne manuelt, fordi at AN er ikke så god på- Men hvis dere har et kompatibelt format, dataformat, så kan dere bruke dataformatet, og så kan dere bare laste inn dataene inn i Microsoft MTP-fila, og så vil det være automatisk. Det var det jeg tenkte kanskje at jeg skulle ta en forelesning på. Det er vi ikke i dag, men at vi kunne ha vist dere hvordan vi gjør det. Hvordan vi kan jobbe med dette her uten å måtte åpne opp projektfila. Men da var jeg forberedt til det i så fall. Så vi får se om det... Ja. Det er ikke som om vi sliter litt, men det er jo... Bare se om det... Nei, det er bare... Det er bare previewen.
+
+Speaker 1: Det er bare previewen som ikke tar plass. Hvorfor har du selv tekstfylla? Har du det her også?
+
+Speaker 2: Nei, den får ikke til her også. Det er litt rart. Nei, previewen får
+
+Speaker 1: ikke til, men tekstfylla ser ut til
+
+Speaker 2: å ha det. Tekstfylla har det, altså. Det er bare måten den...
+
+Speaker 1: Nei, ikke der, ser du. Fullført, ser du det?
+
+Speaker 2: Ja. Han har ikke fått det til,
+
+Speaker 3: da.
+
+Speaker 2: Sånn litt irriterende feil, som vi bare gjerne må ha bort. Men det er ikke så viktig, da, egentlig. Jeg bare synes det er litt rart at vi ikke klarer det. Anyway, det var bare et sidspurt. Så vi skal kontrollere observasjoner per måned. All right. Så data er under 004 her. Sales. Så her er datene. Husk at dere skal bruke CSV-formatet, ikke Excel-formatet. Klare Excel. Det er bare at det er litt tyngre for AN. Det er mye lettere for AN å jobbe med comma-separated-values da, som CSV-file. Så husk å ha det i CSV. Dette var den file jeg akkurat lagde da. Med grafen og sånne ting. Den kom ikke med i serien. Så den bare tok jeg med for byggeriets skyld. Så her er datene. Status. Nei, fortsett til. Ja. Fortsett til. Jeg vet ikke hvorfor. Anyway. Jeg har kontrollert observasjonene nå. Og den er allerede strukturert korrekt. Fra eldre til nyere observasjoner. Er det ikke det den er? Hvis vi ser på Sales, så er det 1964,- og den er sortert fra eldre til nye observasjoner. Huk av i sekken i rommet ditt. Huk av for de to første aktiviteterne. Da har jeg allerede gjort 1 og 2. Noen ganger kan dette være problematisk. La oss si at du har et datasett som både trenger transformering og strukturing- for å få den i den rekkefølgen dere må ha. Datenes rekkefølge er i en viss rekkefølge. For eksempel kronologisk. Det er ikke sikkert at du får ei kronologisk rekkefølge. Det kan være noe helt annet. Og da må dere strukturere denne tidsserien. Kanskje dere må fjerne en hel del uødvendige kolonner og rense på en måte datasettet. Det ligger under de to punktene som I nå har allerede huket av. Og det er fordi at datasettet mitt var veldig strømlinjeformet i utgangspunktet. Det var allerede preppet. Men på langt nær, disse to punktene her, spesielt dette struktureret tidsserien, det kan ta lang tid. Og da er det også en fordel å bruke AI til å gjøre det, fremfor Excel da. Excel er ganske tungvind for å rense data, egentlig.
+
+Speaker 3: Er
+
+Speaker 2: det noen som vet hvorfor AI er tungvind for å rense data? Nei, hvorfor Excel er tungvind for å rense data? Noen som har jobbet med rensing av data. Noen som har erfaring med det i Excel. Det er det jeg bruker å kalle for Excel hell. Det tror jeg da. Det er grunnen til at det kan være litt tråkigt. Ja, bli treig med større filer, men ikke bare det. Når du ser på et datasett, så skjer det at du får masse kriterier- for å plukke ut feilaktige data. Et kriterium er ditt, et kriterium er datat, masse kriterier som skal oppfylles. Og så har du kanskje en million rader. Og så skal du sjekke hver rad for de kriteriene. Det krever kompliserte formler for å gjøre det. Ja. Ikke snakke med meg mens jeg jobber, Bragge. Det vet du jo. Sånn at det å rense data, det er ganske krevende å være i Excel. For du må ha veldig spesifikke kriterier for å rense ut dataene,- som kan være fryktelig vanskelig å beskrive i formler med Excel. Mens et programvare som Python, for eksempel,- gjør det utrolig effektivt. Så da hadde vi gjort det med Python her med A1, hvor vi bare har sagt at A1 skal gjøre det og det og det kravet, med Python også er det gjort. All right. Håper dere skjønte det. Litt mye prat nå, men grunnen er jo at dette punktet her kan i realiteten ta veldig mye tid og kreft av for dere. Det er fordi jeg nevner
+
+Speaker 3: det.
+
+Speaker 2: Vi slipper det, så vi skal nå lage grunnleggende visualiseringer. Det var jo den grafen som vi ser her. Den her. I tillegg vil vi gjerne ha deskriptiv data. Det er typiske ting vi trenger å ha. Så dette er jo noen av målene for korbena.
+
+Speaker 3: Herregud.
+
+Speaker 2: Der er den. Ole, jeg kneler maskinen min litt. Jeg må ha en ny maskine. Du, Pekka, kan du få min, siden din maskine ikke er så sterk? Ja, vi får greie
+
+Speaker 1: med det. Det er forløpig. Er du
+
+Speaker 2: sikker på det? Ja, hvis du får det så. Vi
+
+Speaker 1: har det installert inne på maskinen
+
+Speaker 2: min. All right. Lage grunnleggende visualiseringer. Du skal... Vi skal nå... Lage grunnleggende... ...visualiseringer. OK. Når vi skal nå begynne å jobbe med ting- som vi ikke vet helt hva vi skal gjøre,- Vi vet det, men det er ikke sikkert at de som jobber med det, nødvendigvis, kjenner hva som skal visualiseres her. Da foreslår jeg at man alltid slår på planmodus i AI. Så alle disse AI-agentene har noe som heter planmodus. Plan switch to plan mode. Det må dere lære dere, for det er utrolig bra å ha planmodus. Da får dere en dialog med AN frem og tilbake, der AN kan spørre spørsmål som den er usikker på, og du kan svare. På den måten slipper vi å begynne å generere ting før vi har blitt enige om hva vi skal generere. Så det er veldig nyttig. Hvis vi trykker på planmodus nå, der står det da, planmode. Codecode og gaming har akkurat like. Dere må bare sjekke det opp. Men dette er en veldig sterk anbefaling fremmed, at man slår på planmode når man skal begynne med dette. Planmode betyr at AN gjør ingen endringer på filene deres. Og det er jo viktig, sant?
+
+Speaker 3: Egentlig
+
+Speaker 2: burde jeg hatt en branch akkurat nå, men jeg skal ikke gjøre det akkurat nå. Jeg kan ta branch på neste. Nå er jeg på planmodus igjen, så da kan jeg si hva vi skal. Så må jeg fortelle hvor datasettet er. Jeg trykker bare Enter. Her ser dere fordelen av at denne kodex er ganske kjapt. Spesielt når jeg har satt den på fast modus, som det heter. Det kommer fort av, og det er bare så fantastisk. Jeg går gjerne litt ned på gjernekapasiteten, bare for å få litt fortere svar av og til. For det er marginalt,
+
+Speaker 1: egentlig.
+
+Speaker 2: På de aller tyngste planleggingsoppgavene kan det hende at du vil ha litt mer... Her skal vi nå bære datafasen. Dette var det jeg mente med at den spør spørsmål for å avklare. For AN er jo usikker da. Skal vi generere for hele solavitten? Nei, det skal vi ikke. Vi skal bare se på dataene. For vi skal ikke bare få ut inntatt her. Vi skal ikke vite på forhånd hva svaret er. Så vi skal nå se på dataene. Ingen modell nå. Så det er den der i min verden. Her er det jo viktig at dere velger rett. Slik at vi får på en måte riktig forløp her. Det å ha tatt hele rapporten nå, synes jeg hadde vært for mye i ett steg. Hvor omfattende skal figur- og tabellpakken være? Kompakt pakke. Det synes jeg høres bra ut.
+
+Speaker 1: Er du enig, Per? Som jeg bruker er at hvis jeg er veldig usikker på hva jeg bør velge av alternativene, så spør jeg AI om anbefaling. Man har kommet med anbefaling, og er jeg helt veldig usikker, så bruker
+
+Speaker 2: jeg bare anbefalingen. Ja, trykker jeg til deg. Så da fortsetter vi. Så da planlegger han denne grunnleggende visualiseringen.
+
+Speaker 1: Det som er veldig bra med denne planleggingen er at hvis du selv er usikker på hvordan du skal prompte og kommandere AI, Så starter du bare veldig enkelt, så vil A1 selv komme på med spørsmål som en trenger svar på for å naturlig gå videre. Så planleggingsmodusen og fasene som du bringer inn i nå, det er innmari bra. Hvis du er usikker på hva som skal gjøres, for da vil A1 spør spørsmål, og så tar du stillingen til det. Det er mange
+
+Speaker 2: fordeler med planmod. Ja, og denne funksjonaliteten har blitt ganske kraftig forbedret, siden de som hadde IB 160 faktisk. Så ting går jo fort fram i tiden.
+
+Speaker 3: Når
+
+Speaker 2: man får en plan sånn som dette, Så er det lurt å lese, selvfølgelig. Til slutt så får du da spørsmål. Implement this plan, altså kjør plan. Yes, implement this plan. Og da switchen fra planmodus til defaultmodus. Eller no stay in the plan mode. Og ofte så kjører i to her og gir han litt mer sånn. Konkrete. Konkrete. Konkrete restriksjoner på hva man skal gjøre. Men la oss lese da. Dette her må dere lese. Av og til sier de OK når de har dårlig tid, men når dere jobber med AI, bruk tid til å lese sånne ting. Bruk en kompakt pakke med tre gaffer og to tabeller. 1981, ja. Jeg synes ikke det er noe vesentlig. Seil som en amerisk salgserie, ja. Norsk månesnavn i figurer og tabeller. Her må dere styre sånn som dere vil, men jeg har ikke lyst til å ha månedsnavn i figurans tabellene, for det blir litt mye. Så jeg vil heller ha nummerering. Måned 1, måned 2, måned 3, måned 4. Det er bare mitt forslag. Hva tenker du på det, Pekka? Det er
+
+Speaker 1: vanskelig å se hvor overloaden blir i figuren. Men vi kan starte gjerne med Da skjønner vi automatisk hva NT12 er. Det er litt
+
+Speaker 2: sånn at her ser du måned 1 og så videre. Det er litt samsvar med det.
+
+Speaker 1: Vi må ta stilling til det her med 12 måneders glidende gjennomsnitt. Det høres fornøyd ut i mine ører. Men hvor mye av disse detaljene vil jeg nødvendigvis ha et konkret forhold til? Eller skal vi bare sjå på det? Det er
+
+Speaker 2: det vi tar på vei. Vi trenger ikke være for high tech akkurat her. Anbefale grafer, ja. Jeg synes de to første er ganske bra. Figur 3. Gjennomsnittlig salg per kalender måned som stort bygger om. Jeg synes alle tre var fornuftig. Vi visualiserer dataene på forskjellige måter, og det er bra. De har jeg noe enig i. Her er den allerede tatt med disse deskriptive statistikkdataene.
+
+Speaker 3: Ja,
+
+Speaker 2: jeg synes alt går bra. Så da vil jeg gi en likevel noen høring av det. Vi trykker der no stay in play, continue planning. Så ser vi bare ikke bruk
+
+Speaker 1: Det jeg ofte gjør, og kanskje tidlig bare på å eksekverere det, og hvis jeg ser at det blir veldig overloaded med labels på figuren, så bruker jeg heller å gjøre endringer etterkant. Men det er greit å gjøre sånn som du gjør
+
+Speaker 2: det. Det er to grunner til at du ikke skal gjøre det. Den ene er at det fort tar mer tid, for det er at du spiser sliten og venter på at A1 genererer det. Også må du generere på nytt igjen. Den andre, kanskje viktigste, er at du sløser med tokens. Ja, det er sant det. For da kjører du unødvendig mange. Det er veldig bra å treffe først, da. Ja,
+
+Speaker 1: du har rett i det. Jeg holder på å mikro, og tolker litt feil, og så blir det ikke sånn som du trodde. Det er en balanse som vi blir bedre på etter hvert som får mer erfaring.
+
+Speaker 2: Så det jeg nå sier er at jeg skal lage en ny folder som heter 006-code, der all koden ligger, eller analyser. Kanskje vi skal kalle den for analyser. Analyze. Litt bedre navn. 005-analyze. For alle Python-finne lagere som kjører, husk å bruke package med en uv-penning, og lage uv-plekt i denne folderen. Så jeg vil at koden skal kunne kjøres fra denne folderen, slik at alt er ryddig og fint her. Nå er
+
+Speaker 1: det et poeng at vi bør vite og spesifisere hva UB er for noe. Ja, det
+
+Speaker 2: sa jeg i forrige gang. Det er et av disse programmene man må installere. Det er en Package Manager. Det er den som henter inn alle bibliotekene du trenger å bruke. Erik sa for eksempel at vi trenger Matplotlib for å illustrere grafer og sånne ting, og da er det UV Package Manager som både bruker den, og som sørger for at alt med Python er veldig fint og bra. Python kan være litt rotete til tider, med mange versjoneringer og mange pakker her og der og så videre. UV er et program som gjør alt med Python enklere. Det er bare anbefalt å gjøre det. Det er bare et bakgrunnsprogram som AN bruker. Er det forbindelse med
+
+Speaker 1: visualisering av det du bruker i UV, eller er det generelt bra å bruke
+
+Speaker 2: i UV? For alt som har med Python til å gjøre.
+
+Speaker 1: Alt som har med Python til å
+
+Speaker 2: gjøre, ok. Det er et undergrunnsprogram på en måte, et fundamentalt program som hjelper oss å gjøre Python bedre. Så nå har jeg laget en folder. Lag. Først en Python-fil som genererer. Vi ønsker det. Som lager egne fuldsuppholder i 006. Det burde ikke hete 005, det burde hete 006. Figurer og resultat. Resultat til av hva? Gjerne i form av CSV eller datafiler som kommer ut av analysen. Vi skal jo bruke disse datene videre. Figurer og resultat. Høres det greit ut? Ja. Sånn, planlegger vi videre. Vi er fremdeles i planmodus. Jeg tror nesten, Peko... Tiden går fort her. Jeg tror nesten jeg vil... Jeg tror nesten jeg vil sette opp en sesjon på mandag i Åsøy. Da kan jeg bli ferdig. Kunne du ha skedulert det fra klokka ett? Ja. Ja, tolv egentlig. Tolv er bedre. Tolv til? Til
+
+Speaker 1: tre. Stort sett en måned. Vi ser
+
+Speaker 2: bare at tida ryker, så vi kommer ikke gjennom alt i dag. Så jeg tror vi må sette opp en. Det er viktig å få kommet gjennom alt dette her, slik at folk ser hva vi skal gjøre. Ja, greit.
+
+Speaker 1: Vi kan gjøre det.
+
+Speaker 2: Hvilket format skal skriptegenerer fortelle? Den synes jeg hørtes kjempebra ut. Her ser dere så fint det med planmode. Det er så bra. I love it. Da setter vi opp tre timer på mandag, og så får vi det unna,
+
+Speaker 1: tenker jeg. Ja, skal fikse
+
+Speaker 2: det. Nice.
+
+Speaker 3: Her har vi
+
+Speaker 1: plan.
+
+Speaker 2: Nå kjører vi bare på. Her er det masse filer og grafer og bilder og sånne ting. Supert. Da kjører vi på. Av og til så blir det litt sånn at vi må vente på at Einar gjør jobben da. Det er ikke sånn Ingrid Espel Hovid her, eller jeg vet ikke. Het. Så vi må bare la han gjøre jobben da.
+
+Speaker 3: Der
+
+Speaker 2: kom folderen opp, ser dere her. Den har allerede generert en del ting, blant annet et UV-projekt som en veten må gjøre, og den viten håndterer alt som har
+
+Speaker 3: med
+
+Speaker 2: Python å gjøre. Så her ser dere UV-lock for eksempel, pyproject-tommelfil, Python-versjon, alt det greia der. Det er bare sånn Det er bare lim som dere skal bare la ligge. Det er ikke noe dere trenger å kunne, men det skal være med. For det er det Python og UV trenger for å kunne kjøre koden deres. Her skal dere klassisk bare godtare uten at dere trenger å gå i detalj på å kunne hva de enkelte gjør. Nå har jeg begynt å lage koden for dere. Henter datene, for eksempel?
+
+Speaker 1: Under denne mappa så er det log 650, så er det alle de 20-30 grupperne. Og så er det G00, eksempelvis.
+
+Speaker 3: Er det
+
+Speaker 1: der du ligger? For jeg ser ikke at vi har
+
+Speaker 2: blitt oppdatert. Du må kanskje tusje først. Jo, han ligger der. Men jeg gjør det utenommen.
+
+Speaker 1: Jeg kan ikke se at jeg er oppdatert, men du må kanskje pushe, og så må jeg
+
+Speaker 2: rulle? Ja, skal du få de nyeste endringene, så må jeg pushe, ja. Ja,
+
+Speaker 1: man kan kanskje vente til andre er ferdige
+
+Speaker 2: før vi pusher og gjør det. Det kan være lurt. Men ja, det er riktig. Så hvis vi samarbeider nå, sånn som Lausne sier at en PK har lyst til å gjøre noe her nå, så er det jo viktig for meg å pushe endringene til GitHub. Samtidig at plutselig så kommer en eller annen kid med brusflaske i PC-en din, og så er alt arbeidet borte. Sånn at kanskje det er da. Her har han lagd figurerne, og her har han lagd tabellene med data. Det er ganske fantastisk. Altså, dette er fantastisk. Hvor lang tid måtte vi ha brukt på å lage noe av dette? La oss se på en bild her. Nice. Ganske bra.
+
+Speaker 3: Her har alle
+
+Speaker 2: kjent ut. Ja, gjør det. Det ligger ikke at den ikke får til åene, men det må den kunne klare å ordne. Her er det for å se stigene litt bedre. Her er det gjennomsnittlige per måned. Så her ser vi at det er en tydelig trend,- Tydelige trender. Tydelige sykluser her, ikke sant? Det er det vi vil frem til
+
+Speaker 1: her. Ja, så det er lite salg på seinsommeren, og så er det veldig mye
+
+Speaker 2: i desember. Det var ikke sykluser vi skulle frem til, men det er sesonger, sant?
+
+Speaker 1: Sesonger, ja. Så det er tydeligvis at det er veldig sterke sesonger i desember, og i august er det lite.
+
+Speaker 2: Jeg tror 8. august er typisk lite, da, ser vi. Hva år var det
+
+Speaker 1: du så på her, forresten? Husker du
+
+Speaker 2: det? Ja, det er... Det må vi se på dataen vår, da. 64 til
+
+Speaker 1: 81, da. 64 til 81, så det er knapt
+
+Speaker 3: 20 år, da. Ja. Ok.
+
+Speaker 2: Her kan dere endre noen ting hvis dere ikke er fornøyd med grafene. For eksempel kan jeg prøve å få til at på oversiden viser det årene. Det kan jo være en mulighet. Men det er sånn flikkeri som ikke skal brukes tidligere.
+
+Speaker 1: Observasjonsnummer er jo da, det er da altså månednummer da, så du numererer måneden fra 1964 eller hva da, som måned 1, og så begynner du på måned, ferdig med 64, så begynner du på 1965, og da er måneden 13, 14, 15, 16 og så videre.
+
+Speaker 2: Vi skal ikke bruke for mye tid på sånn flikkeri, men det er en peke å inne på nå, det er at etter at du har kjørt først generering, så kan du flikke det til litt, gjøre små endringer. Var ikke det du tenkte
+
+Speaker 1: på, Vegard? Ja, som gjør at det blir mer forståelig og sånne ting. I
+
+Speaker 2: figur 1 bruker du å endre til måneder. Lag også en akse på toppen med årstall. Hvor du hopper... Hvor mye skal vi hoppe av?
+
+Speaker 1: Ti
+
+Speaker 2: år. Vi kan prøve det. Ti er kanskje litt mye? Ja, ti år i gang. Vi kan prøve det. All right. Dette er bare et eksempel på en endring. Der ser dere at Åra kom. Ja. Han hoppet på... Han hoppet ikke sånn i lille, da, men... Jeg vil ha 1964, 1974, men da hadde ikke 1984 kommet mer, altså. OK.
+
+Speaker 1: Vi tåler den. Ja, vi tåler den forløpig også. Det
+
+Speaker 2: er greit. Og så skriver vi... Åren får han jo ikke til, da, sant? Så husk å få... å bruke norske bokstaver for
+
+Speaker 3: å
+
+Speaker 2: endre alle ... Ja, så han får ikke til å gjøre sånn, så det er jo litt slitsomt. Det er lurt. Da skal vi vise hva vi skal gjøre for oss. At vi ikke gjør den samme feil noen gang. Ja da.
+
+Speaker 3: Det
+
+Speaker 2: har med sånn... Det har med... Ja, da kom også ansvaret. Ja, så jeg
+
+Speaker 1: fikk en T. Hvis du prøver flere ganger, så får du en T til
+
+Speaker 2: slutt. Dette er faktisk veldig behagelig å jobbe med. Fremfor for eksempel å gjukke i Excel, som ofte tar mye mer tid og stred. Jeg synes dette er behagelig. Jeg bare sier hva jeg skal ha, og til slutt får jeg en veldig god graf. Her vil jeg for eksempel fjerne årelabelen der, for det sier seg selv. Og så kanskje hatt med tidsperioden
+
+Speaker 1: her. Ja, så tatt med litt flere. Ikke ti, men kanskje 1970-75, 80-85, altså litt oftere årstavler og sånne ting, men det er små
+
+Speaker 2: detaljer. Ja, jeg skal gjøre det en gang til her, men så skal vi slutte. I fuguren start. Årsaksen. Figurer er viktige, da. De er veldig visuelle i en rapport, så det er viktig å bruke tid med figurer. Det er det du er flink på.
+
+Speaker 1: Jeg er enig i det. Figurer sier veldig mye. Bruk litt tid på dem, både labels og... Få dem fin, det kan være verdt. Du ser hvor enkelt det er å bare si hva du har på hjertet- og forklare det med dagligdagsord, og så gjør AIM dette her for
+
+Speaker 2: oss.
+
+Speaker 1: Vi skal ha paus, jeg skal bare fullføre. Når han får en naturlig slutt, så skal vi ha paus, ja.
+
+Speaker 3: Ja,
+
+Speaker 2: sånn. Vi gjør godt fortsatt litt. Ja, vi gjør det.
+
+Speaker 1: Vi tar en pause nå, ikke sant? Så tar vi en siste time nå etterpå.
+
+Speaker 2: Ja, og så setter vi opp nye timer på mandag, tror jeg. Ja, det er greit. Sånn ja, nå ble det bedre. 65, 70, 75, 80. Kjempebra. Ja, nå ble det bedre. Ja, dette er fine greier. Ja. Herlig. Supert, da tar vi en pause.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

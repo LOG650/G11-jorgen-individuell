@@ -1,0 +1,247 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - skrive rapport med KI_ TEAMS live-stream_ (23. mars 2026)_default_ce5b76b2
+Date: 3/28/2026
+Duration: 3213 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Vi er på timen nummer to, folkens, og vi fortsetter der vi slapp for et pause.
+
+Speaker 2: Ja, så nå skal vi jo da gjøre denne testbiten. Generere prognoser mot testdatasettet og beregne noen måltaler. Her har vi planen. Som vanlig sørg for å lese planen. Men vi bare trykker på Enter.
+
+Speaker 3: Nå.
+
+Speaker 1: Er jeg bare tenkt høyt og naivt her. Det som pågår nå på ECH33, validerer modellen. Det er der vi er nå for å lukke en del av de tre åpne buksene som er der nå. Det er fire vi er ferdige med, og så tre som gjenstår i 3-3.
+
+Speaker 3: Det.
+
+Speaker 2: Som jeg synes er litt rart, er at han trekker inn 81 her, og spørsmålet er om den skal være under resultatet. Men det skal det vel være. Hvor skal denne testbiten være?
+
+Speaker 1: I rapporten, tenker du på?
+
+Speaker 2: Ja. Er det under kapittel 7 som er validering, eller er det 8-1 som er resultater? Og jeg mener at det er under resultater. Sånn at i rapporten her nå, så er det her. Resultatet for testsett validering. Det er der vi skal få noe nytt nå. Så vi er egentlig ferdig med analysen. Validering er egentlig å bare sjekke at antakelsene er oppfylt. Ikke hvordan du gjennomfører i forhold til testdatasettet. Det er hvor god prognosen er.
+
+Speaker 1: Så validering er legitimt til å ha det som en helt eget avsnitt for seg selv?
+
+Speaker 2: Ja, men det er ikke det samme som testdata. Testdata sjekker hvor god du er. Hvor god er prognosen, mens validering sjekker om antakelsene i modellen er oppfylt.
+
+Speaker 1: Ja, og det sier du da er det mest naturlig under eget avsnitt.
+
+Speaker 2: Ja, så her kommer resultatet, tror dere. Resultatet i et nytt kapittel, det er hva prognosen vår gir når vi bruker en.
+
+Speaker 1: Ja, da tar vi utgangspunkt i de 80 prosentene- og prøver å prognostisere i de 20 prosentene.
+
+Speaker 2: Her ser dere at den har regnet ut disse måltalene, og en vurdering av det. Resultaten viser at modellen følger sesongmønstret i testperioden godt,- og ligger tett på de observerte verdiene gjennom store deler av perioden.
+
+Speaker 1: Så det som er saken er at vi bruker 80 prosenten til å predikere siste 20 prosenten. Og så må vi da konkludere med, er den siste 20 prosenten som vi har prognoser på, er den god eller dårlig? Og da tar vi det i forhold til, for der har vi jo faktisk data på den 20 prosenten, det har vi jo i rådata bare, så det er det vi sammenligner med for å konkludere om 80 prosenten prognostiserer 20 prosenten på en god eller dårlig måte.
+
+Speaker 2: Ja, det er der vi bruker måltallet da. Ja, det er måltallet. Disse måltallene bør jo være så lave som mulig, i prinsippet. Men jeg kunne kanskje tenkt på at den kommenterte deg litt mer. Det er viktig å forstå forskjellen mellom analyse og resultat. Det er det vi holder på med nå. Hva skal være i analyse? Hva skal være i resultat? Det må dere være 100 klare over. Forskjellen mellom analysen og resultatet. La meg prøve å ta fram dette dokumentet, men jeg kan skrive med ord- for å beskrive forskjellen enda bedre. Bare ta bort den der. Og sånn. Nei, sånn.
+
+Speaker 1: Og sånn.
+
+Speaker 2: Ja, kanskje vi skal få... Jeg tror jeg tar penna her. Da må jeg bytte igjen, da. Det er lettere. Men det er også en veldig viktig avklaring. Når dere skriver en rapport, så må dere vite forskjellen mellom kapittel... For å si det sånn, kapittel 6, kapittel 7 og kapittel 8. Hva er forskjellen mellom dem? Det er det vi skal prøve å svare på nå. Og la deg få prøve å svare på det ved å fortsette lenger ned her.
+
+Speaker 3: Hva.
+
+Speaker 2: Er forskjellen mellom en modell, To. Analyser. Og tre. Resultat.
+
+Speaker 3: Kapitelene.
+
+Speaker 2: Og grunnen til at dere må vite dette her, for det er et typisk område hvor dere styrer AN, framfor at AN styrer dere, ikke sant? For dette har med den overordne strukturen i rapporten å gjøre, og den må henge sammen på en god måte. Så det er veldig viktig å være klar over analyse, modell, altså det kapittelet der, der og der. Så, modell. Så tok du egentlig den akkurat der jeg skulle skrive, men jeg kan sette den der jeg.
+
+Speaker 1: Ja, det er fint.
+
+Speaker 2: Så modell. Det er en generell beskrivelse av problemet vi skal løse. Hvorfor er det så viktig at det er ordet generell der? Hva er det som er så viktig med det? Slik at andre kan benytte det. For når du lager en vitenskapelig rapport,- så er du veldig opptatt av at andre også skal kunne ta nytte av en generell modell. En annen bedrift som har et tilsvarende problem,- kan da bygge på den modellen, for eksempel. Så den skal være generell. Det er ingen dataspesifikke størrelser her. Det er bare hva vi skal løse. Det husker dere også, hvis dere husker- rapporten vår, så er modellen bare en generell beskrivelse. Det er ikke noe tall der, det er ikke noe data der. Så, analyse. Her bruker vi data, altså treningsdata da, typisk, for Og estimere, gjerne også løse, den generelle modellen.
+
+Speaker 3: Slik.
+
+Speaker 2: At Den blir spesifikk for vårt problem. Da har vi puttet data inn i vårt problem. Da har vi fått en spesifikk problemstilling som vi da løser.
+
+Speaker 1: Ja, og det betyr at vi får da tall på parametrene, kan du si?
+
+Speaker 2: Ja, tall på parametrene. Gjerne også variabler. Litt avhengig av hva slags problemstilling du setter. Så har vi fått en spesifikt modell. Da kan vi bruke den modellen til det den modellen er tiltenkt på å bruke i vårt case. For eksempel lage prognoser. Resultat. Hvordan fungerer den spesifikke modellen- Eller i vår bedrift. I vårt case. Det er da typisk testdata. Prognoser. Da tar vi den modellen vi fikk fra... De henger sammen. Den gir noe der, den gir noe der. I resultatet bruker vi den modellen vi fant via analysen- på testdata og lager en prognose, for eksempel, i fremtid. Det er resultatet av modellen som vi estimerte i steg 1 og 2. Dette er en generell sammenheng, uansett hva slags case dere ser på. Vi kunne bytte ut prognoser med produksjonsplanlegging eller ruteplanlegging. Uansett case har du en modell. Denne generell, så får du en spesifikk modell ved å løse modellen, estimere de ukjente. Når du har fått de ukjente, da kan du bruke den spesifikke modellen på det bruksområdet du skal gjøre. Og da er spørsmålet, hvilke resultat får du da? Hvor god er modellen på de testdataene? Typisk testdata og prognoser du får. Så det er resultatet. All right? Var det tydelig?
+
+Speaker 1: Det var bra å realitere det til oss og innholdsfortengelsen i rapporten.md.
+
+Speaker 2: Det.
+
+Speaker 1: Er en super tase å gjøre skildene. Vi har.
+
+Speaker 2: Nesten kun hatt fokus på 6, 7 og 8. Vi har hoppet over alt det andre, mesteparten. Vi har hoppet over teori. Vi har skrevet litt om casebeskrivelse og metode. Vi har hoppet over litteraturen og innledning. Dette er hjertet. Dette er hjertet i analysen din. Jeg vet.
+
+Speaker 1: Ikke om vi får svare på spørsmålet fra Thomas tidligere om hvordan de bør integrere litteratur i rapporten. Vi snur kanskje litt på rekkefølgen, men dere kan gjerne se på det før dere gjør det andre. Vi fokuserer på 6, 7 og 8, for det er der hovedtinget ligger. Du ser også at litteratur kommer så tidlig som avsnitt 2, kapittel 2. Det er der dere kan få hjelp av A1 til å si litt om kartlekslitteratur, relevant for det prosjektet her nå, og der blir det også selvfølgelig naturlig nok en del i referansen. Og litteratur.
+
+Speaker 2: Er viktig, for det skal jo forklare at det du har gjort er noe nytt i forhold til det alle andre har gjort, og hvor ligger forskningsfrontene? Men det er likevel, og det kan være en nytidig arbeid, men det er likevel et standardarbeid. Det å finne litteratur er ikke noe Det er viktig, men det er ikke den vanskeligste delen i en rapport. Det er 6, 7 og 8. Det er der det stopper opp. Det er der du må ha kunnskap om fagfeltet ditt. Derfor har vi hoppet rett til 6, 7 og 8, for vi vet at det er der det stopper opp for folk. Nå er vi ferdige med 6, vi er ferdige med 7. Og har nå begynt på nummer åtte og bruker prognosen. Nei, bare få stoppe her. Vent litt før du.
+
+Speaker 1: Stopper der, Bård. Gå tilbake to sekunder. Bare gå tilbake to sekunder. Så plager du litt mer. Bare en pittig litt mer. På OneNote-en din. Ja, stopp der, stopp der. Og så tar jeg bare refreshen min, for jeg lagde noe der, så jeg ville bare gjerne kommentere. Litt lengre ned, litt bra nok lengre ned. Der, ja. Så mye tid inn der. Poenget er at... Til venstre ser du innholdsfortengelsen som det var på Compandia akademisk skriving, som dere fikk for en del uka siden. Da ser dere hvordan oppgaver skal bygges opp. Så er det litt mer konkret nå. I Compandia kommenterte vi teorier og resultat i ett avsnitt, mens vi i praksis splittet dem i egen kapittel. Det kan være lurt. Det er altså det samme med 460, analyser og resultater. Vi kommenterte det i et avsnitt, men når vi praktiserer det og skriver rapport, så splitter vi dem opp der nå. Så det er ikke helt, men nesten da, det er ikke helt den en-til-en-korrespondansen mellom Table of Contents i Compendia, sammenlignet av det vi landa på her nå, men det vi landa på her er på en måte veldig sunn for dere, så vi splitter opp det vi kan synes er riktig, og vi må ringe og forklare til noen også hvordan vi da har egen avsnitt på modell, egen avsnitt på analyse og egen avsnitt på resultat. Du ser at 4.6 er jo analyse og resultat. Det er best å splitte dem opp i praksis, selv om vi Compendia kommenterte dem under et underavsnitt. Vi bare nevner det som en kommentar slik at dere ikke blir forvirret. Ja,.
+
+Speaker 2: Det er bra. Og bare så dere hører det, denne teoribiten der er vanligvis ikke med i vitenskapelige rapporter, eller publikasjoner. Du antar gjerne at man antar. Leser. Kan teorien.
+
+Speaker 1: Ja, for det at det oftest ikke er vitenskapelige journaler. De er ikke lærebøkker. Du skriver på et publikum som- er i fagfeltet ofte. Og de som ikke er det, de må leses opp. Du blander ikke inn lærebok-temaet i teori som regel. Så.
+
+Speaker 2: Det vil jeg at dere skal være klare over. Teorikapitel er vanligvis ikke med. I hvert fall ikke i videnskapelig publikasjon og sånne ting. Til nød kan det bli et appendix. Men det er derimot ganske vanlig bachelor- og masteroppgave at man har et teorikapitel der. Sånn at det er jo en liten forskjell mellom en bacheloroppgave og en masteroppgave. – Kontra en reell rapport som dere skal levere. Og det vil jeg at dere også skal huske på – – hvis dere skal havne i en situasjon i en jobbsammenheng – – der dere skal lage en sånn rapport, – så må dere vurdere om dere skal ha med teorien der eller ikke. Eventuelt legger dere i et appendix. Så vi tar den med fordi dette her er tilsvarende bacheloroppgave. Men en profesjonell rapport har sjeldent teori i seg. Det antar at leseren allerede har kunnskapen om det. Da kan jeg hoppe.
+
+Speaker 3: Hvis.
+
+Speaker 2: Vi går og ser på analyse her nå,- -.så ser vi de parametrene som beskriver modellen vår.
+
+Speaker 1: Og.
+
+Speaker 2: Jeg kunne egentlig tenkt meg å bare sette modellen her i, altså. Så jeg har lyst til å be Einar om å fikse det, da. Skriv opp den spesifikke modellen med tall.
+
+Speaker 1: Da blir det mer konkret å forstå mer på det jeg holder på med.
+
+Speaker 2: La oss planlegge på det nå. Det vi savner her er å se hvordan modellen ser ut. Litt i samme tråd som denne biten her. Her er det veldig generelt. Dette er modellen, husker dere? Denne generelle Cerimo-modellen. Den er jo komplisert, og her skal vi ha en spesiell en, en specifik en, som vi har estimert oss fram til. Men den står ikke her, sånn rent matematisk, så det tenkte jeg at vi kunne hatt med.
+
+Speaker 3: Der.
+
+Speaker 2: Ja. Vi legger inn endringer. Her ser vi at den kommer opp med tallene, 0,8217 og så videre. Så da bare sier vi ja til det. Nå må vi legge inn det her en plass. Da kan vi relatere dette her bedre til det jeg sa, med at vi får en spesifikt modell. En modell der våre data har blitt brukt, og vi har estimert de ukjente og fått tall på dataene. Her ser dere den spesifikke modellformen. Her ser dere tallene, og det består av ett, to, tre leder. Fyre leder, egentlig. Så denne 1ET-1 betyr at den er autoregressiv. Altså, hvordan man skal tolke denne? Det kan vi også skrive. Vi skriver også i samme avsnitt en tolkning med ord av...
+
+Speaker 3: Ligningene.
+
+Speaker 2: Og parametrene. – Av modellene.
+
+Speaker 1: – Jeg kunne tenkt meg å ha hatt en ligningsnummer på hele rapporten.
+
+Speaker 2: – Ja, men det er vanskelig å få til her med markdown. Hvis du vil det, så bør du gjøre det når du oversetter til slutt.
+
+Speaker 1: – Ja, greit. Jeg kan ta det til slutt i så fall. – Skulle.
+
+Speaker 2: Vi også ha... Så den har jo denne B-operatoren her, som kan være litt vanskelig å tolke, for dem som ikke kjenner til det. Her har vi jo autokorrigerende, altså moving average. A og R står for autoregressiv, og MA står for moving average. Disse epsilonene er jo moving average i delen, men disse B-ene har jo med den autoregressive delen å gjøre. Se om det ... Dette er bare en veldig matematisk form å gjøre det på, mens jeg kanskje rytter den ut etter også en ... Her ser dere hvordan det begynner å skreve ... Når B-operatoren skrives helt ut for modellen følgende spesifikke form, der at den er avhengig av ... Tidligere målinger. Autoregristring betyr at nymåling er avringen av tidligere måling. Eller tidligere optimasjon.
+
+Speaker 3: Nice.
+
+Speaker 2: Og så har vi kanskje lyst til å sette disse settverdiene over på andre sider, siden det er historiske observasjoner. Den vi er ute etter, det er å sette til det neste prognoseret. Jeg tror den kommer til å bare bytte om her.
+
+Speaker 3: Sånn.
+
+Speaker 2: Nå har jeg tolka modellen til denne også, hvilket jeg synes er bra. Altså, hva er det den egentlig sier, sant? Den er E12, da. Og E13, altså T12 og T13, det er sesongen, da. Mens E3 og E3-1, det er økninger,.
+
+Speaker 1: Da.
+
+Speaker 2: Ja, men jeg ser at den kommer først med ligningen før tabellen. Det burde vært omvendt da. Oi.
+
+Speaker 3: Vi tar.
+
+Speaker 2: Den bare for hånd. Sånn. Vi vil at den først kommer talla, samt så kommer ligningen i kjolen. På lagrenn. Jeg vil gjerne at du snakker litt mer om hva som er sesong og hva som er... Hva.
+
+Speaker 1: Som.
+
+Speaker 2: Endrer inn. Ja, hva som er sesong. Her er det mange ledd, og de ledda beskriver forskjellige egenskaper ved prognoser. Den ene er en trend, den andre er en- Sesong, og den tredje er auto-regresjon.
+
+Speaker 3: Der.
+
+Speaker 2: Ser det bra ut. Jeg kan godt forstå at dette kan kunne ha vært litt vanskelig- for dem som ikke er vant til denne type ting. Men nå tar vi i hvert fall med. Skrive med ord, det er ikke så bra. Bare skrive.
+
+Speaker 3: Her.
+
+Speaker 2: Står det nøyaktig hva de forskjellige ledder gjør. Leddet ZT-1 representerer at den løpen er ikke sesongmessig i utviklingen fra måned til måned. Leddet Z-tallet representerer sesongsporet, for de i det ordre. Rekket siffra som et korreksjonsled. På støysiden beskriver jeg en kortsiktig, ikke sesongmessig korreksjon,- men en sesongmessig korreksjon. Dette er bra. Her tolker du prognoserne. Så epsilonen.
+
+Speaker 1: Er det støy, da?
+
+Speaker 2: Ja. Det er på en måte moving.
+
+Speaker 1: Average ledder. Ja, og så epsilonene er på en måte støy, mens Z-ene er av de reelle sesongene. Ja, det.
+
+Speaker 2: Er autokorrelasjoner, som de kaller det gjerne. Avhengigheten av tidligere målinger. Z er jo observasjoner. Dagens observasjon er avhengig av tre tidligere observasjoner, nemlig forrige. Den tolv måneder tilbake, og den tretten måneder tilbake. Den tretten kommer av en sånn differensiering. En korrelasjon, en differensiering, altså I-nya rima. Men i tillegg så har du støyledd, som også beskrives, både på... Støyene på samme tidspunkt?
+
+Speaker 1: Ja. Så du sier at Z-planen er på samme tidspunkt som epsilonen?
+
+Speaker 2: Ja, ja, ja. Den fulle.
+
+Speaker 1: Spørsmålene. Den er ikke helt faktisk. T minus en, og T ... Jo, det har den. Så Z-en og epsilonen har samme tidspunkter. I tillegg er det større enn de på aktuelle tidspunkter. Kanskje vi skulle tatt epsilon T over på antre siden? Nei.
+
+Speaker 2: Epsilon t er jo et normalfordelt ledd, med den sigmaen der. Ja, men.
+
+Speaker 1: Du ser det der at det som er på anstellsiden er jo t i nuet, t. Men det som er på høyre siden er foregående resultater som er bak i tid, bortrett for epsilon da. Ja. Og derfor tenkte jeg kanskje at vi kan tenke til å ha med nå-tiden og gjøre t til hverandre siden, og sammen ha med ... Ja,.
+
+Speaker 2: Men det står jo t minus en, og det er fortid, da. Ja, OK, greit. Så dette er jo t representert i dag, sant? Eller neste stund.
+
+Speaker 1: ... Jo, men vi ser den epsilonen her som står alene, epsilon t, på.
+
+Speaker 2: Høyre siden. Ja, den, ja. Den bruker egentlig å stå til høyre som et støyledd i nåværende. Så den bruker egentlig å stå til slutt. Men vi kan bare beholde den sånn. Det viktigste er at vi tolker det. Du ser at han tolker ikke ET, han tolker bare ET-1 og så videre. Etn er i prinsippe normalfordelt med null sigma. Det.
+
+Speaker 1: Er generelle tilfelligheter som ikke kan skrives til sesong. Altid litt kvitstøy eller fluktuasjoner vil du ha, uansett om det overliggende er sesongvariasjoner.
+
+Speaker 2: Det er en korreksjon. Dette blir i hvert fall bra. Nå fikk vi inn både eksplicit i modellen og en tolkning av den, så det var en fordel. Så skal vi gå til resultatene. Her har vi brukt den modellen til å generere prognoser. For testsetter. Ganske bra. Her får vi en ... Samtidig ligger prognosekurven gjennomgående noe over faktisk salg. I 41 av 42 måneder er prognosen høyere enn observert. Ja.
+
+Speaker 3: Ja.
+
+Speaker 2: Så det er en overestimering her, og det er litt interessant å ... Den skal vi da diskutere i kapittel ni. Engnethetsdiskusjon, den synes jeg var et rart navn. En klassisk AI-navn, så jeg ville bare sagt «diskusjon». Det er lurt å gå over språket når du er ferdig. Selv om vi ikke har gjort språkvask enda. Men at du fjerner sånne klassiske termer, som er litt kompliserte begrepp. Da skal vi sjekke om... Da spør jeg bare hva gjennomstår av 3-3. Vi slår på plan mode ofte, ser dere. Det er en veldig god ting å gjøre. Gjør du det manuelt,.
+
+Speaker 1: Eller er du permanent i plan mode?
+
+Speaker 2: Jeg gjør det manuelt, så jeg har en huskeregel i her, som gjør at jeg skal huske det. Nå bare spør jeg om det er noe som mangler i 3.3. Skal vi se her. 3-3. Review har ikke vi gjort,.
+
+Speaker 1: Ser du.
+
+Speaker 2: Så faktisk 3-2 er heller ikke ferdig, for vi gjorde aldri en review av den. Det er litt interessant. Så vi har faktisk en review vi skal ha gjort tidligere. Men denne er jo ikke begynt å huke av ennå, så her må vi begynne å huke av litt da. Ja, så nå skal vi gjøre litt ... For anleggingsaktiviteter som så opptatt er det. Ja, så den er jo 3.3 også pågående, for vi har ikke gjort reviewen da. Men jeg ville hvertfall at den huket av her i... Ja, han.
+
+Speaker 1: Skal huket av noka nå på 3.3, som han sikkert, ja, skal gjøre nå. Han er ikke helt opptatt av 3.3, mener jeg det nå.
+
+Speaker 2: Ja, så vi må gjøre en refuel for den lukkes. Men jeg vil gjerne at den huker av disse punktene vi har gjort nå. Ja, det gjør vi det. Så vi burde ha gjort en «review», ja? Det betyr at jeg må ha en annen modell til det, da. Jeg må ikke ha det, da, men jeg kan bare bruke kodex. Bare at jeg må ha en annen kodexsesjon, da. Skal jeg gjøre det. Ok,.
+
+Speaker 1: Ja. Da er det nok å bruke samme A1, men du bruker bare en annen sesjon, eller er det tilstrekkelig?
+
+Speaker 2: Ja, bare slik at den ikke er biased av sitt eget arbeid. Du trenger ikke.
+
+Speaker 1: Ha to AI'er for å gjøre dette, du tar bare to forskjellige sesjoner.
+
+Speaker 2: Deremot bruker du en annen AI, så får du Litt mer spredning. Jeg tror du får en bedre review da hvis du bruker en forskjellig AI. Ja, det kan hende. Enn hvis du bruker samme.
+
+Speaker 1: AI. Ja, jeg tror jeg bruker de.
+
+Speaker 2: Bare igjen. Ja, så disse AI'ene er jo litt biased. De er trent på en spesiell måte og sånne ting. Sånn at en ny kodekssesjon vil være mer positiv til en annen kodekssesjon enn for eksempel GloVe. Ja, det.
+
+Speaker 1: Ser jeg på med. Vi kan jo.
+
+Speaker 2: Bare gjøre det, kanskje. Vi kan starte klåd. Men det som er problemet med det, selvfølgelig, er at det krever- at dere har tilgang til to modeller. Det kan vi ikke forvente. Så det.
+
+Speaker 1: Er greit at dere bare tar enda samme A1, men to forskjellige sesjoner?
+
+Speaker 2: Ja, noen bruker klåd for den gangen her, men i prinsippet så... I prinsippet så kan dere bruke kodex på nyttjan her da. Så er jeg klar til å gjøre igjennom for review her da. Nå var han på vei til å gjøre en review search. Det skal han ikke gjøre. Da er det lurt å... Da er det veldig lurt å... ...Kommitte, for da kan du si til Claude å lese siste kommitt, sant? Ja. Og på den måten... Hva.
+
+Speaker 1: Du gjør, da, er å trykke på den kommitt-knappen der. Den. Ja. Og da lager han, Claude Skjøla, en liten sånn korttekst som beskriver en tekst om hva som har blitt gjort, hva som har blitt kommet.
+
+Speaker 2: Hit da. Så, les status, sånn noe. Det er siste kommet hit. Og les git-historik for akt 3-2. Nå gjør jeg den der først, faktisk. Ok. For den mangler.
+
+Speaker 1: Ja, ok, greit. Du skal nok ha en siste,.
+
+Speaker 2: Ja. Og skrive. Og lag og gjøre.
+
+Speaker 1: Gjennomfører en video.
+
+Speaker 2: For fakt 3-2. Hadde ikke vi et format?
+
+Speaker 1: –.
+
+Speaker 2: Der er det «reviews», sant?
+
+Speaker 1: – Ja, ja.
+
+Speaker 2: – Dere er to.
+
+Speaker 1: Nå som blir starta, spør jeg. – Ja,.
+
+Speaker 2: Vi skal bare sette den i gang. – Ja. Vi setter også planleggingsmodus her første gang, for det kan være noe A1 ikke forstår, og så spør den da. Det er generelt veldig lurt å ta planmode så lenge du har tid til det. Og min erfaring er at du sparer tid på det, fordi hvis du kjører en planmode, så vil gjennomføringen gå fortere enn hvis du ikke gjør det. Og så er sjansen for at du treffer rett på første ganske god. Vi kan ta pause der, for nå, Cloud Code bruker lengre tid. Å kjøre sånn 2-3 Explorer Agents og sånne ting, som dere ser der. Så den tar tid, så da tenker vi at vi tar pause igjen, og så ser vi hva... Ja,.
+
+Speaker 1: Og jeg håper ikke at det kommer.
+
+Speaker 2: Noen spørsmål.
+
+Speaker 1: Som stopper alt nå, da. Bare ruller det av, går det? Kanskje,.
+
+Speaker 2: Jeg vet ikke. Ja, jeg følger jo med, da. Men vi tar pause, i og med det.
+
+Speaker 1: Ja, det er greit.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

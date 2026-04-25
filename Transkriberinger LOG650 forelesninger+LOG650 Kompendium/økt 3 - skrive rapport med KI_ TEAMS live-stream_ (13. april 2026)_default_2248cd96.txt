@@ -1,0 +1,155 @@
+WhisperAI Transcription Report
+
+Title: økt 3 - skrive rapport med KI_ TEAMS live-stream_ (13. april 2026)_default_2248cd96
+Date: 4/20/2026
+Duration: 844 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 2
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Vi er i gang med tredje og siste timen.
+
+Speaker 2: Det siste vi gjorde var å lage en review, samt gjøre de review-bitene som den fant. Den gjorde en review av seg selv, men vi har passet på å starte en helt ny sessjon, så vi har nok glemt at det var Claude som gjorde det selv. I mellomtida heller vi på nå å fullføre review av discussion, så den vi så på nå var jo theory. Og i mellomtida har jeg lyst til å se hva som har blitt gjort her. Så her inne på rapporten ser vi at den gjorde en endring der. I tillegg så gjorde den litt endringer her, og litt endringer der. Som følger rebuild. Her kan dere gå inn og se på hva rebuild gjør. Da tar jeg å laste opp den. Jeg laster opp alle de faktisk. Skal vi se hva den gjør på status. Har da gjennomført review, ser dere. Nice. Her er selv reviewen, hvis dere vil se den. Ganske omfattende. Det er også veldig lærerikt å lese disse reviewene, for da kan man se hvordan den tenker i forhold til hva den mener er en bra vitenskapelig artikkel. Som sagt, så vil jeg her ha Brukt best practice, for eksempel. Bra. Her står det om styrkene, for eksempel, i kapittlet. Styrker. Og så skulle det vel være noe svakhet her også, men kanskje. Det er til så. Styrker. Og ingen svakhet her da. Språk. Figurer, ja.
+
+Speaker 1: Der står det svakheten.
+
+Speaker 2: Hvor er den? Der, ja?
+
+Speaker 1: Ja, den står ikke forbi.
+
+Speaker 2: Her står det svakheten, ja.
+
+Speaker 1: Her står det svakheten, forbedringsportplaget.
+
+Speaker 2: Ja. Så det er bare småtterier, da. Det ser vi. Alvorlighetsgrad er jo lav, sant, ser vi. Men... Devil's in the details, er ikke det man bruker å si. Denne skjønner seg ganske bra. Presiserer frihetsgradet for Ljungboks i Sarima-kontekst. Det er sånne små ting som virkelig kan gjøre en forskjell opp.
+
+Speaker 1: Skal vi be AI'en gå gjennom så svakheten har forbedret den?
+
+Speaker 2: Han har allerede gjort det. Jeg har allerede gjort det, ser du.
+
+Speaker 1: Ja, for det ligger i det. Riktig. Review og gjennomføre forbedringer.
+
+Speaker 2: Alle forbedringene er gjennomført. Her er det en oppsuring av hva som blir gjort. Skal vi se hvordan den står til her. Yes. Og så sier vi bare gjennomføre endringene.
+
+Speaker 1: Jeg tror ikke det her har drevts om igjen. Det har drevts om diskusjon. Diskusjon da, ja.
+
+Speaker 2: Ja. Så da begynner vi å nærme oss slutten her, men i mellomtida så tar jeg og komitter alt dette, slik at jeg får en ren komitter.
+
+Speaker 1: Man må ikke vente til det er ferdig før det er kommittet?
+
+Speaker 2: Nei, for nå er det kommittet i det som vi allerede har gjort med theory.
+
+Speaker 1: Nå er det ikke planlagt i to ganger.
+
+Speaker 2: Thomas har et spørsmål derimot. Dere nevnte at sensorveiledningen skulle deles før peer-to-peer. Når blir den tilgjengelig? Ja, den blir jo tilgjengelig når du har fått tilordnet- en peer da, kan du si.
+
+Speaker 1: Det første og viktigste i noen meninger er det vi må diskutere, men jeg vil ta det i litt rekkefølge da. Skal ikke ha lyst å bli ferdig med det her, men vi må også diskutere at dere må få tilgang til den brukeren, klådbrukeren, som Boringe har opprettet for dere, og som høyskolerne betaler, for den koster jo 2500 kroner i måneden, og vi har laget to sånne brukere, så dere ganske kan få tilgang til klådkode. Men det vil ikke ta detaljen her før vi er ferdige med dette her, så kan vi ikke blande ting. Så la oss bli ferdige med det her nå, og så tar vi det praktiske her på slutten av timen.
+
+Speaker 2: Ja, men dette spørsmålet var egentlig noe annet da.
+
+Speaker 1: Ja, det var det. Men det kommer jo etter, PR kommer etterpå der igjen, mener jeg. Først må han få tilgang til Claude, og så må han begynne å skrive rapporten, og så etter han har ferdig skrivet rapporten, så er det PR. Og da kommer samtaleveiledningen, slik som Thomas spør om det, helt rett. Men vi må først bli ferdige med dette her, og da må vi først få tilgang til Claude. Så vi må ta det i rekkefølge, men vi skal prøve å få det så fort som mulig til dere trenger.
+
+Speaker 2: Så svaret på spørsmålet, når blir den tilgjengelig, det blir ved neste samling i slutten av april. Så svaret her ved neste samling, det da kommer ut med meg. Bare slik at det er klart. Her gjør han en del endringer, forbedringer. Vet du hva som hadde vært artig, Pekka? Å sende til slutt denne til gradering av en ekstern sensor. Bare for å se hva vi har fått.
+
+Speaker 1: Ja, å sette bort en ekstern sensor, ja.
+
+Speaker 2: Det hadde vært artig. Han gjorde en del endringer her da.
+
+Speaker 1: Det er bra det.
+
+Speaker 2: Men jeg tror ikke noen sensorer har lyst til å være forsøkskaniner. Så det er vanskelig å få til.
+
+Speaker 1: Ja, det er litt arbeid da, og det er faktisk ganske mye å lese gjennom da.
+
+Speaker 2: Ja, men klue er det at du skal egentlig ikke vite at det er gjennomgjort av en AI da, for du kan bli litt biased hvis du vet at en AI har skrevet det da.
+
+Speaker 1: Ja, ja da.
+
+Speaker 2: Så det blir litt sånn lureri da, så vi kan egentlig ikke gjøre det.
+
+Speaker 1: Nei.
+
+Speaker 2: Men vi kunne for eksempel ha kjørt en... Vi har jo tenkt å bruke disse... Masterkriteriene som ble laget. Da tenkte jeg at vi kunne be flere uavhengige AI om å gradere for oss i forhold til den situasjonen. Da er jeg ferdig. Har da skrevet sjelve Previewen har satt opp at det er ferdig, og gjorde noen endringer i rapporten. Oi, ganske mange endringer, ser dere.
+
+Speaker 1: Ja, men det er greit det.
+
+Speaker 2: Så det er fint. Så da tar jeg å... Kommitte det.
+
+Speaker 1: Ja, nå gjorde du det manuelt der, da. Du gjorde ikke AI til å... Nei.
+
+Speaker 2: Men det var en AI som skrev meldingen, da.
+
+Speaker 1: Ja, ok. Ja, for du gjorde ikke AI til å kommitte, men du...
+
+Speaker 2: Ja. Riktig fint.
+
+Speaker 1: Var du gjort av pusha? Nei?
+
+Speaker 2: Ja, det jeg gjorde var at jeg trykket på den der. Generate commit message. Litt i sammen.
+
+Speaker 1: Ok.
+
+Speaker 2: Og så kommitte jeg.
+
+Speaker 1: Ok. Så du har kommittet også?
+
+Speaker 2: Ja, så jeg kunne like godt bare bedt Einar om å gjøre det da. Generelt sett så synes jeg det lurer egentlig å be Einar om å gjøre det, for den har jo all kontekst da.
+
+Speaker 1: Ja, det er akkurat det. Det er min regel. Men kan vi ikke bare se nå om vi er ferdige? For vi har litt administrative ting på hjertet før vi avslutter for i dag. Kan vi ikke bare se om vi er ferdige nå?
+
+Speaker 2: Ja, vi er ferdige nå.
+
+Speaker 1: Og så må vi komme hit og pushe dette her.
+
+Speaker 2: Så da skal vi ta og åpne med den andre igjen da. Office Europe. Der. Her har vi fått inn referansene, ser dere? Ååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååååå Her er ny selve diskusjon. Veldig bra. Ordentolk og sånt, her må vi selvfølgelig lese over. Det har vi ikke tid til nå, men vi ser det begynner å bli ganske omfattende sak. Så vi har nå gjennomført teori med fem delavsnitt, og diskusjon med seks delavsnitt. Veldig bra. Dette har blitt skikkelig greier. Det vi mangler, det er litteratur her, innledning, konklusjon, og fullføre bibliografien selvfølgelig. Og hvis vi hadde noe å vedlegge, det husker jeg ikke.
+
+Speaker 1: Men kan vi bare ta, da vi kommer såpass langt, da kan vi ikke bare ta og pushe noe, og så har jeg et par administrative ting på hjertet.
+
+Speaker 2: Ja, da er det pushene, så da kan du bare...
+
+Speaker 1: Ja, super. Da har vi kommet så langt da vi pusha, og da kan dere bare pulle, folkens, slik at dere ser dette her, hvis dere har lyst til å stå litt på det. Så er det greia. Nå er vi altså i midten av april. Og de har da enda en halv måned på seg, ikke det, til å gjøre selve rapporten. Og de kan ikke begynne å gjøre ting nå før de har fått disse der kronkodbrukere. Det kan være at noen farer seg fra før, men i utgangspunktet så har de ikke tilgang før vi gir dem brukeren.
+
+Speaker 2: Jeg tror det er mange som har begynt å jobbe med det, ja. Men det koster jo penger og sånn, da. Så det er bra om vi får ut de avgjengene så fort som mulig.
+
+Speaker 1: Ja, altså det som skjer nå er at I&U har litt press på oss da, Bård. Vi er nødt til å få ut de brukerene, for vi har opprettet to brukere, eller Bård Inger har opprettet to brukere til dere. Og vi skal da sette dem, og vi må betale hver slik at dere får tilgang, for dette koster oss da 2-2,5 tusen fra brukere, altså per måned. Så det her blir i to måneder og to brukere, så er dette her grovt sett 10 000 kroner. Og jeg ønsker at enbart ingen får ut dette her så fort som mulig, og da kan dere begynne å lage rapporten som er hovedgreia. Og kanskje vi får se om du finner de forskjellige fasene våre. Ta opp et nett. Jeg vet ikke hva vi ser de fasene for. Hvor lang tid de har på seg til å skrive rapporten her? Jeg bare husker ikke hvis vi går inn på Canvas. For der står det fasene.
+
+Speaker 2: Her står det fase 1.
+
+Speaker 1: Gjennomføring, der ja. Så det er fase 3 da. Du har egentlig bare to uker på deg. Det er ganske imponerende.
+
+Speaker 2: Ja. Hvis det er behov, så kan vi nå utsette denne i uker opp, for eksempel.
+
+Speaker 1: Vi får engasjere på det, men i utgangspunktet så må vi bare få ut fingrene og legge ut brukeren, og så de neste to ukene kan folk begynne å jobbe hardt med sjølvgjennomføring av fase T.
+
+Speaker 2: Ja, da. Enig i det. Så om vi skal utsette det i uke, det kan jo vi diskutere da.
+
+Speaker 1: Det får vi diskutere på siste sesjonen. Nå har vi planlagt neste sesjon, Bård, hvis du går inn på timeplanet.
+
+Speaker 2: Ja, det er noe 27. April eller noe sånt.
+
+Speaker 1: Ja, men det har vi faktisk gjort da.
+
+Speaker 2: 27. Til 29. April.
+
+Speaker 1: Der står det, ja. 27. Og 29. April, ja. Så vi tar den foten i bakken den uka der, 27. Og 29. April, og så ser vi hva vi gjør da.
+
+Speaker 2: Ja. Vi har det definitivt viktigste på dem der der, så vil vi da gjennomføre litteraturreview i hvert fall.
+
+Speaker 1: Ja.
+
+Speaker 2: Ikke sant? Pluss innledning og konklusjon, altså de små tingene for å lamne hele greia.
+
+Speaker 1: Ja. Ja, det er greit. Da har jeg ikke mer på hjertet. Da tror jeg vi bare sier takk for i dag.
+
+Speaker 2: Ja.
+
+Speaker 1: Og så tar jeg med etterpå, Bård. Ja. Greit, folkens. Tusen takk for i dag. Da legger vi ut videoene her. Og så skal vi prøve å... Kommer det sikkert ut med en kundgjøring ganske snart. Og så tar vi å ses... Og så må dere jobbe knallhardt fremover. Nå er det siste halvdelen av april. Altså nå ses vi da i slutten av april. Takk. Ha det bra.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

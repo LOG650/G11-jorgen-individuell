@@ -1,0 +1,289 @@
+WhisperAI Transcription Report
+
+Title: økt 3 - skrive rapport med KI_ TEAMS live-stream_ (23. mars 2026)_default_9afa9781
+Date: 3/28/2026
+Duration: 3283 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Har jeg jobba mens vi hadde pause? Du bare trykte på OK og rekommended etter hvert som et spurtespørsmål, Vård?
+
+Speaker 2: Ja. Jeg kan forklare hva jeg har gjort, men... Jeg ser det at... Jeg ser at den er noe synk- og lykkaktivitet 3.3, da vil den gjøre reviewen selv, men det vil ikke at den skal gjøre det, som sagt, for da blir den biased. Yes, implement. Bare legg merke til en ting. Dere får sikkert følelsen av at jeg gjentar meg selv, men en projektstyringsadministrasjon kaller det. Det er riktig. Jeg står og gjentar om igjen og om igjen. Hva burde man gjøre da? Når du kjenner at du gjentar det samme om igjen og om igjen med en AI, da er tida inne til å lage en såkalt slash-kommando eller en skill med AI, slik at du kan bare kjøre den kommandoen, og så slipper du å skrive om igjen prompten om igjen og om igjen. Det hadde jeg da ville gjort, Får det. I dette tilfellet vil jeg ha laget en sånn. Jeg vil bare si det, for jeg har ikke tid til å gjøre det, men den skal ligge under kodex her. Så vil du lage en subfolder som heter commands, eller skills, og så vil du lage en skill som der det heter for eksempel, Review da, gjennomføre review for eksempel. Og så kan jeg bare kjøre den kommanden. Da kunne jeg skrevet sånn som dette. Da kunne jeg skrevet slashe the review. Det står jo allerede der da. Det er allerede innebygd. Så jeg vil ha sagt review activity da for eksempel. Noe sånt. Trykker på den, og så gjør den det automatisk. Så slipper vi å skrive om igjen den samme prompten om igjen og om igjen, hvilket tar tid tilfølgelig. Nå har jeg ikke hatt tid til å gjøre det da, men typisk kan du be AN om å lage.
+
+Speaker 1: En sånn. Skills da, som da kommer under her nå, det er da prompter som samles, men det er så mange filer her at jeg vet å blånde, men det som står på Agenta markdalen, eller Clod.markdalen, det er mer strukturen og checklistet og hvordan.
+
+Speaker 2: Det skal være. Det er riktig, det.
+
+Speaker 1: Er riktig. Det er mange filer her da, og bare slik at vi på tankene våre og strukturne tankene våre på plass. Så en ting er skillen, som er en samling av prompter, mens agenten er en samling av hvilke prosjektspeks, hvilke arbeidsregler det skal være, og så særlig når det gjelder.
+
+Speaker 2: Rapporten som så. Hvis du ser under kodexen, så vil jeg lage en folder som heter skills, og så kan jeg lage den skill som gjør reviewen. Her er vi da Så vi så jo det at vi manglet et steg på forrige aktivitet, 3.2, gjennomfører review og look-aktiviteten. Denne er i nå gjort med cloud code, altså en uavhengig AI. Nå kan jeg da lage en flowcode skill, som kalles preview, som jeg kan kjøre på hvilken som helst aktivitet. Hvor jeg gir aktiviteten i det som input. Følg akkurat samme prosessen som ovenfor. Følg standard til format. Tykk at den kan benyttes for andre avhengigheter. La oss se litt på reviewen her. Velge å estimere modell. Dette har vi jo med kapittel 7 å gjøre, den vi allerede har gjort noen endringer på. Styrker. Uddige mappestrukturer. Bra. Rapportteksten. Kobler statistiske tester og gir samfunnet. Bra. Grundig kandidatsøk. Bra, supert. Språk, korrekt norsk, formelt akademisk register. Det Klaude gjør nå er å vurdere kodekset. Tabeller på reporter er rett bra. Svakheter, det er det vi er interessert i. Artefakter, jeg kjenner ikke hva artefakter er for noe. Spør om jeg skal.
+
+Speaker 1: Spørre GPT? Hva er det jeg prater om?
+
+Speaker 2: Resultatfyldtobb. Skal vi se på 3.2 da. Aktiviteter i 3.2.
+
+Speaker 1: Artefakt betyr konkret arbeidsprodukt. Ja, altså.
+
+Speaker 2: En output på en måte. Ja. Den.
+
+Speaker 1: Er grei. Når teksten er inkonsistent, ja, anbefale tiltak, oppdater, 1303, så kan anbefalingene reflektere i den.
+
+Speaker 2: Nye valget. Ja, men det er greit. Den er OK. Alle 36 kan gryse ut seg fast med denne.
+
+Speaker 3: Den.
+
+Speaker 2: Synes jeg også er ganske grei. Den er bra å ha med. Den er faktisk et godt poeng. Du sjekker forskjellige differensieringsvarianter, og så ser du hvilken som gir best resultat. Da har vi bare brukt det med en trend i tillegg, den lille D, mot ingen trend. Han sier at vi burde også teste for Uten trender. Kun sesong. En sesong som er økende, da. Hva.
+
+Speaker 1: Er det du vil si, at lille.
+
+Speaker 2: D1 er? At sesongen er den store D1, mens trenden.
+
+Speaker 1: Er den lille D1. Har det ingen trend når lille D1 er 0? Ja,.
+
+Speaker 2: Hvis lille D1 er 0, så er det ingen trend. Hvis D1 er 1, så er det trend. Og.
+
+Speaker 1: Det blir samling.
+
+Speaker 2: Med hverandre. Ja, men i vår analyse har vi kun testet variantene av denne. Ikke testet den, selv om den var et gylde alternativ med ganske gode testdata. Ja, ok.
+
+Speaker 3: Ok,.
+
+Speaker 2: En figuredummering som er litt feil. Mangelende mellomrom i tabell 7.
+
+Speaker 3: Ja,.
+
+Speaker 2: Kanskje vi bare sier at A... At den kan gjøre den?
+
+Speaker 1: Men altså, nå bruker vi en annen AI, da. Men en annen AI kan bare gå rett inn og gjøre de forbedringene her nå, og ta kontrollen selv. Ja, det.
+
+Speaker 3: Er litt.
+
+Speaker 2: Viktig. Så gjennomfør alle de foretakte.
+
+Speaker 1: Forbedringene. Riktig. Vi kan bruke en annen AI til det, altså, så vi kan sjonglere mellom AI-ene, for de greier å sette siden i konteksten og alt sammen selv. Ja, det er.
+
+Speaker 2: For å få best mulig... Altså slik at den ikke spores inn på ett område?
+
+Speaker 1: Jeg skjønner det, jeg er helt enig. Men spørsmålet mitt er at det betyr at når vi lager ny AI da, så må den bruke ganske mye energi, krefter og tolkens da på å bare leses opp for å kunne komme i posisjon da til å gjøre både reviewen og gjøre påfølgende forslag til.
+
+Speaker 2: Endringer. Ja, men han har brukt cirka 100 000 tokens, og vi betaler jo ikke antallet brukeren.
+
+Speaker 1: Av tokens. Det er bare å kjøre.
+
+Speaker 2: På egentlig. Fast abonnement. Det som er.
+
+Speaker 1: Spørsmålet mitt er at det får AI til å starte på nytt. Du kan bruke en ny AI, bare en leseop og sånne ting, så kan du få en annen AI til å fortsette arbeidet. Du kan jonglere mellom AIene. Det kan snarere være en fordel enn en ulempe. Ja.
+
+Speaker 2: Nå kjører vi på med den. Se hva den gjør. Ja, og nå kjører jeg ikke de to A-ene samtidig, for nå kommer det til å gjøre endringer i kode. Ja, det kan være.
+
+Speaker 1: En sånn greie regel å kjøre i.
+
+Speaker 2: En gang, ja. Ja, akkurat nå så gjør jeg det. Og så lukker jeg 3-2, og da skal jeg faktisk kjøre en ny review av 3-3-a da, for det er det som er problemet, at 3-2... Vi glemte å gjøre en review forrige gang da, men det var litt fordi jeg ikke hadde disse... Aktivitetsnavnet her, så jeg skjønte det ikke. Så nå har jeg satt opp det å gjennomføre en review som en eget arbeidspakke. Disse enkelpunktene her kalles gjerne for en arbeidspakke under aktiviteten. En task-liste, eller ja. Mange navn. Kjært barn har mange navn. Men jeg la inn den som en eksplicitt avhukning, slik at vi ikke glemmer den. Det er bra. På dette grunnlaget vurderes derfor kombinert differensering med DN som hovedkandidat. For når du tar valg i en analyse, så må du begrunne deg. Det var det vi manglet, sa Claude Codd. Vi manglet en begrunnelse på hvorfor vi kun gikk for 1-1, og ikke 0-1, som også var en mulig kandidat her i forhold til testene som ble gjort. Ja, skjønner det. Imellomtida, mens den sitter og jobber på dette her, som sagt, Claude Codd er jo litt preg. Så har vi satt kodeks til å lage en oversettelsesskrift til MS Project.
+
+Speaker 1: Du svarer kanskje spørsmålene her. Det er lurt å bare be en review-AI om å lage en markdown på forbedringsforslag. Så beder du utførende AI å vurdere tilbakemeldingen og gi en tilbakemelding på hva den vil implementere og ikke.
+
+Speaker 2: Jeg skal kommentere. Jeg har bare hatt en tanke her. Ja, ja. Skal vi se. Lurt å bare be en review-AI om å lage en MD på forbedringsforslag,- så ber du utførende AI å vurdere tilbakemeldingen og gi deg en tilbakemelding- på hva den vil implementere og ikke. Kunne gjort det, men... Jeg tenker at det tar litt tid, for da må du hoppe fra den ene åren til den andre åren. Sånn som jeg gjorde med Nora, så la de plåde, og så fikse endringene. Nå låter jeg Claude fikse dem i tillegg. Det er fordi den har allerede konteksten inne. Hvis du vil ha en veldig ansvarsfordeling mellom reviewer... Som Rune foreslår, har du to forskjellige agenter. De har hver sin rolle. En kommer med review, en annen gjør den. Den er fin ennå, men da må du hele tiden lese det opp igjen. Det er en ekstra steg, så det er mer omfattelig på en måte. Men du får en enda større... Fordelen med å gjøre det sånn som Rune- foreslår, er jo at du kan få en enda mer spesialisert AE-agenta. En som er spesialisert på review, en som er spesialisert på implementering og slik at de to kan jobbe i sammenheng. Men det krever mer organisering fra vår side. Så det har sin upside og sin downside på en måte. Akkurat nå tok jeg det bare sammen med Claude, og Claude fiksa det. Nå har jeg laget en skill her som heter Review Act. Den kan jeg nå gjenbruke, hvor jeg identifiserer aktiviteten, leser prosjektkonteksten,- Og utforske artefakter, lese rapportteksten, sjekke historikk, gjennomføre vurderingen. Yes, litt sånn. Opprett filen under Dernske opprettelser, gi det navnet, og følg malen. La oss teste den her nå da, når vi skal prøve på Review 3.3 da, før den er ferdig. Ja, rapport, ja. De gjorde både det og det. Ok. Det var ikke meningen. Men, men. Så da har vi gjort en del endringer her. Det er ikke uenig i tanken til Rune Haasom. Det er det ikke. Jeg tok en viss snarvei her, hvor jeg bare kjørte Cloud Loot. Jeg lot revieweren bare gjøre endringene. For å spare litt tid. Skal vi se. Lykke, aktivitet.
+
+Speaker 3: Test.
+
+Speaker 2: Her kunne jeg bett A1 om å kommentere eller kommitte. En ting jeg lurer på nå,.
+
+Speaker 1: Har vi implementert de endringene som reviewen foreslår?
+
+Speaker 2: Har vi gjort det? Ja, den har nå klådgjort det. Klådgjort det? Ja, her.
+
+Speaker 1: Står.
+
+Speaker 2: Det hva som ble gjort. Ja,.
+
+Speaker 1: Her står det.
+
+Speaker 2: I tillegg lagde han en skill. Han gjorde to ting i samme slengen. Det var ikke meningen, men han gjorde noe nødvendig. Jeg ga Claude to forskjellige oppgaver. Han klarte det. Jeg er jo smartest av én her. Da har vi lagd en mapping til Microsoft PDI. Det kan bli interessant. Jeg bare kjører Jesse.
+
+Speaker 3: Så.
+
+Speaker 2: Når plådet er ferdig nå, så skal han få lov å gjennomføre 3-3 også. Så har vi gjort både 3-2 og 3-3. Kan vi bare ta de samme slenger igjen? Så det vi gjør da, er å starte klådet på nytt igjen, rett og slett. For den skal.
+
+Speaker 1: Være uavhengig. Ja, bare en ny klåde i sesjonen, ja. Ja.
+
+Speaker 2: Legg merke til det at jeg har en sånn statuslinje her, nede. Den er veldig hendig da. Den forteller hvor stor andel av konteksten jeg har brukt. For eksempel 5% bare, det er ganske lite. 54 000 Token har jeg brukt så langt, av totalt én million. Fem timers grenser er på 5%, det vil si altså at I løpet av fem timer kan du bruke så og så mye tokens. Jeg er nå på fem prosent på den fem timersgrensen, så jeg kommer aldri til å nå den. Og så har vi en sju-dagersgrense på seks prosent. Når vi skal skaffe inn egne brukere som dere skal få bruke,- så er det typisk den 7-dagersprosenten der, og 5-timersprosenten,- som er begrensningen som kan nå stå av visst for mange jobber samtidig. Men så lenge folk jobber på litt forskjellige tidspunkt,- så tror jeg ikke vi vil få så store problemer. Og har vi to stykk,- så tror jeg vi har dekt vår hele gruppe egentlig, vil jeg anslå. Kanskje at av og til man får en sånn tokenforbruk, og da må du bare rett og slett vente noen timer. Det er lenge siden jeg har nådd den grensa, og jeg bruker AI ganske mye. Så disse AI-grensene er gode.
+
+Speaker 3: Skal.
+
+Speaker 2: Vi se her. Vi tar å kutte den nå. Starter på nytt igjen. Jeg tror at jeg har en fresh kodeks. For nå skal jeg jo lyst til å begynne med ... Jeg har lyst til å begynne med 3-4. Lager prognoser, anbefaler jeg. Nå jobber jeg ganske avansert med AI, for jeg jobber i tre forskjellige AI. Jeg har en der, som holder på å lage en oversetter. Og så har jeg denne, som er Cloud Code, som holder på med å oppdatere status og sånt. Jeg sier OK. Nå har jeg startet en ny Codex-session, som skal begynne på 3.4. Så jeg har tre AI pågående samtidig. Det er ikke noe sånt som jeg forventet at dere skal kunne. Det er typisk at hvis du ikke gjør det, så sitter du gjerne og venter lenge på AI. Du sitter og venter og venter og gjør ingenting, og da taper du litt tid. Så mens du har en AI jobbene, så kan du begynne med en ny AI. Men da må du passe på at disse AIene ikke jobber på samme områder. Da kan du få konflikter med GitHub for eksempel. Men det vi kan begynne med er å planlegge. Så her begynner det samme storyn om igjen. Les status.
+
+Speaker 3: 3-4.
+
+Speaker 2: Men nå må jeg trykke på planmodus nå, det er viktig. Så nå kjører vi på og begynner å planlegge aktivitet 3-4. Da har vi tre å veie i seng. Den. Den. Og den. Jeg så en tweet, X-tweet, av en av grunnleggerene av Claude Codd. Der han hadde snakket om hvordan han bruker Cloud Code selv. Han sier at han gjerne jobber med fem forskjellige sesjoner samtidig, pluss at han har en sånn webplanleggings... Han er veldig avansert, hvor han rett og slett gjør utrolig mye samtidig.
+
+Speaker 1: Jeg har som regel en, men kanskje to av og til. Og veldig sjelden tre, så jeg gir nok på én,.
+
+Speaker 2: Kanskje to, ti år. Ja, så slike ting krever enormt med kunnskap, erfaring og gode forberedelser hele tiden. Og gode kommandoer, gode skills og sånne ting slik at du kan sette i gang A1 med enkelt Så han har jo på en måte strømlinjeforma arbeidsområdet sitt veldig godt, slik at han kan bare komme i dag og så bare kjøre fyrene opp A1 og begynne å jobbe, for han har allerede klargjort hva som skal gjøres. Jeg ligger typisk på 3, det er mitt nivå. Jeg tror han lå på 5. Og jeg er.
+
+Speaker 1: På 1, kanskje 2.
+
+Speaker 2: Men av og til er det bare én også. Det er hvor mye de klarer å pushe inn som skal gjøres. Men flere og flere begynner å bruke det som et sånt... Kompetansemål, kaller det det. Du ser at det.
+
+Speaker 1: Er litt sånn som oss nå, nå har du tre stykker kapasitet her, og jeg husker ikke hvilken som var hvilken, så det er lett å miste litt.
+
+Speaker 2: I oversikten. Her har vi den som skal generere... Her skal vi ha den som genererte plan X. Dette her er i formate av... Vi kan se og prøve å åpne opp den her i MS Project nå. Så det var det den gjorde. Den har generert en MS Project-fil basert på disse prosjektfilen her. Så det var det den gjorde. Plot code er også ferdig. Den har nå gjort alle endringene. Og har gjort ferdig aktivitet 3.2. Så da skal aktivitet 3.2 være gjennomført. Her står det «review og lukkeøksistensen».
+
+Speaker 1: Ja, men både 3.2 og 3.3 er faktisk gjennomført nå, ser vi, med huva og alt sammen.
+
+Speaker 2: Ja, men 3.3 er ikke gjort da, så det er gjort feil faktisk. Jeg tror det er gjort feil.
+
+Speaker 1: Så.
+
+Speaker 2: Da må jeg få rettet opp, ja. Den skal ikke være hukket av, det er den som er hukket av. Den rotet litt. Ja, den kan vi nå teste imens. Her kanlegger han. For 3-4. Men jeg har lyst til å lukke 3-3 før jeg begynner på 3-4. Men nei, la oss i mellomtiden prøve å åpne,- Dette blir spennende. Åpner. Jeg har ingen aning om det blir rett. Storage. Logs samt eksempel. Plan. Allfiler. Her har vi den. Denne blir nok generert. Fra disse adjacent-filene. Husker vi å snakke om det? Ja, det husker vi. Vi må se om dette er på rett format nå. Hvordan vil du importere denne filmen som et nytt prosjekt? Fullføre.
+
+Speaker 3: All right.
+
+Speaker 2: Det.
+
+Speaker 1: Sykler avhengig av aktiviteter.
+
+Speaker 2: Dette er sikkert en feil i JSON-formatet. Vi fikk ikke lov å merke teksten, så da må vi gjøre noe lurt. Da må vi gjøre noe lurt.
+
+Speaker 3: Så.
+
+Speaker 2: Ta og les inn den teksten din.
+
+Speaker 3: Kontroll.
+
+Speaker 2: Alt. Ingen beregninger kan utføres nå. Det er en sirkelavhengighet i aktiviteten 3, Analysere case og databehov, i etterspørselsprognoser for Power Horse. De etterfølgende aktiviteterne til denne aktiviteten viser tilbake til denne aktiviteten eller foregående aktiviteter, noe som gir en sirkelreferanse. Hvis du vil fjerne koblingen som forårsaker sirkelreferansen, merker du de to aktivitetene som danner sirkelkoblingen. Deretter klikker du opphev aktivitetskoblinger på fanaktivitet. Ja, så OK. Jeg fikk ikke lære meg.
+
+Speaker 1: Hva vi gjorde.
+
+Speaker 2: Vi leste inn med lyd da. Ja, sånn er det, OK.
+
+Speaker 1: Jeg bruker å lese mye med lyd. Det gjør det enklere da, hvor det er faktisk bare å ta screenshot og snippe og paste inn. Så kan du lese det. Det fungerer.
+
+Speaker 2: Da ser vi at validere modell er på plass. Vi komitterer. Sånn. Da er vi ferdige her. Da skal vi prøve å kjøre review av aktivitet 3.3. Da vil jeg starte en ny Cloud Code sesjon. Bare starte på nytt igjen, for nå har jeg wipet memoryen. Men, nå husker dere det at vi lagde en review. Ja. Command. Ja. Skill menu som heter Review Act Skill, og den har nå blitt fanget opp av Cloud Code. Så når jeg trykker slash nå, og så skriver jeg Review, så er den der. Så da kan vi velge den, men vi må fortelle hvilken aktivitet vi skal gjennomføre, og det er da 3-3. Review Act 3-3. Go! Nå slapper vi å skrive den lange promptforklaringen på nytt igjen, om at vi må passe på at det skal lagres her, reviews, vi skal følge den review-malen og bla, bla, bla. Det ligger allerede beskrevet i skillen. Nå vil jeg egentlig, det neste jeg skal gjøre nå, er å legge den review-malen inn der. Slik at den er en del av skillen, og ikke en del av reviews her. Bare for å forbedre den skillen. Men det som er poenget nå, er at nå sparte jeg meg masse tid. For nå kan jeg gjennomføre dette her på nytt, uten at jeg måtte skrive så veldig mye. Dette her er en lagret, prompter. Dette er en lagra prompter. Her ser dere at den refererer til review mal. Men den refererer til 012 fase 2. Den review malen vil jeg egentlig skal være en del av skillen i stedet. Så jeg vil ha flyttet malen opp hit, for da kan jeg anbruke den hvor som helst. Og så kan dere få den skillen her med med. I kan da kopiere den over til alle GitHub-repo'ene deres. Og da kan dere bruke kommandene også. Lekkert? Ja. Det er bra, ja. Og derfor så vil jeg at Reviewen skal følge skillene. Skill er forresten en mer avansert form for det vi kalte for Slash Command i IB160. Det er da en ny og bedre utgave av Slash Commands. Men har da fått et nytt navn og en ny pakke som kalles for Skill. En oppdatering siden IB160. Ting endrer seg jo ganske fort i denne verdenen her. Så det har da blitt et veldig utbredt begrep nå. Det kan gjøre.
+
+Speaker 1: At du får øyne til å kopiere skrillen til alle 27 grupper. Ja, det tenkte jeg. Så dere trenger bare å komme hit og pushe, og så kan dere pulle etter.
+
+Speaker 2: Hvert. Så egentlig er det to input som må legges inn i en sånn her, hvor du skal lage den hen,- og hvilken aktivitet skal du gjøre.
+
+Speaker 3: Det.
+
+Speaker 2: Er en jobb som... Nå sitter vi jo og... Nå jobber revieweren,.
+
+Speaker 1: Så...
+
+Speaker 2: Da er vi ferdige med den. I mellomtiden har Codex prøvd å finne feilen her. Så da kan vi nå bare ... Implementere. Nå er det ganske trygt, for jeg vet nå at denne her den jobber med et annet ting enn en review, så det vil ikke bli en kollisjon. Dette var problematikken.
+
+Speaker 1: Med feilmeldingen om sirkelreferanse på JSON-fila kontra XML-fila, var det ikke det? Jo, riktig.
+
+Speaker 2: Jeg klarte ikke å importere den genererte XML-fila på grunn av en sirkelreferanse, og nå håper jeg at den klarer å fikse det. Det er jo ikke alltid at den klarer å fikse det, og det kan hende at vi må kjøre mange runder for å få det her. Vi kan ikke garantere at vi kommer i land mens vi holder på, for nå er klokka fem på. Nå er egentlig alt klart til å kjøre også 3-4, men det kan være lurt å gjennomføre 3-3 først. Altså gjennomføre Gjennomfører reviewen. Og som vanlig, Cloud Code bruker god tid, er veldig nøye, men bruker mye tid. Så det er jo det vi sitter og venter på nå, at Cloud Code skulle... Jeg kunne avsatt... Hadde de vært alene nå, så hadde de satt i gang denne her også, tror jeg. Men, men, vi lar være. Det er ikke alltid så lurt å kjøre prosesser som kan kollidere. 3-3 Validerer modell, ja, der den har kommet opp. Styrker, ærlig og transparent håndtering av resultatestene, modellens brydd på forutsetninger, er dokumentert uten å bortforklare dem. Det er veldig bra.
+
+Speaker 1: Ja, det er bra.
+
+Speaker 2: Brydd i skriptseparasjon, et skript for resultatester, et for testvalidering, klart skille mellom analyse og resultater. Det er bra, ja. Så det er likten, sant? Korrekt bruk. Figur lesbar. Rapport, tekstny. God narrativ flyt fra resultatanalyse. Husk at dette er en AI som er uavhengig nå, og det er bra. Her er det litt om metodikken. Svakheter og forbedring. Litt om koden. Den er grei. Mangel av økende feiltiden over testperioden. Ja, den tenkte jeg på. Husker du at det var en sånn over... Ja.
+
+Speaker 1: Overestimat, ja. Det var.
+
+Speaker 2: Et systematisk overestimat, sant? På testsettet. Og den ville han gjerne... Halvfeste litt mer før vi kommer til selve diskusjonen da, når vi er senere. Så der nede forstår vi et enige. Diskusjonskapittelet, det har ikke vi kommet til enda da.
+
+Speaker 1: Hør om han kan prøve å implementere disse svakene og prøve å forbedre dem.
+
+Speaker 2: Jo, vi skal det når den er ferdig. Nå er den ferdig. Ja. Fiks. Det er her at Rune mener at vi burde gå tilbake igjen til gjennomførende AI. Og be AI'en om å lese valideringer for å se at den skal gjøre det. Jeg er ikke helt uenig i det, for da kan du ha en AI som er ekspert på å skrive, og en AI som er ekspert på å validere det eller gjøre en review. Men akkurat nå så hopper vi litt bokover det og bare lar revieweren gjøre endringene. Fikse alle tiltakene og oppdater. Dette her med Fix-tiltak og oppdaterer alle prosjektsfilene, da må jeg også fortelle ham, for du kan ikke forvente at han husker alt. Der kunne vi også lagde en skille for dette også. Så kunne jeg bare ta slash fix, fix review. Så er det jo. Sånn er det ting i fremklippet ganske kreftelig. Ja, men du kan bare gjøre.
+
+Speaker 1: Det litt manuelt en gang, for det er ikke alltid vi husker hva som innebærer i FIX, og hva som innebærer i REVIEW og sånn, så det kan være greit å gjøre det manuelt av.
+
+Speaker 2: Og til. Ja, men etter at jeg har gjort.
+
+Speaker 1: Det.
+
+Speaker 2: Manuelt en gang,.
+
+Speaker 1: Da.
+
+Speaker 2: Husker jo Ein det, og da er det veldig lurt å ta og si bare, lage en skill som gjør dette her for meg. For da har han det allerede i konteksten. Men nå må du.
+
+Speaker 1: Selv huske at du har laget en skill som er til å fikse den, og hva det innebærer. Ja, det.
+
+Speaker 2: Er du som starter den skillen, på en måte. Ja, men du må.
+
+Speaker 1: Huske på hvordan skillet du selv har startet. Ja, ja.
+
+Speaker 2: Men det er klart at du må gjøre det. Men det kommer du på fort da, når du sitter der og må faktisk skrive det opp igjen. For da må du bruke tid på det. Dette her er jo prompter som du ellers må skrive for hånd. Men det er en fordel å bare bruke som en skill,- og kan enkelt bare gjøre det. Igjen må vi bare påpeke aktiviteten. Nå går den. Nå har den regenerert, så da kan jeg prøve på nytta.
+
+Speaker 3: Hallestein.
+
+Speaker 2: Men vi fikk jo opp ... Vi fikk jo opp... Fikk vi.
+
+Speaker 1: Opp noe her, da? Ja, da. Men om det her er korrupt, eller om det er heiterett eller delelserett, det greier ikke å vurdere,.
+
+Speaker 2: Da. Det greier jo ikke. Her ser du dagen i dag. Har vi noe tracking her, da? Det er ikke så mye der. Skulle gjerne hatt aktivitetsnavnet, men fase 2. Det var ganske grovt, da, synes jeg. Gjennomføring. Velges til mer modell. Jeg kunne gjerne hatt med under... Ja, så vi mangler et nivå her, sant? Vi mangler aktiviteterne. Ja, så vi mangler aktiviteter. Men vi fikk i hvert fall inn noe, så vi er på vei. Da skal.
+
+Speaker 1: Vi gå tilbake igjen, så er vi litt på overtid nå, så skal vi bare se om vi er ferdige med å implementere korresjonene her nå. Ja, nå.
+
+Speaker 2: Gjør han det da. Så vi.
+
+Speaker 1: Bare fullfører det, så tenkte vi skulle pushe, og så tenkte vi skulle bare se hvordan det blir i neste forelesning i.
+
+Speaker 2: Dette her. Ja... For.
+
+Speaker 1: Det blir jo ikke bare etter påske?
+
+Speaker 2: Jo, vi kan prøve å få gjort litt på onsdag. Vi skal ikke noe på onsdag ettermiddag da. Ja,.
+
+Speaker 1: For vi trenger mer tid tenker du på?
+
+Speaker 2: Ja, vi har kommet... Vi skal gjøre... Den da. Men når vi er ferdige med den, da har vi kommet langt, ser dere. Ja,.
+
+Speaker 1: Men hva er det vi skal gjøre til onsdag eller fredag eller noe annet? Torsdag er jeg opptatt av, men... Ja.
+
+Speaker 2: Jeg synes den akt 345 der, det er ganske... Jeg ville hatt en imellom der, det heter diskusjon. Den bør være sin egen aktivitet. Hver av disse bør være en egen aktivitet, så det burde jeg endre inn. Alle disse er ganske store.
+
+Speaker 1: Ja, det er rett i det, det er enig i det. Men vi kan ta en runde på onsdag, men da.
+
+Speaker 2: Tror jeg vi prøver å bli ferdige med den 3-4 for denne greia, og da er vi ferdige med de tre viktigste kapitlene. Modell, analyse og resultat. Og så kan vi begynne over påske med med det resterende.
+
+Speaker 1: Nå er det på onsdag, ser du for det? Ja,.
+
+Speaker 2: Jeg ser for med klokka 12. Men det er muligens, jeg tror vi bare har tida til to timer her. Så vi får se, men vi klarer det. Nå har jeg lagd noen... Du vet.
+
+Speaker 1: At man kan sette opp to timer fra 12 til 2 på onsdag, noterer Erik. Onsdag 25. Mars fra 12.15 til 14.00, og så bare sender du ut rombestilling, og så legger du ut deg i krongjøring. Man skal vel ha slike greier, og han tar vel litt tid her nå, Bård, før vi kan første? Han er.
+
+Speaker 2: Snart ferdig. Det som er utfordringen hans er at disse adjacent-filene er ganske store, så han bruker litt tid på å finne rett plass og sånt. Men det eneste.
+
+Speaker 1: Jeg har hentet på meg nå er den der jerstenfilen, eller er det også det med å implementere forbedringsforslaget.
+
+Speaker 2: Av reviewen? Det har han allerede gjort. Den endringen ligger her på rapport og sånt. Men.
+
+Speaker 1: Av de tre AI'ene du har oppe nå, er det bare én som jobber? Akkurat.
+
+Speaker 2: Nå så er det det, ja. Den er klar til å starte da. Det er 3-4. Det er den. Mens denne må vi legge inn aktivitetene litt mer. Men det skal vi gjøre. Nå fikk vi egentlig bare med oss mileperlene, og ikke aktivitetene. Egentlig skal du også ha med, kanskje kunne nesten, hvis du vil,- så kan du også ta med selv arbeidspakkene, disse enkeltpunktene her. Men i hvert fall aktiviteter må inn i MS Project. Denne her hadde ikke aktiviteter inne, ser dere. Det er bare faser.
+
+Speaker 3: Hun.
+
+Speaker 2: Har lagt inn enkelpunkter, altså arbeidspakker. Skal vi se hvordan det går med Claude? Der en skriver ja. Nei, det var helt øverst nå. Der ja, ferdig. Alle tiltakmerket som gjennomført. Kommitter vi og pusher. Nå har han også oppdatert disse planfilene, ser dere? Disse JSON-filene. At vi har status på rett plass. Også oppdatert statusfilevalg. Der er det. Så da er vi egentlig akkurat klare til å bare fyre løs 3-4. Da må du ha.
+
+Speaker 1: En passende sted å avslutte.
+
+Speaker 2: Så nå pusher jeg også den av review. Skillen her, sant? Men er det ikke sånn at hvis du pusher.
+
+Speaker 1: Så gjør du alt da, eller måtte.
+
+Speaker 2: Du pushe flere ganger da? Neida, bare en gang. Ja. Da er denne pushet. Ja. Og da blir den jo bytten, den er jo allerede der da. Ja. Den kan folk bruke å bare gå og kopiere den inn. Ja. Hvis man vil. Det er hendig.
+
+Speaker 1: Ja, det var greit. Da tror jeg vi sier takk for i dag. Ja. Og så sees vi på onsdag, det blir da siste innspurt før vi tar påskeferie.
+
+Speaker 2: Ja, da blir vi ferdige med de tre viktige kapitlene som sagt. Og da blir det mer tid enn å skrive kapitlene rundt da. Men da er vi ferdige med selve analysen. Ja, vi kan.
+
+Speaker 1: Også si at vi kommer til å prøve å Og jeg jobber litt med det nå da, jeg og du. Jeg har valgt å ha et polisepåskap, og lager et litt utvidert versjon av kompanie.
+
+Speaker 2: Ja da, det kan vi prøve på. Så det vil jo hjelpe dere i å lede AI'en på rett kjøl da, kaller det. Når dere skal jobbe avhengig av det caset dere har valgt. Det er ikke alle som har valgt prognosisering, så da blir det litt forskjellig. Yes! Takk for i dag,.
+
+Speaker 1: Da ses vi på onsdag.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

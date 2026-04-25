@@ -1,0 +1,299 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - programmering med KI_ TEAMS live-stream_ (18. mars 2026)_default_e0deff69
+Date: 3/22/2026
+Duration: 2479 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 4
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Dagens første time. Vi sette litt ekstra krytt inn hos dagen her nå, fordi vi ønsker å bli ferdig med den viktige fasen, som er da selve rapportbeskriving og data og sånne ting, sånn som vi gjorde på fredag, mandag. Og vi ser at den store fasen vår tar litt lengre tid, så det fortsatt også på i dag onsdag. Så da var rygge på rygge, og så ser vi også det at det er også det å kunne hente opp igjen den informasjonen der vi sluttet siste gang. Og vi hadde jo et sånt status.md-fil som vi da tikket av de arbeidsoppgaver, noteduelister som vi hadde, og vi har kommet et stykke på den lista.
+
+Speaker 2: Hva var
+
+Speaker 1: det?
+
+Speaker 3: Her, ja.
+
+Speaker 2: Status.
+
+Speaker 3: Vi er kommet så langt. Vi kan ta en titt på reporten også. Nice.
+
+Speaker 1: Det er en liten bagatelle vi skulle sentrere og lage i Telix-skriften, også på tabellteksten. Ikke bare figurteksten, men det er en sånn bagatelle du
+
+Speaker 3: kan ta til hvert. Ja. Syns du
+
+Speaker 2: at det skal være det? Hæ? Du syns det skal være det? Ja,
+
+Speaker 1: hvis vi har det på figurteksten, så syns jeg vi skal ha det på tabellteksten. Jeg syns at den er konsistent. Og jeg syns det er bra, for da skyller figurteksten seg ut fra mainteksten. Visst er det et bra navn?
+
+Speaker 4: Herlig.
+
+Speaker 2: Bra. Da har jeg gjort noen små ting som er ofte
+
+Speaker 3: litt kjekt å ha. Tenkte jeg skulle
+
+Speaker 2: vise til dere, men da må jeg først starte. I dag kommer jeg til å kjøre med Claude. Vi helper å jobbe hardt med å få på plass disse brukerene til dere, selvfølgelig. Ja, vi sendte
+
+Speaker 1: mail til dekanen. Han har ikke fått svarene. Han skal prøve å følge
+
+Speaker 3: opp. Så det skal jo da... Så...
+
+Speaker 2: Vi er i en situasjon hvor vi har gjort et eller annet arbeid, og så har vi lagt det fra oss, og så kommer vi neste dag, og vi skal begynne på igjen, og så må vi gjennom den samme repetisjonen, hvor vi på en måte prøver å fortelle til AN og til oss selv, hva har blitt gjort, hva skal gjøres. Når du repeterer noe i Når du jobber med AN, så er det umiddelbart en kandidat for en såkalt slash command. Slik at du slipper å stå der og skrive de samme prompterne dag ut og dag inn, sant? For nå skal vi jo ha en sånn prompt der vi sier at «les siste git story» og «get up to speed». Det er en klassiker. Og det er da en typisk kandidat for en såkalt slash command. Slash command er jo når du tar en slash, og så får du disse kommandoene her.
+
+Speaker 3: Så jeg har ikke lyst til å
+
+Speaker 2: stå der og skrive opp om igjen den samme prompten, om igjen og om igjen. Dette jobber vi jo med Også i IB160. Derfor har jeg laget to slash commands, en som heter prime og en som heter handoff. Det prime gjør er at det er en klassisk get up to speed kommando. Der står det arbeidsmåte, kartlegg prosjektstrukturen, les prosjektets nåværende status. for å forstå faktisk progresjon i Repo-et. Les bare relevante detaljer fra oppgaven du får, faglig kontekst som skal ligge fast. Vi kjører en sånn. Da kan jeg skrive «prime» og så kan jeg kjøre den kommandoen. I stedet for å skrive samme prompten om og om igjen, så kan jeg kjøre «prime». Trykker på «prime», så vil den da, lage et sammendrag av hva som har skjedd
+
+Speaker 1: så langt. Slash-prime, det er altså ikke en kommando som vi har laget, men det er en global kommando? Nei, det
+
+Speaker 2: er en kommando vi har laget, ja. Vi har puttet inn under clod commands, prime har vi kalt den. Dette er et typisk use case for clod code, hvor du lager en slash-command for noe du føler at du gjentar deg selv.
+
+Speaker 3: Det er ikke riktig.
+
+Speaker 2: Her burde vi egentlig rett og slett ...
+
+Speaker 4: Her
+
+Speaker 3: burde vi rett og slett ... Forbedre.
+
+Speaker 2: Eller skrive om.
+
+Speaker 1: Det var litt større tekst, men du lurer på det.
+
+Speaker 4: Ja.
+
+Speaker 3: Ja, nå er det bra. Nå er det bra.
+
+Speaker 2: Greit. Så bruker kommandolinjen cmd i stedet for PowerShell.
+
+Speaker 3: Så, vi ser hva ClothCode kommer. Her er den oppsummeringen.
+
+Speaker 2: Status, prosjekt, fullført så langt, med gjenstående aktivitet, 3-2, nøkkelfile. Klar til å jobbe videre. Så hensikten her er å gi oss selv en liten oppkvikkel på hva som ble gjort, men også selvfølgelig ClothCode vet hva som har blitt gjort og hva som gjenstår, ser vi. Kvartidlig jobber vi videre. La oss se på den. Bare sjekke hva. Right. Så nå fikser jeg primen.
+
+Speaker 3: Yes, greit. Jeg tenkte jo å skrive den på nytt igjen. Skal vi se. Stasjonaritet og behov for ... Legg
+
+Speaker 2: merke til det at dette her er en del av analysen.
+
+Speaker 3: Da setter jeg på planmodus. Ja,
+
+Speaker 2: for
+
+Speaker 1: når vi begynner å behandle datene og manipulere datene,- og ta log av datene og ta differens og sånne ting, differensiering,- da er vi usikre på om det er analyse eller om det er en del av datene. Så da kan vi faktisk spørre AI om
+
+Speaker 2: det. Ja, vi har jo en modellbeskrivelse, men så har vi også en analyse. Modellen beskriver jo egentlig hva vi skal prøve å løse, mens i analysen begynner vi faktisk å jobbe med å komme med en spesifisering og løsning. Og i innbildet min er det at 6-4 er muligens kanskje burde vært på analyse. Vi kan se. Så vi får se da hva han sier.
+
+Speaker 1: Han anbefaler faktisk ikke å forholde, ja. Ja, men
+
+Speaker 2: da fikk vi landet det, da. Supert. Ja, greit. Trykke på Enter, så er det gjort.
+
+Speaker 3: Herlig. Men det er sånn at vi
+
+Speaker 1: kan utfordre AIM da, på intusjonen vår, å bare spør da. Og så kommer det mer anbefaling. Så er du usikker, så bare spør
+
+Speaker 2: det, og så kan du
+
+Speaker 1: ta en diskusjon med A1, og så lander vi sånn som vi gjorde nå.
+
+Speaker 2: Ja, det er jo sånn vi ønsker at dere skal jobbe med A1. At dere skal ikke ta alt på god frisk. Dere må jobbe kritisk, og være litt kritisk til både seg selv og A1. Her var jeg litt kritisk til meg selv også. Vi var ikke helt enige med meg selv om det burde være en del av analysen eller en del av modellbeskrivelsen. Og her er det argumenter for at det er en del av modellbeskrivelsen. Supert.
+
+Speaker 4: Nå
+
+Speaker 2: har vi hittil igjen planmodus. Så neste steg det er, Velge Sarima-spesifikasjon. Det å velge Sarima- spesifikasjon, det betyr i prinsipp å finne ut hvor langt skal den glidende gjennomsnittet være, og hvor langt skal legget være.
+
+Speaker 1: Så det er mange parametre som er i en modell. Ikke bare variablene, men også parametrene. Og de parametrene må vi da bestemme for vårt spesifikke
+
+Speaker 2: tilfelle. Ja, så det vi skal bestemme her er jo sånn som den D-en der, og den D-en der. Altså disse horisontene i modellen. Ikke selve parametrene, men den P-en der skal vi bestemme, og Q-en der. Hvor lang er disse avhengighetene der? Og den store P-en der, og den store Q-en der. Det er det vi skal bestemme først. Når vi vet det, så skal vi bestemme alle fiene. Så det skjer i to steg, da. Dette er også beskrevet i Jenkins-modellen, nå skal vi finne den pilla.
+
+Speaker 3: Steg
+
+Speaker 2: tre er vi på nå, ikke sant? Det er ACF, autocorrelasjonsfunksjon, og partial autocorrelasjonsfunksjon. Den bestemmer rett og slett hvordan dataen er avhengig av historikken, hvor lange horisontene er. Så det er det steget her
+
+Speaker 3: vi skal gjøre nå. Det er det
+
+Speaker 2: svarteste. Jeg nepper at vi blir ferdige i dag. Ja, vi får prøve å bli ferdige med tre og fire i dag,- og så kanskje vi tar noe på mandag igjen, tenker jeg. Så får det være slutten. Men som Peko sa, vi tar i litt akkurat nå for å gi dere nok,- Kjøtt på beinet til å gjøre analysene selv, ikke sant? Ja. Det når
+
+Speaker 3: vi kjører den store biten her. Så jeg kan
+
+Speaker 2: jo nevne dere mens, altså bare husk at Claude K. bruker litt lengre tid, den er litt tregere. Så mens A1 sitter og planlegger her, Så ser dere denne prosessen her. Dette her er en såkalt boxjenkingsprosess. Men alle sånne analyser og uavhengig av hvor case det er, så vil det være noe av dette her. Man vil ha som regel data, sjekke antagelser, bestemme modellparametra og variabler, validere modellen og bruke modellen. Det vil jo selvfølgelig variere fra case til case, men prosessen er rimelig den samme. Det er bare innholdet i disse boksene som er forskjellige. Det var det vi tenkte vi skulle få fram tydelig også når det gjelder disse videre kapitlene vi skal generere. Så vil dere se at denne prosessen vil være så og si lik. Det er
+
+Speaker 3: bare innmaten som endrer seg. Det
+
+Speaker 2: er noe vi ønsker at dere skal kunne, fordi dette har sett rammen rundt hva AN skal gjøre. Vi kan alltid lene oss på at AN også kan denne prosessen. Men det er veldig bra innput til A1 dette her. Så denne prosessen burde ha vært spesifisert godt i prosjektbeskrivelsen. Dere beskriver hvordan dere har tenkt å løse problemet ved hjelp av denne prosessen, og så vil A1 ta den prosessen og planlegge for
+
+Speaker 1: den. Og så snakker vi om steg 1-6 her, eller for å begynne å
+
+Speaker 2: holde med Box Jenkins? Steg 1-6, og så sier vi at vi skal bruke den prosessen, men med case for Box Jenkins og Sarima, ikke sant? Slik at innmatene i den prosessen her blir jo da spesifikt for prognosisering og Sarima. Og så kan du bytte ut alt som er inni disse boksene med for eksempel ruteplanlegging. Og det vil se ganske likt ut, det er bare at du har andre formler, du har andre tester, du har andre variabler du skal bestemme, og du har en annen form for validering og så videre. Og det er viktig å ta med seg at dere må ha kontroll på prosessen, sammen med A1, så dere må fortelle og hjelpe A1 at det er sånn de
+
+Speaker 1: skal gjøre det. Hvis vi tar et eksempel som ruteplanlegging, steg 1 er naturlig, da har vi dataensamling, det skjønner vi generelt. Steg 2 er stasjonariteter og sesonganalyser. Hvis vi har ruteplanlegging, så er det steg 2. Hva er det analoge til steg
+
+Speaker 2: 2, for eksempel i ruteplanlegging? Ja, det kan for eksempel være antakelser rundt dataene dine, som må være oppfylt, eller variablant. Ja, for det
+
+Speaker 1: som egentlig er steg 2 da, det er antakelser, egentlig. Typiske, ja. Typiske antakelser. Og så steg 3 da, hvis vi har ruteplanlenging. Hva som er typisk steg 3 da, hvis vi har
+
+Speaker 2: ruteplanlenging? Ja, det vil være å bestemme variablene
+
+Speaker 1: da. Altså løse modellen. Steg 4 er modellestimering, og det vil være likt av ruteplanlegging. Da vil det være tilsvarende.
+
+Speaker 2: I ruteplanlegging vil steg 3 og steg 4 være et steg, egentlig. Det er sånne nyanser, men skelettet vil cirka være det samme. Steg 5 vil
+
+Speaker 1: også være i ruteplanlegging for modellvalidering. Det å gjøre en stresstest og sjekke at modellen faktisk er rimelig. Det gjelder
+
+Speaker 2: også for ruteplanlegging. Ja, og når det gjelder modellvalidering, det er da du bruker testdata dine for å sjekke opp hvordan. Da vil du se, sånn som i steg fem i ruteplanlegging ville vært sånn som dette her. I fjor så hadde vi de og de rutaene. Det kostet så, så mye. Hvis vi nå kjører modellen på det året, hvor stor forbedring får vi? Hvis vi får nesten null prosent forbedring, dårlig. Da er modellen kanskje dårlig. Hvis vi får en god forbedring, supert. Gir også svaret noen syke resultater som kanskje ikke er gjennomførbar, dårlig. Den type vurdering da. Nå skal vi se her. Ja, lage en ny Python-file. Samle kodemønster. Plotte. Bra. Manuell grid.
+
+Speaker 3: Kandidatere. Producerer.
+
+Speaker 2: Noen bilder. Pluss en resultatfil. Bruke av statsmodel. Det er jo da biblioteket på heiten.
+
+Speaker 1: Og hva var det du satt i gang, Claude, med noe som gjør
+
+Speaker 2: at den bruker litt tid? Planlegging. –
+
+Speaker 1: Hva var det du skrev da? Jeg bare husker ikke det.
+
+Speaker 3: Hva var det du
+
+Speaker 1: kommanderte den til å gjøre? Hva var fronten?
+
+Speaker 3: – Nei, supert.
+
+Speaker 2: Da kan vi gå videre til neste steg og lage en god plan for dette. – Ok, ok. – For han har allerede... Jeg husker vi hadde en primen, sant? – Ja, ja. – Han har allerede liksom E up to speed, da. – Ja. Men det jeg lurte på var litt dette her med manuell grid er mer pedagogisk transparant enn autoaroma.
+
+Speaker 4: Så
+
+Speaker 2: har vi MAX.
+
+Speaker 1: Det
+
+Speaker 2: skal ikke være det.
+
+Speaker 1: Skal
+
+Speaker 2: vi se. Så jeg prøver å spørre noen spørsmål her. Og så lurer vi på hva han mener med akkurat dette.
+
+Speaker 3: Så
+
+Speaker 2: det er viktig at dere er litt sånn... At dere jobber... Når du er i planmodus, er det viktig å jobbe med A1 da. Slik at dere ikke bommer for mye på første forsøk, for da er det ofte... Da bruker du mer tid enn ikke. Vi har allerede etablert fra Proposal at vi skal bruke Sarima, og ikke Sarimax, som er external variables. Så vi har ingen eksterne variable her som prøver å forklare dette her.
+
+Speaker 1: Da ser du at du har helt rett. at når det fortenkes om noe du er konfrontert med, så går det en ekstra runde og kanskje kommer til en annen konklusjon. Det er kanskje fordi vi ikke har vært tydelige nok til å spesifisere det tidligere. Det vet jeg ikke. Eller at den har tatt feil konklusjon, så det må være å håpe.
+
+Speaker 2: Du vil se hva han mener
+
+Speaker 3: med denne... pedagogisk
+
+Speaker 2: transformasjonen. Det jeg mener er at en manuell grid-search der vi eksplisitt definerer kandidatmodellene, tilpasser hver enkelt og sammenligner, gjør at hvert steg i modellet er synlig forklarbart i rapporten. Ja, bra. Kan
+
+Speaker 1: du holde etter hva du leser fra nå, for jeg så ikke hvor det
+
+Speaker 2: var. Jeg leser dette her. Der er
+
+Speaker 1: det, nå ser jeg
+
+Speaker 2: det. Det som skjer er at den tester ut flere kandidater for hva disse horisontene skal være. P, Q, stor P, stor Q. Om det skal være 1, eller 3, eller 12, og så videre. Da tester han ut en del kandidater, og så velger han den beste av dem. Det han mener er at han skal teste ut noen kandidater, hvor vi ser forskjellen, og velger den som er best. Det er det han mener med manuell grid search, der vi eksplosivt definerer kandidatmodellene. For han kunne regnet ut dette her automatisk med noe sett autoarimer i biblioteket. Det er sånn han sier det. Men han ønsker at vi skal gjøre det manuelt, og det er jeg enig i.
+
+Speaker 3: Yes. Og
+
+Speaker 2: nå får dere spørsmål på dette her written up. Law has written up a plan and is ready to execute. Would you like to proceed? Og så står det, yes, clear context and bypass permissions. Dette er veldig bra, for det å fjerne konteksten her, det er en god ting, for da starter den fra scratch, og vi får mindre sånn kontekstrotta, eller at kontekstvinduet blir blåta. Så jeg sier ja her, og den vil da at den husker planen sin. Man vil starte med et nytt kontekstvindue. Det bruker vi å si ja til når det er store ting. Ja, da
+
+Speaker 1: begynner man på nytt igjen. Ja, så
+
+Speaker 2: nå er det clear of memory, men han husker planen sin. Dette er et ny funksjonalitet i Cloud Code, så jeg synes det er veldig, veldig bra. Planen husker en, men kontekstvinduet er nå På nytt igjen, da. Så vi ser at vi bare brukte 4%.
+
+Speaker 1: For sånn det fungerer da, at når vi har brukt opp alle prosentene, da blir metta memory. Da greier vi ikke å gjøre noe mer, slik at vi må lage en ny AI-session, og den blir rundt 100%. Men når vi vet at vi skal ha en stor og lang prosess, da er det bra at AI-en tar med seg det den trenger, og lager en ny session, tar med det seg over, slik at den får starte på noe, da. For eksempel at du ikke begynner på en stor prosess, og så er du på 95%, for da vet du at du må hoppe over
+
+Speaker 3: til en ny en. Det er en
+
+Speaker 2: kjent ting som heter «context rot», altså at konteksten din rotner. Og selv om AN har plass til flere tokens, betyr det ikke at du skal bruke det. Dette er en veldig kjent analyse som ble gjort. Her ser dere kanskje den viktigste grafen. Her ser dere at her er 1 MB. Det er Claude og veldig store input lengder. Altså at du har mye historikk. Her ser dere at den synkt lenge før den tid. Hva er det som synkt?
+
+Speaker 1: Hva er det som er på iaksen
+
+Speaker 3: her?
+
+Speaker 2: Det er average normalized Levenstein-score. Det er en test.
+
+Speaker 1: Jeg skjønner hvor gode han er til
+
+Speaker 2: å håndtere det. Ja, hvor gode han er til å håndtere mye kontekst. Ja,
+
+Speaker 1: og den stupe går nedover den. Ja,
+
+Speaker 2: så hvis dere vil lese om dette, så kan jeg bare legge inn i... Det er veldig nyttig, altså veldig god lesning dette her, altså. Så jeg kan legge det inn til dere, for den som har lyst til å lese på en skjerri. Men dette, fortell noe om hvorfor jeg startet kontekstvinduet på nytt igjen. For selv om jeg ikke har kommet fullt kontekstvinduet, så er det lurt å ha det så Så spar sommelig så mye. Fordi kontekstrot startet allerede tidlig. Du ser en synk. Egenskapen til A1 blir dårlig på en kontinuerlig måte. Det er ikke sånn at den plusselig blir dårlig. Den blir jævnt og trutt dårlig etter hvert som du fyller opp med informasjon til A1. Det er kjent som kontekstrotta, eller rotten-kontekst, som de sier. Veldig interessant tekst. Her ser dere eksempelet. Det kalles Needle in the Haystack-test, hvor du legger inn en spesifikk setning inni en stor mengde med data, og så får du et spørsmål. What was the best writing advice I got from my colleague classmate? Og så står det en eller annen plass i teksten. Blandet inn med masse andre tekster. Du kan tenke at du har en bibel, og så står den setningen der en eller annen plass midt i bibelen, og så får den et spørsmål. Jo større bibelen blir, jo vanskeligere blir det for en å finne akkurat den infoen. Sånn er det testen fungerer. Da ser dere at de legger inn Dette er på en måte nåler i høystakken, og så måler vi dem. Og da er det slik at man kan gjøre det verre for A1, for at man kan legge inn på forskjellige plasser i teksten en destruktor, hvor du har en setning som A1 kan plutselig velge den setningen i stedet for den korrekte. Og på den måten så måler vi hvor god A1 er til å håndtere store datasetter. Eller stor mengde historikk. Det er et veldig interessant artikkel, som jeg anbefaler alle å lese tvers gjennom. Den gir veldig mye god innsikt i akkurat dette. Så bottom line er, sørg for å ha så lite bruk av konteksten som
+
+Speaker 3: mulig. Tjen hver tid. Da får du beste resultater.
+
+Speaker 2: Og derfor så startet jeg på nytt igjen nå da med et kontekstvindu som er helt blankt, selv om jeg ikke hadde brukt så veldig mye av det kontekstvinduet som jeg allerede hadde. Vi var vel på 80 prosent når jeg begynte på nytt igjen, og nå er jeg bare på 6 prosent. Alle steg i planen er gjennomført. Ja, her er sammendraget. Og dette opplever vi jo egentlig fordi at Når vi planlegger godt, vil selv gjennomføringen gå fortere. Da vil Clode være ganske god på å gjennomføre det han har planlagt.
+
+Speaker 4: Skal
+
+Speaker 2: vi se da? Det blir spennende. Dette er hvordan han lyser.
+
+Speaker 1: Nå har han utvidget og skrevet rapporten.
+
+Speaker 2: Kommet et nytt kapittel 6.5 og 6.6. Han har gjort to steg i slengen
+
+Speaker 1: her. Vi må spørre om det faktisk er naturlig å ha det i kapittel 6, eller om det er naturlig å ha det i kapittel 7?
+
+Speaker 3: Jeg
+
+Speaker 2: er litt enig i at det er det samme tvilen som vi hadde i sted her. Nå ser jeg at den plasserer dette her under modell. Men da blir det litt tvil om hva
+
+Speaker 1: analyset skal egentlig være. Ja, det faktisk gjør det.
+
+Speaker 2: Da er jeg enda litt i tvil om 6-4 burde ligge under modellen. Dette er jo et konseptuelt, ikke sant? For tanken vår er jo det at du beskriver modellen, det er hva du skal løse. Hva skal du bestemme, sant? Og analysen, da løser du modellen. Så du har liksom to avskilte kapittel, da. En med generell modellbeskrivelse, en annen med sjølve løsningene eller løsningsmetodene.
+
+Speaker 1: Man kan jo også si det er sånn at siden det er parametrene som vi nå skal bare bestemme, så er det under modell, og så har vi ikke begynt å løse det enda. Så det er det som kommer under analyse
+
+Speaker 2: da. Ja, men det er jo det vi har begynt
+
+Speaker 1: å gjøre
+
+Speaker 2: nå, vet du. Vi har begynt å løse det nå, ser du. Vi har testet ut parametrene og regnet på data og sånt. Det
+
+Speaker 1: er å løse. Det å løse er å finne variablene, mens det å beskrive modellen er å finne parametrene. Ja, riktig.
+
+Speaker 2: Så beskrive modellen betyr å beskrive den generelle modellen som vi skal løse, mens analysere betyr å finne de ukjente.
+
+Speaker 1: Vi må skille mellom parametrene og variablene. Så det å løse modellen, mener jeg, er å finne løsningen for variablene. Mens det å spesifisere modellen, det er å finne parametrene. Og det å finne parametrene er i kapittel 6 modellen, mens det å finne variablene er i kapittel 7-analyse.
+
+Speaker 2: Er det rett tenkt? Det blir litt feil for meg. Ja, det kalles parametre, Pekka, men hvis du ser på modellen som står her, da. Da har du phi 1 og phi 2. Det er jo ukjente kofficienter. Ja,
+
+Speaker 1: det er det. Selv om det ene
+
+Speaker 2: er det. Og P1, den er ukjent horisont. Ja, da er jeg enig i det. Alt dette her er ukjente størrelser. P og P og sånt, det er ukjente
+
+Speaker 1: størrelser. Det blir veldig ryddig da, for egentlig så er kapittel 6 da, det blir relativt da i hvert fall. Relativt kort, for det er bare generelle modellen. Og så blir da kapittel 7-analyse, der vi ikke bare finner variablene å løse igjen, men vi også finner spesifikke parametrene for vårt spesifikke case, og det er tidligere analyse. Så jeg mener at hvis de ikke er enige med oss der, så må vi bare overstyre. Og
+
+Speaker 2: da ser vi et spørsmål om 6-4 skulle vært med eller ikke. Men 6-4 har noe med å validere at modellene er riktig modell. Og det er ikke helt det samme som å finne de ukjente, sant? Så jeg synes at 6-4 kan være der det er. For det argumenterer for... Ja, men det har jo med differensering å gjøre, da. Jeg har det. Differensering er jo ien i ARIMA. Ja. Så den burde være på analyse da nå, så skal vi være tro mot dette
+
+Speaker 3: her. Ja. Stemnode.
+
+Speaker 4: Du
+
+Speaker 2: ser ganske langt. Altså, med nok persistence, så klarer du alltid å overtale en AI til å gjøre det du vil. Men vi prøver jo å ha en sunn dialog med AI'en her. Men jeg mener at det som AN sier her, det er empirisk arbeid.
+
+Speaker 3: Og da tilhører det et analysebit. Sånn
+
+Speaker 2: ja, dette synes jeg er bra. Og nå får vi Yes, Clear Context and Bypass Permissions. Ja. Da begynner vi på nytt igjen med en frisk kontekst. Så selv om 8 prosent er lavt, så vet vi at det er lurt å starte med null, for da er den helt fersk og veldig fokusert på hva den skal gjøre for best resultat. Husk at dette her er en megabyte, så hvor stort vinduet, hvor mye har vi brukt allerede, det er jo 80.000 tokens allerede. Nå står det 0 her, og nå er vi på 20.000 K. Hvor brukes de 20.000 K? Jo, det er system prompten, som Cloud Code har bak i panseret sitt. System prompt tar jo alltid en viss antall tokens, uansett.
+
+Speaker 1: Ja, så det blir bare slik at vi forsto hva vi gjorde nå. Altså, ble AI enig med oss at vi flytta en del av kapittel 6 i til 7, eller var vi så
+
+Speaker 2: tvungen til å gjøre det? Ja, han ble enig om at vi flytta kapittel 6, 4 også, til kapittel
+
+Speaker 1: 7 da. Ja, jeg ser det. Man ble enig med oss der, eller
+
+Speaker 2: tvungen til å gjøre det? Ja, han ble enig da. Om vi tvanger den, ja, vi overtar den. Ja, kanskje, ja. Men det
+
+Speaker 1: jeg ofte ser da når vi står og diskuterer, så kommer liksom nye argumenter, altså flere, mer input til situasjonen. Så ofte at den da kanskje får mer input, og derfor så trekker den andre konklusjonen, og derfor blir det enig med oss
+
+Speaker 2: da. Ja, altså, noen ganger så må jeg ta en sjefsavgjørelse selvfølgelig, men ofte så prøver jeg å være spørrende da. Jeg prøver liksom å la, altså jeg prøver å være, altså, Hvis det blir mellom meg og Ein, så er jeg sjepen. Det er viktig. Du må være sjepen. Men det er ikke sånn at jeg prøver å tvinge Ein. Jeg prøver å argumentere for noe. Slik at Ein har muligheten til å si nei. Det er dumt, liksom. Jeg vil gjerne ha den dialogen, det er viktig. Så da må du passe på hvor ledende du egentlig er, når du skriver sånne ting. Og noen ganger så bare tromper jeg det igjennom. Så det er litt avhengig av... av situasjonen. Men nå er klokka en time, så nå kan vi ta pause mens Claude Code sitter og fikser på dette her, og så tar vi en titt på resultatet i neste. Skal vi gjøre det? Ja,
+
+Speaker 1: så tar vi pause til kvart over ett.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

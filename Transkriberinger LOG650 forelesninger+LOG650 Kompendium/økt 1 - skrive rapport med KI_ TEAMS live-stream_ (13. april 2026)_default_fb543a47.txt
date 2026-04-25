@@ -1,0 +1,209 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - skrive rapport med KI_ TEAMS live-stream_ (13. april 2026)_default_fb543a47
+Date: 4/20/2026
+Duration: 3038 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Velkommen til dagens forelesning, alle sammen. Dette er en forelesning som skulle vært forrige uke, men Bård Inge ble syk, så vi tar det igjen i dag. Agendaen er å prøve å bli ferdig med den viktige fasen som dreier seg om selve rapporten. Så dette er jo selvfølgelig rosinepølsa, det viktigste. Så vi satser i hvert fall på å fullføre denne fasen i dag. Stemmer ikke det, Bård?
+
+Speaker 2: Det stemmer. Så vi skal La oss bare ta et blikk tilbake igjen først, og se litt her an på hva vi har gjort, og hva som gjenstår. Vi jobber med rapporten, og her er innholdsfortegnelsen. Dette er i Markdown, som dere sikkert kjenner. Vi skal ikke levere i Markdown, men vi skal jobbe i Markdown. Dette har vi snakket om mange ganger. Markdown er et tekstformat som gjør at AN kan lese disse filene veldig enkelt. Så det anbefales at man alltid jobber i Markdown. Så skal vi mot slutten av kurset oversette dette til en PDF eller Word-fil. Så langt har vi gjort innledning, i hvert fall litt. Det er en foreløpig innledning. Problemstilling, delproblemer, avgrensing, antakelser. Vi har hoppet over litteratur og teori. Vi har beskrevet casebeskrivelsen ganske bra, egentlig. Og vi har snakket om metode og data. I tillegg har vi brukt ganske mye tid på modell, som dere ser. Dette var jo da en generell Sarima-modell, hvor vi har gjort analyse. Og vi har vel gjort kapittel åtte resultat også. Hva er det? Resultatet av analysen.
+
+Speaker 1: Hva for noe?
+
+Speaker 2: Det som gjenstår i selve innholdet, som er den vesentlige delen, det er jo da en diskusjon. Og en konklusjon. Bibliografien er jo sterkt knyttet opp mot litteraturkapitlet, og det skal vi ikke ta i dag. Så det kommer litt senere. Det vi skal prøve å få til i dag, det er diskusjon, og så er det teorien, tenker jeg, har jeg lyst til å prøve å få tatt i dag. Så vi hadde en teori her også. Som kan være greit å få plass på. Så venter vi litt med litteraturen, og bibliografien som er koblet til litteraturen. Så jeg har begynt med å spille opp Clode Codia. Her ser dere den. Den er allerede oppe. Vi har jo fått godkjent brukerann-PK, har vi ikke?
+
+Speaker 1: Ja, det stanner.
+
+Speaker 2: Så det betyr at vi har allerede lagd brukerann. Det er bare en liten formalitet igjen. Så skal vi legge ut brukerann til dere. Og da får dere lov til å logge dere inn og bruke Cloud Code videre i arbeidet deres, frem til 31. Mai, som er innleveringsvissen. Eller var det 1. Juni? Vi må nesten sjekke litt.
+
+Speaker 1: Jeg lurer på om det er 1. Mai. Vi må prøve å komme ut med dem og sjekke at de forbinder, for det er faktisk bare en og en halv måned igjen. Det er 1.
+
+Speaker 2: Juni er det.
+
+Speaker 1: Men det er bare en og en halv måned igjen, så vi skal prøve å legge ut frukeren så fort som mulig.
+
+Speaker 2: Ja, E&PK har et møte etterpå, og da skal vi få formalisert disse bruker han, og får lagt dem ut i løpet av kvelden, forhåpentligvis.
+
+Speaker 1: Vi skal prøve også å være litt tilgjengelige da, for at hvis dere da, hvordan dere skal logge dere inn og koble opp Cloud Code og embeddet det inn i VS Code. Hvis folk lurer på ting der, så kan vi da spørre på Teams og tagge oss, og så skal vi prøve å svare der nå så godt vi kan, slik at dere kommer i gang der, og slik at det ikke tar lang tid.
+
+Speaker 2: Kanskje vi kunne laget bare en liten instruksvideo, der vi hadde logget inn med en av brukerene Peko?
+
+Speaker 1: Ja, det kan vi kanskje gjøre.
+
+Speaker 2: Det hadde kanskje spart oss for mye kreft da, kanskje. Bare sånn tenke høyt da. All right. Så det var litt om planene her våre. La oss... Starte. I dag har jeg tenkt å prøve å vise en litt interessant ting til dere. Dette er mer en AI-egenskap. Dere kan prøve det selv hvis dere vil eller ikke. Men legg merke til nå at diskusjon handler jo om alt fra og med kapittel 6 og utover. 6, 7, 8, Altså modell, analyse, resultat. Og så skal vi diskutere resultatene våre. Og den biten er viktig. For det er her vi kommer med våre tolkninger av hva analysen og modellen gir oss. Og den er viktig. Det har veldig lite med teori å gjøre, egentlig. Teori er egentlig et sidekapittel som som regel forventes kjent av lesere. Men siden dette her er en bacheloroppgave, er det vanlig å ha med et teorikapittel, hvor man beskriver og prøver å lære leseren om hva prognosisering er, Hvordan man måler det, og så videre. Hvilke pilarer det står på. Så hvis dere tenker gjennom, så kan vi egentlig si det at kapittel 3 her er uavhengig av diskusjon. Hva tror du om det, Pekka? Er de to uavhengige? Kan vi skrive disse to her i parallell?
+
+Speaker 1: Diskusjon og? Teori. Ja, da er jeg enig i det du sier. Teorien har egentlig ikke noe med diskusjon å gjøre. Det brukes egentlig ikke å ha med i ... Publikasjoner og artikler, hvis det ikke er en ny teori som er dårlig kjent. Vi bruker å henvise til teori, vi bruker å referere til teorien, men vi bruker ikke å legge det fram teori, for de fleste av de teoriene er jo egentlig velkjent. Sarima er jo velkjent, så det er ikke vits å repetere det i en forskningsartikkel, for en forskningsartikkel er på ingen måte en lærerbok. Men av grunn av som Bård Inge sier at dette er til bæsleroppgave, så har vi likevel med, for det er sunt og godt å ta det med, for da tar det med relevant teori. Relevant teori som er relevant i forhold til det vi holder på å skrive på. Så jeg er helt enig i at en diskusjon kan skrives fullstendig fra koblet fra teori.
+
+Speaker 2: Ja, og da gir det oss muligheten til å være effektive. For vi kan tenke oss at, la oss si at vi har hatt to medlemmer i en gruppe, da. Så kan jo ene medlemme skrive teorien, og det andre medlemmet kan skrive diskusjon. Så det jeg skal prøve å vise dere i dag, det er en teknikk med clod code, hvor vi kan jobbe på samme kodebasen samtidig. Hvor vi da spinner opp to clod code personer som vil da jobbe på to forskjellige plasser i rapporten. Problemet er at de vil aksessere samme filer. La meg vise hvordan dette her skal fungere før vi gjør det. Da må jeg da hive over til en annen skjerm, bare for å vise litt. Stop sharing, share annen skjerm. Der.
+
+Speaker 1: Ja, nå ser vi det.
+
+Speaker 2: Så dette er jo ikke noe dere har absolutt nødt til å gjøre selvfølgelig, men jeg tenkte at det kan være etter hvert som dere blir flinkere til å bruke AI, vi har jo AI som en del av læringsmålet her, og etter hvert som dere blir flinkere til å bruke AI, så vil dere legge merke til det at den meste parten av tiden med AI, vet du hva det er? Det er venting. Dere venter på at A1 skal bli ferdig med å gjøre det den skal gjøre. I mellomtiden står vi og prater og jobber og prater. Når A1 er ferdig, fortsetter vi igjen. Etter hvert som dere blir flinkere, kan det oppleves som waste. Du kaster bort tiden din. Dere husker en gang tidligere at jeg hadde oppe to Cloud Code-sesjoner. Men det er en utfordring med å ha to cloud-code-situasjoner jobbende med samme kodebase. La oss se hva som skjer. Dette her vil jeg da kalle for parallelt arbeid. KlodeCode. Det kan like godt være Codex, men KlodeCode har nok bedre funksjonalitet for dette. Hvis dere tenker at dere har kodebase her. Så har dere mange filer. Og en av de filene, det er rapport.md. Det er jo den viktige filen, det er jo den vi hjelper å forbedre hele tiden. Rapport.md-filen. Jeg må bare ta av meg hattkapet, for det ble plutselig vondt. Right. Så denne filen, det er jo da den filen jeg nettopp viste dere, ikke sant? Med alle kapitlene og sånne ting. Men.
+
+Speaker 1: Kodebaser tenker du da på LATEC-koden som er skrivet i rapporten, eller tenker du da på sjølve rapporten? Jeg tenker.
+
+Speaker 2: På alle filene, absolutt alle filene, i git-repo. Men jeg tenker spesielt på en fil, rapport-md, ikke sant? Og hvis jeg nå spinner opp to Cloud-codesesjoner, ikke sant? Klåd der og klåd der. Så jobber vi med de to versjonene samtidig, så denne klåden kan gjøre en endring her, og denne klåden kan gjøre en endring der. Og de kan overlappe. Da får du endringskollisjon, hvilket er veldig uheldig når du jobber i en og samme kodebasen. Så det betyr, med andre ord, at de to klådestasjonene vil begynne å konkurrere med filene. Så den ene klåden vil da endre litt, og den andre klåden vil endre litt, og så blir det bare jibbidybdish. Det kan bli skikkelig rot, faktisk. For de to klådestasjonene kjenner ikke til hverandre, så de prøver enkelt og greit å endre filene. Samtidig, og de prøver også å aksessere filene samtidig. Det er bare ett program som kan skrive på ei fil til enhver tid. Så her blir det en konkurranse mellom de to. Så det er forbundet med problematikk, egentlig. Så dette er da problemet. Løsningene er følgende. Dette er jo et problem så lenge du jobber på samme maskine. Er det to mennesker som sitter på hver sin egen maskine og jobber, så er det ikke noe problem. For da har du to forskjellige rapport-MD-filer, en på den ene personens datamaskin, og en på den andre personens datamaskin. Da fungerer Git sånn som det skal gjøre, ved at du kan merge og slå sammen. Ja, men det vil ha.
+
+Speaker 1: Et problem hvis det er konflikt i merginga.
+
+Speaker 2: Da. Ja, men da fanger du opp konflikten og kan løse konflikten. Det case som vi viste dere her oppe nå, det skjer på en og samme maskin, hvor to program prøver å aksesere samme filer på samme område. Da kan ikke GIT hjelpe oss. Sånn, out of the box da. Men det skal likevel være GIT som er løsningen for det, men da må vi gjøre noen spesielle ting. Så det starter egentlig i kodebasen. Vi har kodebasen her,.
+
+Speaker 3: Med.
+
+Speaker 2: Alle filene våre i folderen vår. Og det som vi kan gjøre, det er at vi kan opprette et såkalt ... Husk at da er vi jo i en branch, for eksempel i main. Og det vi kan gjøre, er at vi kan opprette et såkalt ... Worktree heter det. Det er bare en kopi av hele kodebasen. Du har rett og slett en annen folder, som er akkurat lik den folderen du har i utgangspunktet. Du vil automatisk på en annen branch, en sånn egen branch da. Og da vil du ha i prinsippe, la oss si at vi har rapport-MD der. Og så har vi da en versjon rapport-MD her. Ja, og så kan vi da lage et eget worktree for den.
+
+Speaker 3: Så vi.
+
+Speaker 2: Kan lage to worktrees, altså to kopier av den samme kodebasen.
+
+Speaker 3: Og vi.
+
+Speaker 2: Har da to kopier på maskina vår med rapport MD. Og da kan vi da spinne opp en Cloud Code her. Vi ser hvordan det går.
+
+Speaker 3: Da vil.
+
+Speaker 2: Vi endre denne filen. Pluss kanskje potensielt mange andre filer også. Vi har en del planleggingsfiler og sånne ting. Nå bare tar jeg eksempelet for rapport. Endre den. Når vi er ferdige med ... Når begge sesjonene er ferdige, så kan vi merge disse tilbake igjen til main.
+
+Speaker 3: Da har.
+
+Speaker 2: Vi kodebasen igjen, slår sammen worktida tilbake igjen til kodebasen, med rapport MD, merges. Etter at klodecode er ferdig. Klodecode har jo, altså de skaperne av klodecode har jo da strømlinjeforma dette her, for klode, slik at det skal være enkelt å kunne gjøre det på den måten her. Det tenkte jeg at vi skulle prøve på nå i de to casene hvor vi vet at vi har ganske stor uavhengighet. Det vil likevel være områder som man vil være kolliderende her, for eksempel i prosjektfila. Men vi vet at områdene er relativt uavhengige. Teori er ikke så avhengig av diskusjon. Så da er spørsmålet, hvordan lager man disse worktreene her, og hvordan jobber vi parallelt med de to? Hvor havner kodebasen her, og hvordan merger vi dem tilbake igjen? Som sagt, det er ganske enkelt, og det var derfor jeg tenkte jeg skulle vise det. Hadde det vært komplisert, så hadde jeg hoppet over det. Men det skal vise seg å være egentlig ganske enkelt. Så la oss gå tilbake igjen. Til kodebasen vår, og så skal vi prøve oss fram. Først vil jeg bare vise hvordan ... Her kan jeg legge ut en link til dere, forresten. Jeg legger det inn i chatten. Hvis dere glemmer hva jeg skriver, så står det her på den linken. Her står det «Run parallel cold-code sessions with GitWork Prisma». Måten du gjør det på, er måten du starter Cloud på. Vanligvis skriver vi jo Cloud, og så starter Cloud. Men nå må du da skrive Cloud med en dash-dash Worktree, som betyr at du har lyst til å starte Cloud Code i et eget Worktree. Så kan du da gi navnet på hva du skal gjøre. Her kan vi for eksempel skrive Worktree, og så skriver vi Discussion. Så lager vi en til, og så skriver vi Worktree, og så skriver vi For eksempel Theory, ikke sant? Så kan vi da jobbe parallelt med de to, og da er vi hundre prosent sikre på at vi ikke får problemer mellom stasjonene. For de jobber faktisk på to forskjellige plasser på maskinaene. Hvis du hopper over navnet her på bransjen som du vil lage, så vil du få autogenerert. Da blir det noe sånn som Bright Running Fox for eksempel. Så jeg liker egentlig å gi et vesentlig navn, slik at jeg vet hvem av dem som er hva. Så det skal vi se på. Her er det ganske viktig. Worktree cleanup, altså hva skjer etter at du er ferdig. Skal jeg zoome opp litt, kanskje? Nei, det ser godt ut. When you exit a Worktree session, Claude handles cleanup based on whether you made changes. No changes, det skjer ingenting, selvfølgelig. Hvis du har gjort endringer, Claude prompts you to keep or remove the Worktree. Keeping preserves the directory and branch, so you can return later. Removing deletes the Worktree and directory and its branch, discarding all uncommitted changes. Når vi er ferdige, så forteller vi bare Claude, når vi er ferdige, at vi ønsker å merge disse worktreeene tilbake igjen til main. La oss prøve, så ser vi hvor vi havner. Det vi tenkte var –worktree. Så da stopper vi der, og så går vi tilbake igjen til den. Så her er vi, men vi har ingen work trees nå, vi har bare en bransj, og den bransjen, det er main, det ser vi her i min statuslinje.
+
+Speaker 3: La.
+
+Speaker 1: Oss se hva vi har. Hva mener han i statuslinja, pekk på det.
+
+Speaker 2: Her.
+
+Speaker 1: Jeg ser det ikke, jeg må jo se det. Her? Ja, jeg ser ikke hva det er igjen. Jeg ser ingenting. Altså, jeg ser skjermen din, men jeg ser ingen mus. Her ser jeg det, ja. Og der, hva skjer? Nei, jeg ser fortsatt ingenting. For du føltes det var en lek og så en fryktelig... Der, nå ser jeg hva det er.
+
+Speaker 2: Igjen, ja. Der, ja. Men hvor.
+
+Speaker 1: Står det mer innan,.
+
+Speaker 2: Da? Her, under der, i lilla. Det her står det,.
+
+Speaker 1: Ja. Det.
+
+Speaker 2: Kalles en statuslinje i Cloud Code, og du kan tilpasse den slik som du vil. Det skal ikke gå gjennom her nå, men dere kan slå det opp hvis dere lurer på det.
+
+Speaker 1: Du har det på terminaler, mens jeg har det på det som er innebygd. Det er mer sånn Enrich. Så det environmentet som du har er litt annerledes enn det jeg har, så det kan være forskjellig fra person til person. Men du har ingen terminalenvironment til Clod? Jeg er ikke sikker.
+
+Speaker 2: På om man kan kjøre WorkTrees fra den som du snakker om, PK. Mest sannsynlig kan man det, men jeg er ikke sikker. Men det jeg må gjøre er at jeg må gå ut, jeg må slutte den her, for jeg må starte Clod. Med et work tree. Jeg bruker også alltid Dangerously Skipped Permissions, så jeg har med den. Men det jeg skal gjøre nå er å skrive dash-dash og så work tree. Det betyr at da lager vi et work tree. Og så vil jeg da gi et navn på dette work treeet, og da kaller jeg det for theory. Da vet dere at det er der teorien skal skje. La oss prøve, så la oss se hva som skjer, for håpentligvis kommer det ikke noe feil her. Supert. Her ser vi at vi har fått opp en ny bransj, som heter Worktree Theory. Hvor har det kommet opp? Hvis dere går inn i .cloud her opp til venstre, folderet som heter .cloud, så er det en ny folder som heter Worktrees. Inni her står Theory som er navnet på bransjen, og inni der er all koden kopiert. Så den koden her som er her, er nå en trokopi av all koden. Og akkurat denne Cloud Code-sensjonen her, den jobber nå ikke inne i her, men den jobber inne i Work 3 Theory. Så endringene skjer her inne. Så skal vi da starte en tilsvarende igjen for.
+
+Speaker 1: Hva gjorde du der først, Bård? Gikk du på terminalen? Det gikk så fort at du fikk ikke med med det.
+
+Speaker 2: Du gjorde. Der var du. Hva gjorde du nå? Dette var det som vi gjorde nettopp,.
+
+Speaker 1: Sant? Ja, og så gjorde du? Ja,.
+
+Speaker 2: Da trykket jeg bare på den nye her. Men jeg kan vise.
+
+Speaker 1: Hvordan vi gjør det. Ja, ok. Skal.
+
+Speaker 2: Vi se. Jeg trykker bare.
+
+Speaker 1: På New Terminal. Og så kan jeg.
+
+Speaker 2: Starte en ny klådestasjon der. Men før vi gjør det nå, så tar jeg å bare prime denne klåden her, denne stasjonen her, og det betyr at den vil lese hva som har skjedd så langt. Vi lagde denne siste gang innen under Skills, så er det noe som heter Prime. Prime er da en fast måte å starte på. Vi kan trykke sånn her, slash, prime. Vi gikk gjennom det siste gang. Vi skal ikke gå gjennom den, men dette er alltid det jeg først gjør hver gang jeg skal begynne på nytt igjen. Da gir vi Cloud Code all den informasjonen vi trenger, for å vite hva som er neste oppgave. Ja, for å begynne.
+
+Speaker 1: På nytt igjen når vi får 100 av ... Og om tokene får brukt opp på en sesjon, så må vi begynne på nytt igjen- for å få friske tokens, og så må vi få klod til å leses opp på Prime. Er det rett oppfattet?
+
+Speaker 2: Ja, det er ikke rett. I starten av hver sesjon skriver vi Prime uansett. Og så skriver vi ny... Nå skal vi lage den for discussion. Så da skriver vi Worktree. Discussion og dangerously keep permissions, slik at de slipper å være på siden hele tiden. Sånn, det ser bra ut. Nå får vi enda en her. Legg merke til at under Clone nå, så har vi ... Vi har to work trees, sant? Vi har en setter discussion og en setter theory. Nice. Så den ene vil jobbe her. Den andre vil jobbe her. Og ingenting vil bli gjort i hovedboden din. Og hvis.
+
+Speaker 1: Du går helt oppå til høyre, så kan du jonglere mellom klodchatten til de to sesjonene. Helt oppå til høyre der, ja. Nå har vi to separate klodsesjoner, som vi kan jonglere med om oppe til høyre på.
+
+Speaker 2: VR-stolen. Nå er primen her ferdig, som dere ser. Primen er ferdig, og jeg trenger egentlig ikke lese dette her, men det er bra for AI nå videre. Så tar vi å prime den andre, sant? Dette kan dere gjøre på hvor mange... Dere kan ha så mange worktrees som dere vil, egentlig. Men det er klart at hvis disse worktreene kolliderer veldig mye inn i kodebasen,- så får dere en del merge-arbeid. Det kan vi jo påpeke. Det kan vi kanskje se litt på. Men vi vet at teori og diskurs er på to forskjellige plasser i rapporten. Vi vet at det ikke blir så mye kollisjon her. Det må dere være klar over.
+
+Speaker 3: Så.
+
+Speaker 2: Da kan vi gå tilbake til teorien. Her er vi i teorien. Og så la oss nå se på statusfila. Det er viktig å ikke endre fila her nå. Når vi da går inn under Git changes nå, så ser dere at vi har main her, men så har vi de to bransjene som vi har fått. Worktree theory og worktree discussion. Ser dere det? Så når den ene begynner å gjøre endringer nå, så kommer endringene her under theory, og den andre kommer under discussions. Helst så skal ikke vi ha så mange endringer her, men vi kan ha det jo. Så vi har egentlig tre forskjellige versjoner av samme kodebase pågående samtidig. La oss se litt på prosjektet her. På plan. Og da hadde vi i fylset status md. Så den er viktig å huske. Som er da alle aktiviteterne våre som vi skal gjøre. Og her ser vi hva vi gjorde sist gang med review og alt mulig. Og her står det skriver kapittel 2 litteratur, skriver kapittel 3 teori, og skriver kapittel 9 diskusjon. Så jeg hopper over kapittel 2 og forteller A1 at den skal gjennomføre.
+
+Speaker 3: Kapittel.
+
+Speaker 2: 3 Her. Da er det veldig viktig å passe på at når vi snakker med AI, at vi vet at vi er i riktig AI. Ta alltid en titt på, ok, vi er under theory her. For hvis ikke så kan vi begynne å rote i havet selv. Da går det å adundas. Så her skriver vi, hei, jeg ønsker at du nå.
+
+Speaker 3: Skal gjennomføre.
+
+Speaker 2: Act, 37,.
+
+Speaker 3: Hør. Så setter.
+
+Speaker 2: Vi på planmode. Det gjør vi ved å trykke shift-tab, det står her nede, shift-tab to cycle. Hvis vi bare trykker shift og så ta B, så hopper vi mellom de forskjellige modusene. Plan mode, det betyr at den planlegger og så, men den endrer ingen filer. Lag en skikkelig plan for en god teorikapitel. Tilpasset som er til teorien.
+
+Speaker 1: En ting jeg tenkte på, Kåre, det der nå. CS Arima og sånne ting står da i kompendiet vårt. Burde A1 hatt kompendiet som grunnlag? Eller skal de bare skriver teorien helt uavhengig av kompendiet vårt. Da bruker den jo internett og andre kylder som den har for å finne ut om det er helt uavhengig.
+
+Speaker 2: Av kompendiet vårt. Når det gjelder teori, så skriver vi ikke så mye om teorien i kompendiet. Vi antar der også at man kjenner det. Vi skriver opp hovedligningene og litt sånne ting, men vi skriver ikke noe teori rundt det. Her må Claude hente egen kunnskap, da. Ja.
+
+Speaker 1: Så det korte svaret er at vårt kompendie ikke er spesielt viktig som grunnlag for AI-en i det burk som vi har. Ja.
+
+Speaker 2: Det er riktig. Men det er ikke helt unormalt å ha med referanser inni et teoriekapittel også. Neida,.
+
+Speaker 1: Det er vanligast.
+
+Speaker 2: Så vi kan egentlig legge...
+
+Speaker 3: Legg.
+
+Speaker 2: Også til referanser. Der hvor det gir mening. Vi bruker APA7-stil referanse.
+
+Speaker 3: Vi.
+
+Speaker 2: Skal komme litt hardere tilbake med referansene i neste runde, tenker jeg. Før slutten av måneden, for vi skal jo ha en sånn pulledag. Men jeg vil gjerne bare ta dem med her nå mens den jobber. Søk på internett, på nettsøk, etter tradisjonelle ODE-referanser for teori. Teorien. Kun hvor det gir mening. Teori. Etablert teori. Som er alment kjent. Trenger ikke referanse.
+
+Speaker 1: Ja, det er jo ofte sånn at det allmenn teori kan være... Gjerne ha noen klassiske referanser, det kan være helt ok på det.
+
+Speaker 2: Ja, men en plass må stoppe da, og det er det jeg prøver å si til Einar da. Jeg vil ikke at han skal referere alt mulig rart, men viktige resultater er greit utover det, så ikke gå for dypt med referansene i et teorikapittel, tenker jeg da. For det finnes typisk lærebøker.
+
+Speaker 3: Bare.
+
+Speaker 1: Litt kommentar her. I reelle forskningsartikler bruker du sjelden eller aldri lærebøker som referanser. Da er det artikler, tidsskrifter som brukes. Men vi sier jo her at det som er litt unntatt med forskningsartiklet som vi skriver, er at det er bachelor-lignende oppgave, og derfor har vi teori, noe vi ikke i samme grad har i forskningsartiklet som regel, og vi kan gjerne referere til lærebøker her, og det gjør vi ikke i samme grad i reelle forskningsartiklet. Så vi kan ha det i bakhodet at Her er det litt avvikta i forhold til sammenlignet med en ordentlig forskningsrapport. Akkurat det vi gjør her, men det.
+
+Speaker 2: Er greit for oss. Så skal jeg gjøre noe viktig. Hvis vi nå ser under 005 report her, så har vi bare rapporten. Det er et velkjent problem, eller diskusjonsområde for AI, dette her med referanser. Vi hører jo gang på gang at folk gjør nar av AI, og sier at AI klarer ikke, eller gjør feil med referansene. Refererer til bullshit, ting som ikke eksisterer, og så videre. Det vet vi. Altså, AI har lysioneret. Så vi må på en eller annen måte prøve å unngå det på. En av tingene vi bruker å gjøre er å be om at AN faktisk laster ned referansene, og lagrer dem på maskina vår, slik at vi kan gå inn og sjekke referansene litt bedre. Så jeg ønsker Laster ned eller skriver en oppsummering av referansen i en egen fil. Helst kanskje laster ned, ja. Og lagrer den. Under folderen. 005 Report. Referanser. Nei, vi har en egen referanse. Det har vi, ja. 003 Heter den der oppe. Ja, det er references bare, ja. Ja. 003, References.
+
+Speaker 1: Det er en ting jeg lurer på, Vård. La oss si at i beste fall er det det vi ønsker at vi finner med reelle artikler, og gjerne i pdf-format. Men da er det en plass med det på git, og vi pusher og puller. Vil dere pushe og pulle pdf-filer, eller er.
+
+Speaker 2: Det sånn git-ignore-pdf? Det bestemmer jo vi om vi vil ha dem eller ikke. Men her i dag har vi ingen restriksjoner på pdf, så vi vil da laste.
+
+Speaker 1: Opp PDF-filer. Det er bra det, for vi vil gjerne ha med PDF-filer, da er det ganske... Jeg vet.
+
+Speaker 2: Hvorfor du tenker sånn, men for noe av og til, for eksempel når I og PK skriver bøker, så kan disse PDF-filerne bli enormt store, sånn 100 MB, og da får du ikke lov til å laste opp på GitHub. Men disse filene her, de er knødt små, og da er det ikke noe problem. Her vil jeg også faktisk ha laget en mal for hvordan den referansen skal se ut. Det orker jeg ikke å bruke tid på her og nå, for det skal vi bruke mer tid på neste runde. Så dette her blir en litt sånn referanse-light-versjon. Så kan vi heller gå over disse referansene neste gang, tenker jeg. Det som er poenget nå er at jeg ønsker å ta med referansene. Legg til referanse-sjekk. Som et eget punkt under akt 3.7 i status.md. Legg merke til at jeg begynner ikke å dragge og droppe nå. Hvis jeg gjør sånn som dette, gjør jeg en feil da, så hører dere hva jeg gjør. Hvis de gjør det, gjør jeg en feil, tar statusen her, og så drenger jeg den der. Hva skjer nå hvis jeg gjør dette? Er det noen som ser problemet?
+
+Speaker 1: Jeg ser ikke problemet.
+
+Speaker 2: Noen på nettet som ser hvorfor dette er et problem hvis jeg gjør det sånn? Vel, husk at vi jobber nå under en egen folie som heter WorkTree Theory, og jeg dro nettopp statuset om deg.
+
+Speaker 1: Fra... Ja, det gjorde jeg. Nå ser jeg det. Hvis du skulle ha gjort.
+
+Speaker 2: Det nå, så skulle jeg vært litt mer spesifikk, og så hadde jeg gått inn under Claude, WorkTrees, Theory, og det er egentlig denne statusfilen.
+
+Speaker 1: Vi har. Nå er det riktig status. Ja, men det vi kan gjøre da, vi trenger ikke bare referanse her, for dette vil Clode Code skjønne selv, fordi vi står i WorkTree Theory, og hvis vi bare skriver status.md da, og ser om vi skal gjøre endringer under 1.3.7, så er det den statusfilen i det WorkTree Theory. Da skjønner.
+
+Speaker 2: Clode konteksten. Ja, så Clode finner den riktige filen her, så vi trenger egentlig.
+
+Speaker 1: Ikke skrive hele Dette er poenget, at hvis vi er veldig spesifikke, så kan vi gjøre feil og kommandere klod til å gjøre feil, hvis vi har feil spesifikasjon. Men hvis vi er litt rund, så skjønner klodet utenfor sammenhengene og gjør det riktige. Så det er en erfaring vi må gjøre på balansen mellom å være generell og å være helt spesifikk.
+
+Speaker 2: Du har veldig rett i det, Penko. Hvis du er for detaljert, og når du skal beskrive hva AN gjør,- så restrikterer du AN på en sånn måte at resultatet kan bli dårligere- enn dersom du var litt rundere i beskrivelsen, ikke helt veldig tydelig. Og dette her er jo et typisk eksempel på det. For her vil nå Claude definitivt finne den rette fila i sitt eget work tree. Mens hadde jeg da tatt inn feil sti, så hadde den begynt å rote. Han er nå for å ta over.
+
+Speaker 1: Etter, så vi kan ta og bare sette i gang, så får den jobbe.
+
+Speaker 2: I pauser. Ja, da setter vi plan, kjører plan på den, og så forbereder jeg den andre i mellomtida. Da har vi pause der.
+
+Speaker 1: Man blir forberedt, så vi vil gjerne ha med deg noen som ikke er forberedt i friminutter. Skriv prompten,.
+
+Speaker 2: Men i senden ikke avgå det. Bare gjør klart skrivningen. Ok? Vi får nå.
+
+Speaker 1: Jobbe en teori 3. Og så bytter du opp til høyre her, ikke sant? Der, ja. Ja, og så begynner vi da på discussion-saken. Riktig, og nå vil.
+
+Speaker 2: Jeg bare skrive ferdig prompten, men jeg vil ikke sende den av gårde. Nei, jeg skjønner, jeg skjønner. Ja, bra. Ok. Da tar vi pause her da. Ja, ok.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

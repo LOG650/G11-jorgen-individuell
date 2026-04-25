@@ -1,0 +1,141 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - skrive rapport med KI_ TEAMS live-stream_ (23. mars 2026)_default_7ee54d61
+Date: 3/28/2026
+Duration: 2926 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 2
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Først, vi ser for å holde på i tre timer i dag her. Vi får se hvor langt vi kommer. Så vi fortsetter nå, for nå er vi inne i den viktige og hovedfasen i prosjektet. Selve gjennomføringa. Vi skriver en del på rapporten. Vi diskuterer hva som skal være i resultat, hva som skal være i analyse, hva som skal være i diskusjon. Og det er ofte en vanskelig debatt. – Og vite hva som skal være hvor. For hvis vi blander det som skal være resultat, analyse, casebeskrivelse, – – så blir det veldig rotet og uoversiktlig. Så det er en vanskelig debatt, og vi prøver å ta den sammen med dere nå. Og vi gjør også en del omskifflinger da. Det kan hende vi slår sammen casebeskrivelse og analyse. Det er sånne diskusjoner som vi kommer å ta fra tilfelle til tilfelle. Og så den diskusjonen vi har nå, den problematikken vi har her, det er også denne diskusjonen og problematikken dere internt i gruppene også gjerne kan ha. Og kan gjerne diskutere med oss på Teams også, der vi kan komme med innspill. For bare det å presentere problematikken for oss, å presentere bare for oss og dere selv, er en god del av det å bare komme frem til hva som er et godt resultat. Og så ser du også at det er viktig nå at vi har tre timer om gangen, og at vi da ser det som en Boringe. Det er litt tung start da, for vi må prøve å fortsette der vi slapp sist gang, og det å ha gode rutiner på hvordan vi skal komme inn i driven igjen, der vi slapp taket sist gang, det er også en egen sak da. Så husk på det at vi lager da, som Boringe ser nå, en sånn status.markdown-fil. Der vi ser hvilke av de checklist-punktene vi har gjort, og hvem som gjenstår. Det er ofte bra å starte det, bare for å få AN i gang, og se at AN skal sjekke det, hva som har blitt gjort, hva som skal gjøres. På den måten kommer AN i gang, og på den måten kommer også vi i gang. Er ikke det en grei kommentar,.
+
+Speaker 2: Bård? Jo, det er. Hver gang du starter, så bør du på en måte... Kjøre en runde med hva som har blitt gjort og hva som skal gjøres. Så det er lurt å ha en sånn statusfil av en eller annen format. Jeg har kalt den for status.md og ligger under planfolderen. I tillegg til disse datafilene som styrer prosjekter.
+
+Speaker 1: Det betyr at du har en status.markedfil i alle fire fasene,.
+
+Speaker 2: Både 3 og 4? Nei, det tilhører kun prosjektet, for prosjektet som vi gjennomførte, altså planleggingen som vi gjorde i fase 2, den skal jo beskrive hva vi skal gjøre i fase 3 som er gjennomføring. Så selv om vi er i fase 3, så henvenner vi med T-faser 2 hele tida for planen.
+
+Speaker 1: Så du har bare en status.markedanfiler i hele prosjektet totalt? Ja, man.
+
+Speaker 2: Kan jo legge den hvor du vil, men siden det handler om planen og å gjennomføre en plan, så synes jeg at den kan ligge der. Men du kan like godt ha den på rota hvis du vil det, hvor du vil ha statusfiler. Men jeg liker å samle alt som har med plan å gjøre i Fase 2-planen, så å følge et prosjektledesystem. Når dere nå skal gjøre dette her i praksis, så ønsker vi at dere skal bruke Gant-diagrammet deres for MS Project. Det gjør ICHI her direkte, og grunnen til det er at AN er ikke så god på- å jobbe med MS Project-filet, på samme måte som de er så gode på å jobbe med Word og så.
+
+Speaker 1: Videre. Man kunne vi der ha bedt avlaget en markdown-file av MS Project-filet, og så jobbe mot den markdown-filet, eller er det greit å bare gjøre.
+
+Speaker 2: Det som vi gjør det? Markdown det er fritekst, mens en MS Project-file er jo veldig Der er det dataformat. MS Project har et dataformat. Så det er ikke så lett å oversette direkte fra en MS Project-fil, en MPP-fil, til Markdown. Nå klarer jeg det selvfølgelig, men A1 klarer ikke å lese disse MPP-filene. Da må du i så fall lagre det som et dataformat i stedet for det, og det finnes jo. Dette er litt avansert bruk, jeg vet ikke om vi skal snakke om det. Men som dere ser her, når det gjelder strukturerte data, så er det lurt å ikke bruke markdown. Markdown er ustrukturert, det er som en tekstfil bare. Men hvis du skal ha data, så bør du bruke et dataformat, for eksempel JSON, som jeg har gjort her. Hvis dere ser for eksempel på Schedule her nå, så ser dere at dette her er nesten som en database. Det er en fil som har alle aktiviteterne i seg. Aktivitet 3.2. Her står det jo kort sagt 3.2 er gjort. Her står det Completed, nice. Så det er jobben mot et dataformat. Og hvor har jeg dette dataformatet fra? Det har jeg bedt Einum å generere ut fra faste standarder ute på nettet. Og nå kommer den avanserte biten. Jeg kan nå si... Kanskje vi skal gjøre det i siste time, who knows? Jeg kan bare sette opp en sideprosess der han sitter og jobber med det, men jeg kan da si,- Lag en Python-skript, altså lag koden, som leser alle disse adjacent-filaene, og genererer dataformatet som MS Project forstår. Da kan jeg da importere filene inn til MS Project, og så har jeg MS Project. Så lenge du har underliggende datamodeller, så kan du alltid importere dem inn i MPP, via et fast standard. Vi kan jo, nå husker jeg ikke helt hva den standarden heter, men det kan vi nok forsøke. Det kalles XML forresten, XML format for MS Project.
+
+Speaker 1: Da får vi det ganske... Ja, ta litt større skrifter i nattetermin. Her står det.
+
+Speaker 2: Her er det. Microsoft Office Project Data Interchange Schema. Dette er et format, et dataformat, beskrevet i såkalt XML, som er et avansert data som kan beskrive dataformatet. Det jeg kan gjøre da er å bruke en sånn fil, og så kan jeg importere den rett inn i MS Project. Jeg har faktisk gjort det i et annet fag, jeg kan vise dere hvordan det ser ut. Dette er litt avansert, så jeg har ikke tenkt å bruke for mye tid på det, men jeg har lyst til å nevne mulighetene. Hvis vi går til downloads her, for eksempel. Her ser vi det. Fiktivt... Ser du hvilken file det er? Vet ikke om jeg klarer å zoome. Nei, jeg får ikke zoome her. Jo, nei. Men her står det fiktivt byggeprosjekt mspdi.xml. Dette har jeg da brukt for å lage en MPP-fil. Altså en MS Project-fil. Så det jeg kan gjøre da, jeg kan starte MS Project. Der har vi den. Nei, den var der allerede. Nå starter jeg et tomt MS Project-fil. Tomt prosjekt, sant? Og så sier vi åpne, bla igjennom, og så åpner jeg den XML-fila i stedet for. Da må vi gå til nedlasninger. Nå ser dere at den har lyst til å hente MPP-filer. Hvis jeg nå skriver alle filene der, så kan jeg da få åpne en fiktiv byggeprosjekt med baseline-tracking, for eksempel. Åpne. Da får jeg en veileder som sier om jeg har lyst til å oversette. Her står det. Hvordan vil du importere denne filen som et nytt prosjekt? Trykker fullføre der. Nå leser denne datafilen. Og genererer dette her. Sånn kan du jobbe mot MS Project. Her har du alt du trenger. Dette er bare et lekeprosjekt som jeg har laget i et annet fag, for å vise hvordan en MS Project-fil kan settes opp. Men jeg viser dem ikke dataformaten, jeg viser dem selvfølgelig den filen her. Så nå kan jeg lagre den her som en MPP-fil for eksempel. Lagre som, og så kan jeg lagre den som en vanlig MPP-fil. Og da har jeg kommet meg unna data, da bruker jeg ikke dataformaten lenger. Så tanken er da nå, og dette kan jeg gjøre, jeg kan sette det på etterpå. Så tanken er at når jeg har nå dette, Dette dataformatet som jeg har her, med JSON-format i stedet for, det er jo et annet språk enn XML. Dere kan jo se hvordan denne XML-fila ser ut. Den er jo enkel å se, bare å åpne den her selv. Sånn ser denne fila ut. Sånn ser XML-fila ut, veldig sånn oriktet. Og dette er en ren datafil. Så i stedet for å skrive det på XML-format så har jeg brukt JSON-format, som er et enklere dataformat å forstå, men også ikke like kraftfullt. Men jeg kan nå ta alle disse JSON-filene her og oversette dem inn i dette faste XML-formatet, og så importerer jeg inn, – til MS Project, og det kan vi ta og gjøre etterpå. – Det betyr det, Bård, at du er nødt til.
+
+Speaker 1: Å gå tre steg. – Først har du JSON-format, så går du til XML, og så går du til Project. – Så du må gå de tre stegene,.
+
+Speaker 2: Altså. – Ja, veien er sånn at det er her. – Nå har vi datafila her, som forteller prosjektet og fremgangen i prosjektet.
+
+Speaker 1: – Altså datafila, da mener du JSON-fila?
+
+Speaker 2: – Ja, de er gule, ja. Det er JSON-fila. Så tar jeg og lager et pythonskript som oversetter disse JSON-filaene inn i denne XML-formatet. Når jeg kjører pythonskriptet, vil jeg få en ny fil som heter project.xml, for eksempel. Så åpner jeg MS Project, åpner med den filen og importerer til et MS Project-fil. Og da har vi fått MS Project.
+
+Speaker 1: Til det. Ja, så det går de tre stegene fra JSON-fil til XML til Project.
+
+Speaker 2: Riktig. Så det går.
+
+Speaker 1: De tre stegene, og det får du også inn til å gjøre via Pythonscript.
+
+Speaker 2: Ja, det kan vi gjøre etterpå, for eksempel. Vi kan sette på den som en sideprosess, hvor den bare sitter og lager dette Pythonscriptet, lager det rett inn her. Og så vil den kjøre seg. Og etter at den er ferdig, så kan vi se på projectfila, hvis dere vil. Det er sånne lure ting å gjøre, for da slipper du egentlig å jobbe så fælt i MS Project. Det kan være hardt. Ok, nok om det. Jeg kan gjøre det i pausa. Jeg slik at jeg setter på den i pausa, og så gjør jeg det her. Nå skal vi videre, og vi skal se hva som har blitt gjort. Og jeg tar opp statusfila. Så pågår, validerer modell, genererer prognoser mot testdatasettet, og så videre. Beregner MA, ok, greit. Her står det jo da. Fullføret 3.3. Det er dumt at det ikke stod hvilke aktiviteter i denne.
+
+Speaker 1: Veldig.
+
+Speaker 2: Interessant. Jeg har lyst til at det skal stå hvilken aktivitet det snakker om. Ja, for her er.
+
+Speaker 1: Det bare klorepunkter. Riktig.
+
+Speaker 2: Så det er da kort sagt 3.1 og 3.2 er gjort. 3.3 Er påbegynt, men ikke ferdig. Og neste riktige arbeidsrekkefølge er test, sett, validering. Sluttprognoser, anbefaling, ferdigstilling. Ja, recommended. Se på. Trolig kjekt med disse spørsmålene, så en dukker opp hele tiden. Ja, det.
+
+Speaker 1: Er bra det. Og så synes jeg det er bra at når du ikke er helt usikker på hva som er en godt svar, så har de også en recommended.
+
+Speaker 2: Alternativ. Og husk at det gjør den kun dersom det er i planmode. Og for å komme i planmode, så trykker vi på shift-tab. Ja. Bare slik at dere husker det, da. Skal vi se her. Ja, det var feil. Det er så langt, vet du at det er. Sånn. Kommer til et spørsmål, ja. Har dere svart på det?
+
+Speaker 1: Nei, jeg har ikke. Men det jeg ser her, da, er at hvis vi går og ser på kompandiet vårt, på det som er om akademisk skriving, så ser du at Vi kan gjerne diskutere om det skal være å slå sammen teori og litteratur,.
+
+Speaker 2: Eller om vi skal.
+
+Speaker 1: Ha det separat, men vi kan gjerne ha det under teori. Så det er våran. Så les det som står i akademisk skriving, så får vi ofte svar på det. Ja, så vi skal...
+
+Speaker 2: Jeg har planlagt en gjennomgang rundt litteratur også, hvordan vi jobber med litteratur med AI. Det var et velkjent pain point, som mange har likt å påpeke, at AI kommer med feil referanser og sånne ting. Nei, men... Kyrst! Det var en katt her som jeg var. Så jeg tenkte at vi skulle jobbe med det, men det blir ikke før påske, det blir etter påske. Først tenker jeg at man får ned det nye som du kommer med, din analyse. Få den ned først. Så skal vi gjennomføre litteraturstudium pluss teorikapittel. Det er ikke så vanlig å ha referanser i et teorikapittel. Kanskje noen få, men ikke så veldig mange. Men i litteraturstudier som er relevant til det problemet du skal løse, der er det jo viktig med referanser og sånne ting. Og da er det en egen workflow eller prosess man bruker med AE for å sikre seg at det ikke Det blir feil og sånn, og at du finner aktuelle og gode referanser. Men det trenger vi en hel forelesning til, tenker jeg. Og etter påske. Uansett, så tenker jeg at det er ikke det første dere skal gjøre. Dere skal nå gjøre det som vi har gjennomgått her mange ganger. Få analysen på plass, og i etterkant kan vi legge inn referansene som er aktuelle. Det er ikke dermed sagt at det er den beste rekkefølgen. Mange vil nok ha sagt omvendt at du skal først jobbe med referansene for å finne ut hva du har gjort tidligere, så ikke du gjør det samme. Men på en bacheloroppgave er ikke vi like streng som i en masteroppgave, doktorgrad eller publikasjon. Skulle det vært mastergrad eller publikasjon, så ønsker vi at – at litteraturanalysen kommer tidlig, slik at du allerede vet hva som har blitt gjort, – – før du starter på analysen sånn som vi jobber med nå. Håper det ga mening? Ja, det gjorde det. Her står det aktiviteterne, ser dere. Det var det jeg ville. Det er litt bra, for det er dem vi forholder oss til i – I planen. Da kan jeg bare si at da kan du gjennomføre neste steg. Jeg skal bare sjekke.
+
+Speaker 1: De.
+
+Speaker 2: Er veldig like.
+
+Speaker 1: Det var arbeidsreglene etter.
+
+Speaker 2: Claude. Nå er det kodeks, det er agents, men jeg tror begge er like. Vi skal nå planlegge. Her er det lurt å gjøre planer. Så jeg slår for plan. Kontroll-tab, bare gjør. Ja, kontroll-tab.
+
+Speaker 1: Neste steg, altså neste steg i 1.33.
+
+Speaker 2: Nå gjør jeg det trikset hele tiden. Jeg sier bare at hvis du er usikker, så sjekk bare GIT-historikken. Folk A1 kan alltid sjekke GIT-historikken for å se hvilke endringer de har gjort tidligere. Da vil de også skjønne hvordan de skal følge blant annet dette formatet under aktiviteter her med 3-3-validerer-modell. Det er jo her vi er på jobb. Vi skal lage skript her og sånne ting. Resultat og figurer. For å være 100 prosent sikker, så bare viser jeg at det er innen her. Så det er det som er arbeidsholderen vår akkurat nå. Bare slik at ikke AN begynner å rote. Og så må jeg bare passe på at alt er... Ja, jeg har endret statusen litt, så den må jeg bare... ...Kommitte, slik at jeg har en ren kommittehistorikk, for da kan jeg se hvilke endringer som gjøres. Men det ser du jo, hvis du ser.
+
+Speaker 1: På ek 3-3 der, validerer modell. Det er jo den som vi ikke tikket av alt på, det er jo der vi må fortsette.
+
+Speaker 2: Noe. Ja, men det er derfor vi tok den. Ja. Jeg vet at den skal fortsette videre med 3-3, gjøre noen neste steg i planen. Som er å generere prognoser mot testdatasetter for periodene. Nå kjører vi planmål. Det er veldig viktig. Jeg skriver ikke så mye, ser dere. Ganske lite. Så han må trokkele seg gjennom dette og finne ut hva han egentlig skal gjøre. Kodex er heldigvis litt raskere som regel enn kod. Sånn sett ser det bra ut. Får vi se hva det er. Men disse prognoserne og sånne ting,.
+
+Speaker 1: Det.
+
+Speaker 2: Er jo ikke en del av ... Det er resultatet. Det er når du tester modellen på ... Da har vi landet modellen. Så det er litt rart, egentlig. Dette er litt rart. 3 Og 4 er litt det samme. Det står «Lage prognose» her. Ja, det er for fremtiden, ja. Sånn er det, ja. Dette er for testsetter, ja. Dette er for fremtiden. Ja, så det.
+
+Speaker 1: Er riktig. Det er riktig. Ok, fortell litt om det, for vi spytter jo... Datasettet i 8-20, det ene var trening, det andre var... Ja. Trening, og det andre var... Hva var det andre var? Trening og... Når bruker en trening? Når bruker ene datasettet, og når bruker det andre? Var det ledering som bruker den ene, og på prognoset bruker den.
+
+Speaker 2: Andre? Ja, men det er noe ulogisk her som vi må rydde opp i. La oss prøve å ... Famle den på ... La oss prøve å ... Altså, det som er utfordringen her, da, er at nå skal vi generere prognoser før vi genererer prognoser. Det er ikke helt riktig, da. Så jeg lurer på om dette er valideringspunkter?
+
+Speaker 1: Nei.
+
+Speaker 2: Denne bør komme etter at vi har lagt prognoser. Ja, men det har vi jo gjort. Vi har estimert. Ja. Bare gis om rotet. Bare gis om rotet. Skal vi se. Jeg må bli enig med meg selv. Eller vi må bli enige. Vent litt da. Jeg skal sette opp OneDrive'en i rett og slett. Hjem, fil, ny og ny. Ny. Ikke lov å lage en ny notatbuk. Kutt i notatet. Legg til siden. Er det vanlig at det.
+
+Speaker 1: Ikke fungerer? Ja, jeg.
+
+Speaker 2: Har slett litt nå. Jeg tar den inn under oss. Jeg vet ikke om jeg kan bære den vekk. Jeg legger den tab i, og så lager jeg log 6. Det er bare for å vise. Bare slik at dere forstår. Denne er en ganske viktig del, og det er ganske komplisert også. Så jeg tar og bytter skjerm, og så prøver jeg å vise hva jeg tenker på her. Nå ser dere skjermen, sant? Ja, vi ser. Så hvis vi tenker litt sånn bålkaktig hva vi holder på med da nå. Så først så lager vi estimermodell da. Modell, altså løse modellen, sant? Så det betyr å finne alle Variabler, ikke sant? Og det du får da, er jo en prognosemodell, sant? Så dette gir jo da en spesifikk prognose, sant? For eksempel at i er like alfa 1, ja, t da, t minus en, sant? Pluss alfa 2, I 3 minus 12, og så videre, er det noe sånn. Der alfaen er i yta, pluss epsilon. Dette er modellen. Og nå har vi da estimert disse dataene der, av tall. Ja, vi har estimert koffisienttall. Ja, så vi har en spesifik funksjon som skal beskrive etterspørselen vår. Dette var allerede gjort i steg 3.2. Men så har vi en periode her. Vi har hele datasettet. Hvis vi nå ... Sånn. Så her er tida, og her er i. Så husker vi at den gikk sånn som dette. Og så har vi jo et datasett. Hvis vi tar den der, bare fjerner litt den her, slik vi har litt igjen. Så dette her var jo et datasett. Og det vi gjorde var å dele dette datasettet opp i to deler. Vi brukte 80-20, så dette er 80 prosent, og dette er 20 prosent, og vi gjorde det på den måten. De 80 prosentene brukes til å estimere variavlene, altså de ukjente parametrene. Med dem får vi en prognose. Det gir oss en prognose. Sånn, sant? Det vi gjør nå, er at vi bruker den prognosen på de neste 20 prosentene. Hvis vi tenker at vi har en... Jeg skjønner. Ja, da har vi lagd en prognose som går sånn, for eksempel. Dette er prognoserne. Det bommer alltid, gjør vi, sant? Vi gir oss en prognose. Og så skal vi nå... Men det som er poenget er at vi... Vi må også teste hvor god den prognosen er. Da må vi ha eksisterende data for å teste det også. Det er en god regel at du gjerne ikke tester de dataene du tester på. Det skal ikke være de dataene du lagde prognosen på, for da får du en bias. Så nå tester vi. Så nå bruker vi prognosen, i en annen farge for prognosen, grønn, her. La oss nå si at dette ble sånn, for eksempel. Så er det jo test. Vi tester prognosen. Prognosen fra ... Hva kalte vi de datene?
+
+Speaker 1: Ser du ikke hva jeg ... Hvis du ser her ... Vi kalte det.
+
+Speaker 2: Treningsdata, ja. Fra treningsdata. Fra treningsdata.
+
+Speaker 1: På testdata. Er dette riktig, Bård? Er det train som er av de 80, og test som er av de 20? Er det riktig?
+
+Speaker 2: Det er riktig, og så måler vi. OK. Hvor god prognosen er. Så på den måten kan vi måle hvor god prognosen er. Når vi måler hvor god prognoser er, så måler vi det på et uavhengig del av dataene dine.
+
+Speaker 1: Ser du det er det riktige det du skrev der? Nå ser jeg limt inn at Trains er 80 og 20 er.
+
+Speaker 2: Test. Ja, sånn er det der. Riktig. Målet det gjør vi ved hjelp av RMSE, for eksempel, eller MAPE, og så videre. Det er sånne måltall. Hvis dere husker fra prognosisering, så kjenner dere opp igjen disse, Mado og så videre. Da kan vi vurdere hvor god den prognosen vi fant, altså modellen vi fant, er på et uavhengig datasett. Et datasett vi ikke har brukt til å trene modellen, for den vet vi er god. For vi har optimert den modellen. Mot de treningsdataene. Derfor trenger vi et uavhengig testsett for å måle hvor god prognosen er. Det er det vi skal gjøre nå. Mens i neste steg, la oss si at den blir god nok. Den blir god nok.
+
+Speaker 1: Vi kan bare ta vekk denne høyere marginaen. Så får du.
+
+Speaker 2: Litt mer... Så når vi da kommer til... Når vi kommer til neste aktivitet, da skal vi lage en framtidig prognose. Jeg har dårlig farge. Blå, da. 12, For eksempel. For 12 måneder frem i tid. Det var steg 1, steg 2 og steg 3. Steg 1 var å estimere på treningsdata. Så var det å sjekke hvor god modellen er på testdata. Så er det å lage prognosen for de neste 12 månedene. Det er det vi holder på med. Jeg rotet litt i mitt eget hue på disse her. Det var derfor jeg tenkte det var greit å tegne.
+
+Speaker 1: Opp. Det var bra å tegne opp, så det er helt supert.
+
+Speaker 2: Jeg håper det ga mening. Det vi skal gjøre nå, det er den grønne delen. Det er en del av valideringen. Det er for å se hvor god modellen er. Ja, her står det. Så skal vi velge Fast Holdout Recommended. Estimere modellen en gang på treningsdata. Lag prognoser for hele testperioden. Og så sier det bare.
+
+Speaker 1: Bruk. Ja, nå må du dele rettskjerm. Nå ser vi fortsatt tilbakeomhendene.
+
+Speaker 2: Det gjør dere, vet du. Nå har jeg gått over, vet du. Ja, bra. Der, da. Nå ser dere. Så med denne bakgrunnen er jeg nå i stand til å velge det riktige valget her. Hvordan vil du testsette valideringen i AACTS 3.3 skal gjennomføres? Og det de rekommender da.
+
+Speaker 1: Hva var din inputt til AN? Hva hadde du skrevet? Jeg har.
+
+Speaker 2: Ikke skrevet noe ennå. Jeg har lyst til å velge nummer én. Estimere modellen en gang på treningsdata og lage prognoser for hele testperioden. Det er akkurat det jeg tegnet opp. Og så skriver det at man har lyst til å lage og estimere modellen. Bruk den allerede estimerte modellen. For vi har allerede gjort det, vet du. Vi har allerede estimert parametret. Vi har allerede estimert datene. Vi har allerede estimert … –Kortisentene? –Parametrene, heter det. Du kan også lese det i selve rapporten, for hvis det står i rapportene, hvor har vi rapportene? Her er de. Det er for eksempel avsnitt 7c. I rapporten. Jeg sier klidet bare for å sikre meg at han skjønner det. Han trenger ikke å kjøre analysen på nytt igjen. Vi har allerede funnet kofisientene, ser du. Jeg trenger ikke si nei.
+
+Speaker 1: Snart tar det seg pause her. Vi bør klokka er over et. Ja, som.
+
+Speaker 2: Viser... Så visst ... Ja. Nå. Der, ja. Så mens den brenner, så kan vi ta pause. Ja. Ja. Vi skal.
+
+Speaker 1: Måle opp igjen. Det blir kvart over ett.
+
+Speaker 2: All right.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

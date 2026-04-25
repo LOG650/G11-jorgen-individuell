@@ -1,0 +1,585 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - programmering med KI_ TEAMS live-stream_ (16. mars 2026)_default_5cb1a995
+Date: 3/17/2026
+Duration: 2554 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 4
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: med innebygd i VS Code, og grunnen
+
+Speaker 2: til det er at den kan være litt uslovlig, slik at du detter ut av.
+
+Speaker 1: Men jeg kan gjøre det her nå likevel da. Skal vi se, Codex, VS Code, nei,
+
+Speaker 2: jeg holder om en igjen. Sånn, bruk Codex fordi den er rask,
+
+Speaker 1: og har god memory da.
+
+Speaker 2: Så det er litt grunnen.
+
+Speaker 1: Men Cloud Code kan også brukes som en tillyser. Akkurat, ja.
+
+Speaker 2: Det siste vi gjorde var å skrive i agentfil. Dette er jo klassisk, da. Du kommer inn, det har gått en del dager siden du jobbet med det, og så har du glemt alt. Jeg har glemt alt. Husker du noe på deg, Kå?
+
+Speaker 3: Vi har en liten idé, men det er veldig bra at vi tar en recap, det er jeg helt enig i.
+
+Speaker 2: Ja, så er det noen forslag her om hvordan vi skal ta en recap?
+
+Speaker 3: Det jeg mener å huske er at vi begynte å skrive skjelettet til rapporten, så vi kan bare se på rapporten.
+
+Speaker 2: Meningen var ikke at du skal huske det. Meningen er hvordan skal du framske informasjonen. Du skal bruke A1. om å spørre hva du gjorde siste gang.
+
+Speaker 3: Ja, det er forfattaren Erik.
+
+Speaker 2: Ja, nice. Det er det som er lurt triks. Hvis dere ser her nå, så har vi ingen endringer, men vi har gjort en del ting her. Vi har en historie her, en historikk over endringer. Så du kan bare si til A1, Gå gjennom Githistorikken og kom med en oppsummering av hva som ble gjort siste gang.
+
+Speaker 1: Da skriver vi bare gå gjennom Githistorikken, for å finne ut hva som har blitt gjort frem til nå. Lag en fin objekt.
+
+Speaker 2: Ok, for å få en liten recap, så spør jeg rett og slett ANA om å få en recap. Det synes jeg fungerer ganske bra.
+
+Speaker 1: Så slipper jeg å på en måte huske alt mulig.
+
+Speaker 2: Det som er vanlig er å bruke git-committeehistorikken, slik at ANA kan lese den, og dermed finne ut hva han har gjort. Ja.
+
+Speaker 1: Så her er det da et sammendrag.
+
+Speaker 2: Kort oppsummert er dette gjort frem til nå. Projektstrukturer, som du nevnte, proposal, plan, baseline er etablert. Powerhouse case og problemstilling er tydelig formulert. Datagrunnen er lagt inn og delt i trenings- og testsets, stemmer det? Det vi har her. Train og test.
+
+Speaker 3: Ja, stemmer det.
+
+Speaker 2: Bra. Analysemiljø og makt på organisering er satt opp, det stemmer.
+
+Speaker 1: Vi begynte å lage et... Hva heter det?
+
+Speaker 3: Kan du ta litt større skrifter, Bård? Ikke så mye, bare litt.
+
+Speaker 2: Sånn. Vi lagde en folder som heter 006 analysis, ja. Den har vi da delt opp i aktiviteter, og derifra også hvilke... Her har vi gjort en analyse. Skal vi velge å estimere modell? Den har vi enda ikke gjort. Her har vi ingenting, ser vi.
+
+Speaker 1: Så det er sannsynligvis det som skal.
+
+Speaker 2: Det som fremstår som neste naturlige fase basert på historikken er status MND, er ferdigstille dokumentasjon av aktivitet 3.1-rapporten, velge å estimere prognosemodellen, validere modellen, produsere prognosemodellen. Ok. Så vi har en status-filen
+
+Speaker 1: plass. Hvor har vi denne? Status
+
+Speaker 2: MND.
+
+Speaker 1: Der en, under
+
+Speaker 2: plan. Den ja. Så dette er i hvert fall en klassisk procedure som I bruker da. At de bare rett og slett spør A1 hvor var de holdt på en, og nå fant de det ut da. Så vi holdt på pågående, rens og strukturerer data. Så vi skal sette inn tekst og figurer på rett plass i 005-report-report.md før vi lukker. Så la oss bare se på rapporten, bare før vi går over til å skrive inn. Den er på Report.
+
+Speaker 1: Skulle huske at den gjorde det, men...
+
+Speaker 3: Jeg mener at hvis du ikke forstod at den laga skjelettet bare da, på rapporten. Bare de temaene som skal være med i rapporten. Nei, her kommer
+
+Speaker 1: det, ser du. Modellering, data.
+
+Speaker 2: Data-grunnlaget. Så er det litt grann om den. Så
+
+Speaker 4: status.
+
+Speaker 1: Så skulle jeg
+
+Speaker 2: fått noen figurer her da. For vi produserte vel et ... Den sånne,
+
+Speaker 1: så produserte vi denne, og så produserte vi den som vi mente var OK. Så
+
+Speaker 2: da skal vi omgjøre å få dem
+
+Speaker 1: inn i rapporten nå. Så denne har
+
+Speaker 2: vel ikke kommet inn ennå,
+
+Speaker 1: tenker jeg,
+
+Speaker 2: hvis jeg har skjønt det rett. Så spørsmålet var jo hvor den skulle være henne, men den er jo under case-beskrivelse. Her er
+
+Speaker 3: de, ja. Ja, da har vi faktisk tatt inn den under state-beskrivelse. Vi gjorde det, det stemmer det. Det var det
+
+Speaker 1: vi gjorde siste. Ja.
+
+Speaker 3: Og så skal vi se, hvordan har vi figurtekst og tabelltekst og sånne ting? Er det på plass? Ja da.
+
+Speaker 4: Her. Ja.
+
+Speaker 3: Det som vi kan få bare en liten ting, bare som vi så med Bagatelli-tærnavaringen, vi ble enige om siste
+
+Speaker 2: gang,
+
+Speaker 3: så har vi oppdatert det også på, jeg husker ikke hva vi kalte det da, det var ikke på skills, men det var et annet agent eller noe sånt, at det skal litt mindre italisk skrift på figurtekst, men vi mener at det samme bør vi også ha på tabellene. For eksempel tabell 4-1, det burde da være av samme font som er figureteksten her. Jeg vet ikke om det er vanskelig å skille mellom hva som er hovedtekst, og hva som
+
+Speaker 2: er figure- og tabelletekst. Ja, så kan vi legge inn det.
+
+Speaker 1: Da er det også case-beskrivelse. Bra.
+
+Speaker 2: Det ser ganske greit ut. Men vi vil ha med en figure, en tabelltekst.
+
+Speaker 3: Tabelltekst er der, men han er på en sånn font at det ser ut som det er hovedteksten. Ser du det? Eller er det der
+
+Speaker 1: hovedteksten? Det er hovedteksten. Det er
+
+Speaker 3: hovedteksten, ok. Men da mangler han faktisk tabellteksten i sin helhet da.
+
+Speaker 2: ID3.
+
+Speaker 1: Bruk.
+
+Speaker 4: Bruksamme.
+
+Speaker 3: Bruksamme fonds som ble fikk gjort eksponeret.
+
+Speaker 4: Og
+
+Speaker 2: format
+
+Speaker 1: som for figurtekster.
+
+Speaker 4: Ja.
+
+Speaker 1: Han sa ikke hvilket fil det var,
+
+Speaker 2: men jeg håper han skjønte det.
+
+Speaker 1: Rapport, ja. Han
+
+Speaker 2: skjønte det.
+
+Speaker 3: Han forstod det. Det er nice.
+
+Speaker 2: Tabelletekster lagt
+
+Speaker 1: inn, sier han. Nå har han gitt. Juhu!
+
+Speaker 3: Men så er det en liten ting da som jeg er litt usikker på, om det er rett
+
+Speaker 2: og riktig, for
+
+Speaker 3: det er noe vi også diskuterte i kompaniet våre, skal tabellteksten være overtabellen eller undertabellen?
+
+Speaker 2: Hva er begge deler?
+
+Speaker 1: Vi kan
+
+Speaker 2: legge en over da. Jeg er egentlig
+
+Speaker 3: tilhenger av å ha begge under i, men jeg vet ikke hva som er standard her faktisk.
+
+Speaker 2: Smak og behag, så vi kan bare ta det som standard under her, det er enklest, tenker
+
+Speaker 3: jeg.
+
+Speaker 1: Da er spørsmålet,
+
+Speaker 2: er vi da ferdig med denne
+
+Speaker 1: datadelen, eller er det noe annet vi
+
+Speaker 2: burde ha med?
+
+Speaker 3: Da er det bare de ubehandlet råddatene som er bare der.
+
+Speaker 1: Uri, våkna klokka fem, jeg kan
+
+Speaker 2: være litt trøtt i tiden. Switch til planmode. Du får
+
+Speaker 1: hjelpe med å holde våken på. Planmode,
+
+Speaker 2: ja. Grunnen til å kjøre planmode er at da kan AN spørre med spørsmål. Det husker dere fra siste gang. Det synes jeg er veldig bra, for da får vi avklart ting før vi avgår jobben til AI, og ikke etterpå. For da kan det være ofte sånn at du sparer litt
+
+Speaker 1: tid. Jeg bør ha litt om caset i innledningen. Bør vi? Bør vi? Hva tenker
+
+Speaker 3: du på da? Innledningen i kapittelet?
+
+Speaker 1: Innledning? Det er innledning her? Den er
+
+Speaker 3: der? Ja, ok. Ja, i den innledningen,
+
+Speaker 4: ja. Ja,
+
+Speaker 2: litt om hva som bør inn i innledningen. Ja, jeg
+
+Speaker 1: gjør det.
+
+Speaker 2: Så det var bra. Dere ser jo det at dere må ha litt kunnskap selv her. Jeg visste jo det at det er lurt å kanskje ha med litt random denne delen her inne i innledningen. Slike ting må dere kunne fange opp selv. Hvordan dere kobler alle delene i en beslag.
+
+Speaker 1: Hei! Halla, Witten. Halla, Witten. Ja, jeg gjør det. OK, så skal vi se hva han gjør. Nå ser dere at det kommer
+
+Speaker 2: et forslag, fordi vi er i planmode.
+
+Speaker 1: Yes, implement. Det er alltid lurt å
+
+Speaker 2: lese over før de ikke gjør det nå. Det må jeg bare påpeke. Bruk alltid tid på å lese over planen før dere kjører noe over det. Men akkurat nå ser
+
+Speaker 1: vi ikke det. Skal
+
+Speaker 3: vi bare skrue det opp, så vi får se innledningene?
+
+Speaker 2: Her igjen.
+
+Speaker 4: Fjern.
+
+Speaker 1: Alt rundt. En ting,
+
+Speaker 3: Bård. Jeg bare tenker rundt her. Alt som var rundt der nå, det som står i malen, er jo informasjon om temaer som burde vært med i de respektive kapitlene. Burde du ikke foreløpig beholde det som en guidelag, for eksempel å skrive det i rødt eller grønt eller i en boks eller noe sånt? For det er bra å ha, da. Ja,
+
+Speaker 1: absolutt. Dette
+
+Speaker 2: er et viktig punkt. Så legg merke til nå at når vi nå begynner å skrive rapporten, så fjerner han alle disse gode tipsene her. Hvilket egentlig Arjen har gått av å lese, for dette er tips som vi ser på, i forhold til sensurering for eksempel. Så hvordan skal vi på en måte... Nå ønsker jeg ikke å ha dem der, for etter hvert så skal det bort, og så skal vi komme inn med vårt. Men jeg ønsker fremdeles at AN skal ha tilgang til disse kommentarene her. Er det noen forslag på hvordan vi kan gjøre det? Hvordan kan vi sørge for at AN alltid kjenner til dette, for eksempel? Any ideas? Det var en spesifik fil som AN alltid leser når du starter AN. Husker dere
+
+Speaker 1: hva den heter? Jeg tror jeg husker
+
+Speaker 3: det. Vi kan være studenter, Bård, hvis ingen andre svarer. Er det
+
+Speaker 2: agent? Agents.md, ja. Det er en spesiell fil som Codex alltid leser når du starter Codex. Derfor er det lurt, og ting som er veldig viktige at AN skal huske, Så det er lurt å legge det inn i Agents, for da vil den huske det for hver gang du starter
+
+Speaker 3: Agents. Men er det sånn by default med alle AE, at FilaAgents.md er reservert til dette, eller er det noe som vi har puttet inn i skills lokalt for vårt tilfelle?
+
+Speaker 2: Nei, dette er generelt for AE. Og hver AI har sin sånn file, så AI-agenta.
+
+Speaker 3: Så det er globalt, uansett om jeg bruker Cloud, Gemini eller Kod? Nei, det
+
+Speaker 2: er ikke globalt. Det er avhengig av hvilken agent du bruker. Så denne, Agents, det er spesifikt for Kodex. Cloud Code heter Cloud.md, og Gemini heter Gemini.md, med store bokstaver. Så hvis dere bruker andre agenter, så må dere sørge for at det er en annen fil, men det er samme effekten eller samme hensikten med filene.
+
+Speaker 3: Er alle de filene en andre fil?
+
+Speaker 2: Ja. Så måten vi kan gjøre det på, for
+
+Speaker 1: eksempel, er å fjerne alle...
+
+Speaker 3: Men en ting, Bård, før vi skriver det der. Skal vi virkelig fjerne det, eller skal vi bare putte det om en annen sted? Jeg mener kanskje vi skal ha det der, for eksempel ha det i rødt eller grønn? Nei, det er rødt
+
+Speaker 2: hjelper ikke.
+
+Speaker 3: Skal vi se hva det er som er en del av rapporten vår som vi har skrevet, og hva er en del av det som var opprinnelig?
+
+Speaker 1: Legg det
+
+Speaker 3: inn
+
+Speaker 1: i Agents. Men i og med at
+
+Speaker 3: det faktisk er bra for oss selv å se hva som står der nå, for oss mennesker. Ja, men nå
+
+Speaker 2: vet vi det, sant? Så nå kan vi i litt greit se i egen
+
+Speaker 3: hånd. Greit, greit.
+
+Speaker 2: Så ser vi om man skjønner denne oppgaven.
+
+Speaker 4: Dette
+
+Speaker 2: er jo informasjon som AN vil lese tidlig
+
+Speaker 1: i diskusjonen. Men hvis du er ...
+
+Speaker 2: Og da kan du få såkalt sånn kontekst-rått. Eller hvis vi bruker for mye av konteksten, så kan han glemme det. Så da kan det være lurt at man bare, hvis du er usikker på om AN husker det,- så bare sier du at det er les-agent-fila på nytt. Du kan bare be AN om å lese agent-fila.
+
+Speaker 1: For eksempel. Så gjør han jo det. Så det
+
+Speaker 2: kan også være...
+
+Speaker 1: Det er ganske mye arbeid
+
+Speaker 2: på denne, så det tar kanskje litt
+
+Speaker 1: tid, men det er greit å få gjort det. Så slipper vi
+
+Speaker 2: å ha alt dette tipsa og råda i selve rapporten. Nå skal vi ha bort det, og så putter vi det i Agentsfila i stedet for.
+
+Speaker 3: Ja, det som er fint er at vi ser hvordan vi sikrer til å bygge opp rapporten, som er hovedsluttproduktet vårt.
+
+Speaker 2: Ja, det er det viktige. Trafikk er rent, fordi rapporten fortsatt inneholder flere malbiter med
+
+Speaker 1: små tekster. Så han jobber
+
+Speaker 2: litt på den, da. For han må luke ut de tingene vi faktisk har skrevet, da. Det er et ganske stort dokument, så det er ikke den enkleste
+
+Speaker 1: tingen vi gjør, da. I regn
+
+Speaker 2: med at det er for å bruke
+
+Speaker 1: litt tid, da, kaller jeg det.
+
+Speaker 3: Ja, så jeg ble spurt her om A1 alltid vet det som vi skriver i N4, og det har det vært kanskje svar på da. Ja,
+
+Speaker 2: den vet alltid det. Den leser alltid ved starten, når du starter A1. Men etter hvert som tida går, så kan han faktisk glemme det da, for det ligger langt bak i historikken i dialogen din, sant? Og da kan du bare be A1 om å lese agentfila på nytt igjen da. Så her nå, for eksempel, så ser dere at nå er det tomt her, sant? Nå er det kun... Ser dere? Nå er det bare
+
+Speaker 3: faktisk rapporten vår, og det er bra for å se kapitlet og strukturen, så det er mye bra i å ha en clean rapport. Ja, det
+
+Speaker 2: var målet nå, å få en clean rapport, som du sa, slik at jeg ser hva
+
+Speaker 1: er det som...
+
+Speaker 2: Blir gjort og ikke gjort. Da kan vi ta en titt på Agents og se hvordan den ser ut. Rapportstruktur. Her ser vi. Litt forenklet, men likevel. Det vi kan gjøre også, er at vi kan si til A1 at den kan lese den template-filen vår.
+
+Speaker 1: Den der. Ja, det er en bra ting. Så det var
+
+Speaker 2: vel den her, det?
+
+Speaker 3: Ja, den som har V2, ja. Det er den som
+
+Speaker 1: har V2, det stemmer. Da
+
+Speaker 2: gjør vi på en måte her. Går inn her,
+
+Speaker 1: og så skriver vi. Les også filen. Og så må
+
+Speaker 2: du ikke bruke sånn krøllalfara. Også veien til,
+
+Speaker 1: stien til biler, copy-paste eller
+
+Speaker 2: relative-paste. Sånn. For
+
+Speaker 1: dypere detaljer. For bedre detaljer. for mer detaljert tips og krav. Sånn,
+
+Speaker 2: og da forteller jo at AN skal lese filene da vi er oppstart, sant? Så da regner vi med
+
+Speaker 1: at AN skjønner der. Og nå har
+
+Speaker 2: jo denne her allerede lest denne reporten, så den vet allerede da. Men ved fremtiden nå er det greit å vite om dette. Da skal vi si, gjør en siste sjekk før
+
+Speaker 1: vi lukker status, lukker
+
+Speaker 2: aktiviteten. Da skal vi kjøre
+
+Speaker 1: krøller på det.
+
+Speaker 2: Rense.
+
+Speaker 1: Og strukturere data i status. All right. Nå var det bare innom å
+
+Speaker 2: sjekke før den skal huge av her og så videre.
+
+Speaker 3: Og så gjør vi sittersjekk på at vi har gjort alle aktiviteter
+
+Speaker 2: under rensen. Ja, og bare kontrollere om dette er bra. Her kan dere legge inn en... Altså, hvis dere lurer noe, så legger dere inn... Da går det å bruke en annen AI til å verifisere, for
+
+Speaker 1: eksempel. Så status er ikke samme som faktisk. Ja, du skal oppdatere, men først gjør en uavhengig review av arbeidet vi har gjort.
+
+Speaker 4: Jeg
+
+Speaker 1: har gjort så langt. Så langt?
+
+Speaker 4: Lagre
+
+Speaker 2: Review
+
+Speaker 1: i... Oi. Review. Review under... Legg det under planen. Så kaller vi det
+
+Speaker 2: bare Reviews.
+
+Speaker 4: Der.
+
+Speaker 1: Som en markdown-bild. kobling mot aktiviteten.
+
+Speaker 2: Her kunne man... Det er veldig dumt, egentlig. Dette gjør det bare for enkelhetsskyld. Men det er egentlig dumt å la sammen A1 grundere sitt eget arbeid. Så her ville jeg for eksempel, hvis jeg var dere da, så hadde jeg startet en ny igjen. Og så jeg startet opp Cloud. Og der, Dangerously
+
+Speaker 1: Keep Permissions. Eller noe lignende.
+
+Speaker 2: Man kan også bare starte opp en
+
+Speaker 1: annen
+
+Speaker 2: versjon av Codex også. Det er
+
+Speaker 3: rett til å ha sånn.
+
+Speaker 2: Du har ikke nødt til å bruke den her. Også kunne du sagt, les, gjør
+
+Speaker 1: en review. Lag en review av aktivitet.
+
+Speaker 2: Nå er det lurt at vi har også
+
+Speaker 1: Claude, så jeg vil bare ha to av
+
+Speaker 2: dem. Jeg kaller den for Rename Claude. Nå ble ikke den lest, så jeg starter den på nytt igjen. Så jeg vet at den har lest Claude Phyllad. Nå har den lest Claude Phyllad. Så sier jeg bare lage en review. Jeg gjør det bare den ene gangen her, bare slik at det er sagt. For slik at dere ser. Sånn som dette må dere passe på å gjøre selv, for å vurdere den jobben som vi har gjort. Det er veldig lurt å gjøre. Lage en review av aktivitet.
+
+Speaker 1: 3.1. Rense og strukturere data. Omulige
+
+Speaker 4: forbedringer.
+
+Speaker 1: Og svakheter.
+
+Speaker 2: Vanligvis kan dere også lage en mal på en review. Hva skal jeg være
+
+Speaker 3: med i en review,
+
+Speaker 2: og så linke til den. Det har jeg ikke gjort, men det kunne vært lurt også. Da får dere den samme malen for alle aktiviteter. Det kunne vi også gjort. Lag en review av aktiviteter og mulige
+
+Speaker 1: forbedringer, styrker og svakheter. Er
+
+Speaker 2: det noe mer vi skal ha i en review,
+
+Speaker 3: Peko? Ja, det er greit det foreløpig. Det jeg også ser da, det er at du gjør en review når det kommer bra, så kan du gjøre det til som en review når vi har kommet
+
+Speaker 1: et stykke lenger ut i prosjektet. Ja, lagre review under
+
+Speaker 4: med
+
+Speaker 1: samme navn som aktiviteten. I tillegg at du skriver, at du inkluderer
+
+Speaker 4: låt,
+
+Speaker 2: for eksempel, bare for skilleemner,
+
+Speaker 1: i filenavnet. Så ser
+
+Speaker 2: dere at Codex er allerede ferdig. Og den har jo funnet to punkter her. Det er jo interessant. Men jeg har lyst til å vente til ...
+
+Speaker 1: Han
+
+Speaker 2: tok med også en dato, det var jo bra. Men jeg vil også legge med kodext her, da. Vi kan skille mellom dem. Sånn. Greit, så vet jeg at dette var en review fra kodext, da.
+
+Speaker 1: Jeg
+
+Speaker 2: mener at det er ikke nødvendig å ha med navnet review, siden den ligger under following reviews, er vi enig, Pekka? Ja,
+
+Speaker 3: kanskje greit. Så kan Greta bare fjerne
+
+Speaker 1: det. Det er ikke vitse å ha mer støy enn denne, sånn. Nå er det hellere å klå på i tillegg,
+
+Speaker 3: da. Hvisk hvordan vi switcher fra den ene A1-terminalen til den andre?
+
+Speaker 2: Her oppe så har vi to terminaler, da. Der så jeg det først, ja. Når jeg jobber for fullt, så har jeg en 4-5 sånne nedover
+
+Speaker 3: her. Ja, ok, jeg skjønner, jeg skjønner.
+
+Speaker 2: Men liksom AIA som jobber parallelt
+
+Speaker 3: da? Det har vært litt mer avansert. Jeg har aldri vært sånn et hebbet inne i nettleseren min, men da skjønner jeg hvordan det fungerer. Ja, det
+
+Speaker 2: er supert. Ja, det du må passe på AIA er at du må passe på at du gir dem oppgaver som ikke kolliderer, på en måte. Jeg tror at hvis de jobber på samme fila samtidig da,
+
+Speaker 3: det er uheldig. Ja, det forstår jeg.
+
+Speaker 2: Da kan det bli rot, ja.
+
+Speaker 1: Ja, jeg forstår. Nå
+
+Speaker 2: ser dere at Cloud Code er veldig god, men den bruker en del tid. Den er ganske tregere enn Code X. Da er spørsmålet hvor mye tak vi har i kvalitet. Vi har en rask AI kontra en AI som er litt mer grunnig, men da sitter jo tida. Det ryker jo tida, som du bruker å si. Så det er en avveining dere må lære dere å gjøre da, når dere bruker AI
+
+Speaker 1: her.
+
+Speaker 2: Da har han heldt på bare med lesning ennå. Men imens så kan vi lese hva som står for reviewen her da.
+
+Speaker 4: Aktiviteten
+
+Speaker 2: er faglig kommet langt, men bør ikke lykkes helt ennå nei. Det finnes to gjenstående sporbarhetsavvik. Et i reproduksjon av datasplutt, og et i statusdokumentasjon. Han har vel ikke huket av sikkert. Nei, det bør han gjøre
+
+Speaker 1: da. Det er greit. Men datasplitt og
+
+Speaker 2: strukturering er ikke reproduserbart
+
+Speaker 1: for aktivitet 3. Nei.
+
+Speaker 3: Hvor står det forresten at det ikke er reproducerbart?
+
+Speaker 2: Her. Ja, og det er litt viktig egentlig. Altså, det er jo reproducerbart, for vi har jo den opprinnelige datafilla. Det er sales.csv. Ikke bry deg om Excel-filla. Men dette er den opprinnelige datafilla. Og så splitter vi den i en eller annen prosenta. Så jeg er ikke sikker på om det er nødt til å være reprodusert fra selve splittene, så lenge vi har filene.
+
+Speaker 1: Så
+
+Speaker 2: konsekvensene er at en sentral del av aktiviteten bare finnes som en ferdig filer i 004-data, ikke som etterprøvebar arbeidsflyt i analyseaktiviteten. Det svekker sporbarheten og gjør det vanskelig å referere nøyaktig hvordan trenings- og dataset. Jeg synes dette er litt mer for disse spikkeriet, skal
+
+Speaker 3: jeg være ærlig. Du kan faktisk konfrontere med det, og si hva som skal oppdateres, og si hva vi mener.
+
+Speaker 4: Ja. Ja,
+
+Speaker 1: det er ikke... Og det produserer selve flyttprosedyren.
+
+Speaker 4: Både
+
+Speaker 1: siden datasettene i seg selv er dokumentasjon nok. Og da
+
+Speaker 2: kan dere
+
+Speaker 3: skrive seg et spesielt svep, så kan dere lete at vi har den rådatatida?
+
+Speaker 1: Ja. Både rådata-filen,
+
+Speaker 2: men også splittene. Du har ikke nødt
+
+Speaker 1: til å... Jeg savner
+
+Speaker 2: også en god review.
+
+Speaker 1: av selve teksten i... Kollektivet mangler
+
+Speaker 2: det. Han snakket mye om prosessen, men sa ikke så mye om selve teksten som ble generert, sant? Skal vi se om Claude er veldig da? Det er ikke uvanlig at vi står og jobber på to nivåer sånn som dette her. Og det er fordi at man står og venter på AI i
+
+Speaker 3: mellomtida. Ja, men det er bra at vi ser litt arbeidsmetodene dine, Bård. Du har jo mer erfaring enn sikkert både meg og kanskje flere, så da er det bra at vi får innblikk i arbeidsmetodene. Så det er bare å kjøre på det.
+
+Speaker 2: Så her er jo Claude. Skal vi se hva han sier?
+
+Speaker 1: Det var jo bedre, tror du. Men
+
+Speaker 2: han sier det samme, da. Tror du ikke det?
+
+Speaker 3: Men synes du det
+
+Speaker 2: er rart
+
+Speaker 3: hvis vi ikke tilbyr det? Altså det er jo reproducerbart siden vi har rå datafiler, så er det reproducerbart.
+
+Speaker 2: Ja, så jeg tror ikke han... Jeg er uenig i akkurat
+
+Speaker 1: det enda. Sånn som du sier. Ja.
+
+Speaker 2: Altså bare for at det er kort...
+
+Speaker 3: Man bare konnoterer akkurat det. Og så bare hør hva han sier. Bare veldig kort. Vi mener at så lenge vi har rå datafiler, så er det
+
+Speaker 1: reproducerbart. Ja.
+
+Speaker 2: Dokumentere analysen slik at det kan etterprøves at det ikke er oppfylt for datasplittsteget.
+
+Speaker 4: Du har
+
+Speaker 2: heller ikke dokumentert hvorfor splitten er satt. Det er et godt
+
+Speaker 1: poeng. Det er et godt poeng, ja. Den var
+
+Speaker 2: litt ny. Den bør du gå inn under når du beskriver data, så bør det ligge der, sant? Så bare for å forklare alle som er her nå, hvorfor er det så viktig med reproduserbarhet og sånne ting. Og det er ganske viktig. For la oss nå si at du tar denne rapporten her, og så skal du gå til et styre, eller til et salg, eller hva det skal være. Du skal bruke rapporten du nå, og du skal kanskje overtale noen mennesker som sitter rundt et bord. Vel, og så kommer du, så presenterer du rapporten, og så sier du funnet dine og sånne ting, og så kommer det arme opp, og så sier de, men jeg har ikke sett noen analyse her, og jeg har lyst til å kunne verifisere det du har gjort for å sjekke om det er korrekt. Da må det være reproduserbart. Hvis du blir utfordret på analysen din, så må noen andre kunne reprodusere analysen din for å kunne vurdere om jobben din du har gjort er korrekt. Hvis du ikke er reproduserbart, da har du problemer. Vi mener
+
+Speaker 3: at vi har det jo da, siden vi har råddatan der, og det er jo et riktig poeng for reproduksjonen, det å rett og slett ha råddata, ubehandlet råddata. Det som er behandlet, eller manipulerte data, er jo test og trade, mens sales og CRV er ubehandlet
+
+Speaker 2: råddata. Ja, så det som egentlig har en Hengs oppi her er at hvis vi nå gir kun rådata til vedkommende, så vet ikke vedkommende hvordan man skal splitte dette filet her, påstår AN. Men det mener vi er dekt ved at vi bare leverer disse filene her. Ikke sant,
+
+Speaker 3: Pekka? Ja, det er det, Magnus. Det er også en av kritikene som står om hvorfor da. Det er heller ikke noe med hvorfor splitten er satt sånn som den er. Det nytter 77-78, så vi kan gjerne skrive litt om det. Og det var da, Bård, naturlig å ha under 5-2 da, som er data. Eller skal vi også i tillegg... Nei, vi må ha det under 5-2. Det er der det bør ligge, og begrunne
+
+Speaker 2: hvorfor vi gjør splitten. Ja, det skal inn under punkt 5-2 da. Så jeg kan bare legge her dette.
+
+Speaker 1: Hvorfor splitten ble gjort for å beskrives under avsnitt 5.2. Ja, og det er det siste vi
+
+Speaker 3: kan gjøre nå før vi tar pause. Hvis du kanskje sier at AN skal skrive dette, så vi får det inn i rapporten. Ja, ja, det er
+
+Speaker 2: det som er klue nå. At nå skal jo AN reparere alt dette her, ikke sant? Det er jo det som er poengene. Så her har vi noe om gliden i gjennomsnitt. Den mener jeg er ganske grei. Utfallsrommet, ja. Bør bruke dato på x-aksen i stedet for observasjonsnummer. Nei. Det var vi jo spesifikt på at vi ikke ville ha, for dette ble så... Så den kan vi fjerne. Monedsprofiltabellen bør vise månedsnavn i stedet for nummer. Nei, det er
+
+Speaker 3: noe som gjør uenighet. Uenighet,
+
+Speaker 2: ja. Men det å legge til en boksplottfigur for sasongvariasjon, det kan være interessant. Et boksplott viser jo litt om variasjon, hvor det er størst variasjon
+
+Speaker 3: her. Hva er en boksplottfigur for et
+
+Speaker 2: fall? Ja, det er jo sånn med bokser og sånt. Ja, et boksplott, det hadde vært interessant.
+
+Speaker 3: Ja, ok. Men skal vi ta, klokka er ett nå, skal vi ta oss en pause, og så tar vi det i starten
+
+Speaker 2: av neste time? Ja, jeg tenkte at vi kunne bare sette A1 i gang imens da, så ser vi hva noen folk gjør i mellomtida. Men vi tar pause vi da, og så bare setter vi A1 i gang. Ja, men vi
+
+Speaker 3: gjør det nå før vi tar pause, så bare setter vi i gang din. Ja,
+
+Speaker 2: ja, men bare ta pause, så gjør vi det nå i mellomtida, og så ser vi bare resultatet
+
+Speaker 1: etterpå, eller? Ok, ja da. Da kan
+
+Speaker 2: bare folk ta pause. All right. Pause nå, femte minutt.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

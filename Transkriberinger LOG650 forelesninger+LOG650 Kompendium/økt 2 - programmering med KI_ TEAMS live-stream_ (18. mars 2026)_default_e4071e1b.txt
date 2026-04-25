@@ -1,0 +1,363 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - programmering med KI_ TEAMS live-stream_ (18. mars 2026)_default_e4071e1b
+Date: 3/22/2026
+Duration: 2677 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: på meg i dag. Har litt stress med andre ting som dukket opp. Men vi må uansett ta en ny runde på mandag, så jeg tenker at det kan være greit. Jeg tror vi skal kunne klare å gjøre oss ferdige med kapittel 7 i dag. Så vi får se.
+
+Speaker 2: Ja, så det som har vært bra da, Erik, om du da tar og skjedulerer til mandag 23. mars. Det blir da siste uka før påske, så tar du mandagen 23. mars fra 12 til 3. Skal vi bare prøve på det da, ja?
+
+Speaker 3: Ja.
+
+Speaker 1: Passer fint for meg, ja.
+
+Speaker 2: Det er greit, da sier vi det slik. Da kjører vi bare på, Bård, det er den siste time.
+
+Speaker 1: Ja. Så Claude er ferdig.
+
+Speaker 3: Jeg lurer på om Claude har gjort
+
+Speaker 1: litt mer i samme slengen, men det ser jeg jo. Han har gjort både 7.2 og 7.3. Han har estimert både horisontene, men også parametrene. Han har fi 1 og store fi 1. Det er en leggperiode- og en syklusperiode på 12 måneder. Så han sier at hver en 12-måneders sesong. Her har vi en residualdiagnostikk, og det lurer jeg på om jeg har med... Vi får se om det har med valideringer.
+
+Speaker 3: Hvis
+
+Speaker 1: vi nå går til status... Han har allerede hukket av dem, ja.
+
+Speaker 3: Her
+
+Speaker 1: ser du at du kan kontrollere residualer og modellforutsetninger. Vi går og sjekker denne. Lyngboks-tekst. Residualplåt skal se ut som hvitstøy. Men det virker som om han allerede har gjort det her. Her står det Lyngboks-teksten.
+
+Speaker 3: Det
+
+Speaker 1: denne viser, skal vise hvitstøy. Når alle effektene er fjernet, skal du til slutt ha bare hvitstøy. Det ser veldig bra ut. Denne skal se ut som en normal fordeling. Men vi ser at det blir mindre og mindre etter hvert med nyere og nyere tid. Det kalles for hetero-skedastisitet. Tidlige resultat har høyere variance enn senere perioder. Det er det vi ser her. Dere ser at det er store svingninger her, og så blir det små her. Det kalles... ...het. Jeg skal ikke si det en gang til. Disse avviklene har vært å undersøke nærmere og tas opp i en egen valideringsaktivitet senere i dette samlet. Ja, men det er
+
+Speaker 2: bra. En liten ting jeg tenkte på, Bård. Nå er det delvis også for det at det er litt smått på skjermene og sånt. Men hvis du ser på figurerne, så er teksten i figurerne, som er laget av Friton, litt liten. Altså labelen der. Er det en kvikkfiks å endre på det og få den litt større? Eller må man da anlage figuren helt på nytt igjen? Eller kan man bare beholde figurer? Kan man bare blåse opp label
+
+Speaker 1: med større font? Tenker du disse her som står her?
+
+Speaker 2: Ja. Både labels og... Hvordan tales... Jeg ser da fra godt synke det. Hva sier man? De er litt små, da.
+
+Speaker 1: Da må man regenerere
+
+Speaker 2: det.
+
+Speaker 1: Det er dubel, ja. Ja,
+
+Speaker 2: for det er ganske arbeidskrevende for Einar å gjøre det, hvis han må regenerere, altså lage figuren helt på nytt igjen. For da, når du har figuren, så er det jo en kitfix å bare magnify labelen og få den større, men han må faktisk lage figuren på nytt. Ja. Ja, det er litt arbeidskrevende, ja. Og jeg mener også det at...
+
+Speaker 1: Han gjør det ganske kjapt, altså, for han husker på det at dette er jo bare kodegenererte ting, da.
+
+Speaker 2: Ok.
+
+Speaker 1: Hvis vi ser på... Hvis vi ser under scripts her, så ta for eksempel...
+
+Speaker 2: Der ser du Python-koden tilhørende hver figur. Dette er figur 4a, og der er Python-koden til figur 4a. Dette er det vi slipper å gjøre, så det er rimelig fantastisk.
+
+Speaker 1: Her kan du da øke fondstørrelsen. Her står det jo «Fondsize».
+
+Speaker 2: Da ser jeg det her i kodet, så betyr det at den regenererer nøyaktig en samme figur. Den kan ikke finne på å plutselig endre
+
+Speaker 1: seg litt? Nei, og det er det som er fint her. Uten det så hadde vi jo vært på vilde veier. Så denne Python-koden er helt essensiell for at du kan kunne stole på resultatene. Hvis det ikke var en barbare Texas. Så den underliggende regnemetoden her, den er jo superviktig, at vi forstår hvordan AN jobber her. Det er en lagekode som genererer svaret. Og så er det AN som setter sammen teksten og forklarer sånne ting, men selve beregningene, den er gjort i Python-koder. Så det er en viktig skille der. Det er ikke sånn at den gjetter seg fram til hvordan disse figurerne
+
+Speaker 2: skal se ut. Nei, den gjetter seg ikke fram til hvordan disse figurerne skal se ut. Nei, den gjetter seg ikke fram til hvordan disse figurerne skal se ut. Nei, den gjetter seg ikke fram til hvordan disse figurerne skal se ut. Nei, den gjetter
+
+Speaker 3: seg ikke fram til hvordan disse figurerne skal se ut. Nei, den gjetter seg ikke fram til figurerne skal se ut. Nei, den gjetter seg ikke fram til hvordan disse figurerne skal se ut. Nei,
+
+Speaker 1: den gjetter seg ikke fram til hvordan disse figurerne skal se ut. Nei, den gjetter seg Nå har vi jo en analys i et kapittel, Peko. Og så har vi et resultat og en diskusjon. Men det er jo mye resultat inni her også. Ja, det er det. Så spørsmålet er om vi skulle ha hatt et resultat her, da. Altså, resultatet er jo ofte...
+
+Speaker 2: Ja, altså det som fortsatt har slått meg, det er akkurat det du sier der. Jeg ville bett Ein om å nøye gå gjennom kapittel 7. – å gjøre en vurdering på hva som skal være i analyset og hva som skal være resultat for det. Det er ikke enkelt. Det er litt litt overgang der. Det er ikke alltid... Vi må
+
+Speaker 1: passe på å ikke skrive bare for å skrive. Det er viktig. Nå har vi gjort en god analyse. Kanskje en analyse er tilsvarende til resultatet. Men så skal vi gjøre en validering nå. Så jeg spør litt om det. Det første jeg vil at den skal gjøre, er at nå vil jeg ta og kjøre kodex. For det vi skal gjøre nå er at vi skal kjøre... Nå er vi ferdige med planen, sant? Ja. Bare spør henne.
+
+Speaker 2: Og når du nå bytter AI, bare skriv spørsmålet
+
+Speaker 1: først.
+
+Speaker 2: Men har du nå byttet AI og så begynt å spørre spørsmål, så kan han lese opp konteksten og status.md og sånne ting? Eller gjør det automatisk?
+
+Speaker 1: Nei, han må leses opp, ja. Ja,
+
+Speaker 2: han må leses opp. Men det gjør det automatisk, så vi trenger ikke si at den må leses
+
+Speaker 1: opp. Og av og til så må du være ganske tydelig på det, slik at den får den rette informasjonen før den begynner å gjøre en arbeid. Han
+
+Speaker 2: har ikke bare rett på sakta og spurt deg
+
+Speaker 1: om... Ja, for dette er Claude Kolda. Jeg er inne i Claudia nå, så den har det i seg. Men jeg bare ønsker å vite hvor vi er i prosjektet nå. Vi er vel ferdige med tre toner, altså. Velg å estimere... Vi validerer modellen, lager prognoser og anbefalinger, skriver rapportutkast. Men jeg får følelsen av at vi har validert modellen. Det har vi allerede gjort. Vi har allerede kontrollert residualer. Dette er mer en slags diskusjon. Jeg kan bare nevne til dere at den slags ... Utfordringene som vi holder på å jobbe med nå, med strukturen og passere med et kapittel som heter sånn og sånn, det er slett ikke uvanlig. Det er egentlig veldig vanlig. Det finnes ingen korrekt struktur. Du må beskrive det i forhold til hva caset beskrever. Det er veldig viktig å være klar over. Her på Veiled er det en masterstudent nå, og vi er her på å fikla fram og tilbake på denne strukturen så det rekker. Så det er ikke uvanlig at vi sitter og jobber med, ja, skal vi ha et kapittel som heter Resultat her? Hva skal det da skrives i diskusjonen? Den type dialog er veldig vanlig og veldig viktig. Skal vi se her, hva vi kan skrive. Så vi er i mileplaperle... Fyre, kanskje? Fem? Nei, vi er på... Vi er
+
+Speaker 2: i fase tre nå, som er hovedfasen. Vi er helt på med gjennomføring. Vi
+
+Speaker 1: er i fase tre, ja. Neste oppvalideret modell, den har vi nå gjort, ikke sant? Nei, den har vi ikke
+
+Speaker 3: gjort, nei. Det er det som
+
+Speaker 1: kommer nå. Fase 3, og i mileperlen, ja. Det har vi gjort i fire mileperlene. Vi har hovedutkast.
+
+Speaker 3: Det har vi ikke her nå. Det jobber
+
+Speaker 1: vi med. Men dette er en bra oversikt. Det er lurt å gjøre sånne ting. Hvor står vi her i prosjektet? Neste nå er å validere modell.
+
+Speaker 2: Det jeg hører hver dag er at naturligitet under
+
+Speaker 1: kapittel 7-analyse. Ja, jeg vil si det. Jeg vil si det. Jeg tror at analys og resultat... Jeg får følelsen av at vi skal bare fjerne kapittel og resultat, da. For analys og resultat er litt det
+
+Speaker 2: samme, da. Ja, la oss stå inn til videre.
+
+Speaker 3: Kapitel
+
+Speaker 2: 7 til «Analyse og resultat», eller bare la det stå «Analyse». La det stå sånn for deg, vi fikk at du vil fullføre kapitel 7, og så ser vi til slutt hva vi gjør.
+
+Speaker 1: Sånn at vi har deler av dette. Og jeg lurer på litt om selve strukturen
+
+Speaker 3: i rapporten. Vi gjør
+
+Speaker 1: alle beregninger-
+
+Speaker 3: i ... Men trenger vi da ...
+
+Speaker 1: Jeg føler
+
+Speaker 3: ... Jeg lurer på ... Om disse
+
+Speaker 1: kapittelene vil overlappe mye.
+
+Speaker 3: Hva tenker
+
+Speaker 1: du? Så det setter på planen. Noe sånt, Peko? Ja.
+
+Speaker 3: Da prøver vi... Jeg kan svare
+
+Speaker 1: på det. Diskusjon er greit, og konklusjon er greit, men akkurat det kapitlet resultatet, da. Enten så har vi vel analyset, eller så har vi vel resultatet av det enten eller, tenker jeg, og ikke begge deler. Overloaded. Overloaded? Det betyr at det er for mange som bruker Clod samtidig. Not good. Prøv igjen.
+
+Speaker 3: Det er jo
+
+Speaker 1: bare sånn som kan skje etter tider. Det er rett og slett for mange rundt omkring i verden som totalt sett bruker blob. Og serverer dem mens de er overloadet. Da får du en sånn beskjed som dette. Det er alltid irriterende, som dere ser, men det er ikke så mye å gjøre med. Nei.
+
+Speaker 3: Forklaring. Ja, samme.
+
+Speaker 1: Skulle ha byttet den. Ja.
+
+Speaker 3: Ja, det
+
+Speaker 1: er bra vi har to, da.
+
+Speaker 3: Det
+
+Speaker 2: var noe å minne om å våkne opp i USA, så det kan hende at det er forklaringer,
+
+Speaker 1: ja. Da la oss starte opp.
+
+Speaker 3: Ja,
+
+Speaker 1: det er nok sikkert det
+
+Speaker 2: som skjedde. Ja, nyår våkna nå, ja.
+
+Speaker 3: Nå
+
+Speaker 1: tok jeg planen, eller nå tok jeg det Claude hadde gjort, og bare pastet det rett inn i Claude, da. Omvendt, altså. Jeg tok hva Claude hadde gjort og pastet det inn i kodeks, da. For dette her er sånn som kan ta litt tid. Da kjører
+
+Speaker 2: du opp ut til høyre, så ser du hvor ingen har tre parallelle aia. En trekant, trekant, firekant der nå, opp ut til høyre. Og da kan han switch fra en til annen slik at du har et parallelleløp. Du har slik at hvis den ene stopper, så kan du gå over den andre. Så det er slik små triks som du lærer deg etter kvartal.
+
+Speaker 1: Ja, det er sånt det. Så er det arbeidskritisk ting man driver på med, så er det alltid lurt å ha en ekstra A i bakhånda, hvis den ene skulle falle gjennom.
+
+Speaker 2: Ja, men var du heller på å jobbe noe klåd? Er ikke det at den kommer tilbake? Eller er
+
+Speaker 1: du på kodeks? Nei, jeg er på attempt her, skjønner du. Ja. Stopp, stans opp her. Ja. Det jeg gjør er... Kan du komme
+
+Speaker 2: opp på kodeks, da? Bare prøv det
+
+Speaker 1: der. Ja da, jeg skal bare ta og hente den biten der. Så lar jeg bare Claude påbrenne. Han holder på her ennå da.
+
+Speaker 3: Og så spør
+
+Speaker 1: jeg bare samme spørsmålet til Kodex da. Det ser ut som at den er
+
+Speaker 3: litt bedre i action her nå. For nå er vi på Kodex. Nå er
+
+Speaker 1: vi på Kodex, ja.
+
+Speaker 2: Nå må du ta stillingen, så tok du bare rekommenderen.
+
+Speaker 1: Han bare gjør litt sånn... Han sjekker noen prosjekter i forhold til det som var planlagt da, altså forhold til baseline da. Ja. Det er bare sunt for han å vite alt dette da, for da skjønner han på en måte... Sjekker han
+
+Speaker 2: det fordi at den går i sånne statusfiler.no og sånne ting, eller gjør han det der fordi at du peiser penger fra Clodis
+
+Speaker 1: da? Han skjønte jo hva det handlet om, men han hadde på lest disse filene under plan. Der har vi jo planen vår. I form av både Jason-fila, men også status-md, som du sa, og prosjektplan. Ja, det synes jeg høres bra ut. Det vi skal gjøre nå, er å avhyke at vi har gjort punkt 3.2. Velge å estimere modell. Det er ikke oppdatert i prosjektet at vi har gjort 3.2. Det gjorde jo ikke Klodd. Klodd bare løste problemet. Vi skal gå over til 3.3, men før vi går over til 3.3, skal vi lukke 3.2. Det er en tracking i prosjektet. Det er den her på meg nå.
+
+Speaker 3: Men han
+
+Speaker 1: skal nå være rask da, men han går litt tregt. Det er sikkert mye trafikk nå. Dette er jo veldig på... ...en avviksanalyse.
+
+Speaker 3: Det blir greit.
+
+Speaker 1: Ja. Ok, jeg har en sånn rundt. Ja.
+
+Speaker 3: Oppdater. Fikk at 3.2 er gjennomført.
+
+Speaker 1: Og på nytt. Endringene. Vi er ferdige med en activity som heter 3-2. Da bør vi starte på 3-3. Hva er 3-3? Valideremodell. Det er spørsmålet. Det er et spørsmål om vi allerede har begynt å validere litt, og det mener jeg vi har. For her står det litt om validering også. Og jeg lurer på om vi skulle ha splitt av 7-3 og validering i 7-4. Det har jeg en stor tro på at vi kan gjøre. Splitt av 7-3 i 2? Ja, det ene er bare estimeringer, og det andre er valideringer. –Jeg jobber mye nå. –Jeg gjør
+
+Speaker 2: det.
+
+Speaker 3: Så.
+
+Speaker 1: I mellomtiden har vi funnet ut hva skulderett betyr. Stømmene er fremdeles overloadet.
+
+Speaker 3: Det er et begrep.
+
+Speaker 1: Jeg vet ikke hva det betyr, men det kan være lurt for alle når det kommer til sånne begrep. Dette er et typisk ting som skal forklares i teori. Kapitlet lenger oppe. Nei, overloadet. Overloadet,
+
+Speaker 3: ja. Det går ikke.
+
+Speaker 1: Overladet, ja. Heteroskedastisitet betyr egentlig at sigmaen varierer mindre etter hvert. Du har mindre her enn her. Det er det det betyr, egentlig. Der, ja. All right. Da tar jeg og henter den biten der. Også spør jeg spørsmålet til Codex i stedet for det. Nå er vi tilbake igjen til der vi blir slapp med Cloud Code.
+
+Speaker 2: Ja, heteroskedasitet betyr at variansen i fellet ikke er konstant,- sånn som du ser på figuren øverst til venstre nå,- men endrer seg med nivået på dataene eller forklaringsvariadene.
+
+Speaker 1: Ja, det er viktig. Det er det vi ser her på denne figuren. Her er den ganske konstant, og så blir den plutselig lav her. Det ser vi også på denne figuren her oppe. Her ser dere at det
+
+Speaker 3: er flate ut, ser dere. Det
+
+Speaker 1: er det samme. Fra og med 1974 en gang, så skjer
+
+Speaker 3: det noe. Nemlig at
+
+Speaker 1: variansen er lavere. Altså, den er mer stabil, de sa etterspørselen. Den hopper ikke så mye. Nei. Så vi kan si
+
+Speaker 2: at det er mindre kvitsteg,
+
+Speaker 1: da? Men dette synes jeg var interessant. Kapittel 7, analyse. Validering på testdata i aktivitet 3.3. Eventuelle vurdering av svakhet og om modellene er egnet nok. Endelig valgt modell. Endelig valideringsmål. Ja, riktig. Kort oppsummert er modellene gode nok. Senere er selve prognosen nøkkeltalende som beslutning. Så jeg mener at vi skal ha resultat. Min anbefaling er å holde begge kapitlene, men gjør kapittel 8 mye strammere enn kapittel 7, hvis du vil. Kan jeg få en sånn konkret... Ja.
+
+Speaker 3: Gjør det. Men jeg synes
+
+Speaker 1: det gir mening, sånn som man tenker nå. For vi skal jo teste modellen og sånt. Det kan godt komme inn resultat, for det er på en måte å fortelle hvordan modellen fungerer i forhold til hvordan vi løser modellen. Det er to forskjellige ting, ikke sant? Ja, det er det. Nå vil jeg bare være litt ryddig med tanke på prosjektet. Jeg har lyst til å få inn litt nye... Dette er viktig. Akkurat det vi ser på nå er veldig viktig, hvordan vi deler opp kapittlene. Derfor tenker jeg at det er... Derfor tenker jeg at det er lurt å bruke litt
+
+Speaker 3: tid på det. Vet ikke
+
+Speaker 1: om du vil ha en ny plan, Phil? Du vil ta denne?
+
+Speaker 3: Den vil jeg ha. Utrolig
+
+Speaker 1: fint med denne planmodusen. Jeg får funnet fornuftige spørsmål hele tiden. Men jeg har et spørsmål. Se her. Validering mot testdata er jo greit, men samlet vurdering av modellens egnethet, er ikke det en diskusjon,
+
+Speaker 2: Pegg-O? Hvor står det da? Nå er det highlight, så jeg ser på det igjen.
+
+Speaker 3: Her
+
+Speaker 1: ser jeg det, ok. Samlet vurdering... De mener at det skal stå under 7-5, men er ikke det en diskusjonsbit? Diskutere. Ja, det er tilbøyelig for en. Når du skal begynne å bruke personlige vurderinger, vi skal komme med våre vurderinger, så er det en diskusjon. Det tror jeg du har lyst til å utfordre deg inn på.
+
+Speaker 2: Han sier så mye da, Einar, at vi må gå langt opp for å finne det vi lurer på, og så må vi skrare langt ned for å komme til kommando-linja. Det er mye informasjon hun spyr ut av, så det er mye vi må
+
+Speaker 3: ta. Her ser dere at jeg ikke
+
+Speaker 1: er så veldig bastant i å si at jeg lurer på, og det er nettopp for å få en god dialog med Einar, ikke sant?
+
+Speaker 2: Ja, for hvis vi presser den og kommanderer den, så gjør den det. Da blir
+
+Speaker 1: det en bias, ikke sant? Jeg lurer på om kapittel 7-5. Ikke heller. Heller burde vært en del av kapittel 9-diskusjonen.
+
+Speaker 3: Tiden.
+
+Speaker 1: Det handler om en vurdering av modellens egnethet. Så prøver vi å argumentere hvorfor I mener det sånn. Så får
+
+Speaker 3: vi se hva Ann
+
+Speaker 2: tenker.
+
+Speaker 1: Ja, hva ener jeg? Det var ikke overraskende.
+
+Speaker 3: Flytte
+
+Speaker 1: kapittel 9. Nice.
+
+Speaker 3: Da skriver hun
+
+Speaker 1: alt på nytt igjen. Men det er egentlig ganske greit. Da får vi hele greia.
+
+Speaker 2: Det er en sånn greie vi må lære oss til, at han skriver veldig mye. Det er overwhelming med informasjon. Han skriver veldig
+
+Speaker 1: mye, han gjør det. Nå kjører vi implementeringen,
+
+Speaker 2: nå begynner han. Ja, jeg tror vi kan gjøre det. Er vi enige om noe, så får vi det på arket.
+
+Speaker 1: Det er noe sant, men man skal ikke undervurdere Verdien i å planlegge litt her altså. Sånn som når vi var i planmode nå, så kjørte vi litt fram og tilbake inntil vi ble fornøyd med planen, og så kjørte vi go. Ja, men
+
+Speaker 2: nå har vi kjørt go. Ja. Ja. Og må du da gå eksplisitt ut av planmodus, eller bare sier du ja, implementerer dette, og da går den ut av planmodus
+
+Speaker 1: selv? Ja, det som skjedde var at den spurte meg, skal jeg implementere og gå ut av planmodus? Ja,
+
+Speaker 2: riktig.
+
+Speaker 1: Og så sier jeg ja, gjør det.
+
+Speaker 2: Da gjør den alt sammen. Ja,
+
+Speaker 1: jeg skjønner. Og min erfaring er da at det å bruke litt tid på plandelen, der du liksom spiller ball frem og tilbake med A1, Til du har fått en plan som du er fornøyd med, og så gjennomfør, det er by far den beste arbeidsmetoden. Og i og
+
+Speaker 2: med at det er det som står i vårt akademisk skrivingkompandium, at du skal bruke AN som en sparringspartner, som diskuterer frem og tilbake. Og jeg venner at det er akkurat det vi praktiserer nå.
+
+Speaker 1: En ting som jeg har lagt merke til over tid etter at jeg har brukt Codex en del, for jeg har egentlig alltid brukt Cloud Code og blitt vant til det, er at Codexen ikke alltid er så skarp på å sette tekst inn i filene på rett plass, spesielt hvis filene er store. Da begynner denne filen å bli ganske mange sider. Og AN skal jo på en måte sette patchet inne på rett plass. Og så patchen feiler. Her skriver det for eksempel «patchen falt på noen få ting». Og det har jeg lagt merke til at Codex gjør i større grad enn Claude Code. Claude Code er mye mer nøyaktig. Claude er som en fin kirurg, mens han her er litt mer som en slakter. Så det er sånn som jeg har bare lagt merke til over tid, at jeg ser at han må kjøre noen... Altså han får det til kodex også, men han må kjøre noen runder på det. Selv, du ser han fant ut selv at...
+
+Speaker 3: Så... Vi ser da...
+
+Speaker 1: Nå endrer han prosjektplanen, og det var det jeg egentlig ønsket, for dette var en forfining i prosjektplanen også, der vi endret noe på en del strukturelle ting. Og vi skal jo dokumentere prosjektet, så det er faktisk viktig, synes jeg. Og det
+
+Speaker 2: er jo ganske bra hvis den gjør det her automatisk, og sier at nå implementerer vi det vi nå har blitt enige om etter en del diskusjoner frem og tilbake. Og det får jo også konsekvenser, for da må vi oppdatere prosjektplanene, og det gjør den automatisk uten at vi eksplicitt må si det til
+
+Speaker 1: henne. Ja, jeg var litt eksplicitt og sa det til henne da, men jeg trengte ikke skrive mye da. Bare si en setning, liksom. Og så skjønner hun på en måte hva hun skulle gjøre da. Og det er tårlig da. Ja.
+
+Speaker 3: Og
+
+Speaker 2: så er det noe som er rødt, og noe som er grønt. Er det det røde, det gamle, og det grønne,
+
+Speaker 1: det nye, eller? Ja, det kalles en diff. Differensen mellom det som var gammelt og det som er nytt.
+
+Speaker 2: Ja, jeg skjønner. Da ser vi et eksplisitt forskjell, ja.
+
+Speaker 1: Men nå er den inne på planfilaen, da. Så det er prosjektfilaen den er på å oppdatere nå, da, foreløpig. Ja. Vi skal nå snart begynne å gjøre kapittel 3.3, eller av neste bit. Så får vi se hvordan vi gjør det etter hvert. Jeg skal straks si at den skal gjennomføre neste steg i status. Det har blitt litt kortere da, ser jeg.
+
+Speaker 3: Det
+
+Speaker 1: var ikke mye jeg var så glad for.
+
+Speaker 3: Ja, får bare
+
+Speaker 1: legge inn for nytt igjen det da. Det er ikke ferdig ennå, så jeg kan jo gi en ... Det som er med disse planleggingsfilene her, det er at de er ganske store, så de bommer litt. Det er det vi ser nå. Ja, så jeg savnet en annen avhukingslista min. Den er forsvunnet da, så jeg vil at den skal legges inn igjen da. Jeg tror den har endret pjernaen i. Ja. Har jeg gått tilbake til rapporten
+
+Speaker 2: og har den gjennomført det i rapporten og flyttet det over til diskusjon? Nei, det har den ikke gjort. Bare
+
+Speaker 1: på planen nå, egentlig. Ja,
+
+Speaker 2: ok. For å helle på eksekveriet nå, har vi ikke sagt noen som skal gjøre det enda? Vi
+
+Speaker 1: har ikke sagt noen som skal gjøre det, vi er enda i planlegging, for å være helt ærlig. Men nå kom jo den tilbake igjen, den her
+
+Speaker 2: da. Ja, det synes jeg er bra. Litt tomt at den tok et vekt da, og så plusselig må vi si at den nå er tilbake igjen. Du har ikke merket at den
+
+Speaker 1: ble fjernet en gang inn? Ja, det kan også være. Så vi må være litt på vakt. Vi kan ikke sove, vi kan ikke stole altfor mye. Det er lurt å være på sentrale filer, slik som statusfiler er, og fortfiler blant annet. Så denne her hadde jo forsvunnet. Det synes jeg er litt dumt, for det er den menneskelige lista som er lett for meg å lese hvor vi er. Greit. Da skal
+
+Speaker 2: vi fortsette for å få en avslutning. Ja, vi kan
+
+Speaker 1: ta en liten pause, og så kan vi fortsette om 15 minutter. Ja, ok,
+
+Speaker 2: vi tar en liten pause. Du skal
+
+Speaker 1: ikke kjempekjøre en time, helt tre kvarterer, men kanskje 15-30 minutter.
+
+Speaker 2: Ja, jeg vet det. Vi tar en pause nå, etter kvarter for to, og så fortsetter vi å ta de siste avslutningene, inkludert push.
+
+Speaker 1: Ja. Jeg vil gjerne bli ferdig med kapittel... Kapitel 7 da, for å si
+
+Speaker 2: det sånn. Ja, jeg forstår. Ja, men supert. Da tar vi et pause.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

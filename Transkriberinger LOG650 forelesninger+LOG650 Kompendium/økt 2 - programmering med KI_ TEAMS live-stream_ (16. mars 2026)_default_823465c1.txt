@@ -1,0 +1,239 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - programmering med KI_ TEAMS live-stream_ (16. mars 2026)_default_823465c1
+Date: 3/17/2026
+Duration: 3596 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Da starter vi med timen nummer to. Kan du fortelle hva det er du svarer på?
+
+Speaker 2: Det jeg holder på med nå er å få ordnet reviewen. Men nå har jeg to reviewer, og det er ikke meningen. Jeg kommer heretter til å bruke Claude for review. Og Codex for ... arbeidsheften. Så hver gang jeg skal kjøre en review av et steg eller en aktivitet, så bruker jeg Cloud. Og så har jeg nå to dokument her nå, og jeg ønsker egentlig å bare slå dem sammen til ett. Så jeg har bare ett med Cloud, og i tillegg til det så ønsker jeg nå å lage en review-mal, slik at jeg kan gjenbruke den reviuen om igjen og om igjen. Så dette er sånne smarte ting å gjøre. – som forenkler livet ditt, siden du skal gjøre flere reviews.
+
+Speaker 1: Nå skriver jeg «Codex som arbeidshest».
+
+Speaker 2: Riktig. Grunnen til at jeg har «Codex som arbeidshest» er at den er raskere. Og jeg synes ikke forskjellen er så stor. Det å bruke «Codex som arbeidshest» og «Codex for review» synes jeg er en god – Kombinasjon av de to da. Har du bare ett abonnement selvfølgelig, det koster jo flesk dette her, så jeg har forståelse for at man har bare ett abonnement, da har du kodex 1 og kodex 2. Så du starter to uavhengige kodex sesjoner, hvor den ene er arbeidshesten, den andre er revieweren. Det gir meninger. Så nå holder vi på å brenne. Her spør vi om vi skal lage en generell review-mål, og bare bli ferdig her nå. Som sagt, klådet er litt treigere, dessverre, enn Codex. Gjerne bedre. Så det er en avvegning man må ta.
+
+Speaker 1: Vi viser faktisk ikke at VS Code hadde muligheten til å ha flere sånne parallelle oppe til høyre her da. AIA som du kan jobbe parallelt da. Jeg har jo sånne tabber da, når jeg har det på nettleder min, når jeg bruker for eksempel GPT, så har jeg sånne tabber, slik at jeg kan ha flere parallelt der. Det at jeg har det oppå siden, det er innmari bra da.
+
+Speaker 2: Ja, altså det du egentlig har her er at du har flere terminaler oppe, og så starter du bare den applikasjonen du vil i den, da. Om det er kodex eller klod.
+
+Speaker 1: Ja, det er bra det, altså.
+
+Speaker 2: All right, da ble han ferdig, og så ba jo meg... Det er en avhukningsliste. Hvor er den? Sjekkpunkt. Der har vi lista. X, del 2, med språket. Og huk av. Etter at det er hukt av i Review. Etter at det er gjort sånn. Da begynner jeg bare å gjøre det, og så har jeg tenkt å fjerne den kodeksfila, siden jeg merger den nå. Så tar jeg baklådet om å lese kodeksfila, og samler det igjen. Så da tar jeg og fjerner den imens. Selvfølgelig.
+
+Speaker 1: Ok, så det var det bildet som du fjelde?
+
+Speaker 2: Nei, det var poenget at jeg kjørte den med kodeksfila. samme kodeks som var i samme sesjon, og det er ulurt da. For da vil den være litt biased på den jorden på en måte.
+
+Speaker 1: Det er det samme som å spørre
+
+Speaker 2: at du skal sjekke ditt eget arbeid på en måte.
+
+Speaker 1: Ja, jeg skjønner.
+
+Speaker 2: Ferdig, ja. Da er vi ferdige. Supert. Lag basert på denne sesjonen. En god mal får videre preview. Lagre malen under... Der. Sånn. Nå vil den bare lagre malen basert på den sesjonen vi gjorde nå med preview. Og igjen anbefaler vi selvfølgelig å lese det som står her. Slik at vi kan se endringene. Hvis dere lurer på endringene, gå inn på rapport. Her ser vi ikke noen endringer. Skal vi se. Det var veldig irriterende. Fikk ikke endret det. Jeg har lyst til å se diffen, som det heter. Ja, du må bare fikse det. Diffen er ganske viktig da.
+
+Speaker 1: Altså, forskjell på det gamle nyheteret, det kan ha edder.
+
+Speaker 2: Ja.
+
+Speaker 3: How
+
+Speaker 2: to change diff ure with Mark? Så det er bare «workbench», «settings».
+
+Speaker 3: «Settings».
+
+Speaker 1: Hva, kom «settings» opp på den der skjermen, eller?
+
+Speaker 2: Nei, du ser den jo ikke. Der, ja. Skal vi se. Der har vi den. Her ser dere den. Den er det som skaper trøle. For dette er den spesielle vieweren. Men da tror jeg han fjerner den automatisk også for ...
+
+Speaker 3: Ja,
+
+Speaker 2: det er et problem. Det er et problem, ja. Da mister jeg den fine hvuren jeg har når jeg ser på dem, sånn som dette. Her er maleren, og så får jeg denne. Denne synes jeg er ganske fin. Her har vi en mal. Den er fin. Men hvis jeg endrer den nå, så får jeg den på denne formen.
+
+Speaker 1: Det er ikke samme, nei.
+
+Speaker 2: Så du må leve med det ene og det andre. Det er litt ungt, da. Jeg skal ta og sjekke opp det på egenhånd. Jeg skal ikke bruke mer tid på det nå. Nå har vi fått en mal og så videre. Så da tenker jeg at, supert, oppdaterer. Status. Og huk av aktivitet. Kommitte endringer. Begge er noe som å kommitte. Jeg tenker ofte at det er revieweren som kommitter når han har gjort en review. Du kan se på dette som to forskjellige personer. En person som sitter og skriver, og en som vurderer arbeidet. Det er en ganske fin måte å se på det. Når vi er ferdige med denne, vil den gå inn og endre. Da kan vi begynne på ny fase, eller ny aktivitet for fasen.
+
+Speaker 3: Fem
+
+Speaker 2: dager for tenkert. Harde bud. Det er en statusfila. Hvor hadde vi denne? Her, da. Der er den hukket av dem, ser dere. Nå tar den noe midterform i også, så vi trenger ikke gjøre det en gang.
+
+Speaker 1: Og for dem som ikke vet hva kommitte betyr i denne sammenhengen. For en ting er kommitte, en annen ting er å pushe. Hva kan vi si om det?
+
+Speaker 2: Kommitte da gjør, da lager du endringene i Github lokalt. Slik at dine endringer er da under source control, slik at du kan bla tilbake i historikken og sånne ting hvis du vil.
+
+Speaker 1: Lokalt for på ringer da.
+
+Speaker 2: Ja, og push, da pusher du til Github da. slik at noen andre kan hente endringene på enkelt pool. Så det var greit å få gjort. Nice, og alt er pushet. Kulfør, aktiviteter renset, strukturert data, helt supert. Med ganske gode sånne kommentarer da.
+
+Speaker 1: Ja, det er sånn beskrivende kommentarer om hva som har blitt gjort da. Det er sånn som vi bruker å gjøre manuelt av et tema, men når vi får ANT på midten, så har det en veldig bra sånn kommentar om hva som har blitt gjort.
+
+Speaker 2: Ja, det er sant. All right. Da går jeg vekk fra denne her, og nå er jeg ferdig, så da Da bruker jeg å danse den, for jeg vil at den skal starte på nytt igjen neste gang. Nå kan jeg bare starte klod her, men den er klar til å gjøre action når jeg blir ferdig med neste steg. Da er jeg tilbake igjen til Codex, for nå skal vi arbeide igjen. Nå skal vi jobbe. Vi kan egentlig klare det her også. Det er lurt å bare wipe memory når du går fra en sånn til neste.
+
+Speaker 1: Ja, leser den da agenten, eller må du skrive at den må lese agenten?
+
+Speaker 2: Han leser agenten, ja, men han skal gjøre det altså. Så nå ser dere at det går egentlig ganske rett på. Vi antar at man har lest agentsfila, der det inneholder ganske mye. Så jeg forventer at den skjønner hva jeg snakker om nå. Rett på prosjektplanene og statusfilene. Supert. Så det er bra. Det er lurt å lese, da. Hvilke modeller som passer inn i en tidsserie med velger-begrunnet Sarima-spesifikasjoner. Estimere modellparametrene på treningsdaten og dokumentere hvorfor modellen er valgt. Det som vi kan påpeke her, da, er at denne prosessen er også beskrevet, altså denne rekkefølgen av ting som vi skal gjøre nå, da. Den er ganske godt beskrevet her i dette dokumentet vi har lest. Så egentlig er det steg to, stasjonaritet og differensiering. Problemet er at vi ikke har snakket om modellene en gang. Så vi må på en måte skrive denne modellbiten her. Det er den som skal inn nå. Vi har valgt å bruke en Sarima-modell. Så må vi nå sjekke denne rapporten, ikke sant? For det jeg vil fram til nå, er det å legge merke til at vi har et kapittel som heter Teori. Det vil jo da skrive litt om- Tarima og litt sånt, og teori rundt... Teori rundt...
+
+Speaker 1: Ja.
+
+Speaker 2: Prognosisering, da. Så den biten burde vi ha med. Men det egentlige målet vårt akkurat her og nå, den teori- biten, kan vi skrive i etterkant,- for det er modellering vi skal se på nå. Det heter egentlig ikke modellering, det heter modell. Vi skal ha en modell som vi skal løse. Dette er veldig vesentlig. Alle case, uansett om det er prognosisering,- eller lagerplanlegging eller ruteoptimalisering,- dere må ha en modell. Det er en must-have i en sånn analyse. Hvis dere ikke har en modell,- Så har dere ikke beskrevet hva dere skal løse? Oi, det skal jeg ikke gjøre.
+
+Speaker 1: Sånn. Det vanskelige kan bli å virke hvordan man får de forskjellige oppgavene- Det er jo en del av jobben.
+
+Speaker 2: Ja, og det skal egentlig ha gjort jobben i proposal, da. Hvor dere har en idé om hvilken metodikk dere skal bruke, eller modell dere skal bruke. Akkurat hvordan modellen ser ut, det kan være fra case til case. Men dere må ha på en måte, retningen eller metodikken må være valgt. Her skal vi bruke Sarima som metodikk, så vi har allerede valgt det valget. Det er litt det den blekka vår også skal ha som hensikt, å gi dere en del tips på- hvilke metoder dere kan bruke for hva. Jeg har valgt å bruke en Sarima-modell. Jeg ønsker at hun nå- I... Her må du være nøye- og beskrives modellen- matematisk.
+
+Speaker 1: Ja, for i malen vår, Bård, har vi kanskje ikke noe mer... Detaljer om hva som skal være under 6. modell, 7. analyse, 8.
+
+Speaker 2: resultat.
+
+Speaker 1: Det står litt mer i det vi hadde i den andre filen, om hva vi forventer skal være med der.
+
+Speaker 2: Tenker du den her?
+
+Speaker 1: Det står mer i den word-malen som vi har, V2 word-malen. Der står det hvilke avsnitt vi har, hva som bør være med i rapporten i kapittel 6, for eksempel.
+
+Speaker 2: Men det har vi allerede implementert med at vi har et skelett av... ...rapporten,
+
+Speaker 1: har vi ikke? Hvordan fyl var det? Hvordan fyl var det i det skelettet? Det var under
+
+Speaker 2: templates, den malene. Der har vi allerede implementert den. Ja, for de sa at den skulle
+
+Speaker 1: lese når det var vørdfyllet, og der står litt mer om hva som skal
+
+Speaker 2: være under modellen. Ja, den skal ikke sitte og ha å lese. Her må du være nøye å beskrive modellen matematisk. Pass på å definere alle størrelser, både parametre og variabler. Og bruk MathJax. Eller bruk LaTeX i markedet. Jeg bare sier det for at den ikke skal glemme det. Jeg kan se om hun klarer det for selv da. Og gi matematiske formler. Beskriv også- Og så størrelsen.
+
+Speaker 1: Ja, det er et bra poeng. Og så, når du er i tvil, så bruker Forsen, altså tvingen til å lese gjennom den, er Malprojekt650v2.dkx-børntilakt. Hvis du er i tvil, så skal du forske å lese gjennom den, så du vet hva de forventer av innhold i kapittel 6-modell. Ja,
+
+Speaker 2: det kan du gjøre hvis du Føler at... Hvis du føler at... Ja. Det kan vi gjøre hvis du føler at den har glemt det, på en måte. Det jeg gjør nå er at jeg har glemt... Nei, jeg er så dum. Det er det. Jo, det er kodexet. Det jeg gjør nå er at jeg har glemt å ta plan. Jeg vil gjerne ha plan på denne først. Men jeg har heldigvis laget teksten, så jeg bare spiller den igjen i hvert fall. Sånn setning synes jeg kan bli bedre, for den kan du når som helst slå på plan-mode. Men akkurat når det gjelder kodex, så må du på en måte... Jeg har ikke noe faste trykk som jeg vet om enda i hvert fall.
+
+Speaker 1: Så utfører du den som flash-plan, og så bare tabber du? Ja,
+
+Speaker 2: riktig. Vi stopper den med en gang, for vi ser at den var på feilspor. Du skal ikke løse modellen nå.
+
+Speaker 3: Han
+
+Speaker 2: er på vei til å løse modellen, men kun beskrive den. Ja, det liker jeg. Vi løser modellen under en senere ... For å stoppe A1, så trykker vi Escape. Bare slik at dere vet det. Det gjelder egentlig felles for de fleste av både
+
+Speaker 1: metodene. Det er spennende, for nå presenterer vi ikke løselsene. Vi presenterer modellene, sånn som kan være ganske vanskelig og mye arbeid. Dette er krevende, og det skal bli veldig kult å se hvordan rapporten blir nå. Det er jeg spent på.
+
+Speaker 3: Her
+
+Speaker 2: burde du kunne lese over, selvfølgelig, men jeg sier bare «yes, implement». Det jeg
+
+Speaker 1: bruker å gjøre, er at jeg bare scroller over, og så ser det greit ut. Så får vi det på rapporten, og så går vi gjennom litt nøyere. Da er det litt mer om hva vi faktisk
+
+Speaker 2: gjør. Ja, men vi har definert et review-steg også nå. Sånn at vi ikke trenger å bruke alt for lang tid og mye sommelighet her. Siden vi likevel skal ha et review-punkt etter hvert. Og da vil det bli gjort likevel. Der kom det noe til dere. Her bruker den akkurat det en skal gjøre, nemlig operatorer. Dette er vanskelig matematikk, folkens. Det er ikke enkelt på noen som helst måte. Det er ikke noe vi hadde forventet at en vanlig bachelorstudent skulle klart. Men dette ser veldig korrekt ut. Hvis dere ser nå, så kan dere ... Selvfølgelig skal man ... Hvis dere ser dette skrivebordet, så ser dere at jeg har en viss sammenheng her. Jeg bruker operatorer da. Så det er bra da. Og
+
+Speaker 1: det betyr at vi på bortninga i log 650, som mange nok sier det, at det blir litt lett bokstav i den forstanden at folk kommer til å forstå alt som er i den matematiske modellen. Det er greie å gjøre reelle for det og forsvare det. Det kan du ikke forvente, men at du skal ha så mye kunnskap- at det er greie å se at det er relevant og sånne ting. Man klarer alt sammen. Det er kanskje litt mye å forvente. Skal
+
+Speaker 2: vi se. Jeg ser at den sliter med noe sånn inntekst. Ja,
+
+Speaker 1: jeg ser det. Han takler ikke med
+
+Speaker 2: innteksten. Nei, det er vieweren, ser du.
+
+Speaker 1: Ja, jeg har et pilsvarende problem med GPT. Det kommer an på hva saken gjør. Når den lager ligninger, så er det greit. Men hvis den har ligninger eller uttrykk i maintexten,- så takler den ikke. Da kommer den opp bare med latekoet.
+
+Speaker 2: Ja, vi kan se. Her er det en annen viewer som takler det. Den gjør ikke det, altså. Jeg kan si det til en, da. Hvis du
+
+Speaker 1: sier det til ham, og så prøver han flere ganger, og ser på sannsynligheten, så er det sånn at han kan greie det en gang, men ikke
+
+Speaker 2: andre. Jeg ser han bruker den der. Så hvis du bruker den i stedet for, da? Ja, jeg tror kanskje det kan gå. Nei, jeg ser det. Den der burde ikke kjøre, da. Skal vi se om den fungerer. Det gjør den, ser dere. Så da fant du ut det. Dette har med vieweren å gjøre i VS Code. Det er ikke så viktig for dere til syvende siste, for da skal dere oversette hele greia inn i Word eller hva det måtte være. Men likevel for å kunne se det
+
+Speaker 1: enkelt siktet.
+
+Speaker 2: Jeg ser at du bruker For inline latek, men brukt i stedet. Da vår bjørn, eller min bjørn, kunne støtte denne. Legg dette punktet også inn under,- Ja, dere har gjettet det. Agents. Og klåda.
+
+Speaker 1: Her er det en regjering
+
+Speaker 2: av dropping, altså. Ja, legg det også inn under paper skill. Nei, det får ikke til. Sånn. Forhåpentligvis vil den fikse alle disse ... Tetta og sånn, som det står her. Det burde det ikke være.
+
+Speaker 3: Yes.
+
+Speaker 2: Men, to ting. Nå ser dere at det er ganske komplisert matematikk. Jeg går over til denne, slik at dere har lettere å se. Men nå har vi gjort masse innunder,- modell her, folkens. Her, modell. Beskriv masse for oss.
+
+Speaker 3: Og
+
+Speaker 2: det var min sterkeste anbefaling da, at dere faktisk setter dere inn i det. Hvorfor det? Ja, for å ha sagt på en annen måte, for å ikke bli tatt med buksa nede. Rett og slett. En ting er at dere skal bli sensurert i dette her, men en annen ting er at dere skal lære et verktøy, et fryktelig kraftig verktøy, som dere skal bruke når dere kommer ut og skal jobbe og lage rapporter og sånne ting. Gjør en tilsvarende sessjon i en eller annen arbeidssammenheng. Da nytter det ikke å komme med tull. På skolen, det eneste som skjer hvis det går gærent, er at du får en dårlig karakter. På jobben, helt annet ballgame. Mye mer prestige. Du vil ikke bli tatt med buksa nede. Så når dere får an til å generere komplisert matematikk som skal begrunne og forklare modellen deres, så sørg for å forstå det. Det er an om å hjelpe å forstå modellen slik at dere lærer den. Det er min hjertelige anbefaling til dere. Bruk den ekstra tiden det tar for å sette dere inn i det dere faktisk genererer. Er dere enige i det, Fred? Jo, jeg
+
+Speaker 1: er helt enig. Så det kan dere gjøre helt på siden av etterpå å lage en ny sesjon med om dere bruker GPT eller PLOD eller Gemini, og så bare har dere det som en diskusjonspartner og diskuterer igjennom dette der, og bare sier det som det er, at jeg kan ikke dette her, kan ikke dette grunnleggende modellen her, men jeg er en bæsjestudent og skal presentere dette her nå. Jeg har spørsmål til dere om å ha en munkepresentasjon og bli utspørret om dette. Hva bør jeg vite? Og så bruker dere det som et sparingspartner, for å forstå dette der. Kanskje komme opp med en enkel presentasjon om hvordan vi skal presentere det. Hvis du vil ha en presentasjon på fem minutter, presenteras den på et kvarter. Hvordan vi la en noe kule punkt eller en powerpoint show ut. Så det å bruke litt tid på det er faktisk ganske
+
+Speaker 2: bra. Så dette punktet vi gjorde nå, det sto egentlig ikke i status. Det stod ikke i statusfilen vår, så jeg ba han om å legge det inn. Der. Han burde egentlig vært først, ikke sist, men... Den skal komme først. Ikke sist. Sånn. Men det er for å dokumentere. Jeg ønsker å dokumentere hva vi gjør på veien. Og så legge... Endre også.
+
+Speaker 1: Jeg liker at vi oppdaterer i realtime, så vi kan hoppe opp. Det er et siktspunkt
+
+Speaker 2: i det. Og i hyllene skal vi også endre prosjektstilen inni her. Jeg er helt på å jobbe med å lage et veldig godt prosjektstyringssystem sammen med AI. Etter hvert vil jeg egentlig ikke ha status, men at jeg kunne bare jobbe med schedule.json her og sånt, men det er datafila. Men at jeg kunne hatt en web-applikasjon, for eksempel, hvor vi kunne hente denne statusen fra en database. Det er et fremtidig steg som jeg kommer til å jobbe med, som kanskje vi har til neste år. Det finnes forbedringer. Så er den ferdig. Dette punktet var et viktig punkt som ikke var med i den opprinnelige planen,- men som jeg mener var viktig, og det er faktisk å skrive modellen først. Nå skal vi begynne å jobbe med kommitta. Nå skal vi begynne å jobbe med Python, for nå skal vi begynne å finne de variablene. Nå har vi beskrevet modellen. Nå skal vi løse modellen. Det å beskrive en modell kan være vanskelig til selv, og det å løse en modell er ofte enda
+
+Speaker 1: vanskeligere. Hva betyr det å estimere en
+
+Speaker 2: modell? Det betyr å finne tall for de ukjentere.
+
+Speaker 1: Det betyr ikke egentlig å løse, men velge å løse?
+
+Speaker 2: Det kalles gjerne estimering i statistikk. All
+
+Speaker 1: right.
+
+Speaker 3: OK.
+
+Speaker 2: I aktivitet. Jeg lurer på om det kanskje var litt det vi hadde aldri gjort. Ja, det ser bra ut. Det handler om stasjonaritet. Hvis vi ser på dette dokumentet vårt her, så ser vi at dette er standard på mange måter. Men hvorfor var det så vanskelig å ha så mange oppe her nå? Så etter at vi har laget modellen, så skal vi begynne å se på prosessen, og det starta innsamlingen har vi gjort, så det neste er stasjonaritet og sesonganalyse.
+
+Speaker 1: Stasjonaritet og sesonganalyse. Er det et par punkter som kommer under kapittel 6 modellen?
+
+Speaker 2: Ja, ja. Nei, analyse. Analyse, ja. Så nå har vi det opp i analyser.
+
+Speaker 1: Da var det egentlig ganske korte, synes jeg, kapittel 6 om modellen. Hvis det ikke var mer enn det vi har gjort nå, så var det ganske korte.
+
+Speaker 2: Ja, men det er ikke alltid at modellen er så lang. Spesielt når den
+
+Speaker 1: er kjenta. Det er jo bare presentasjon av modellen, og modellen er generelt ikke lang, faktisk. Det å løse den, da, som kan være lenger, så er det greit at det er kort.
+
+Speaker 2: En slags manifestering av hva vi skal løse. Statuspunkt, ja. Så vi tar neste status. Vi vurderer aktuelle modelltyper for trend og sesonger. Så det er en byte å gjøre nå. Det er steg to her, det regner med.
+
+Speaker 3: Jeg
+
+Speaker 1: bare klipper ut til dere, folkens, Tableau i setten. Dere har der Tableau-kontent, sånn som det typisk er i rapporten vår. Så nå ser du at vi har kapittel 6 av modellering i halv og kommende versjonen, siden Båringer ikke har pusha og ikke har pulla. Men 6 modellene er vi nå ferdige med, og det som er neste er 7-analyse. Og steg 2 i Båringers pdf-siden til venstre, steg 2, stasjonaritet og sesonganalyse, det kommer da under kapittel 7-analyse i rapporten nå. Skal vi
+
+Speaker 2: se. Janne, hva burde dere egentlig lese over dette her? Bare
+
+Speaker 1: tre minutter, Janne, til pause, så vi får bare ... Stasjonaritet og så sommeranalyse.
+
+Speaker 3: Ikke
+
+Speaker 2: helt nei. Ja. Ja, men dette er jo litt bra, egentlig. Ja, det er faktisk bra, ja. Men da er det den biten vil jeg faktisk hatt under modell. Ja, jeg tenkte på det.
+
+Speaker 1: Det høres under kapittel 6 modell. Helt enig.
+
+Speaker 2: Nei, dette er bra. Legg dette inn under eget delavsnitt, under modell. Ja, det
+
+Speaker 1: var det du spør om, kanskje. Ja, det var det. Hvordan underavsnitt, kvarter, avsnitt, modell, kapittel 6 burde være.
+
+Speaker 2: Det
+
+Speaker 1: er også... Begynnelse for modelltypet. Å ta
+
+Speaker 2: med alle antagelser i modellen som eget del av knitt. Det kommer på at... Ta for guds skyld med alle antagelsene. Som
+
+Speaker 1: er knyttet til modellen. Som er knyttet til modellen. Som er knyttet til modellen. Vi har også andre antagelser i innstrekning av begrensninger i rapporten vår. Det er helt rett. Men de antagelsene som er assosiert med modellen som sånn, hører til under kapittel 6. Ja, det er riktig. Det
+
+Speaker 2: er ikke samme type antagelser. Nei, det er ikke
+
+Speaker 1: det.
+
+Speaker 2: Da kan vi ta pause, men her har vi planen, og så setter vi bare den i sving. Men det denne planen for eksempel vil gjøre, er at den vil begrunne at vi har faktisk... Den vil se på datene og litt sånn ting, og så vil si at her har vi... Vi har mest sannsynlig en trend for at den stiger, og vi har en sesong for at den svinger, og så en voksende, og så videre. Skal vi da pause, så kjører vi bare på implementiment, så har jeg på skjeringa, så kan folk se hvis de vil. Da kjører vi på, og så tar vi pause der.
+
+Speaker 1: Ja,
+
+Speaker 2: jeg skulle dele, ja. Idiot. Det var kameraet jeg skulle la. Den har jobba noe, ja.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

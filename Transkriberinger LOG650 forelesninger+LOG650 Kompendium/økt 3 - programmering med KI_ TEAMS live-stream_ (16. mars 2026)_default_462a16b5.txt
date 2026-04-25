@@ -1,0 +1,315 @@
+WhisperAI Transcription Report
+
+Title: økt 3 - programmering med KI_ TEAMS live-stream_ (16. mars 2026)_default_462a16b5
+Date: 3/17/2026
+Duration: 3127 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Nå er vi klar for det tredje og siste teamet. Og da har det Aine jobbet her.
+
+Speaker 2: Det siste vi gjorde, skal vi se, status, det var å vurdere aktuelle modelltyper for trend og sesong. Det er egentlig å begrunne hvorfor vi har valgt Sarima. Og det hører med. For Sarima er jo nettopp en modell for å fange opp trend og sesong. S står for «seasonale» sesong med autoregresjon og moving average. AR står for autoregressiv, og MA står for moving average. Så det er litt sånne begrep.
+
+Speaker 3: I
+
+Speaker 2: rapporten legger jeg merke til at det oppstår en utfordring. Hvis vi nå går under modell, så står det vurdering av modelltype. Så her skriver vi, så kommer det figur E61, E62, litt om tabellmessige ting, og så kommer modell- antagelsene. Veldig bra. Men er det noen som tenker på et problem? Noen som synes at det er noe strukturelt problem her? Det er ikke om dere tenker det samme som vi tenker, men har ikke vi sett disse to figurerne her en annen sted?
+
+Speaker 1: Jo, det har vi sett dem før. Han har repetert dem i modellene, og det er ikke så bra.
+
+Speaker 2: Nei, så nå er det sånn at det er to plasser hvor disse figurerne her er beskrevet. Og det er ikke så uvanlig, fordi det å sette opp en god struktur,- er ikke nødvendigvis hyllevare, for å si det sånn. Hvert case må på en måte ha sin struktur. Så når vi setter opp en fast struktur i dette faget her, så er det på en måte anbefalt struktur. Men man må passe på at ting ikke repeteres og blir kjedelige. Og både disse Disse grafer har vi sett før. De er under casebeskrivelse. Det er ikke veldig uvanlig at casebeskrivelse og modell begynner å overleppe. Dette må vi løse på et eller annet vis. Da må vi spørre oss selv, skal vi ha casebeskrivelse i hele tatt, eller kan vi inkorporere det i modellen og bare bruke det en gang, for eksempel? Det kan være en mulighet. Vi ser jo at casebeskrivelse kommer der, og modell kommer rett etter data og sånne ting. Skal vi bare fjerne casebeskrivelse og gå rett på modell, hvor vi har et 6-1 casebeskrivelse? Er det sant?
+
+Speaker 1: Jeg har noen tanker om det, men du kan bare fullføre.
+
+Speaker 2: Nei, bare for å høre før vi ber A1 om å vurdere det.
+
+Speaker 1: Vi holder casebeskrivelse, og vi kan gjerne være tydelige på at vi presenterer bare rådataene rått, altså uendret, sånn som de er i casebeskrivelsen. Og så henviser vi heller til de figurerne som er i Likud 4, fra kapittel 6, slik at vi slipper duplikat av figurer.
+
+Speaker 2: Ja, men da kan det være litt vanskeligere å følge, men da må vi i hvert fall bla frem og tilbake, da. Det er drawbacket. Men fordelen er jo at vi har kilden bare i en plass. Så det har sine styrker og saker. La oss spørre hva AN mener.
+
+Speaker 1: Det synes jeg er lurt å spørre om. Altså, jeg har en preferanse, men det er veldig bra å bare spørre og diskutere med AI.
+
+Speaker 2: Ja, og må ikke misforstå det jeg sa. Jeg sier ikke det at det er feil, jeg sier bare at det har en pris også, ikke sant? Ja, ja.
+
+Speaker 1: Og jeg sier bare det at det er veldig bra at vi diskuterer med AI, pros and cons. Altså, hva mener du? Nå har vi påpekket en sak, et problem eller et issue, og hvordan anbefaler AI å løse den her? Altså, jeg har mine preferanser. Men jeg vil ikke avsløre det før A1 har kommet med sine kommentarer.
+
+Speaker 2: Det er ikke bra å repetere tekst og figurer,- så spørsmålet er- hvordan vi skal organisere dette på best mulig måte.
+
+Speaker 1: Har du et forslag?
+
+Speaker 2: Nå burde jeg egentlig tatt plan mode. Jeg er så vant med at jeg kan togle plan mode direkte via Cloud Code, så jeg klarer jo ting.
+
+Speaker 1: Jeg bruker bare å si det, ikke gjøre noen endringer før vi går blir enhjelt og sånn. inn Det er en enkel hverdag.
+
+Speaker 2: Ja, men da i får ikke denne noe spørsmålsbiten da, som er spesifikk under plan mode da. Nei. Men jeg er sikker på at det finnes en...
+
+Speaker 1: Ja, men kan det slash plan mode og så tabba det bare, ja?
+
+Speaker 2: Ja, men jeg er sikker på at det finnes en måte å høre på altså. Jeg bare husker det ikke. I Cloud Code er det lettere, derfor jeg kan noe som helst flytte til plan mode. Eller endre til plan. Men jeg er sikker på at det finnes en sånn... Det er en tasttrykk for å slå på pløvemål. Du kan ta sjekkel på mens. Ja. Bare se på nettet mens den her på Spinn der, og jeg tror vi fant den. En sånn innstilling kanskje, da.
+
+Speaker 1: Ja, nå ser vi at mitt klare forslag er å ikke ha figurer 16 i hele datt. Det er jeg faktisk enig i. Yes, og jeg er også enig i hatseorganisering. Ja, det er jeg enig i, da.
+
+Speaker 2: Gjør det, sier jeg bare. Da er jeg enig med det, Peko. Så da kjører vi på. Det er greit. Men det er viktig å være overvåket. Grunnprinsippene i en skriven rapport må dere ha for å kunne styre A1 i rett retning. Ja, denne. Så slik at dere kan gjøre denne typen dialog som vi gjør nå med A1, det er jo vesentlig for at dere skal- få dette her til å bli best mulig resultat. At dere må bruke AN som en kritisk sparingspartner, men det er dere som må styre og se utfordringene her. I tillegg så skal vi selvfølgelig ha en review etterpå, men likevel da, ikke sant?
+
+Speaker 1: Vi må bare ta bra litt av netekapitletekst for å se når vi gjør oppdateringene i MDK.
+
+Speaker 2: Han gjør ikke det, for han er ikke i planmode, men nå gjør han det. Nå kjører jeg i planmode.
+
+Speaker 1: Nå kan han gjøre det.
+
+Speaker 2: Ja, nå ser du ikke. Nå vil du se endringene her i...
+
+Speaker 1: Ja, nå kan du prøve litt ned, og se hvordan...
+
+Speaker 2: Det er noe med den tabellen der, ikke det?
+
+Speaker 1: Jo, men sånn at figurerne kommer til å forsvinne nå, regner jeg med.
+
+Speaker 2: Ja, det er det som er kluet, tror jeg.
+
+Speaker 1: Ja, vi tror de kommer til å forsvinne nå.
+
+Speaker 2: Ja. Og henviser da til figur 4, etter han har i stedet for sånt. Ja. Det lukter, ja. Nå skal den gjøre oppryddingene. Enig med å få lamne helt der, så må vi ha enda en sesjon en dag, Peko.
+
+Speaker 3: Jeg
+
+Speaker 2: lurer på hvilken dag det skulle ha vært. Onsdag, kanskje?
+
+Speaker 1: Ja.
+
+Speaker 2: I morgen er vi i Travelle, ikke?
+
+Speaker 1: I morgen er vi i Travelle, ja. Onsdag kan gå.
+
+Speaker 2: Onsdag klokka 12?
+
+Speaker 1: Onsdag og fredag er dagene som passer på med.
+
+Speaker 2: Onsdag er bedre for meg på fredag enn jeg har i en del møter.
+
+Speaker 1: Ok, da var det onsdag fra 12 til?
+
+Speaker 2: 12 til 3 og så prøver vi å få det riktig på full fart hele den sesjonen her. Så alle studentene vet liksom.
+
+Speaker 1: Kan du sende en mail Erik til rombestilling og sette gjerne med om å ringe på kopi slik at de schedulerer rombestillinga? For da får du dine time og planer, og så kan du deretter sette bare en kunngjøring. Jeg skal bare skrive opp her, jeg. En, jeg tror det heter rombestilling, jeg tror det er det jeg heter, rombestilling. Jeg tror det i hvert fall er det, i måneder og planer også. Og så to, kunngjøring. Og da altså, vi har tre timer I log 650, onsdag, det blir 18.
+
+Speaker 2: klokka 12.15.
+
+Speaker 1: Og ut
+
+Speaker 2: klokka 13. Det er bare for å få landet hele veien, for det tar jo selvfølgelig litt lengre tid. Det er jo veldig effektivt, men Det tar likevel litt tid, så det er jo greit å få gjort det. Men nå fikk han endret figurerne, tror du? De er borte. Ja. Så supert, og her refereres det da til figurerne som vi lagde tidligere i case-beskrivelsen. Så det var jo prisen, sant? Prisen i en måte å referere til en figur. Sånn at hvis du lurer på hva slags figur det er, så må du hoppe til figurene, sant? Ja, det er ganske vanlig det
+
+Speaker 1: også, å referere til andre også, i stedet for å reportere dem. Absolutt.
+
+Speaker 2: Blått, da er vi blått. Da kan vi huke av den. Blått, huke av denne arbeidsoppgaven og komme inn. Og kommit. Hva er
+
+Speaker 1: det som gjør at du kommitter såpass ofte? Er det for at du skal få en historikk? Da får du en
+
+Speaker 2: riktig historikk. Det er egentlig veldig viktig. Hvis du gjør for mye endringer nå, og så plusselig gjør AN bare tull, da er det ikke så lett å spole tilbake. For hvis du da spoler tilbake, så spoler du tilbake helt til neste savepoint. Da kan du miste arbeid. Ja
+
+Speaker 1: da, jeg skjønner. Så det er veldig lurt å
+
+Speaker 2: kommitte ofte, spesielt etter at du har gjort en arbeidsgåp oppgave. Kommitt, neste. Det er viktig da. Så da skal han også huka av denne statusbyten, ja. Bra. All right.
+
+Speaker 1: Ja, så blir det som sagt at kommits og veldig mange endringer er vel også en Litt dårlig praksis og dårlig skikt. Det er å finne en balanse her, hva som er for
+
+Speaker 2: luftig. Ja, det er akkurat det som vi sier. Hvis du har for mange endringer, så blir det på en måte... Da blir alle disse endringene avhengig av hverandre. I den forstand at de er i en og samme kommitten. Så hvis du må omgjøre en kommitt, så gjør du plutselig om alt sammen. Det er veldig kjedelig, så det er mye lettere å gjøre små og ofte kommits. Så det er korrekt kommentar. Han har gjort denne punkten, så skal vi velge Sarima spesifikasjon, hva det betyr. Så da trykker jeg på planen igjen, men også nå var det sånn at jeg kunne se om det var, hvordan skal vi se? Use tab, shift tab. Det er ok. Shift-tab. Det var det jeg tenkte. Det var litt teit å ikke prøve den, for det er akkurat den samme som for...
+
+Speaker 3: Som for Clawed?
+
+Speaker 2: For Clawed.
+
+Speaker 3: Så.
+
+Speaker 2: Vi er ikke på review enda, nei. Review gjør vi ikke før vi har gjort hele aktiviteten, da. Når vi har gjort alle tre punktene her, da kan vi kjøre over. Nå velger
+
+Speaker 1: Sarima spesifikasjon. Sarima har ganske mange parametre, og vi må velge de riktige parametrene for vårt spesifikke tilfelle.
+
+Speaker 2: Det blir neste steg, estimere modellparametret. arbeidspakke. Og det bør egentlig, hvis vi har planlagt disse arbeidspakkene korrekt, det er det som ikke nødvendigvis sikkert bør gjort det. Men det som er neste nå er å sjekke stasjonaritet og songsesonganalyse. Og behovet for differensiering, ikke sant? Ja. Og eventuelt behovet. Jeg jukser litt, siden jeg vet at den må gjøre det, men jeg mistenker at jeg har planlagt litt dårlig. Og det er jo litt av hensikten med denne blekka siden P.K. er på skriv, er jo nettopp det at vi skal være i stand til å planlegge godt, og skrive steget i riktig rekkefølger. Det er jo en ting vi må se litt på. Kanskje vi burde ha prøvd å satt inn et lite støt NOPG for å ha fått ferdig den blekka. Vi kommer til å legge den ut tilgjengelig til dere på pdf. Ja,
+
+Speaker 1: vi må prøve å gjøre det. Nå ser vi at dataene våre må vi ikke innholde. Vi har forelesning i dag og forelesning på onsdag blant annet nå. Vi må prøve å få det til. Vi kjenner at den trengs å komme ut
+
+Speaker 2: nå. Her får vi et viktig spørsmål. Hvordan vil du at denne arbeidsmarkeden skal dokumentere stasjonalitet og behov for differensering? Formelle tester, tomolog med en gang. Det er et veldig godt tegn, sant? Da skal vi bruke beregninger. Planen bruker ADF-kompensasjon og krever at støttsmodell og skipbil legges til i analyseoppsettet. Aha! Så her skal vi da bruke programvare til å teste om vi trenger å gjøre differensering. Og disse metodene der, de er også beskrevet i blekket vår. Så det er overens her. ADF-test står det her, ikke sant? I tillegg så har vi en annen N eller KPSS. Det er forskjellige tester for å sjekke at antakelsene for stasjonaritet er oppfylt. Så den trykker vi OK på. Hvorfor
+
+Speaker 1: er det vi må ha en stasjonæritet? Hvorfor er det en antakelse?
+
+Speaker 2: Det er en antakelse for SARIMA når du gjennomfører SARIMA. Det er IEN i SARIMA, for å si det sånn. Hva er det som skal være stasjonært? Det kan du spørre om ennå etterpå. Dette er en sånn ting som egentlig burde ligge under... Hvis du ser på rapporten nå. Så bør det ligge under teori, da. Ja, jeg er litt
+
+Speaker 1: enig i det.
+
+Speaker 2: Her har vi en stor plan. Ja. Test fire serievarianter, ja, bra. Dette er bra. Vi ser det bra. Kjør på implement. Det er utrolig kraftfulle greier dette her. Ja, og så
+
+Speaker 1: bare en sånn liten ting jeg har lyst til å vise dere nå. Dette er litt sånn som i jobbet, da. Så jeg bare deler noen av mine arbeidsmetoder. Så hvis dere ser noe på chatten, Så det jeg gjorde, jeg tok det der stegbildet, steg 1-6 stegbildet, som var i kompaniet Blekkavar, pastet det inn i GPT, og så spør jeg, hvorfor trenger vi stasjonaritetsandagelsen i Sarima? I Sarima, svært kort, hvilke punkter er studenter som lurer på dette? Og da ser du at Sarima bygger på mer stabile mønster over tid. Det betyr at nivå, variasjon og avhengig struktur er omtrent konstante. Og det ser vi jo nesten da når vi bare plotter rådataene, for de har jo innmari fine og gode rådata. Så da har vi det. Og der ser vi også forklaringene da. Både litt mer formelt da i kulepunkt. Sånne ting er greit å bare spørre deg om altså.
+
+Speaker 2: Nå kommer vi til å kjøre ganske komplisert Python-kode, folkens. Vi kan ta en titt på Python-koden, hvis dere vil. Dette er jo ganske fantastisk, for vi sitter nå og gjør en analyse som skal løse et problem, og så genereres det kode for oss å teste. Om hvorvidt vi skal gjøre differensiering eller ikke. Differensiering betyr at du trekker i fra, altså du transformerer dataene dine. Det er det du gjør. Så vi kunne for eksempel ha bedt AN om å transformere dataene. Så legg merke til, bare for å forklare dere, mens vi sitter og venter på at AN skal bli ferdig. Hvis dere ser på denne grafen, så ser vi tydelig at det er en oppadstigende trend. Det ser vi også i dette stolpediagrammet. Oppadstigende trend er ikke stasjonært. Den er tidsavhengig. Etter hvert som tiden går, så øker det. Vi skal minst gjøre en differensiering for trenden. Men så har vi også økende, hvis dere ser disse svingningene her, høyden på disse toppene, så blir de større og større. Det er også et stort tenk på at sesongen er også ikke stasjonær, altså sesongen øker. Sesongen i 205 observasjon er mye større enn sesongen i 200. I tretten, skjønner
+
+Speaker 1: jeg. Men betyr det at stasjonaritetsbetingelsene ikke er oppfylt i vårt tilfelle? Nei,
+
+Speaker 2: vi har minst to brudd på stasjonaritet, og den fjerner vi ved å differensiere bort stasjonariteten. Altså vi trekker fra datene, vi trekker fra differensiering, og det er inn i arima. Det er noe vi må gjøre først. Vi kan jo da be A1 om å legge inn og generere differensierte data. Vi har jo her data, sant? Nå kan vi da be A1 om å generere differensierte data på dataene våre. For eksempel. Da må det vel være training data, kanskje? Egentlig trenger du ikke gjøre det. Man betyr det at
+
+Speaker 1: siden vi da har sterkere sysannmøster og en oppadgående trend, så har vi to brudd på stasjonalitet, så da må vi transformere dem over, og differansen slik at de blir stasjonære, og transformere dem til en transformert verden slik at den blir stasjonær, og så bruker Sarima å få den transformerte modellen, og så kan du løse modellen, og så transformerer det tilbake igjen etterpå. Det er det som er ideen. Det er det som
+
+Speaker 2: er ideen, ja. Og her nå ser dere akkurat det den har gjort. Fantastisk, eller hva? Sjekk den figuren han lagde,
+
+Speaker 1: da. Men var det riktig det jeg
+
+Speaker 2: sa, Bård? Ja, det er helt riktig. Og du ser det, den kommentaren som du snakket om nå, det ser du også egentlig i... Ja, du ser det sånn nesten her, for det har egentlig ikke en i her, det skulle vært en i her. Den ien der kan være en transformert i. Dette er noe mattere, så det er komplisert. Den y-en der kan være transformert, så det trenger ikke være det datasettet du ser på. Jeg lurer på om vi hadde det litt bedre her. Da sjekker jeg. Ja, her er differensieringsoperatoren, ser du. Så denne er litt mer generell og litt bedre på en måte,- men samtidig også vanskeligere på en måte. Så her ser dere at vi har differensiert både langs sesong og i tid. Altså trend og sesong. Her står det differensieringsoperatorne. Denne her er litt mer aventjert, bare for det sagt, forholdt til det som står her. Men jeg synes likevel at dette her er ganske bra. Det er bare at jeg ser ikke differensering. Jo, her er den. Her er den. 1 minus b, det er differenseringsoperatoren. Dette er vanskelig matte. Forventer ikke at noen av dere skjønner dette her. Men 1 minus b, det er differenser. Og 1-B12 er differanse i tolte måneder. Per måned. Månedsbasert differanse. Så den ene er sesong, den andre er trend. Sagt på vanskelig vis. Staksjonalitet og behov for differensering. Nå ble tabellen litt... Er det
+
+Speaker 1: bare for at du har... Han komprimerer for at vi gjør det, så... Så hvis du tar bort det her, ja. Det
+
+Speaker 2: er fordi det er markdown, folkens. Det er fordi det er markdown. Ja, det er
+
+Speaker 1: fordi det er markdown. Og dette her kan vi fikse da når vi er på slutten, selv om det er litt vanskelig å lese nå. Ja, men det
+
+Speaker 2: kan vi ikke forvente, fordi dette er bare vjueren, liksom. Så vjueren vil bare automatisk sette dette her opp, slik som det ser ut for seg da. Vi kan jo prøve å Se på rapporten i den andre, men jeg tror ikke det blir noe bedre. Dette er den andre bjørnen, men det
+
+Speaker 1: ble litt bedre, ser dere. Ja, ikke så mye bedre,
+
+Speaker 2: men litt, ja. Men tabellene er likevel rette. Her ser vi at vi har 1-1, kombinert differensiert. Så hvordan dette fungerer, da? La oss se på den andre, så er det litt lettere å henge med likevel. Her er jo p-verdiene, og de tester om det er stasjonært eller ikke. Her er første steg. Det er den originale serien vår. Det er sånn som den ser ut her og nå. Da er det at figur 1 er denne her. Dette er originaldatasettet vårt. Vi gjør testene, og så står det at testene peker samlet mot fortsatt ikke-stasjonaritet. Det er riktig, for det ser vi jo. Så trekker vi fra trenden, altså den som gjør at den stiger skrått oppover. Nå ser du at den stiger ikke skrått oppover, han er horisontal. Vi har fremdeles disse sesongtoppene, men den er horisontal. Så tester vi om denne her er stasjonær. Det blir da neste test. Det er den testen her. Testene peker mot stasjonaritet. Så han sier at den er stasjonær her også, men vi ser at den egentlig ikke er det, men testene sier det. Så gjør vi en sesong differensiert, kun sesong. Ikke stige ned når det er kun sesongen vi fjerner. Testene peker mot stasjonalitet, og så tester vi for begge to, hvor vi har trekk fra både sesongen og trenden. Testene peker mot stasjonalitet, men med høyere risiko for overdifferenseringer. OK, nå må vi se hva han sier da. D1 liker D, og D0 som hovedkandidat videre. OK. Det overrasker meg litt, da. Du er på møte med VGK. Vi ser at den viser ikke selve statistikken, jo det gjør den her. P-verdi, ja. Men jeg vil også ha statistikken her. Muligens han har programmert feil, vet du.
+
+Speaker 3: Legg
+
+Speaker 2: også inn. Det er litt
+
+Speaker 1: mistenkelig. Ja, jeg er litt overrasket over at den ser på sesongen som stasjonær, for den er jo ikke helt stasjonær.
+
+Speaker 2: Nei, ikke det ser du.
+
+Speaker 1: Så det jeg gjør da, det er å konfrontere den med det. Jeg er
+
+Speaker 2: usikker på om du
+
+Speaker 1: har konkludert rett, for jeg ser jo at sesongen er så, bare jeg konfronterer den altså. Og så gjør den en ekstraanalyse
+
+Speaker 2: akkurat på det hele. Ja, en er det. Jeg tar og prøver å minske skriften litt, Rani, her. Hvis det går an, kanskje. Hvordan å minske fonten litt.
+
+Speaker 3: Nei,
+
+Speaker 1: jeg vet ikke om vi kan gjøre det på en
+
+Speaker 2: matematikk. Ja, for det jeg ser da, er at Mullgensen har... Ja, det kommer på en ting nå, men ok, greit. Til p-verdi. Som dere ser nå, må dere ha litt kunnskap i statistikk, men det er jo litt av det dette kurset her også antar, folkens. Det må dere huske på. Dette kurset antar jo at dere har en basic forståelse i både logistikk og statistikk, og matematikk og så videre. Ikke sånn high tech som vi ser her, men i hvert fall basic, sånn at dere vet hva teststatistikker er for noe, og p-verdier og sånne ting. Folk har teststatistikker i tillegg til p-verdien. Kommer du frem til samme konklusjon? Vi prøver å utfordre den med konklusjon her.
+
+Speaker 1: Men jeg synes det er litt rart at hvis vi bare ser med det blåtte æuet, uten å tenke på p-statistikk og p-verdier, så ser de ikke stasjonære ut når sesongvariasjonene, de blir jo større og sterkere og tydeligere og mer
+
+Speaker 2: markant. Den ser ikke stasjonære
+
+Speaker 1: ut, nei. Og det er det vi må kanskje utfordre den på. Vi
+
+Speaker 2: ser, eller jeg ser, med det blåtte
+
+Speaker 1: æuet, for det er sånn, fra figurer, Takk skal du
+
+Speaker 3: ha. Sånn.
+
+Speaker 2: Poenget er at vi skal forsvare det med testene, men du har lov å bruke det blåtte øyet som man PK er inne på. Det blåtte øyet sier jo at dette her er ikke stasjonært, sant? Det var det du mente, PK, ikke sant? Ja, det er det. Dette her er åpenbart ikke stasjonært, for den både stiger og øker amplitudene, eller svingningene. Her er stigningen borte, den er rett frem, men amplitudene øker. Her er amplituden lav, her er amplituden høy. Skal vi se hva han sier da. Det som er viktig å skrive er at valget ikke følger av p-verdiene alene, men av en samlet vurdering. Det er helt enig. Ja, det er helt enig. Formelle tester utelukker orginalserien. Figurdiagnostikken viser at det ligger en fortsatt annerledes sångmønster, derfor velges D1 foran D1 da. Ja, det er enig. For det han sier er at disse testene klarer ikke å skille mellom de tre andre. For alle de tre testene går igjennom, som sier at det testene sier er at denne er stasjonær, denne er stasjonær, og denne er stasjonær. Og det vi sier er at denne er mest stasjonær. En annen ting som man kan vurdere her, legg merke til at svingningene her er av og til litt høye. Det som skjer er at du får en større varians på en måte. Så selv om de svinger tilfeldig rundt orgo som de skal gjøre, så vil de være litt store svingninger, og en måte å fikse det på kan være å transformere datene i form av log-transformasjon. Vi tenkte vi skulle bare spørre noen om det kan være... Ja, først sier vi bare ja, gjør det. Så bare for å skreve det. Ja, bare for
+
+Speaker 1: å forlande det, ja. Når du har den konteksten i hodet på henne, så vil vi bare fullføre når vi er enige. Hvis vi nå begynner på et nytt tema, så må vi gjenta det senere når vi bestemmer oss for det. Ja, det er spot
+
+Speaker 2: on. Det er veldig dumt å gi henne en ny oppgave lett før hun skal begynne å skrive noe. Ja, det er
+
+Speaker 3: det.
+
+Speaker 2: Nå er hun ferdig. Det er
+
+Speaker 3: bra.
+
+Speaker 2: Har du vurdert å loggtransformere?
+
+Speaker 1: Jeg bare gjentar det Bård Inge sier her da. Når vi transformerer, så betyr det at vi bare tar for eksempel loggene, så da dempes alle amplitudene og sånne ting, så tallene blir mindre. Men det er en 1-1-korrespondanse mellom det vi transformerer ned til og det gamle. Slik at hvis vi transformerer og går i en ny verden der ting er stasjonært, da gjelder modellen, og så løser vi modellen i den transformerte nye verdenen, og når vi løser den i den nye verdenen, så går vi tilbake igjen i den gamle og brinnelige reelle verdenen. Og få de reelle verdiene som da er løst. Og da pendler vi altså mellom to verdener. Transformasjon fra et sted til et annet. Fra den virtuelle verden til den reelle verden. Og det er et veldig standard trikk som brukes i mange sammenhenger i matematikk. For å gjøre analyse, signalanalyse, og også ha det i logistikk. Og det er viktig å vite om akkurat det der.
+
+Speaker 2: Ja, definitivt. Vi fjerner på en måte mønster som vi ser og kan kontrollere, og så prøver vi å forklare det som da er igjen, altså residualene, eller det som er differensiert bort. Det er det som ligger i ordet differensiering, at du differensierer bort det som er tydelige mønster, det differensierer vi bort. Så sitter vi igjen med det som ikke er så tydelig, nemlig den røde der. Og den er det da som skal estimeres parametrene på da, for eksempel. Skal vi se, log transformer sammen. Det jeg vil nå, det jeg gjør nå, er også et standard tricks innen programmatisering, nemlig å log transformere dataene. Det som skjer da, er at datene ikke svinger så mye. Hvis dere ser på y-aksen her, så starter det på 2000 og ender på 18000. Så det er ganske stort spenn. Stort spenn betyr veldig store svingninger og store varianter. Ved å logtransformere, så kan du få enda bedre
+
+Speaker 1: data. Du har mønstret og svingningene, men du demper alt sammen. Demper alt sammen,
+
+Speaker 2: ja. Bare en sånn demp. Det er det samme som PK sa, så kan vi transformere dataene tilbake, når vi har gjort analysen i det litt mer dempa scenariet. Her står det, ja, og det er et godt poeng. Sjekk etter motorens data. Nå er det noe som er relevant, men jeg nevner ikke hovedkonksjonen. Ja, laget har vært å ta med, fordi det ser ut til å gjøre variansen mer stabil. Veldig bra. Fordi variansen skal ikke endres over tid. Den skal være stabil, sant? Så beltet rundt her skal være så jevnt som mulig. Nå ser dere at vi har en del spikes her. Tenk på at variansen ikke er så stabil. Her ser dere at variansen blir mye mindre etter hvert. Og det er heller ikke så bra. Sånn at vi har nytt av å logtransformere. Nå
+
+Speaker 1: er tiden ute, så jeg kan tenke meg at jeg bare begynner å tenke på å fullføre, å bare lande akkurat det punktet jeg behelder på med nå, og så kommitte å pushe. Vi gjør det som en avslutning før vi eventuelt skriver noen kommentarer, så vi vet hvor vi skal starte på onsdag. Det kan vi gjøre. Skrive en liten kommentar, husk å lappe til oss selv.
+
+Speaker 2: Jeg vil bare gjennomføre det siste steget her. Lågetransformasjon med begrunnelse. Så slipper vi to parallelle ... Ja. Fem minutter. Skal vi tåle det utover tid? Bare for å lande akkurat denne steden her, slik at vi er ferdig
+
+Speaker 1: med den. Ja, vi må gjøre det.
+
+Speaker 2: Så da får vi Z da, i stedet for Y. Det er greit.
+
+Speaker 1: Det er greit å få en god,- en ny notasjon på den transformerte virtuelle verdenen, og så har vi en notasjon der i settverdenen, og så har vi reelle
+
+Speaker 2: verdenen, y-verdenen og sånne ting. Ja, så det vi kommer til å få da er at vi kommer til å få nye grafer hvor amplitudene og svingningene er litt lavere på en måte. Ja. De er med nærmere orgo da. Og da blir stasjonariteten bedre da. Så hvis dere ikke visste hva stasjonaritet var, så ville jeg egentlig bare gjort sånn som PK. Tatt et spurt, chatt-KPT og sånne ting, og bare lært om stasjonaritet.
+
+Speaker 1: Ja, og det kan være bra å diskutere sånn på siden av kanskje en helt annen AI som vi bruker, GPT i dette tilfellet. Og da ser dere det jeg klippte ut av dere, og hva som står der, at Sarima bygger på stabile mønster over tid, og storsjonalitet betyr at nivå, variasjon og avhengighetsstruktur er omtrent konstante. Og det vi trenger i hvert fall er at det dagen gjelder, og da kan vi gjøre løse den i den stasjonære settverdenen, som er den virtuelle verdenen, løse den der, og så transformerer vi oss tilbake til den reelle verdenen, iverdenen om du vil, etterpå.
+
+Speaker 2: Så det den gjør nå er å selvfølgelig opprette, altså endre Python-koden som gjør alle disse beregningene her. For her skjer det mye beregninger i bakgrunnen. La oss ta en titt på det mens den sitter og brenner. Vi har jo noe som heter Analyzer, så har vi Aktiviteter, så er vi 3-2 her. Og så har vi Scripts. Og her vurderes stasjonaritet. Og her er koden, folkens. Han helder jo på å endre dette her allerede, sannsynligvis. Men alt dette her har AN generert. Og dette er sånn som ... Vi er ikke forventet av vanlige bachelorstudenter, for å si det sånn. Dette er heavy shit, på en måte. Her regnes du ut, og det brukes avanserte bibliotek, slik som Numpy, Pandas, StatModels. Her er det mye data science, for å si det sånn. som på ingen måte er enkel, og her er det Ed Fuller som er da ADF-testen, og så er det KPSS som er den testen som gjennomføres. Det som jeg synes er kult
+
+Speaker 1: her da, er at vi ser faktisk hvor mye som gjøres bak scena, og at vi har litt oversikt over hva som foregår der, slik at det ikke bare blir en black box for oss, og alt dette her er altså kode som genereres da utifra det vi nå har sagt og gjort, så det synes jeg er litt kult da.
+
+Speaker 2: Ja, det er kult, det synes jeg. Så skal vi se på rapporten igjen.
+
+Speaker 3: Er den
+
+Speaker 2: ikke oppdatert?
+
+Speaker 3: Den er ferdig, ja. Ja.
+
+Speaker 2: Nå ja, det ser ikke sånn ut.
+
+Speaker 3: Vi
+
+Speaker 2: hadde jo 18 000 her før, det blir jo ikke 18 000 når vi lager transformere.
+
+Speaker 3: Nei.
+
+Speaker 2: Vi sjekker figurerne.
+
+Speaker 1: Man har oppdatert figurer, men har ikke oppdatert rapporten. Det er det som har skjedd. For nå er det ikke 18.000 lenger, nå er det bare 8, 9 og 7. Nå er denne veldig dampa, selv om man ser høydepunktene, så er det ikke 18.000 lenger, det er bare 8.000, 9.000 og 10.000 og sånne ting, altså småtals. Så denne er nok transformert, og det står jo her jeg, men han har bare ikke oppdatert
+
+Speaker 2: rapporten. Ja, så vi bare prøver å slå av rapporten da, og så oppdaterer han kanskje det. Ja, jeg tror ikke
+
+Speaker 1: han har gjort det,
+
+Speaker 2: jeg tror ikke det, for det er
+
+Speaker 1: ikke Viewer det. Refresh har jeg trodde, for det er at for han faktisk ikke har gjort det. Jo, for han
+
+Speaker 2: bare peker på filene, vet du. Å
+
+Speaker 1: ja, kanskje, kanskje, kanskje. Og så er
+
+Speaker 2: det samme filmnavnet, kanskje. Ja, ja, det
+
+Speaker 1: er spørsmålet. Så hvitten ikke skjørt søndag, må refresje og gjøre det for oss,
+
+Speaker 2: da. Ja, godt spørsmål. Nå kommer
+
+Speaker 1: det, nå kommer det. Her
+
+Speaker 2: er det en. Ja, ja, bra.
+
+Speaker 1: Nå står det her i figurteksten «Log-transformerte
+
+Speaker 2: serievarianter». Ja. All right, da er det bare supert.
+
+Speaker 1: Da må vi kommitte og pushe.
+
+Speaker 2: Push. Da er vi ferdige. Så må vi oppdatere... ...status... ...jobbpakken... ...som gjorts. Da er vi ferdige. Da har vi kommet så langt som status her. Vi har testet stasjonalitet og vurdert behovet for differensering for videre Sarima-spesifikasjon.
+
+Speaker 1: Nydelig. Nå heller vi på å pushe, men skal vi skrive noe, gjøre noe? Skal vi ta opp tråden igjen på onsdagen, eller skal vi bare be AI om å ta en
+
+Speaker 2: recap som vi gjorde i dag? Ja, nå har vi jo statusen og prosjektføringen, ikke sant? Det er veldig kjekt, ikke sant? Da kan vi bare henvise til statusen, og til IT-kommitsen, så vil han da hente seg inn igjen. Så vi trenger ikke skrive noe sånn, hva vi gjorde og ditt og datten. Det er veldig hendig. Da sier vi takk for i dag igjen, og så setter vi opp en ny runde på onsdag. Vi står på akkurat nå for å få kommet oss gjennom, slik at dere får med dere hele prosessen her, som dere kan jobbe med frem til 31. mai. Ja, så bare
+
+Speaker 1: en liten fikkeslutning. Nå tok jeg akkurat og pullet, og alt sammen er nede her. Så nå ser jeg nyrapporten lokalt på min maskine, fordi jeg på ringet puslet det opp i skia, jeg pullet det ned, og så har jeg alt det som vi har gjort i dag lokalt på maskinen med all den ferskeste
+
+Speaker 2: versjonen. Ja, ja, og dette er tilgjengelig til alle sammen, så dere kan laste ned og se på hva vi gjør og hvordan vi har gjort det og så videre. Så det er jo fantastisk. Kjempegøy
+
+Speaker 1: her. Supert. Kan vi bare ta en liten prate etterpå, gjør det vi ringer til dere etterpå i vår. Tusen takk for i dag, folkens. Også legger jeg ut videoene og laster dem opp. Erik ringer med dem, og vi gjør en summary som vanlig, og da er det tilgjengelig
+
+Speaker 2: for alle. Herlig. Ha
+
+Speaker 1: det bra. Herlig. Takk for i dag.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com
