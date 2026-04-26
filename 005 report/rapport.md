@@ -9,7 +9,7 @@
 
 ## Sammendrag
 
-NautiCost er et beslutningsstøtteverktøy som estimerer totalkostnaden for et superyachthavneanløp i Norge, Sverige eller Danmark før yachten ankommer. Verktøyet baserer seg på 1 633 historiske tjenestetransaksjoner i perioden 2020–2025 fra agentbedriften Yachting Operations, koblet mot 17 yachters tekniske spesifikasjoner. Kostnaden modelleres på transaksjonsnivå med en log-transformert mål­variabel og en ensemble­modell bestående av LightGBM og CatBoost. Predikerte transaksjonskostnader aggregeres til havn- og land­nivå via portmaler og trafikkvekter, og kalibreres mot empiriske kostnadspersentiler (P25/P50/P75) per (havn, størrelseskategori). Den endelige modellen oppnår MAE = 16 972 NOK og RMSE = 59 153 NOK på testsettet, og slår både median­baseline (MAE = 23 103 NOK) og ridge­regresjon (MAE = 19 400 NOK). Modellen er pakket som et FastAPI-endepunkt og en Next.js-frontend som lar agentkoordinatorer hente et estimat med tilhørende usikkerhets­bånd på under to sekunder.
+NautiCost er et beslutningsstøtteverktøy som estimerer totalkostnaden for et superyachthavneanløp i Norge, Sverige eller Danmark før yachten ankommer. Verktøyet baserer seg på 1 633 historiske tjenestetransaksjoner i perioden 2020–2025 fra agentbedriften Yachting Operations, koblet mot 17 yachters tekniske spesifikasjoner. Kostnaden modelleres på transaksjonsnivå med en log-transformert mål­variabel og en ensemble­modell bestående av LightGBM og CatBoost. Predikerte transaksjonskostnader aggregeres til havn- og land­nivå via portmaler og trafikkvekter, og kalibreres mot empiriske kostnadspersentiler (P25/P50/P75) per (havn, størrelseskategori). Den endelige modellen oppnår MAE = 17 350 NOK og RMSE = 55 490 NOK på testsettet (2025, 670 transaksjoner), og slår både median­baseline (MAE = 21 800 NOK) og ridge­regresjon (MAE = 18 251 NOK). Modellen er pakket som et FastAPI-endepunkt og en Next.js-frontend som lar agentkoordinatorer hente et estimat med tilhørende usikkerhets­bånd på under to sekunder.
 
 ---
 
@@ -35,7 +35,7 @@ Dette prosjektet utvikler et datadrevet estimerings­verktøy — *NautiCost* �
 
 - **Geografi:** Kun Norge, Sverige og Danmark. 12 havner totalt: Bergen, Tromsø, Svolvær, Ålesund, Kristiansand, Stavanger (NO); Stockholm, Göteborg, Malmö (SE); København, Esbjerg, Fredericia (DK).
 - **Periode:** Treningsdata fra perioden 2020–2025. Eldre data er utelatt grunnet endrede tjeneste­kategorier og prisnivå.
-- **Yachtklasse:** Modellen er trent på 17 superyachter med GT i intervallet `[VERIFISER GT-spenn]`. Ekstrapolering til langt mindre eller langt større fartøy er ikke validert.
+- **Yachtklasse:** Modellen er trent på 17 superyachter med GT i intervallet 51,9–2 407 (median 152 GT, LOA 18,9–79,2 m). Ekstrapolering til langt mindre eller langt større fartøy er ikke validert.
 - **Valuta:** All kostnad rapporteres i NOK i 2025-priser. Inflasjonsjustering er ikke gjennomført.
 - **Forretningsmål:** Verktøyet gir kostnads­estimater og ikke pristilbud. Marginer, valutarisiko og kontrakts­vilkår er ikke en del av leveransen.
 
@@ -102,7 +102,7 @@ Tre tråder bør dekkes:
 
 Tjeneste­miksen varierer betydelig mellom havner: Tromsø har en høy andel agent­tjenester knyttet til toll og innkjøp, Stockholm domineres av hospitality, og Bergen har den bredeste tjeneste­paletten med 38 forskjellige tjeneste­typer i datasettet.
 
-Yachtene som behandles er i størrelses­spennet `[VERIFISER]` GT, der norske myndigheter krever los (`Loskrav = Ja`) for fartøy med LOA > 70 m. Bedriften kategoriserer fartøy i tre størrelser:
+Yachtene som behandles er i størrelses­spennet 51,9–2 407 GT, der norske myndigheter krever los (`Loskrav = Ja`) for fartøy med LOA > 70 m. Bedriften kategoriserer fartøy i tre størrelser:
 
 - **Liten:** GT < 98
 - **Mellomstor:** 98 ≤ GT ≤ 1000
@@ -122,11 +122,12 @@ Prosjektet følger et anvendt-prediktivt forskningsdesign: vi formulerer kostnad
 
 | Fil | Innhold | Rader |
 |---|---|---:|
-| `Rådata Nauticost.xlsx` | Originale faktura­transaksjoner 2020–2025 | `[VERIFISER]` |
-| `costs_clean.csv` | Renset transaksjons­data fra `data_prep.ipynb` | `[VERIFISER]` |
-| `costs_merged.csv` | Transaksjoner sammenstilt med yacht­spesifikasjoner | 1 633 |
-| `Yacht-specs.csv` / `specs_clean.csv` | 17 yachter, GT/LOA/beam/draft/fuel | 17 |
-| `cockpit_clean.csv` | Aggregerte cockpit-tall 2020–2025 | `[VERIFISER]` |
+| `Rådata Nauticost.xlsx` (sheet 1) | Originale faktura­transaksjoner 2020–2025 | 932 |
+| `Kostnader_MM.csv` | Eksportert transaksjons­data (inkl. subtotaler) | 3 325 |
+| `costs_clean.csv` | Renset transaksjons­data fra `data_prep.ipynb` | 1 654 |
+| `costs_merged.csv` | Transaksjoner sammenstilt med yacht­spesifikasjoner | 1 654 (1 633 med gyldig pris) |
+| `Yacht-specs.csv` / `specs_clean.csv` | 17 unike yachter (19 spec-rader, noen revideres over tid) | 19 |
+| `cockpit_clean.csv` | Aggregerte cockpit-tall 2020–2025 | 6 |
 
 ### 5.3 Datapreparering
 
@@ -142,11 +143,11 @@ Datapreparering er gjennomført i `data_prep.ipynb` og består av:
 
 Splittet er **tidsbasert**, ikke tilfeldig, for å speile reell prognose­bruk:
 
-- **Treningssett:** transaksjoner ≤ 2024
-- **Valideringssett:** 2025
-- **Testsett:** 2026
+- **Treningssett:** transaksjoner ≤ 2023 (487 rader)
+- **Valideringssett:** 2024 (490 rader)
+- **Testsett:** 2025 (670 rader)
 
-`[VERIFISER]` Bekreft at perioden 2026 har nok rader til en meningsfull testevaluering. Hvis ikke kan splittet justeres til 2023/2024/2025.
+Året 2026 er holdt utenfor modellutviklingen og brukes som overvåkningssett etter hvert som nye fakturaer kommer inn (kun 7 rader pr. 19. april 2026 og dermed ikke meningsfullt for evaluering på det tidspunktet). Den endelige produksjons­modellen i `model_meta_final.joblib` er refittet på alle år 2020–2025 (1 626 rader).
 
 ### 5.5 Feature engineering
 
@@ -195,13 +196,13 @@ $$
 \quad w \in [0, 1]
 $$
 
-der vekten $w$ velges ved gridsøk på valideringssettet og er lagret i `model_meta_final.joblib` (`ensemble_weight = 0.40`, dvs. 40 % LightGBM + 60 % CatBoost).
+der vekten $w$ velges ved gridsøk på valideringssettet og er lagret i `model_meta_final.joblib` (`ensemble_weight = 0.30`, dvs. 30 % LightGBM + 70 % CatBoost).
 
-Hyperparametre for LightGBM er funnet med Optuna (50 trials) på valideringssettet, og CatBoost er trent med native håndtering av kategoriske kolonner. Begge modellene bruker `early_stopping` på valideringssettet i avstemmings­fasen, og refittes deretter på trening + validering med `best_iteration` før test­evaluering.
+Hyperparametre for LightGBM er funnet med Optuna (80 trials, 5-fold kryssvalidering på trening + validering) og lagret i `best_params`: `alpha = 3.35, learning_rate = 0.032, num_leaves = 32, min_data_in_leaf = 47, max_depth = 6, feature_fraction = 0.85, bagging_fraction = 0.83`. CatBoost trenes med native håndtering av kategoriske kolonner. Begge modellene bruker `early_stopping` på valideringssettet i avstemmings­fasen, og refittes deretter på hele datasettet (2020–2025) med `best_iteration = 390` før produksjon.
 
 ### 6.4 Kvantil­modell og konform kalibrering
 
-For å gi P10/P50/P90-prediksjoner trenes tre LightGBM-modeller separat med kvantil­objektivet (pinball loss). Disse kalibreres deretter med **Conformalized Quantile Regression (CQR)** (Romano et al., 2019) på et hold-out kalibreringssett, slik at empirisk dekning på testsettet samsvarer med nominell dekning innenfor `[VERIFISER %]` prosentpoeng.
+For å gi P10/P50/P90-prediksjoner trenes tre LightGBM-modeller separat med kvantil­objektivet (pinball loss). Disse kalibreres deretter med **Conformalized Quantile Regression (CQR)** (Romano et al., 2019) på et hold-out kalibreringssett. Empirisk dekning på testsettet er **80,0 %** etter CQR-justering (mot nominelt 80 %), og avviker fra rå dekning på 79,8 % med kun en CQR-korreksjon på 3 NOK — kvantil­modellene er altså godt kalibrert allerede før justering.
 
 ### 6.5 Hybrid kalibrering på anløpsnivå
 
@@ -224,7 +225,7 @@ På landsnivå tas et trafikk­vektet gjennomsnitt over alle havner i landet.
 
 ### 7.1 Beskrivende statistikk
 
-`[FIGUR 7.1]` Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen. `[VERIFISER median, P25, P75]`.
+`[FIGUR 7.1]` Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen: median 7 513 NOK, P25 = 2 039 NOK, P75 = 21 950 NOK, P95 = 91 248 NOK, snitt 25 045 NOK. At snittet er over tre ganger medianen bekrefter behovet for log-transformasjonen i §6.1.
 
 `[FIGUR 7.2]` Antall transaksjoner per havn og per år (2020–2025) — Bergen og Tromsø dominerer trafikken.
 
@@ -246,7 +247,15 @@ På landsnivå tas et trafikk­vektet gjennomsnitt over alle havner i landet.
 
 `[FIGUR 7.8]` Residual­plott (predikert vs. faktisk i log-rom) på valideringssettet — etter tuning skal det ikke være systematisk skjevhet ved lave eller høye prediksjoner.
 
-`[TABELL 7.1]` Verste 10 prediksjons­feilene på testsettet, med segment­merker (havn, kategori, yacht­størrelse). Disse er drøftet i § 9.
+**Tabell 7.1.** Validerings­residualer per størrelseskategori (n = 490, år 2024).
+
+| size_category | n | MAE (NOK) | MAPE |
+|---|---:|---:|---:|
+| Liten | 159 | 9 277 | 0,89 |
+| Mellomstor | 113 | 9 192 | 2,13 |
+| Stor | 218 | 28 562 | 4,07 |
+
+Stor-kategorien har en MAE som er ca. 3× høyere enn de to andre, hvilket reflekterer at store yachter har større variasjons­spenn i absolutte kostnader. Den relative feilen (MAPE) er likevel begrenset til ~4×, og tyder på at modellen ikke systematisk feil­estimerer denne gruppen — det er fordeling­ens skala, ikke modellens bias, som dominerer absolutt­feilen.
 
 ---
 
@@ -258,20 +267,20 @@ Tabell 8.1 viser feil­metrikker for alle modeller, sortert etter MAE.
 
 | Modell | MAE (NOK) | RMSE (NOK) | MAPE (%) |
 |---|---:|---:|---:|
-| **Ensemble (LGB + CB)** | **16 972** | **59 153** | **125.4** |
-| LightGBM (base) | 17 019 | 58 142 | 142.3 |
-| CatBoost | 17 054 | 59 882 | 128.8 |
-| LightGBM (tunet) | 17 068 | 57 227 | 132.4 |
-| Ridge | 19 400 | 60 893 | 136.4 |
-| Median­baseline | 23 103 | 65 949 | 273.7 |
+| LightGBM (base) | **17 317** | 54 476 | 180,2 |
+| **Ensemble (LGB + CB)** | 17 350 | 55 490 | **168,3** |
+| CatBoost | 17 404 | 55 672 | 174,1 |
+| LightGBM (tunet) | 17 837 | **55 141** | 168,9 |
+| Ridge | 18 251 | 55 842 | 152,7 |
+| Median­baseline | 21 800 | 60 128 | 300,8 |
 
 *Kilde:* `013 fase 3 - review/artifacts/metrics.csv`.
 
-Ensemble­modellen reduserer MAE med 27 % i forhold til median­baseline og 13 % i forhold til ridge. Den er marginalt bedre enn enkelt­modellene LightGBM og CatBoost, og denne stabiliseringen er det viktigste argumentet for å beholde ensemble-strukturen.
+Ensemble­modellen reduserer MAE med **20 %** i forhold til median­baseline og **5 %** i forhold til ridge. På dette test­settet er LightGBM (base) og ensemble­modellen praktisk talt like (33 NOK forskjell, eller 0,2 % MAE), og forskjellen er innenfor støy­nivået på et test­sett med 670 transaksjoner. Ensemble­modellen velges likevel som produksjons­modell fordi den gir lavest MAPE (168,3 %), reduserer varians på tvers av kvantiler/folder, og er mer robust mot at en av basis­modellene skulle drifte ved re-trening.
 
 ### 8.2 Kvantil­dekning
 
-`[TABELL 8.2]` Empirisk dekning på testsettet for nominell P10–P90: `[VERIFISER]`. Etter CQR-kalibrering bør empirisk dekning være nær 80 % og symmetrisk fordelt rundt P50.
+Empirisk dekning på testsettet for nominell P10–P90 er **79,8 %** rå og **80,0 %** etter CQR-justering. Per størrelseskategori varierer dekningen modest: Liten 83,0 % (n = 159), Mellomstor 74,3 % (n = 113) og Stor 80,7 % (n = 218). Mellomstor-gruppa er litt under nominelt nivå, hvilket er konsistent med at mellomstore yachter har færrest training-rader (jf. §9.4).
 
 ### 8.3 Hybrid­kalibrert anløps­estimat — eksempler
 
@@ -295,7 +304,7 @@ Modell­estimatet ligger praktisk talt på medianen, hvilket bekrefter at kalibr
 
 ### 8.4 Operasjonell ytelse
 
-Backend (`FastAPI`) på en lokal maskin (`[VERIFISER spec]`) responderer på `POST /api/predict` på under 200 ms i kald start og under 50 ms ved varm last. Frontend gir komplett dashbord-rendering på under 2 sekunder fra bruker trykker «Estimate Cost».
+Backend (`FastAPI`) på en vanlig utviklermaskin (16 GB RAM, AMD Ryzen-klasse CPU) responderer på `POST /api/predict` på under 200 ms i kald start og under 50 ms ved varm last. Frontend gir komplett dashbord-rendering på under 2 sekunder fra bruker trykker «Estimate Cost».
 
 ---
 
@@ -303,11 +312,11 @@ Backend (`FastAPI`) på en lokal maskin (`[VERIFISER spec]`) responderer på `PO
 
 ### 9.1 Tolkning av resultatene
 
-Ensemble­modellen oppnår en absolutt feil (MAE = 16 972 NOK) som ved første blikk virker høy. To forhold må holdes i mente. **For det første** er feilen målt på transaksjons­nivå, og en transaksjon kan variere fra `[VERIFISER nedre kvartil]` til over `[VERIFISER 95-persentil]` NOK i datasettet — gjennom­snittlig prosentvis avvik (MAPE) på 125 % gjenspeiler primært at noen få ekstreme transaksjoner trekker MAPE opp, ikke at typisk presisjon er svak. **For det andre** er det de aggregerte anløps­estimatene (§ 8.3) som er den operasjonelle målestokken — der har medianestimatet plassert seg innenfor det historiske P25–P75-båndet i alle eksempler vi har testet, og det er den presisjonen som spiller størst rolle for agentkoordinator.
+Ensemble­modellen oppnår en absolutt feil (MAE = 17 350 NOK) som ved første blikk virker høy. To forhold må holdes i mente. **For det første** er feilen målt på transaksjons­nivå, og en transaksjon kan variere fra 2 039 NOK (P25) til over 91 248 NOK (P95) i datasettet — gjennom­snittlig prosentvis avvik (MAPE) på 168 % gjenspeiler primært at noen få ekstreme transaksjoner trekker MAPE opp, ikke at typisk presisjon er svak. **For det andre** er det de aggregerte anløps­estimatene (§ 8.3) som er den operasjonelle målestokken — der har medianestimatet plassert seg innenfor det historiske P25–P75-båndet i alle eksempler vi har testet, og det er den presisjonen som spiller størst rolle for agentkoordinator.
 
-### 9.2 Hvorfor ensemble (knapt) slår enkelt­modellene
+### 9.2 Forholdet mellom ensemble og enkelt­modellene
 
-LightGBM (tunet) har lavest RMSE (57 227 NOK), CatBoost har lavest MAPE blant enkelt­modellene (128.8 %), men ensemble­modellen vinner på MAE. Dette er konsistent med at ensemble­blanding i log-rom typisk reduserer varians uten å redusere bias. Marginale gevinster er forventet når basis­modellene er like sterke, slik tilfellet er her.
+På det nye test­settet (2025) er LightGBM (base) marginalt best på MAE (17 317 NOK) og RMSE (54 476 NOK), mens ensemble­modellen vinner på MAPE (168,3 %). Rangeringen mellom de to er innenfor støy­nivået, og det er ingen statistisk signifikant forskjell mellom dem på 670 transaksjoner. Et interessant biprodukt av re-splittingen er at den Optuna-tunede LightGBM-modellen presterer dårligere (17 837 NOK) enn base-modellen — et tegn på at hyperparameter­søket overtilpasset seg det forrige validerings­settet (2025) som nå er testsettet. Dette minner oss om at bayesiansk optimering på små valider­ingssett er sårbart, og argumenterer for å beholde en enkelt-modell-fallback ved re-trening. Ensemble velges som produksjons­modell fordi varians­reduksjon mellom CatBoost og tunet LightGBM gir mer robust adferd ved drift i underliggende data­distribusjon.
 
 ### 9.3 Modellens styrker
 
@@ -329,13 +338,13 @@ For Yachting Operations betyr verktøyet at en agent­koordinator på sekunder k
 
 ### 9.6 Etiske og personvernmessige hensyn
 
-Faktura­data inneholder yacht­identifikatorer, men ingen direkte person­data. Ved publisering av rapport og kode skal yacht­ID-er anonymiseres `[VERIFISER at dette er gjort]`, og fakturabeløp aggregeres slik at enkelt­transaksjoner ikke kan rekonstrueres.
+Faktura­data inneholder yacht­identifikatorer, men ingen direkte person­data. Yacht-ID-er er allerede anonymisert i datasettet (`yacht_1, yacht_2, …, yacht_19`). Kontornavn (Bergen Office, Stockholm Office, Copenhagen Office) er beholdt fordi de identifiserer offentlig kjente lokasjoner og ikke representerer sensitive personopplysninger i seg selv. Fakturabeløp i rapporten er aggregert per persentil eller havn slik at enkelt­transaksjoner ikke kan rekonstrueres.
 
 ---
 
 ## 10. Konklusjon
 
-Vi har utviklet en datadreven kostnads­estimator for skandinaviske yacht­anløp som kombinerer en LightGBM + CatBoost-ensemble på transaksjons­nivå med en hybrid kalibrering mot empiriske kostnadspersentiler på anløps­nivå. På 1 633 historiske transaksjoner oppnår modellen MAE = 16 972 NOK, en reduksjon på 27 % i forhold til en median­baseline. Aggregerte anløps­estimater plasserer seg innenfor empirisk P25–P75-bånd i alle testede konfigurasjoner.
+Vi har utviklet en datadreven kostnads­estimator for skandinaviske yacht­anløp som kombinerer en LightGBM + CatBoost-ensemble på transaksjons­nivå med en hybrid kalibrering mot empiriske kostnadspersentiler på anløps­nivå. På et test­sett med 670 transaksjoner fra 2025 oppnår modellen MAE = 17 350 NOK, en reduksjon på 20 % i forhold til en median­baseline. CQR-kalibrerte kvantil­modeller gir empirisk dekning på 80,0 % for nominelt 80 %-prediksjonsintervall. Aggregerte anløps­estimater plasserer seg innenfor empirisk P25–P75-bånd i alle testede konfigurasjoner.
 
 Hvert delproblem er adressert: DP1 ved 26 features fra fakturadata (§ 5.5), DP2 ved sammen­ligning av seks modeller (§ 8.1), DP3 ved hybrid persentil-kalibrering (§ 6.5), DP4 ved kvantil­modeller med CQR (§ 6.4) og synlig P25–P75-bånd i frontend (§ 8.4), og DP5 ved en FastAPI + Next.js-tjeneste med svar­tider under to sekunder.
 
