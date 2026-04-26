@@ -9,13 +9,13 @@
 
 ## Sammendrag
 
-NautiCost er et beslutningsstøtteverktøy som estimerer totalkostnaden for et superyachthavneanløp i Norge, Sverige eller Danmark før yachten ankommer. Verktøyet baserer seg på 1 633 historiske tjenestetransaksjoner i perioden 2020–2025 fra agentbedriften Yachting Operations, koblet mot 17 yachters tekniske spesifikasjoner. Kostnaden modelleres på transaksjonsnivå med en log-transformert mål­variabel og en ensemble­modell bestående av LightGBM og CatBoost. Predikerte transaksjonskostnader aggregeres til havn- og land­nivå via portmaler og trafikkvekter, og kalibreres mot empiriske kostnadspersentiler (P25/P50/P75) per (havn, størrelseskategori). Den endelige modellen oppnår MAE = 17 350 NOK og RMSE = 55 490 NOK på testsettet (2025, 670 transaksjoner), og slår både median­baseline (MAE = 21 800 NOK) og ridge­regresjon (MAE = 18 251 NOK). Modellen er pakket som et FastAPI-endepunkt og en Next.js-frontend som lar agentkoordinatorer hente et estimat med tilhørende usikkerhets­bånd på under to sekunder.
+NautiCost er et beslutningsstøtteverktøy som estimerer totalkostnaden for et superyachthavneanløp i Norge, Sverige eller Danmark før yachten ankommer. Verktøyet baserer seg på 1 647 historiske tjenestetransaksjoner i perioden 2020–2025 fra agentbedriften Yachting Operations, koblet mot 17 yachters tekniske spesifikasjoner. Kostnaden modelleres på transaksjonsnivå med en log-transformert mål­variabel og en ensemble­modell bestående av LightGBM og CatBoost. Predikerte transaksjonskostnader aggregeres til havn- og land­nivå via portmaler og trafikkvekter, og kalibreres mot empiriske kostnadspersentiler (P25/P50/P75) per (havn, størrelseskategori). Den endelige modellen oppnår MAE = 17 350 NOK og RMSE = 55 490 NOK på testsettet (2025, 670 transaksjoner), og slår både median­baseline (MAE = 21 800 NOK) og ridge­regresjon (MAE = 18 251 NOK). Modellen er pakket som et FastAPI-endepunkt og en Next.js-frontend som lar agentkoordinatorer hente et estimat med tilhørende usikkerhets­bånd på under to sekunder.
 
 ---
 
 ## 1. Innledning
 
-Internasjonale superyachter genererer betydelige tjeneste­inntekter for skandinaviske havneagenter, men kostnadsbildet ved et havneanløp er kompleks: én anløp består typisk av 5–40 separate transaksjoner fordelt på havneavgift, los, hospitality, proviant, agenttjenester og bunkers. I dag estimeres totalkost­naden manuelt av agent­koordinator basert på erfaring og oppslag i tidligere fakturaer, hvilket er tidkrevende og inkonsistent. Resultatet er at yachteiere ofte mottar grove anslag som senere må justeres.
+Internasjonale superyachter genererer betydelige tjeneste­inntekter for skandinaviske havneagenter, men kostnadsbildet ved et havneanløp er komplekst: ett anløp består typisk av 5–40 separate transaksjoner fordelt på havneavgift, los, hospitality, proviant, agenttjenester og bunkers. I dag estimeres totalkost­naden manuelt av agent­koordinator basert på erfaring og oppslag i tidligere fakturaer, hvilket er tidkrevende og inkonsistent. Resultatet er at yachteiere ofte mottar grove anslag som senere må justeres.
 
 Dette prosjektet utvikler et datadrevet estimerings­verktøy — *NautiCost* — som tar inn en yachts spesifikasjoner og en tenkt reise (land, måned, oppholdslengde, drivstoff­nivå) og returnerer en totalpris fordelt på tjeneste­kategori, sammen med et historisk kostnadsspenn (P25–P75) for konteksten anløpet hører til.
 
@@ -147,11 +147,11 @@ Splittet er **tidsbasert**, ikke tilfeldig, for å speile reell prognose­bruk:
 - **Valideringssett:** 2024 (490 rader)
 - **Testsett:** 2025 (670 rader)
 
-Året 2026 er holdt utenfor modellutviklingen og brukes som overvåkningssett etter hvert som nye fakturaer kommer inn (kun 7 rader pr. 19. april 2026 og dermed ikke meningsfullt for evaluering på det tidspunktet). Den endelige produksjons­modellen i `model_meta_final.joblib` er refittet på alle år 2020–2025 (1 626 rader).
+Året 2026 er holdt utenfor modellutviklingen og brukes som overvåkningssett etter hvert som nye fakturaer kommer inn (kun 7 rader pr. april 2026 og dermed ikke meningsfullt for evaluering på det tidspunktet). Den endelige produksjons­modellen i `model_meta_final.joblib` er refittet på alle år 2020–2025; refittsettet inneholder 1 626 rader, som er 21 færre enn split-summen på 1 647 fordi rader med manglende avledede aggregat­features (f.eks. ved sjeldne `(størrelse, tjeneste)`-kombinasjoner) faller bort i feature engineering-steget.
 
 ### 5.5 Feature engineering
 
-Totalt **26 prediktor­variabler** er konstruert (jf. `build_features` i `predict_voyage.py`):
+Totalt **27 prediktor­variabler** er konstruert (jf. `build_features` i `predict_voyage.py`):
 
 - **Yacht­spesifikasjoner:** `gt`, `loa_m`, `beam_m`, `draft_m`, `fuel_lph`.
 - **Avledede yacht­felt:** `size_category`, `loskrav`.
@@ -276,7 +276,7 @@ Tabell 8.1 viser feil­metrikker for alle modeller, sortert etter MAE.
 
 *Kilde:* `013 fase 3 - review/artifacts/metrics.csv`.
 
-Ensemble­modellen reduserer MAE med **20 %** i forhold til median­baseline og **5 %** i forhold til ridge. På dette test­settet er LightGBM (base) og ensemble­modellen praktisk talt like (33 NOK forskjell, eller 0,2 % MAE), og forskjellen er innenfor støy­nivået på et test­sett med 670 transaksjoner. Ensemble­modellen velges likevel som produksjons­modell fordi den gir lavest MAPE (168,3 %), reduserer varians på tvers av kvantiler/folder, og er mer robust mot at en av basis­modellene skulle drifte ved re-trening.
+Ensemble­modellen reduserer MAE med **20 %** i forhold til median­baseline og **5 %** i forhold til ridge. På dette test­settet er LightGBM (base) og ensemble­modellen praktisk talt like (33 NOK forskjell, eller 0,2 % MAE), og forskjellen er innenfor støy­nivået på et test­sett med 670 transaksjoner. Ensemble­modellen velges likevel som produksjons­modell fordi den reduserer varians på tvers av kvantiler/folder og er mer robust mot at en av basis­modellene skulle drifte ved re-trening; at den også oppnår lavest MAPE (168,3 %) er et sekundært argument, siden MAE i NOK er den primære operasjonelle metrikken (jf. § 9.4).
 
 ### 8.2 Kvantil­dekning
 
@@ -346,7 +346,7 @@ Faktura­data inneholder yacht­identifikatorer, men ingen direkte person­data.
 
 Vi har utviklet en datadreven kostnads­estimator for skandinaviske yacht­anløp som kombinerer en LightGBM + CatBoost-ensemble på transaksjons­nivå med en hybrid kalibrering mot empiriske kostnadspersentiler på anløps­nivå. På et test­sett med 670 transaksjoner fra 2025 oppnår modellen MAE = 17 350 NOK, en reduksjon på 20 % i forhold til en median­baseline. CQR-kalibrerte kvantil­modeller gir empirisk dekning på 80,0 % for nominelt 80 %-prediksjonsintervall. Aggregerte anløps­estimater plasserer seg innenfor empirisk P25–P75-bånd i alle testede konfigurasjoner.
 
-Hvert delproblem er adressert: DP1 ved 26 features fra fakturadata (§ 5.5), DP2 ved sammen­ligning av seks modeller (§ 8.1), DP3 ved hybrid persentil-kalibrering (§ 6.5), DP4 ved kvantil­modeller med CQR (§ 6.4) og synlig P25–P75-bånd i frontend (§ 8.4), og DP5 ved en FastAPI + Next.js-tjeneste med svar­tider under to sekunder.
+Hvert delproblem er adressert: DP1 ved 27 features fra fakturadata (§ 5.5), DP2 ved sammen­ligning av seks modeller (§ 8.1), DP3 ved hybrid persentil-kalibrering (§ 6.5), DP4 ved kvantil­modeller med CQR (§ 6.4) og forankring av estimater i empirisk P25–P75-spenn (§ 8.3), og DP5 ved en FastAPI + Next.js-tjeneste med svar­tider under to sekunder (§ 8.4).
 
 **Videre arbeid:**
 
