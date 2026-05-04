@@ -1,0 +1,329 @@
+WhisperAI Transcription Report
+
+Title: økt 1 - fullføre rapport_ TEAMS live-stream_ (29. april 2026)_default_069bf8ca
+Date: 5/3/2026
+Duration: 2758 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: I dagens forelesning, folkens, i blogg 650, det vi skal gjøre i dag, er også det som står i kundgjøringa som Erik hadde. Vi skal gå gjennom siste delen av rapporten, som er altså litteratur, konklusjon, og da må vi også kanskje revidere litt av innledninga. Da jeg har lyst til å starte på sak der, så er jeg villig at dere også skal lese kundgjøringa, for det er viktig. – Som Erik har lagt ut, så les kunngjøringen, for den er viktig. Nå begynner vi å nærme oss noen tittvikster. Jeg har lyst til å starte på det som er temaet i dag, og det er å gjøre ferdig siste delen av rapporten, – – litteratur, konklusjon og da også kanskje revidere innledningen. Så da starter vi. Når du ser på sida her, så er det altså G00-eksempel som vi nå skal prøve å fullføre. Og dere ser der på venstre sida her på VS Code så har vi da filstrukturen, og da vi tar den ned her, så ser dere at det er veldig mange forskjellige mapper. Og hvis vi da går på fase 2 her, som er plan, så ser dere at der har vi også en viktig fil som heter Status MD. Skal vi se, det var den filen der.
+
+Speaker 2: Skal bare se om vi får den.
+
+Speaker 1: Opp på rett sted. Sånn, da dregger vi bare over. Ja, og da ser dere her hva det er, den planen vi har laget tidligere, og vi ser at vi har fått også kutsjett klåd til å tikke av de temaene som vi er ferdige med. Og da ser vi at det er to litteratur som gjenstår, og vi er også ferdige med diskusjon, ser vi. Vi ser også at det er konklusjon som vi må gjøre litt renn med, og også en sammenstillet rapportutkaste. Og det ser vi at når vi får gjort det, og det er det som er plana i dag, da er vi ferdige med kapittel tre i plana, og det neste er fire da. Det jeg da har lyst til å gjøre er faktisk å starte her og sjekke, kanskje vi skal begynne på å høre om vi anbefaler en ny sesjon, for jeg vet av erfaring som jeg har gått gjennom dette her for to dager siden, at vi spiser veldig mye tokens på dette her, og at vi da kanskje anbefaler å ikke bare fortsette på et gammelt samtale. Og da spør jeg. Vi skal nå gjøre en stor jobb.
+
+Speaker 2: Som krever mye Det krever mye tokens.
+
+Speaker 1: Jeg anbefaler du å starte på en ny klodsesjon. Svar kort.
+
+Speaker 2: Vegard?
+
+Speaker 1: Ja?
+
+Speaker 3: Hvis du tar Ctrl pluss.
+
+Speaker 2: Ja.
+
+Speaker 3: Da ser vi litt bedre.
+
+Speaker 1: Ja.
+
+Speaker 2: Sånn, ja.
+
+Speaker 3: Det er bedre.
+
+Speaker 1: Yes. Og da sier den det her. Ja, du har aldri vært på mye kontekst på Pullia og planlegget. Ja, svarer. Så det jeg gjør da, jeg bare tar opp et sånt her. Og det her er en sånn trikk som jeg gjør da, det er ikke sikkert at dere gjør det, men jeg ser at vi har en del historikk her da. Så jeg lager med samtalen da, bare slik at vi... Skal vi skrive hei bare for å starte, for da får vi gå hit, og så får vi gjøre sånn. Da kan vi trykke på den, og da skriver vi samtaleplan. Det vi skal gjøre i dag er litteratur.
+
+Speaker 2: Konklusjon.
+
+Speaker 1: Innledning revisjon. Nå gjør jeg det veldig kort sånn, for dette har jeg litt til.
+
+Speaker 2: Da starter vi med, vi skal i dag fullføre action 3.
+
+Speaker 1: I filen status.md.
+
+Speaker 3: Kan.
+
+Speaker 1: Du gå gjennom den, Og se hva som mangler der. Jeg skriver noe av dette bare slik at den skal få i den nye klodsesjonen som vi startet, at den får det oppdatert så vi vet hvor vi er.
+
+Speaker 2: Henne og hva vi skal fullføre. Ja,.
+
+Speaker 1: Riktig. Så der ser vi også en bra ting, at vi må gå på riktig. Vi snakker nå om Vi gir 0,0 eksempel. Det er veldig bra. Da ser vi at den korrigerer, og det er litt uprecis. Det er innmari bra. Da går det på plan og status, som vi sa, den som vi har oppe her. Da regner vi med at den kommer til å identifisere at vi ikke er ferdig med 3,6,- og vi.
+
+Speaker 2: Er heller ikke ferdig med 3,9 og.
+
+Speaker 1: 3,10. Og nå, aktiviteter, 36, 39 og 30, og du er ferdig med den andre. Yes. Og så kommer det en forslag til rekkefølge, men så er det en liten ting nå. Jeg har lyst til å gjøre først, bare et teknisk ting her. Hva slags.
+
+Speaker 2: Bransj er jeg i nå? Jeg.
+
+Speaker 1: Skal bare sjekke, Bård, at vi er på det vi ble enige om, at vi skal bare lage en sånn midlertidig. OK. Men en ting, Bård, nå må jeg spørre deg. Vi lager en sånn midlertidig onsdagsbransj. Hvordan får dere slik at de er sikre på at de er på rett bransj her nå?
+
+Speaker 3: Nå lager jeg.
+
+Speaker 1: En ny sasjon, vet du, for hvis de får på dem der, tror jeg det, Så ser du at her spurte jeg da, du er nå på onsdag 20.26. Det var på den sasjonen her, så med samtale 3. Nå har jeg laget en ny samtale for å få fræsje memmerheten.
+
+Speaker 3: Ja, jeg vet hva du må gjøre. Problemet er at du er i hovedfolderen. Du bør egentlig åpne VS Code under G00-eksamplet. Riktig, bare gjør.
+
+Speaker 1: Det. Da tror jeg jeg gjør det. Da bare tar jeg og lukker den her, og så åpner jeg den bare i null eksempel i mappa. Riktig. Ja, da gjør vi det. Sånn. Og så tar jeg og hører i flikken her. For.
+
+Speaker 3: Nå åpner du i alle sine repository.
+
+Speaker 1: Jeg gjorde det. Yes. Open folder. Og da åpner PKGit. Og da tar jeg bare og åpner denne, ikke sant? GNI 0 eksempel.
+
+Speaker 2: Ja. Der.
+
+Speaker 3: Sånn ja. Dette er egentlig mange som gjør tilstanden feil, så det er egentlig greit å luka ut den da.
+
+Speaker 1: Det er veldig bra at dere styrer, for dere kan gjøre en del feil og en del ting andre. Så det kan være bra det. Da starter jeg her da. Hva slags bransj.
+
+Speaker 3: Er jeg i nå? Ja, sannsynligvis vil du få med inn navnet. Ja, og da må jeg.
+
+Speaker 2: Sikre. Hva slags bransj.
+
+Speaker 1: Er jeg i nå?
+
+Speaker 2: Nei, jeg kommer ikke.
+
+Speaker 1: I bransj onsdag, som vi hadde forberedt oss.
+
+Speaker 3: På. Ja, så det var meningen,.
+
+Speaker 1: Ikke sant? Så det var supert. Det er en god greie. Sånn. Og nå har vi da en ny... Det er i like av å gjøre da... Det kan dere velge, men det er i like av å kontrollere på samtalen min, da. Så jeg skriver samtale. Og her er vi da samtale 1. Og da snakker.
+
+Speaker 2: Vi om litteratur. Litteratur. Konfusjon. Underledning. Der, for eksempel. Og så skriver vi nå... Og.
+
+Speaker 1: Nå har jeg å starte anvisasjon, så det er ikke vitt å spørre om, så les deg opp på status.md. Nå spesifiserer jeg så mye, for det er ikke så mange alternativ her, så jeg er bare på G00-eksempel. Vi skal fullt spørre Fakt 3. Hva.
+
+Speaker 2: Mangler der? Det er bare.
+
+Speaker 1: For å lese noe. Så bare forsikre meg at jeg har tatt opptak her nå, og det har jeg gjort, slik at det blir video av dette her. Det som jeg bare ikke har sagt før, så har vi gjort en veldig god plan på i tidligere, det var jo en egen fase på hva vi skal gjøre. Så er det egentlig bare å slavisk starte på det her. Da står det at du vil ta fatt på. Start med 36.
+
+Speaker 2: Kjør på. Kjør på. Og da vet.
+
+Speaker 1: Den kanskje hva den gjør, for vi har planlagt dette der. Så da kan det hende at det tar litt tid, men det er Så litteratur er å sette oppgavene våre i en sammenheng. Vi skal da.
+
+Speaker 2: Koble det.
+
+Speaker 1: Til eksisterende, etablert og velkjent litteratur, for det vi holder på med her i kvantitative metoder og logistikk, det er jo stort sett velkjente og etablerte metoder. Så det er mye god litteratur der ute, og vi er nødt til å sette det vi gjør i sammenheng med etablert litteratur og ha riktige referanser i referanselista. Det er det som gjøres i avsnitt kapittel 2 om ung litteratur. Og litteraturstudiet blir det også kalt. Det vi skal gjøre er å identifisere relevante kilder kun til litteratur, til problemstilling av metodevalg. Det er veldig viktig. Vi har også lyst til å vise dere en liten sak her da. Vi skal se om vi får det til mens dette jobbet. Det er følgende. Det var noe som Eon Erik jobbet med i går. Det gjorde ikke Erik. Skal vi se om vi finner det.
+
+Speaker 2: Skal vi gjøre det sånn? Skal vi skrive sånn? Skrive sånn?
+
+Speaker 1: Når dere skal lage kriteriene som dere ønsker å bruke når dere skal ha peer review rapport for andre grupper, så skal dere se om det er relevant forskning innenfor det aktuelle området, og identifisere det teoretiske og grepsmessige hullet. Og gjennomgang av metoder er relevant for de oppgivte målene innenfor forskningsområdet, og begrunnelse for valg av metoder. Så det er sånne ting som skal diskuteres i kapittlet om litteratur, og som dere skal sjekke at den andre gruppa gjør når dere.
+
+Speaker 2: Bytter og skal reviue hverandre.
+
+Speaker 1: Sånn, og da ser vi at den er ferdig, må lese gjennom kapittel 2 i rapporten, så ser vi at den leser opp, og da synes jeg det er himmelig bra at vi ser her på det vi gjør. Og så ser vi at.
+
+Speaker 2: Det er ganske store oppgaver nå som.
+
+Speaker 1: Spiser veldig mye tokens. Jeg har bare et litt spørsmål, for jeg er litt nysgjerrig, folkens. Kan jeg skrive på chatten? Bruker dere en av klådbrukerne som vi har gitt dere her på skolen? Eller har dere deres egen AI som dere bruker? Bare litt nysgjerrig hva dere gjør. Kan jeg bare skrive på chatten da, om dere bruker den som vi har? Eller om dere har en egen privaten som dere bruker? Det er jo selvfølgelig valgfritt, og det er det ene like bra som det andre. Men vi er bare litt nysgjerrige da på hvor hvor mye dere bruker de klådbrukerne som vi har gitt dere brukere på. Er det flere som bruker våre klådbruker, eller bruker dere våre egen? Er det deres egen?
+
+Speaker 2: Det.
+
+Speaker 1: Er valgfritt, så dere bestemmer jo selv det. Nå har vi gått gjennom referansebiblioteket for å identifisere kildene. Hva er referansene vi tror vi har? Også fra sikkert av teorikapitlet har vi sikkert en del referanser. Også ser dere at skrivelsetutoren er tilknyttet av problemstilling og metodevalg. Det er jo viktig da, slik at dere knytter litteraturen opp mot problemstillingen. Det er faktisk...
+
+Speaker 3: Kan du ta den kontrollplussen igjen, Pekka? Ja, jeg beklager. Det er så gammel det er at du ser det ikke. Ja.
+
+Speaker 1: Sånn. Da er den litt mindre.
+
+Speaker 2: Når.
+
+Speaker 1: Formatet er klart, starter vi med uavhengig sub-agent. Og det er det innmari bra, at en del av planen her er å lage en sub-agent, som da har ikke samme friske øyne, slik at den ikke har samme historikken i kjetten, så betyr det at den kan prøve å gjøre review av 3Sex. Så det er jo faktisk veldig bra at han gjør det.
+
+Speaker 2: Jeg.
+
+Speaker 1: Er usikker på om det er noe vi har sagt han skal gjøre, Ein, eller om at Ein selv på egen initiativ har laget en subagent som sjekker om resultatene dine er bra. Vet du det? Om det er noe vi har sagt, eller noe han gjør på egen initiativ, å lage en subagent for å sjekke sitt.
+
+Speaker 3: Eget resultat? Claude har et sett med subagenter som den bruker for å spare kontekstvinduet ditt. Typisk for research og sånt. Ja, ok,.
+
+Speaker 1: Jeg skjønner. Men det er sånne superagenter som går i bakgrunnen, så vi ser bare det kontekstbinduet som vi er i, og de andre superagentene sitter bare og jobber i bakgrunnen uten at vi ser det med det fysiske øyet.
+
+Speaker 3: Jobber i bakgrunnen, ja.
+
+Speaker 1: Så nå hjelper vi nå å sjekke alle nye referanser i kapittel 2, om det finnes i bibliografien. Det jeg synes er veldig bra faktisk da, det er å se og lese hva det er A-en gjør, for da får du et inntrykk av, og selv om dette her, la oss si, tar ti minutter, så synes jeg det er bra å sitte og lese det A-en gjør. Lese hvordan kjøkke og hente kildene sine. Og hvilke punkter en gjør. Det gjør at jeg greier å sette meg inn i prosjektstillingen bedre da. I stedet for å bare gå og ta med en kopp kaffe i ti minutter og begynne å scrolle eller gjøre noe annet, så synes jeg faktisk det er bra å lese det som står.
+
+Speaker 3: Der.
+
+Speaker 1: Det er en veldig bra plån når vi får gjort det på den måten her, at vi bruker det som agent. Det betyr at vi kan få den til å gjøre ting, at vi må lage filer for oss, flytte på filer, opprette mapper, kompilere latek-rapporten og sånne ting. Det er en helt annen business enn å bare sjette det i en samtale. Så det brukes som en agent, der agent er noen som gjør en handling for oss. Det er det som er det store steget i meningen. At en agent handler på vegne av oss, gjør kompileringer, oppretter filer, lager innhold, og så er det opp til oss å bare gi den det riktige grunnlaget og styre på et litt overordnet nivå. Så jeg synes det er innmari store muligheter for å begynne med det. Der ser du at han lager sin egen reviewer, en uavhengig subagent, som sjekker at det han nå har gjort er bra. Og ser at han lager også, det som Båring har sagt, en sånn Markdown-film, som er et veldig.
+
+Speaker 2: Bra filmformat for kunstig intelligens, som er.
+
+Speaker 1: Bedre i filmformat enn for eksempel PDF. Han leser det.
+
+Speaker 2: Også oppdaterer statuset. Da har han sjekket.
+
+Speaker 1: Nye referanser i kapittel 2, og det finnes i bibliografien. Kjører revue, med revue ekt subagent, og lukker aktiviteten. Implementere. Yes. Nå begynner han å gjøre... Som faktisk skal jobbe, og bruker APA 7-referanse, slik som vi anbefaler i kurset.
+
+Speaker 2: Oppdaterer.
+
+Speaker 1: Jeg seksjon 1, 2E, som er litteratur, med SM-kjeldene, fikser samtidig B3, som er der, Så her ser du at den refererer til gårdea nå,- og refererer til en del referanser som er i bibliografien. Han lagte to linjer.
+
+Speaker 3: Bra.
+
+Speaker 2: Men sånn her på brenn, Pekka.
+
+Speaker 3: Disse referansene som vi ser der nå, de har et sånt preg av å være litt sånn teori-ting. Vi kunne også tenkt, og det er forståeligvis greit nok det, men disse referansene kunne likhvert vært i teorikapitlet, for vi har et teorikapittel. Skulle vi ha prøvd å få A1 til å søke etter arima, hvor det er faktisk brukt arima i case, som kan kobles opp mot case vårt, slik at vi har referanser som er mer koblet opp mot problemstillingen vår, og ikke mot selve metodikken.
+
+Speaker 1: Vi bruker. Ja, men det var et bra poeng. Og det kan vi høre med når det er ferdig nå, så kan vi konfrontere AN med det, og høre hva slags anbefalinger AN gjør. Så det.
+
+Speaker 2: Kan vi ordne. Nå ser du at.
+
+Speaker 1: Vi er faktisk oppdatert her, så ser du at as we speak da, så ser du at tre bukser her er tikket av, så det betyr at vi har gjort det den skal være nå. Sånn, og nå tar vi bare oppsummeringen av hva som er gjort. Vi vet jo egentlig at det er noe her, men noe er mer spesifikt da. Og hva som har blitt gjort.
+
+Speaker 2: Og.
+
+Speaker 1: Se hvem fyra som har blitt endret, og så neste steg da. Og det jeg har lyst til å gjøre nå, jeg har lyst til å gå på selve rapporten og sjekke hva som har blitt gjort der. Jeg tror jeg skal ta det litt sånn, for da ser jeg at den der Sånn, og så hvis vi går hit nå, så ser vi tidsserier, prognoser i produksjons- og lagerstyring. Her ser vi et veldig kort innledning her, der de også diskuterer Saharima-rammerverket, tidsserier, Saharima-rammerverket og boksenkelsmetodikken, stasjonaritet, Det er noe som Bård Inge sier, jeg tror dette er litt teoretisk. Det var ikke så langt, men da kan vi spørre. Stemmer det at referansene i kapittel 2 er stort sett referanser til teoretiske og etablerte Kilder. Kan det være en idé å også.
+
+Speaker 2: Referere til kilder som er mer.
+
+Speaker 1: Lik vår situasjon, hvor vi har et spesifikt case, hvor vi anvender Sarima og Boxjenken-metoden, skal vi si.
+
+Speaker 3: Ja, altså, kan vi gå til en sammenlignelse med referansene som kanskje er i kapittel 3, da? Sammenlignet.
+
+Speaker 2: Praktiske anvendelseskilder.
+
+Speaker 1: Sammenlignet også med referansene.
+
+Speaker 2: Som er i kapittel 3.
+
+Speaker 1: Kapittel 3, teori. Da bruker jeg alltid å si hva er din vurdering på, eller din anbefaling på hva vi skal gjøre, for da legger vi det over til hverandre. Hva er din anbefaling i denne sammenhengen? Jeg vil også bare si til dere en liten felle som vi har gått på, eller var helt i starten. Kanskje noen av dere ikke var helt i de første minuttene. Det er at når dere åpner VS Code, så er det veldig viktig å åpne i rett mappe. Slik at dere er i rett repo. Og der har de bomba gjort feil med noen av dem, og det er lett å gjøre feil der. Så hvordan du starter opp VS Code og å starte med å åpne i rett mappe, det er faktisk veldig avgjørende. Så det vil jeg ha som en liten digresjon mens dette står og brenner, for at det er viktig. Første forslaget jeg har lagt til, det er det mest virkningsfulle med å lave risikokode. Det passer naturlig situasjon 2.2, du er i rammerverket. 2.6, Posisjonering, det passer også.
+
+Speaker 2: Ok, det.
+
+Speaker 1: Kan vi gjøre.
+
+Speaker 2: Vi.
+
+Speaker 1: Tar noen sånne små tester av og til for å være sikker på at A1 ikke finner på å ikke eksisterer med referanser, for det har AN fått kritikk for før, men jeg ser nå at AN har blitt veldig mye bedre på kort tid, og da går jeg på Google Scholar, og så ser jeg at det er en stor og kjent, med 1764 referanser, så det er ganske veldig etablert, så det ser ut til å stemme, ja.
+
+Speaker 2: Så det var nok sikkert.
+
+Speaker 1: At noe med 200-tidsserier og sånne ting, så det er nok sannsynligvis.
+
+Speaker 2: En godere vant. En annen.
+
+Speaker 3: Tanke som kanskje vi kunne sett litt på her, er jo å sette på... Nå er jo vårt forskningsprosjekt et ekstremt forskning per se, i den forstanden at vi bruker etablerte teori og sånn. Men jeg kunne tenkt meg kanskje å – om dere kunne sjekke om det finnes liknende case i markhedet som vi ser på? – Ja. – For hvis du går opp på problemstilling... – Stopp der. – Bedriften heter jo Power Horse, og det var traktoren, er det ikke det?
+
+Speaker 1: – Ja, det er traktoren.
+
+Speaker 3: Vi kunne liksom ha sjekket eventuelt om det finnes andre case som har jobbet med prognostisering for enten bil eller traktor eller ikke sant, tilsvarende industri da,.
+
+Speaker 1: Eventuelt. Som har en lignende problemskilling og bruker lignende metoder da? Ja, ikke sant? Ja, det kan jeg ta som en liten avslutende kommentar da før vi er ferdige med Du kan gå til DOS og prøve på det. Ja, kluet mitt er egentlig.
+
+Speaker 3: At dette caseet vi har her, det er ganske enkelt. Det er på en måte en standard case. Men mange av dere har egentlig også beskrevet ganske unike case. Da vil litteraturbiten være litt mer sånn. Arbeidskrevende i den forstanden at du må søke etter case som er lik, men ikke helt lik. Bare slik at jeg nevnte det. Ja,.
+
+Speaker 1: Men en liten ting som jeg synes var bra her nå, jeg tror kanskje også han misforstod litt av det jeg sa da, så vi skal ta en runde til for da, at denne referansen her, den er bare en vel etablert, den er ikke spesifikk, den her er en stor, altså 25 år med tidsserier, det er jo bare en stor, så det vi egentlig ville, det var noe annet, men ingen ville åslikke i tolke av det i hvert fall, så jeg har lyst til å ta en siste.
+
+Speaker 2: Sak da, her nå. Hvordan.
+
+Speaker 1: Har vi formulert oss her, Bård? Du.
+
+Speaker 3: Må be om å søke nå etter publikasjoner som omhandler... ...Som er relevante for hvor vi bruker Sarima i... I tilsvarende markeder som Powerhorse er i. I tilsvarende markeder,.
+
+Speaker 2: Traktorer som oss, eller biler. Ja, eller.
+
+Speaker 1: Lignende. Eller andre, eller tilsvarende. Ja, noe.
+
+Speaker 3: Sånt. Bare for å se om det finnes noen referanser som kommer closer opp til det vi driver på med. Bruker.
+
+Speaker 1: RIMA, da er vi på jakt etter.
+
+Speaker 3: Rapporter som er... Ja, publikasjoner, ville jeg.
+
+Speaker 1: Sagt. Rapporter, skråstrekk publikasjoner, artikler, skråstrekk publikasjoner. Helst publisert.
+
+Speaker 2: Som er mer i linje med vår situasjon og vår.
+
+Speaker 1: Problemstilling.
+
+Speaker 2: La.
+
+Speaker 1: Meg si at jeg mener.
+
+Speaker 2: At de gode Iger og Hyndman, som du fant, er derimot en mer...
+
+Speaker 1: Nei, jeg skal bare forsiktig si hva det er for noe, så jeg bare prøver det her. For det kan være at i denne rapporten er det mange konkrete eksempler, men jeg kan bare prøve. Bare høre hva han sier. Jeg trenger å.
+
+Speaker 2: Låse ned web-partiet først, ok? Ja. Har.
+
+Speaker 3: Han ikke brukt det hittil? Nei, jeg vet ikke. Jeg.
+
+Speaker 1: Mener han har gjort det, ja. Men.
+
+Speaker 3: Jeg synes det er veldig.
+
+Speaker 1: Rart. Det hadde han gjort snart før, men ok.
+
+Speaker 2: Nå ser du at han.
+
+Speaker 3: Søker. Ja. Møtte. Ja.
+
+Speaker 1: Det jeg synes er bra her, det jeg har sagt før, at denne rollen vi har nå som rapportskrevere, er mer overordnet. Sjekke at det er med det riktige og mer overordnet, så blir mindre avhengig av å gå veldig på grasnotnivå og begynne å leite selv, og begynne å styre med både latekkode og organisering av andre ting. Så da er det riktig at vi har egenskaper til å kunne innta denne rollen på en mer overordnet nivå, og gjøre sånne spørsmål som på ringet kommer, at vi må kanskje sjekke ikke bare generelle litteratur og etablerte litteratur, Men også om det finnes spesifikke rapporter eller artikler som er veldig spesifikke for vår problemstilling med salg av traktorer, eller salg av tilslag, eller biler eller noe sånt. Så det er den type basisfertigheter vi trenger å kunne nå i dette faget.
+
+Speaker 2: Her er det faktisk.
+
+Speaker 1: Traktorsalger på Osarima. Ser dere det? Det er jo kjempeartig.
+
+Speaker 3: På Lina. Det var så her i Maxx. Det er litt mer avansert case, men likevel ganske innenfor. Vi har la ut den boka vår. Er det forresten noen som har tatt en titt på boka? Vi vil gjerne få litt tilbakemelding om hva dere syns. Ta boka da, så.
+
+Speaker 2: Skal jeg vise dere. Så.
+
+Speaker 3: Hvis du går på kapittel lagerstyring, kapittel 2. Nei, 1 mener jeg selvfølgelig. 1 Er et spørsmålsprognoser. Så velger du... Mange variabler med light GBM. Jeg tror nok det er case som er litt mer lik det. For det sto med deep learning-metoder. Så det er nok litt mer avansert enn det vi har gjort. Men absolutt en referanse jeg vil ha tatt med. Så dette var bra. Nå kan vi.
+
+Speaker 1: Bare gå tilbake. Jeg tror grunnen til at vi fikk treffe det her, at det var så spått om det vi gjør, og traktorsalg, det var det for dem og oss. Så jeg tror det var det som gjorde at vi fikk.
+
+Speaker 2: Opp den her. Og her ser du.
+
+Speaker 1: At det er nybilssalg, men der har de Sarima som Åstad.
+
+Speaker 3: Og ikke Max. Ja, den er kanskje enda mer aktuell da, for at bil eller traktor er veldig likt. Og dette er et typisk eksempel på en viktig referanse. Jo tettere den er opp mot din problemstilling,.
+
+Speaker 1: Jo bedre. Ja, og her har jeg kommet med en anbefaling som jeg synes er bra. At hvis jeg legger til disse tre, og denne ser jo bra ut det første øykast, så da bare satt den i gang. Og her er det da landbruksåndlingsmaskiner og traktor er jo en del av det. Så det er gode referanser, det virker det som, som.
+
+Speaker 3: Er forsterket. Bra. Og da er det viktig at AN klarer å kommentere, skrive litt om de to referansene, som på en måte forsterker vårt valg av metodikk. Dette er blitt brukt i andre sammenhenger, og prøve å se hva var forskjellen, hva lærte man der som kanskje vi ikke har her og så videre. Dette er jo klassisk litteraturarbeid, men det er ganske viktig jo mer unik din analyse er, jo viktigere er det at den bygger på etablert forskning. Da er kunsten her på en måte å se hva som er likt, og hva som er forskjellig. I dette tilfellet har vi et veldig enkelt case, så det blir litt kunstig, men poenget er å forstå Hvordan litteratur skal bygge opp din analyse. Fordi du skal etablere din analyse og basere den på andres arbeid. Da må du vise hva som har blitt gjort så langt innen dette feltet, for eksempel. Så det er viktig å få inn at AN har nødt til å på en måte- skjønne at man skal bygge denne analysen på tidligere litteratur.
+
+Speaker 2: Bare en sånn liten.
+
+Speaker 1: Kommentar som jeg har. Dere så det at om vi for eksempel da, selv om jeg vet ikke hvordan vi skal få opp den der, vi skal vel gå og få opp to boringe markdannfyller samtidig her i sånne tebber, for hvis vi trykker på den nå, så overstyrer den en andre da. Den må.
+
+Speaker 3: Dobbelt klikke en. Den må dobbelt klikke.
+
+Speaker 1: En, ja. Så hvis vi går tilbake på rapporten, så skjer det samme. Høyreplikken, Open Preview, Open to sign. Jeg vil ha både rapporten oppe, og jeg vil ha statusen oppe. Hvis jeg trykker på den, så bytter den ut rapporten med statusen, og jeg vil ha begge to oppe.
+
+Speaker 3: Nei, det vet jeg ikke. Jeg har aldri opplevd.
+
+Speaker 1: Nei, hvis jeg trykker på den. Ok, der ble det en lurighet. Greit, for du ser nå at det vi egentlig skulle gjøre nå, det var bare sånn tre punkter her. Men det er ikke bare å si utføre 3.6, og så har vi sånn black box. Legg merke til hvor mye vi alle sammen da har sparret frem og tilbake, for å komme frem til et godt kapittel 2 om litteratur. Så selv om vi har en god plan, så er en del av de ferdighetene som vi prøver å fremme i det kurset her, er det at vi må bare kritisk diskutere en del frem og tilbake, sånn som vi har gjort nå, at vi skal ha noen enda mer spesifikke kilder som er enda tettere opp mot vårt detraktorsagprognose, enn bare sånne helt generelle teoretiske betraktninger og klassiske kilder. Og den type diskusjon er det vi må skjønne selv at vi må gjøre. Så det er ikke bare å si Skriv kapittel 2 for meg, og så står den og tygger i en kvart til 20 minutter, og så er kapittelet ferdig. Det er mye sånne ballvekslinger frem og tilbake, nesten som en tenniskamp, at du har flere iterasjoner og diskusjoner med A1. Det er i alle fall mye erfaring med at du er nødt til å ha mange iterasjoner og ballvekslinger frem og tilbake, for at resultatet skal bli bra. En av grunnene til det, slik viser jeg det, er at Du har litt annerledes bakgrunnskunnskap i hodet ditt, for du har så mye ting der. Kanskje mye mer enn det AN har til en viss grad. For det at det som du har av innflyttet AN, Det du sier at A1 skal gjøre, det er det den gjør. Det er viktig at du korrigerer og styrer A1 etter ditt hodet, slik at det ikke bare er alt for god fisk, og alt sammen blir bare en svart boks som du ikke vet hva er. Så diskusjon av sparring synes jeg i hvert fall er veldig bra.
+
+Speaker 2: Da skal vi bare se om han har en... Jeg skal.
+
+Speaker 1: Se om jeg kan heite referansene.
+
+Speaker 2: Løgsvin.
+
+Speaker 1: Polina. Da skal vi se om jeg.
+
+Speaker 2: Finner den i referansene. K-L-M-A-N-O-P.
+
+Speaker 1: Her, ser du. Han har tatt med der, Polina. Så det er jo den. Så Makoni, den der ser du, så det er den som har tatt den med. Det ser bra ut. Og da kan vi også se om den har kommentert det i kapittel 2,- for når den er i referanselista,- så burde den også være kommentert i main-teksten. Det kan vi da bare en liten sjekk.
+
+Speaker 3: På. Så I vil ha gjort en seriøs,- review mellom kapittel 2 og kapittel 3 for å passe på at det ikke er overlapp. Sånn repetisjon liker vi ikke. Så det kan du gjøre etter hvert. Ja, så.
+
+Speaker 1: Det rekker vi ikke helt nå, men det er viktig at vi vet om... Skal vi bare skanne litt over her og se om en... Ok, jeg skal se om jeg kan referere til noen her.
+
+Speaker 2: Ja, her ser du.
+
+Speaker 1: Du har to sexasarime av tilsvarende anvendelse. Det er kjempebra. Og da ser du du har makoni og polina. Der og der. Nå sier jeg litt om hva det er og hva vi brukte her nå. Månedlig nybilsalg i Sør-Afrika i perioden 1998-2017. Det er faktisk 19 år, så det er ganske.
+
+Speaker 2: Mye. Så dette.
+
+Speaker 1: Ser bra ut. Men da er min konklusjon følgende før vi tar pause, for nå er klokka ett. Det er at vi har nå gjort ferdig kapittel action 36, litteratur. Og så ser dere at neste er dag 39, og det tror jeg vi tar etter pause. Da tar vi oss et kvarters pause, og så stopper jeg videoen.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com

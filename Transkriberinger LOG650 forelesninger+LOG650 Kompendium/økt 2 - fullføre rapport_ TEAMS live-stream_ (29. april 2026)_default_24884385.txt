@@ -1,0 +1,445 @@
+WhisperAI Transcription Report
+
+Title: økt 2 - fullføre rapport_ TEAMS live-stream_ (29. april 2026)_default_24884385
+Date: 5/3/2026
+Duration: 4226 seconds
+Language: auto
+Speaker Detection: Enabled
+Number of Speakers: 3
+
+---
+
+TRANSCRIPTION:
+
+Speaker 1: Velkommen til time nummer to. Da skal vi begynne på aksjon 3.9, skrive kapitiltid og konklusjon. Og da står det også her hva vi skal gjøre. Det er tre små punkter. Svare direkte på problemstillinga, løfte frem viktige funneimplikasjoner, og gjennomføre revue og lukke aktiviteten. Så, les deg opp på nyeste versjon av rapporten,.
+
+Speaker 2: Og la oss deretter starte på Act Action 3.9 i status.md,.
+
+Speaker 1: Nemlig skrive.
+
+Speaker 2: Kapittel 10. Ja,.
+
+Speaker 1: Så det står her da, jeg har nesten lyst til å skrive det eksplisitt, men det står her at vi skal svare direkte på problemstillingene, så da får vi bare stole på det, men det er sånne ting da som er veldig viktige her. Og mens den her da står og brenner, så har jeg bare igjen da, selv om vi har det bare for å gjenta oss, så ser dere her da, At på dem dere som dere har fått veiledning for peer review report i lag 6.50, så skal vi se hva som står på komplusjon. Jeg ville kanskje kunne tenkt meg å faktisk gjort denne enda bredere, men dette er en konsist oppsummering av sentrale funn. Studiens bidrag til teori og praksis, ja. Refleksjon av begrensninger. Forslag til forskning. Videre forskning som er forankret i forskningsbakgrunnen. Men i tillegg har vi vel sagt her, pluss svare på problemstilling, i vårt tilfelle er.
+
+Speaker 2: Det svare på problemstilling. Så det mangler.
+
+Speaker 1: Litt her, men noe senere. Kan vi kanskje etter hvert prøve å oppdatere? Nei, men det tror jeg faktisk vi skulle ha. Nei, det står jo her faktisk da. De som er blind. Det står jo her. Forankring og problemstilling. Så det står egentlig der. Så husk det folkens. Både når dere lager rapporten selv, og når dere reviuer, så kan det være greit å ha hva du skal se etter. I de forskjellige avsnittene. For dere ser her at forskningsrapportet har en veldig standard oppbygging, som vi har sagt før, med innledning, litteratur, metode, eller hva som blir kalt det. Teori, analys av resultatet, diskusjon og konklusjon. I tillegg er det også andre ting, for eksempel at referansebruk er blitt veldig viktig i tida i dag. Og jeg vil der gjenta at vi anbefaler at dere faktisk laster ned de referansene som dere har. Vi skal se faktisk mens denne.
+
+Speaker 2: Brenner. Så vil jeg si at jeg.
+
+Speaker 1: Har holdt på med et forskningsprosjekt nå, noe annet enn LOV 650, og der har jeg en matte som kalles REFS for referanser, og der laster jeg ned PDF-fila av alle referansene som vi har. I det artiklet som vi har skrevet, både med kollega her i Molde og en i utlandet, så gjør vi det på samme måte i begge prosjekter, selv om det er to hvitt forskjellige prosjekter, så er det faktisk en god standard. Og her er det da, som Bård Inge sier, synes det er innmari bra at det lager seg parallelle, uavhengige agenter for å gjøre en uavhengig review. Lese rapporten. Skrive konklusjon med direkte svar på problemstilling. Så her er jorden et nummer ut av det. Sånn som det står her. Det er topp. Kjører uavhengig review, men søvnmange.
+
+Speaker 2: Det er også topp. Og så implementerer.
+
+Speaker 1: Jeg review-tiltak. Ja, så du ser at Han bruker altså en parallell agent, eller en sub-agent om du vil, som er uavhengig av den samtalen han nå står i, for å få en uavhengig sjekk å reviue seg selv. Det er en innmari bra metode å tilverke. Det er veldig bra metoder som han bruker på å gjøre det der. Også opptar han det statuset. Her skal jeg vise dere, vi vet ikke om dere ser dette her, for det er litt lite, men her er et prosjekt med en kollega i Molde, som hjelper oss å skrive om hvordan vi skal skalere høyden på voldemannet. Her ser dere voldvalg-mapper. Da har jeg forskjellige mapper, men jeg har også noe som heter REFS. Her er jo sjølve latek-rapporten som skrives i latek. Det er den der, men REFS. Og der ser dere at jeg har lastet med alle 11 referentene som vi har. For da vet du at dette her er ordentlige referanser. Så det er veldig bra å ha denne regelen, for at referanser har blitt enda mer fokusert på siste tida, siden en del aier, i hvert fall gamle aier, hadde laget fiktive referanser, og det er dødsing i akademien. Så du ser at den jobber mot mye andefiler, og da går det mye raskere enn PDF.
+
+Speaker 2: Så kan vi.
+
+Speaker 1: Gjøre en rapport, så vi kan faktisk bare blå litt mer. Så kan vi se i Recaim hvordan rapporten er.
+
+Speaker 2: Der, så er den.
+
+Speaker 1: Bygd igjen. Ja, kortkomplisjonen er det ikke langt, og det er bra.
+
+Speaker 2: Rapporten har vist at det likes til.
+
+Speaker 1: Modellige traktørsalg på Powerhouse, fordi der står moddene, og modellige er nyttige, men ikke utrymmende. Beslutningsrundelag for produksjons- og lager. Riktig. Så jeg vil ha kanskje spurt den her, da, konfrontert den kan du megne med uttømmende her, slik at jeg vil ha gått gjennom rapportene rett og slett nå, da, selvfølgelig, siden vi har bare, ja, faen meg 30 minutter igjen. Men det som er en del av det kurset her, som er 15 studiepoeng, at dere faktisk går gjennom rapporten og leser den slik at dere forstår innholdet, og at det ikke bare har gått gjennom AI, men også gjennom et menneske sitt hode, og at dere har godkjent og kan forsvare dette her, helt myntlig forsvar i UNIS. Da er det veldig bra å bare gå på siden og konfrontere den hele tiden med hva som menes med det her, og hvis den bare forklarer hva det betyr, og du forstår det, så er det greit. Og hvis det her blir litt sånn at AI har gjort en feil, for de gjør jo ofte det, og du konfronterer den med det, og du itererer et par ganger med noen ballveksler fram og tilbake, så er det ofte at du får det riktig til slutt. Denne modellen forklarer at det er greit for Powerhead å ha sitt planleggingsbehov i 12 måneders utgangspunkt, for å omlagre.
+
+Speaker 2: 100 000 Og 400 enheter samlet. Modellen har klaret begrensninger.
+
+Speaker 1: Det viktige praktiske bidraget er dermed reproduserebart statistisk forankret rangverk, for å se på kapasitetsplanleggingen. Så i forståelse for at denne er første øyeplass, så har det svaret det her sier det hva det er.
+
+Speaker 2: På grunn av modell, hva som er.
+
+Speaker 1: Konklusjonen å funne, begrensningene, og hvilke praktiske implikasjoner dette har for dem. Så da har vi merke til at vi har svart på.
+
+Speaker 2: Problemstillingen.
+
+Speaker 1: Sånn, og da ser vi at den har fullført den der.
+
+Speaker 2: Nå har.
+
+Speaker 1: Den gjort det.
+
+Speaker 2: Den har fullført den.
+
+Speaker 1: Der, og da har den svart det direkte. Løsner fra viktigfunnen, gjennomfører review og lukker aktiviteten. Så her står det på at vi skal gjøre en review. Det er det som gjør at AN lager subagent og gjør en sjekk av sin eget arbeid i en uavhengig agent.
+
+Speaker 2: Alle.
+
+Speaker 1: Skriver at de er fullført. Siste. Vi sammenstiller reportbusker, samdrag, teppstrøk, innhold fortengelse, ferdighet til bibliografi og vedlegg. Yes, da har vi kommet så langt til å si at vi Vi godkjenner det der, men dere må selvfølgelig bruke litt mer tid på å gå gjennom det, så dere forstår det i deres sammenheng. Da er vi ferdige der, og da ser vi skriver samme draget på norsk og engelsk, oppdaterer innenfor tegnelse, ferdigstiller bibliografi, samler vi heller. Men jeg vil også si at da kan vi gå videre.
+
+Speaker 2: Til akten. Men burde vi også da sjekke.
+
+Speaker 1: På innledninger, altså introduksjoner. Versjonen også bør justeres. Eller tar alle punktene under fakt.
+
+Speaker 2: 3.10 Til.
+
+Speaker 1: Strekkelig Det er egentlig alt det som må gjøres i denne sammenhengen. Jeg skriver litt rundt, og grunnen til det er at jeg vil ikke presse, eller tvinge, til å gjøre spesifikke ting, for hvis vi gjør det, så gjør vi det. Men jeg vil også at han, altså Ahin, skal gjøre en vurdering på om det er noe som mangler, eller om vi burde også ta en ekstra sjekk på introduksjonen, for det stod ikke eksplicitt at vi burde gjøre det her. Det står om innholdsfortegnelsene å sjekke, bulgrafien å sjekke, samle delegg og sånne ting. Men det står ikke eksplisitt om introen da, og om det er noe som vi har funnet ut på slutten. For det med abstrekt og sånn, det er jo det siste vi skriver, for det er at vi må først sjekke funnet vi har, og se hvilke konsekvenser det er her for. For først da, når vi er ferdige med rapporten, det er først da vi kan begynne å skrive abstrekt og samleplag. Vi bare spør om det er noe av en liste her som mangler. Jeg bare tenkte litt på det, at det er en god observasjon. Da skal vi sjekke innledningen som er skrevet, for jeg tror ikke den stod her i den liste her. I anbefaling legger vi et konkret punkt her på sjekklisten, konsistent med kapittel 1, ja. Ok, greit. Da fikk vi hans anbefaling, og det er egentlig det jeg ønsker.
+
+Speaker 2: Ja. Ja,.
+
+Speaker 1: Da kan vi slutte med det, og så kan vi gjøre. Jeg har lyst.
+
+Speaker 2: Til å vise dere mens denne jobben. For.
+
+Speaker 1: Nå er det her vi har en forskningsrapport. Skal jeg vise dere hvordan det.
+
+Speaker 2: Er en faktisk feil?
+
+Speaker 1: Alphabetisk? Åja, det var skrivelsen, så det er ikke så farlig. Men jeg har lyst til å vise dere en liten ting her. På det som vi burde kalle en ordentlig forskningsrapport. Jeg vil bare vise dere mens denne jobben. For jeg skal vise dere at en forskningsrapport faktisk har de.
+
+Speaker 2: Samme avsnittet.
+
+Speaker 1: Som det vi har.
+
+Speaker 2: Så hvis jeg tar den der, så skal jeg ta.
+
+Speaker 1: Og vise der nå. Her er en forskningsrapport som en kollega av meg i Høstbond i Molde har angående volleballhøyde. Da ser dere at F-strekte som vi held på med nå, og A1 held på med nå, S-vi spik, det er det siste vi skrev, for da må alle funnet og konklusjonene vært der. Og så måtte vi skrive noen highlights, det var bare den journalen som krevde det. Og da ser dere at vi har introduksjon, som i vårt tilfelle var litt lang, det måtte bare være slik. Og så har vi modell og noen slags installeringsformer. Og da ser du at vi har både en blanding av figurer og tabeller, for dette var mange sånne størrelser vi måtte definere, og det er jo typisk sånn som det kan være med oss her i vårt tilfelle, at det er så mange forskjellige størrelser, kanskje enda flere enn i denne artiklen her. Så da er det hensiktsmessig at vi ikke bare suser det inn i hovedteksten, for det er veldig mye mer oversiktlig. Og det fikk vi påpakning av av en reviewer som sa det at vi anbefaler dere å lage både antagelsene i modellen, i tillegg til en oppsummering av alle størrelser og symboler som er brukt i artikken i tabellene. Og det synes jeg var en kjempegod idé. Og da ser du hvordan ballvekslinga mellom reviuer og forfattere gjør at faktisk paperet blir bedre. Og så er nettheits der. Det er egentlig nettheiter som mener diskusjon og analysen, kanskje. Så det her er det vi kaller analyses, er det vel jeg har sagt. Og da ser vi hvordan det rekker vidde og høyde på nettet skalerer i følge av den geometriske formen under idealiserte betingelser. Og så lager vi en del figurer basert på den moderne. Og det er mange forskjellige tilfeller, ser vi. Og du ser at alle har veldig god figurtekst. Og veldig forklarende slik at de er stand-alone, alle har ligningsnummer, og så er det en discussion som er ganske lang i dette tilfellet, og så er det en konklusjon, og så har vi også et appendix der vi har utledet og forklart formelene og hva størrelsen er med en figur, og så er det veldig kort av det appendikset, så er det egentlig bare å si det, og så kommer da referansene, med noe som heter doi-number, en unik måte å referere til vitenskapelige referanser. Hvis dere er helt våkne nå, så ser dere at jeg hadde 11 referanser i refs-mappa mi, men her er det 19 referanser. Jo, men noen av dem er faktisk også referanser til nettsider som for eksempel Business Insider her, og noen sånne voldball-organisasjoner. Så det er ikke alle de viktenreferansene som er ordentlig artiklet, nok at.
+
+Speaker 2: Man også har internettadressen. Fett, det var.
+
+Speaker 1: En degrasjon på det virkelige dit, mens denne står oppremm. For å unngå å hoppe frem og tilbake til forslaget, Ja, det synes jeg helt lett. Når han mener at dette er bra rekkefølgeplåt, så har han ikke noen innledninger på det. Så da tar han første innledningsoppdateringer, og så noen mindre tekstjusteringer. Og så kommer innholdsfortengelse, og så referansefotografer, og så vedlegg, og så kommer abstrakten. Så er det abstrakten, som dere også så i denne volleballgreia. Det kommer veldig, veldig sent. Kanskje noe av det siste du gjør, for da har du alle fakta og alle funn på bordet, og først da er du i stand til å skrive abstrakt og samdrag. Jeg synes det er veldig interessant å lese det som står her, altså tydelig gjøre grensen mellom avgrensning 4 og antakelse 2, for det er nok av avgrensninger og nok av antakelser. Og hva er en avgrensning og hva er en antakelse? Og jeg synes det er innmari bra å bare se hva som blir gjort her, altså det å lese noen hell på og brenn, det synes jeg faktisk er ganske interessant. Sistensjekk av kapitel 1. Hvis du går på dette porten, så skal du kanskje se om noe har endret seg.
+
+Speaker 2: Halvskrag.
+
+Speaker 1: Den ble lagt av nå.
+
+Speaker 2: Men den.
+
+Speaker 1: Er ikke kommet i det enda.
+
+Speaker 2: Bra,.
+
+Speaker 1: Starte plan. Det er bare å kjøre på videre. Vi er veldig glad i tabellene her, at du ser hva du er ferdig med. Så det er jo en tabell som er akkurat for den kommandoen vi holder på med nå. Og hva tenker du at de nye potene skal gjøre akkurat i regel nå? Satt i gang til å gjøre, så det er veldig greit å kunne se på det.
+
+Speaker 2: Nå får jeg.
+
+Speaker 1: Tenke på det. Først og fremst er det noen som er abstrakte ennå, men det kanskje kommer her. Det er sannsynlig at jeg er abstrakt, jeg er nummer 60. For å se om det kan reformuleres av kapittel 10. Kapittel 10 er noen konklusjoner for å.
+
+Speaker 2: Se om det skal reformuleres.
+
+Speaker 1: Leser jeg noe eller kapittel 10? Ja, så bare en liten sånn kommentar. Det er bare en repetisjon av gammel ting, men grunnen til at du lager, som Bård Inge har sagt, er markdown-fil på selve rapporten. Det er at det er mye enklere å jobbe i den. Med A-in når vi har mye frem og tilbake å endringer enn å gjøre i LaTeX. Men det stemmer ikke det Bård, derfor må du ringe bekreftet eller korrigere meg hvis det er feil. Når vi er ferdige med rapporten, i litt av stunden om en månedstid, så ønsker vi at den skrives i LaTeX og det er et programmeringsspråk. Som gjør at det blir på en veldig fin form rapporten. Hvis dere ser her, så er dette også skrevet i Latex. Da ser det ikke bedre ut. Linkene blir bra og referansene blir bra og sånne ting. Ikke sikkert dere har brukt det så mye, men der kan vi bare få A inn til å gjøre det. Stemmer ikke det, Bård, at vi ønsker at de skal skrive på den måten, eller hva ser vi for oss? For de skal marke dem når de skal levere inn, eller hva ser du for det?
+
+Speaker 3: Det er jo en installasjonsprosess som alle må gjennomføre i så fall. Det er jo verdstrevet, men man må jo installere enten MicTek eller TechLive,.
+
+Speaker 1: Ikke sant? Det betyr at vi kanskje generelt skal bare anbefale Worda likevel, og så sier vi at dem som kan late, kan gjerne bruke det, og dem som ønsker å gå i ekstra mye og installere det, så skal vi prøve å møtekomme det, og da kan de gjerne gjøre det. Men at utgangspunktet faktisk er at du leverer Wordfila og genererer PDF ut fra Wordfila? Ja, utgangspunktet er.
+
+Speaker 3: Det. Vi bør hvertfall ha det åpen på begge mulighetene, helt klart.
+
+Speaker 1: Ja, åpen på begge mulighetene. Men det er bare litt nysgjerrige her. Nå har vi noen her nå. Kanskje du bare sier hva dere foreløper i, det er ikke noe, ingenting som er låst her, men si foreløp i chatten. Word eller LaTeX eller noe annet dere har lyst til å skrive rapporten i. Bare nysgjerrig på hva dere ser for dere per dagstatt. Skriv gjerne Word hvis dere er usikre og aldri har hørt om LaTeX før. Men bare skriv LaTeX eller Word eller noe annet. Det er Word, ja, som folk vil gjøre. Hva tenker dere andre? Har dere gjort noen tanker om det? Hva slags program dere vil skrive rapporten i til.
+
+Speaker 3: Slutt.
+
+Speaker 1: Word er kanskje det som er mest vanlig. Har litt erfaring med latex i skrivingkult. Det er litt å si angående dette der. Jeg har jo 25 års erfaring med latex, men Når det vi nå har fått av, og når vi skriver da, vituskrafelige publikasjoner eller rapporter, så ser du at vi blir mindre og mindre på grasrota. Hvordan var det vi nå lagde figurer? Hvordan var det vi gjorde referanser? Hvordan var det vi hadde noe av det linjerskift eller page break og sånne ting? Det var en del sånne kommander du glemte. Men vi kommer nå, både i omgåringen og når vi lager rapporter på et mye mer overordnet nivå, å bare si Hva skal jeg gjøre? Lage en tabell her, så lager jeg en tabell. Nei, formulere om dette her litt, eller lage en linjeskift der. Så bare sier vi det. Så hvis du bare har litt erfaring, noen av dere, med skrivning, så er det sannsynligvis nok da til å gjøre det. Men det krever installasjon da, for at du må ha noe som heter MicTex, er det ikke det, Bård?
+
+Speaker 3: Ja, eller TechLive. Du må ha en tech-kompilator,.
+
+Speaker 1: En latech-kompilator som kompilerer dette her for det. Og MicTek er et godt forslag. Veldig lett med VSL på Windows. Jeg er faktisk ikke sikker på hva det er. Vet.
+
+Speaker 2: Du hva det er, Bård? Ja. Men.
+
+Speaker 3: Uansett, den enkleste måten å gjøre det på er bare å be AI-en å installere.
+
+Speaker 1: Ja, det kan AI gjøre. Det tar.
+
+Speaker 3: Litt tid å installere. MicTek er vel den som er enklest.
+
+Speaker 1: Ja, jeg tror du har det. Det som er.
+
+Speaker 3: Fint med dette, med Latex-systemet, det er at vi har en skill som vi kan levere til folk. Slik at det blir veldig enkelt å oversette. Dette kunne vi jo gjort en dag, bare for å vise. Det å bare bruke skillen, og så sier vi bare oversett denne markdown til Latex, så fikser den alt. Ja, og det.
+
+Speaker 1: Som er bra da, altså nå kan det være helt brutalt altså. Lag en samtale. Altså dette er det jeg ville gjort da, for det går ingen korrigering. Jeg ville lagt en samtale her, og så blir det bare.
+
+Speaker 3: Spurt.
+
+Speaker 1: Her. Jeg har ikke installert Latex på denne maskinen her, men ønsker å skrive denne rapporten i Latex. Hva må jeg gjøre? Hva må jeg installere? Kan du hjelpe meg å gjøre installasjon og komme med et forslag til mal og sånne ting som er passende for denne rapporten? Og da kan du faktisk få klod til å gjøre det, altså. Så det bestemmer jo dere selv, men det er faktisk utrolig kult om noen av dere som ikke har brukt latex før har lyst til å prøve det der. For jeg tror dere, hvis dere skal skrive de rapporter som ser proff ut, så er latex ikke bare bra. Word er jo et veldig etablert TV, selvfølgelig. Det er kanskje det som brukes mest i industrien. Latex brukes kanskje mer i akademier og store, tunge og kanskje litt matematiske reporter og sånne ting. Men tenk litt på det, for det er ganske store muligheter vi har nå da når vi har AI. Da trenger dere ikke kunne alt sammen. Vi har da kommet med en add-on til Claudia. Det er godt mulig. Det.
+
+Speaker 2: Er kult. Det skjer mye fort her,.
+
+Speaker 1: Altså. Det skjer mye på kort tid.
+
+Speaker 3: Ja, så AN klar, jo. Dock, altså world også. Går fint. Men jeg er usikker på hvor flink den egentlig blir. Det prøver jeg. Men det viktige er at man kan laste ned en skill for å... Jeg tror faktisk Klåd har innebygd skill for å lage Word-dokumenter. Han kan også lage direkte PDF-dokument. Men det som du sier, Pekar, er at kvaliteten på sjølve dokumentet blir nok best i Latex. Men dette kan mer enkelt velge egentlig. Ja, du kan velge.
+
+Speaker 1: Du kan gjøre det. Og som sagt, her ser dere et eksempel på hvordan en rapport kan bli. Dette er jo brukte latek, og nå har jeg også en annen. Og her er da for eksempel en helt annen rapport, men poenget mitt med å vise den her, som ligger ute på nettet, det er latex som er brukt her nå. Og du ser da at da blir det veldig standardisert, og du ser at vi legger inn figurer, og vi legger inn veldig mye ligninger og sånne ting, og referanser og acknowledgement. Og da lager latex dette på riktig måte, og setter vi inn nye kapittel, så blir alt sammen oppdatert med tanke på nummereringen på referansene, og oppdatering av ligningsnummer og sånne ting skjer helt automatisert. Så det er verdt å vurdere dette, men man må selvfølgelig tenke på evig Hvilke typer rapporter kan vi typisk gjøre? Hvis vi begynner å skrive brev, er det faktisk, så begynner vi å skrive noe mer i LaTeX, der vi før bare brukte Word, der det var bare enkle brev, eller dokument, bare på en side eller to eller tre. Så selv sånne små rapporter bruker vi nå LaTeX til for å ta inn hjelpemiddel. Og da sier jeg bare, lage en ny mappe, så det heter LaTeX, skriv rapporten her i LaTeX i den mappa, bare gjør det for meg. Ja, og da fortsetter vi med seks sider som er samme drag oppstrøtt. Det er det som vi har vært spent på, så da ser vi her.
+
+Speaker 2: Da. Det er det jeg også er.
+
+Speaker 1: Spent på å skrive der. Da kan vi se i real time hvordan den oppdaterer rapporten om det. – Skriver samme drag, legge, spiller problem, – metode til ovenførende konklusjoner. Bra.
+
+Speaker 2: Og mensen skriver det.
+
+Speaker 1: Der, så ser vi at der kom samme draget, ja. Og der kom abstraktet. Så ble jeg bare litt nysgjerrig på hva som står her nå på abstrakt.
+
+Speaker 2: Jeg skal se om jeg kanskje ikke.
+
+Speaker 1: Har skrevet noe eksplisitt på det. Der.
+
+Speaker 2: Ser du abstraktet. Klar i språk. Her.
+
+Speaker 1: Er hensikten. Det står ikke noe spesifikt på abstraktet her,- men vi mener at det var rett som en skrev.
+
+Speaker 2: Her. At det du skal ha her,.
+
+Speaker 1: Det var... – At abstrakt og sammenhanget skal speile problem, metode, hovedfunn og konklusjon. Det synes jeg var veldig bra. Det burde nesten stått i dokumentet vårt, men nå gjør det nok ikke det. Men det er slik vi kan se at det er ferdig. Skal vi fortsette med 7, intern kvalitetssjekk, IS.
+
+Speaker 2: Skal vi se hva som.
+
+Speaker 1: Står på abstrakt.
+
+Speaker 2: Her er metoden.
+
+Speaker 1: Du kan bruke Sarima, også den der.
+
+Speaker 2: 12, For det er 12 måneder. Identify.
+
+Speaker 1: Og her ser du også funnet, ser du? At det er oktober til desember som er den kritiske kapasitetsperioden.
+
+Speaker 2: Og at low season month, august, januar og februar,- Da er det.
+
+Speaker 1: Naturlig å bygge opp lager. Så her ser det ut som en håndmessig den skal ha med. Forklarer. Problemstillinger. Hva det dreier seg om. Metoden. Hovedfunn. Og.
+
+Speaker 2: Konklusjon. Usefull.
+
+Speaker 1: Exhaustiv. Det vi ser her er på en måte konklusjonen. Supert. Og en abstrakt skal ikke være så veldig lang. Det er ikke veldig lang. Hvis vi ser på de andre her, som vi viste dere før,- så ser du at denne er ganske... Ja, den var litt lang, men ikke så veldig. Så lang en abstrakt er. Og her er en abstrakt kanskje enda kortere enn den andre. Bare sånn. That's it. Og i vår sammenheng så var den sånn, og vi har litt mer- De har større rapporter, så det er helt innenfor at den er såpass lang. Det var en tredeling her, og det synes jeg er helt fint. Gjør det siste, les en gang kapittel 1 og 10, for å sikre at de leser godt etter alle endringene.
+
+Speaker 2: Vent.
+
+Speaker 1: Da. Sånn, biografi, oppfølgning, forberedtidskorrekt, sitert anlevning. Da var det figurer er viktige, cross-references,.
+
+Speaker 2: Eksistente seksjoner. Da er det fortsatt nummer.
+
+Speaker 1: Åtte, uavhengig om du er sub-agent. Ja, det er en god tommefingeregel å sjekke om du er en sub-agent. Så det er to nivåer for sjekt, vil jeg påstå. Det ene er at du får en uavhengig AE, altså en sørpagent, til å gjøre det, og det kan du gjerne kanskje både ha en og kanskje to iterasjoner. Og det andre er at du faktisk får et menneske til å gjøre det. Og det siste er jo en del av vårt prosjekt. Slik at jeg vil ønske at dere går gjennom både deres eget rapport og den rapporten dere revuer. At dere gjerne kan bruke en ait å gjøre det, men også at det er dere som mennesker som også er involvert i dette her, så dere forstår at det går gjennom hodet deres også. Det er viktig både for å få en god kvalitetssikring på revuene som dere skal gi til gruppekollegaene deres i lov 650, men det er også viktig i forhold til muntlige eksamen i juni, da vi skal diskutere litt det her med rapportene som dere har levert. Nå må dere forsvare det på en måte, og skjønne litt innholdet. Sånn, skal vi se hva den har gjort her da, på statusfila. Om den er blitt oppdatert, nei den har ikke blitt oppdatert, så sjekk av her. Og her ser du at den har utvira statusfila da, etter det vi sa. Må gjøre litt mer konsistenssjekk og rettelse, så den ser jo da blitt utvira en del da. Og den lager på en måte litt sånn sjekklister her, ja, så den har blitt utvided av det helt greit. Kommer til å høres ut rødkant.
+
+Speaker 2: Personer.
+
+Speaker 1: Kan gjøre hendene veldig lengre tid. Ja, vi hadde lagt noe vedlegg jeg veldig godt, fullstendig oversiktig og over-evaluert.
+
+Speaker 2: Sarima-kandidata. Månedlig test sett prognoser. Bare kunne se hva det er. Det er ikke.
+
+Speaker 1: Særlig forståelig her.
+
+Speaker 2: Helt enig.
+
+Speaker 1: Så her ser vi litt vedlegg til kapittel 7,.
+
+Speaker 2: Som.
+
+Speaker 1: Er relevante verdier for det kapittelet. Så det er bra å referere til det med vedlegg for reproducerbarhet, formodenlig testsett prognose, og prognosefeil. Det er vanlig bra å bare lure på om det kanskje burde ha vært i i artikkelen, og ikke vært som et dellegg. Det er nesten så jeg kunne tenke på å kanskje- konfronterte.
+
+Speaker 2: Med det. For det slår meg at.
+
+Speaker 1: Dette kanskje burde vært i...
+
+Speaker 3: Ja, tenker du på testopsett? Ja. Nei, jeg synes det er riktig å ha det der, jeg.
+
+Speaker 1: Ja, kanskje det er det man... Det.
+
+Speaker 3: Får et sidespol av, det er viktig å ikke liksom- skjeiner for mye ut i analysen, slik at man går inn i detaljer som kanskje ikke er så viktige. Man må jo vurdere det, men jeg vil ha vurdert at dette er et bra vedlegg. Du kan jo spørre, men min mening er at sånn med tabeller, du er mer interessert i å se figuren, og så vet du at data finnes en plass.
+
+Speaker 1: Jeg er enig med Bård Inge her nå. Poenget mitt er at du må ha litt kritikk og kritisk vurdering. Jeg var usikker nå. Hvis Bård Inge svarte på det, så er det greit å kjøpe det argumentet og la det stå. Hvis de hadde vært alene, så hadde jeg bare spurt og konfrontert AN med det. Og så har jeg litt frem og tilbake, så hadde jeg og Ein konkludert sammen, hvis ikke Boringa hadde kommet i bildet. Så det er sånn du må gjøre da. Du må tenke på, kan du gjøre noen endringer her? Er det noe bedre her nå? Men det kan hende at konklusjonen er at det skal bli stående sånn som det er. Men da har jeg i hvert fall tenkt gjennom det, og jeg har en begrunnelse for hvorfor den står der den står, og da er jeg komfortabel med det. Reproduktivitet. Analyser.
+
+Speaker 2: Artefakter. Jeg er litt usikker.
+
+Speaker 1: På om analyser og artefakter er det norske ord, eller om det er det norske engelske. Artefakter.
+
+Speaker 2: Det er jeg veldig.
+
+Speaker 1: Usikker på. Hvis vi hadde litt bedre tida, nå er det jo klokka to,- Så har de kanskje vel gjort det, men det er sånne detaljer jeg vil at dere skal gå gjennom og diskutere. Så jeg mener at en ganske stor del av det faget her er faktisk å spare å diskutere og fighte med A1 for å begrunnelse for hva som har blitt gjort, og sjekke ting, og få begrunnelse for det, og da enten gå til høre eller venstre. Det er sånn sett et pratefag og en diskusjonsfag med kunstig intelligens.
+
+Speaker 2: Selv om klokka er.
+
+Speaker 1: To nå, så fullfører vi noe av dette, slik at vi får en naturlig avslutning. Det er naturlig å fullføre akt 3.10, sammenstilling. Da gjelder det akkurat det vi skulle i dag, så la oss bare fortsette i noen par minutter for å få en naturlig avknyttning. Vi tror at det her er faktisk ganske tokenskrevende, det vi har gjort i dag. Så hvis vi spiser en del tokenser vi trenger, så.
+
+Speaker 2: Er det... Det kan vi prøve. ...Prøker.
+
+Speaker 1: Det abonnemanget vi har.
+
+Speaker 2: Let me check.
+
+Speaker 3: Bruker du vår nå, eller bruker du en felles?
+
+Speaker 1: Nei, jeg bruker vår, mener jeg.
+
+Speaker 2: Mye du har. Men jeg tror det,.
+
+Speaker 1: Ja. Jeg er ganske sikker på det.
+
+Speaker 3: Du begynte akkurat på en 5-timers. 38% Er vi.
+
+Speaker 1: På. 38% Av en 5-timers? Ja. Så det må også litt begrensinger på at hvis vi kjører knallhardt på i 5 timer, så må vi ta oss en pause. Da får vi 5-timers karantene før vi kan bytte på nytt igjen. Det er slik at vi ikke skal fullstendig strupe dette. Så det er noen begrensninger vi har, selv om dette er det store dyret av en mann.
+
+Speaker 2: Da er.
+
+Speaker 1: Det ikke så mye igjen. Implementere review-tiltaket V1, V4, F4. Man skriver en det her, Bård, i Latex-kode, selv om det er i Markdown-fjell. For jeg ser nå at det er dollar-tegn slash x på sånn videre av Latex-kode her. Det er jo Latex-kode.
+
+Speaker 3: Her. Ja, det er fordi at Markdown kan lese Latex. Det er jo Latex-skrift, men det er ikke en vanlig Latex-motor. Det bruker MathJax. Ja, det har jeg.
+
+Speaker 2: Hørt om. Så.
+
+Speaker 1: Toppalt tekst, det er riktig. Alle tabellafigurer skal være stand-alone, slik at du kan forstå figuren ut fra å se på tabellen tilhørende tabelltekst. Der står størrelser og sånne ting. Det skal være mulig å forstå en tabell bare ut fra tabellen og tabellteksten, og tilsvarende for en figur. Det er i hvert fall en regel jeg prøver å lese etter. Jeg er usikker på om det er en generell regel, men jeg synes det er en god praksis. Ja, så nå begynner vi på siste punktet da, som er da X3T. Ofte er det status MD-fila.
+
+Speaker 2: Så jeg.
+
+Speaker 1: Vil se her nå, for å se om vi gjør det i real time.
+
+Speaker 2: Nå.
+
+Speaker 1: Bygger jeg FANTAS-sjekkpunktet. Så der ja. Hjørnet er faktisk ferdig.
+
+Speaker 2: Oppdatering.
+
+Speaker 1: Av samlevalgeringen. Det var det enda gjør som avslutning å fortelle oss hva de oppdaterer.
+
+Speaker 2: Sånn er det ferdig nå. Kul.
+
+Speaker 1: For å lukke. Hele fase 3 er nå ferdig. Endelig oppsummering. Seksjon 3.10. Alt nytt innhold på plass. Sammendrag. V-legg. Bibliografi. Med 15 APA 7 konsistente innføringer. Review-tiltak. Greit med sub-agenta. Fase 3-status. Hovedkort for preview. Da er vi klare for å prøve. Da gleder vi oss, vi gjelder å bli ferdige med tidsfristen, som er i morgen, ikke det Erik? At det er i.
+
+Speaker 2: Morgen, 30. Som er tidsfristen. Ja, så.
+
+Speaker 1: Da gleder vi oss i vår egen tidsfrist. Da må vi bare gratulere oss. Takk for det. Så da er det her med kommitt og sånt. Nå er vi ferdige for i dag, men nå er vi på den der onsdagsbransjen nå. Så det vi gjenstår nå, det vi må gjøre nå, det er å kommitte og pushe. Når du innholder en branch, så skal vi, i og med at du gjør det her nå, slik at han får lært litt om hva som er med kommitte og mørder og sånne ting. Eller skal.
+
+Speaker 3: Vi ta det senere? Har du kommittet?
+
+Speaker 1: Jeg har ikke gjort noe av det.
+
+Speaker 3: Nå. Bare si til A1 følgende. Commit Changers. Skriv bare skriv. Ok. Ja, commit changes eller endringer på norsk. Endringer, ja. Merge, ja. Etterpå, merge inntil main. Ja, skal bare se om vi blir.
+
+Speaker 1: Ferdige nå. Men det jeg tror da, Gård, er at det jeg testet for to dager siden, jeg tror nok at denne er sannsynligvis bedre. Jeg har brukt litt mer tid på det, det var litt mer diskusjoner. Så jeg tror kanskje denne har utvidet litt statusfiller, og det gjorde de ikke i fortovet av seg. Ja, ja, men.
+
+Speaker 3: Da bare fortell du en at merge into main. Ja,.
+
+Speaker 1: Jeg skal bare la det bli ferdig med commit.
+
+Speaker 3: In main. And override all conflicts. Using this version. Bakgrunnen her er jo at Peko allerede har hatt en sånn generalprøve, hvor Peko gikk gjennom det samme før, sånn at det finnes en annen versjon av akkurat det samme. Når du da skal prøve å merge en branch inni den, så vil du få Massevis av merge-konflikter, men nå sier vi det at bare glem den andre, og så overskriv alle merge-konflikter herfra. Ja,.
+
+Speaker 1: For jeg bare overskrev generalprogrammet, for jeg hadde lyst til å bare teste dette her før vi skulle gi gillen i dag, og derfor så gjorde jeg det, og dette fungerte fint. Men vi har gjort det litt mer grundig i dag, synes jeg, for vi har litt mer sparringer og diskusjoner frem og tilbake, og derfor tar jeg bare en sjefsavgjørelse om at vi bare skriver over generalprøvene og tar det vi har gjort i dag. Det var en ganske lang kommitte, men fordi vi har gjort veldig mye, så den kommitten er mye å beskrive. Så det er helt normalt dette her, når vi har gjort så mye som vi har gjort, for dette var ganske token- og ressurskrevende, alltid vi har gjort dette her. Og det er ganske avansert synes vi, det er i hvert fall bruk av AI det vi gjør i det kurset her, og det krever veldig mye tokens, og det krever mer enn bare gratisbrukere, sånn som deflorerer på dette av AI. Så dette her er bra til å si. Status etter kommittia. Branch onsdag 2026. Jeg lager en sånn onsdagsbranch. Yes. Neste steg er å gjennomføre private versjon. Og da bare trykke på der da, Bård. Merge til meg. Og overstyr alt innhold. Hvor du bruker denne versjonen.
+
+Speaker 3: Ja. Jeg vil ha brukt en plan.
+
+Speaker 1: Her da. Ja. Skal vi skrive noe.
+
+Speaker 3: Annet? Ja, plan mode. Det er vel fineste. Hva er den der nå? Streken der for noe? Der? Plan mode. Ja. Da? Ja, bare se at den ikke boomer her, da, for det er innmarillomt. Ja, men kommandoen er bra. Ja, bare kjør enter. Så da kan vi kjøre. Plan mode betyr at den ikke gjør endringene.
+
+Speaker 2: Ja. Forhåpentligvis. Ja, men det jeg har.
+
+Speaker 1: Lyst til å bare tenke på mens jeg står i jobbet nå, det jeg har lyst til når vi da overskriver dette her på meg, Da har jeg egentlig lyst til å delete den der onsdags 2026-bransjen som vi er på nå, for den er bare sånn midlertidig greie. Ja, det.
+
+Speaker 3: Kan du gjøre så lenge du vet at du har fått endringene inne i.
+
+Speaker 1: Dette er bra for dere å kunne lære hvordan det er med brancher og sånne ting, så det er veldig sunt å lære dette her. Og jeg lærer jo mye av en Boringe, så jeg ser på dette her som god læring for meg. En Boringe kan dette her bedre enn vi med branch og merge. Det er veldig sunt å kunne. Dette lærte dere kanskje litt mer av IBE 160?
+
+Speaker 3: Ja, det er det. Vi var ikke så inngående dypt i merging da, men det er jo bare viktig at når man har en konflikt, så er det viktig å vite, da er det jo vi som bestemmer hva som er riktig versjon da.
+
+Speaker 1: Hva betyr merge, hvis du ville sagt det på norsk ord? Platte.
+
+Speaker 3: Sammen?
+
+Speaker 1: Eller slå sammen? Slå sammen, ja. Merge, slå sammen.
+
+Speaker 3: Her står det. Så her kommer spørsmål, tror jeg. Så det er lurt å gjøre det på den måten.
+
+Speaker 1: Her, da. Ja, du tekner planmål, tenker du på?
+
+Speaker 3: Ja. Hvis ikke så hadde du bare gjort noe av, så er jeg ikke sikker at du hadde fått de to spørsmålene der.
+
+Speaker 1: Ja, hva er forholdene.
+
+Speaker 3: Der? Hvordan skal man valgstilge motsteg? Force replace?
+
+Speaker 1: Det.
+
+Speaker 3: Er vel sagt den første da, sant? Force, det betyr altså at... Man.
+
+Speaker 1: Går ikke til å overstille, bare tvinge på det, ja. Men det er ikke all mengehistorikken som forsvinner, det er bare mengehistorikken i forbindelse med det generalprøvene vi hadde på for to dager siden. Ja, ja, ja. Ja, og den historikken er uinteressant. Så jeg mener at dette er ufarlig, da. Ja, det kjenner.
+
+Speaker 3: Jeg at du fjerner... For det jeg.
+
+Speaker 1: Gjorde for to dager siden, var en litt dårligere versjon av det vi.
+
+Speaker 3: Gjorde i dag. Ja, det som skjer er at du fjerner den gamle greia fra verdens.
+
+Speaker 1: Eksistens. Men det lever vi fint med. Bare vi får med det som vi har her, så er det greia. Så skal vi bare ta den øverste.
+
+Speaker 2: Da. Ja. Sånn. Ja. Også. Ja, vi.
+
+Speaker 1: Skal bare pushe her, ikke sant? Ja.
+
+Speaker 3: Men ikke delete den bransjen du har her i dag før du har sjekket at alt er i orden.
+
+Speaker 1: Nei, jeg tenkte vi skulle gjøre det samme nå før vi avslutter for dagen. Så det hadde vært fint. Så bare for å gjenta meg selv, det eneste vi nå overskriver, det er den litt dårligere generalprøven jeg hadde for to dager siden. Det har jeg overskrivet, men det blir gjort i dag, for jeg synes det er bedre. Så brensjer jeg greina, for de kan jobbe på forskjellige greiner, så jeg tar en kopi av hele prosjektet, og jobber i det onsdag 2026-greina, og da kan jeg helge og styre som jeg vil, og når jeg er ferdig i dag, så bare slår jeg sammen det med den gamle hovedgreina, som er hovedgreina vår, som vi jobbet på til plutt, og så pusher jeg det opp i skya.
+
+Speaker 3: Når man jobber med gids, så vær nøye. Ikke fort og gærlig, for det kan jo bare forsvinne. Du kan få AN til å gjøre ting for deg, men sørg for at du følger med hva AN gjør. Og er sikker på at du har en en backup. Nå har vi den gamle, vi har jo onsdag bransjen eksisterer hele tiden, så uansett hva vi gjør på main nå, så har vi en egen bransj, så den er safe da. Så vi la beholdt den etterhvert.
+
+Speaker 1: Da. Der står det. Onsdag 2026 er den identiske, både lokalt og på PC. Ja, så jeg vil ha.
+
+Speaker 3: Nå gått inn og bare sjekket at det er faktisk sånn, at nå er du på main,.
+
+Speaker 1: Sant? Det er akkurat det jeg lurer på hvor jeg er nå. Hva lagsfebransj.
+
+Speaker 2: Er jeg på nå? For nå ble.
+
+Speaker 1: Jeg jo sikker på hva jeg er.
+
+Speaker 3: På da. Du er faktisk i onsdag,.
+
+Speaker 1: Ser jeg. Ja, jeg tror jeg er fortsatt i onsdag, ja. Ja, så bytt.
+
+Speaker 3: Til main da, sant?
+
+Speaker 1: Ok, da skriver jeg bare bytt til main. Sånn, du gjorde noe på main. Og da er jo altså filene her oppdatert, er det.
+
+Speaker 3: Da? Ja, nå må du jo sjekke da at det faktisk er oppdatering. Altså.
+
+Speaker 1: Hvis jeg ser på filselektronen her, så er dette main-filene, right?
+
+Speaker 3: Ja, men du må se at det er den endringen som du gjorde i dag da, og ikke.
+
+Speaker 1: Den... Det skal jeg gjøre nå. Så hvis vi da for eksempel går på rapport nå, så vet vi hva jeg har gjort i dag. Hvis vi går hit, så ser vi at vi har laget samdrag F-abstrekk, og det var det ikke før, og det er det nå, og dette er det abstrekket som vi har laget i dag, for det kjenner jeg. Så dere kan begrepe at dette er rett. Dette er det vi har gjort i dag. Hvis vi for eksempel ser.
+
+Speaker 2: På litteratur, så ser vi at dette.
+
+Speaker 1: Er også det vi har sagt. En test på det er det jeg sa til dere tidligere, nemlig at Polina og Makoni, det var en av de diskusjonene vi hadde å innstille til dem på ringet. Og som en konsekvens av det, så fikk vi disse to nye referansene, som jeg ikke hadde fortold av hver siden av på generalprøven. Så jeg kan bekrefte at det som står her, hvis det er på mail nå, det er vel. Hvis dette er mail, så kan jeg bekrefte dette i dagens versjon og alt det gjør. Ja,.
+
+Speaker 3: Og da kan du trygt fjerne onsdag.
+
+Speaker 1: Ja, og da skriver jeg bare slett onsdags mail. Ja, ja. Og da, når det er gjort, nå kan vi da pushe opp hullet, eller er det gjort nå?
+
+Speaker 3: Du kan jo bare pushe main, da. Ja, for da må vi.
+
+Speaker 1: Da committe main, eller bare pushe.
+
+Speaker 3: – Nei, du trenger ikke kommitte, men hvis du ikke mener pusha, så si bare push made.
+
+Speaker 2: – Ok, så push made. – Det.
+
+Speaker 3: Er ikke farlig å pushe hvis du allerede har pusha. – Nei,.
+
+Speaker 1: Det er ikke farlig å pushe, men jeg mener at det var dumt å pushe hvis du ikke.
+
+Speaker 2: Har kommitta. – Da får du ikke pushe. –.
+
+Speaker 1: Å, du får ikke pushe da, ok. Mener allerede synkronisert? Ingenting å pushe. Ja, men supert. Da har vi satt det riktig i punktet med spørsmålet.
+
+Speaker 3: Ja, det er bra da. Den er ganske komplett. Det er helt supert. Ja, det er helt.
+
+Speaker 1: Supert da. Vi har hatt noe av det eksempelet her, som vi har et eget repo på, G00-eksempelet, som også dere som studenter har tilgang til. Poenget med det er at vi ønsker å vise dere hvordan vi som studenter har gjort det. Et veldig enkelt eksempel. Nå har vi til og med holdt vår egen tidspist som er i morgen, sier Erik. For at noe av dette er egentlig klart til review, og det eneste som trengs å gjøres igjen nå, det er å konvertere markdown-fila over til en worm-fila eller latex-fila, det bestemmer dere. Og så switcher dere rapport til den gruppa som skal gjøre reviuen med dere, så bytter dere, og så er det bare å begynne å gjøre reviuen når dere får.
+
+Speaker 3: Tid. Ja, så når det gjelder review da, ikke sant? Jeg synes at man... Altså, man kan... Jeg anbefaler at man ikke jukser. Eller, det er jo ikke juks. Men prøv å lese gjennom rapporten. Man kan alltid la en eye for å gjøre reviewen,- men da kunne jeg like godt i og med PK gjort reviewen, hvis dere skjønner. Min oppfordring til dere er å faktisk få en rapport fra noen andre. Erik har jo tilordnet grupper og sånne ting. Få lest gjennom rapporten. Grunnen til det er at det er mye læring i det. Det er utrolig mye læring i å sette seg inn i en reviewers-posisjon. Spørre spørsmål og være kritisk. Det er mye læring. Nummer to. Husk at vi genererer hele rapportene. Det er mye AI-generert. Det er klart det. Det å gjennomføre en menneskelig review er hundre prosent vesentlig. Jeg vil aldri sende av gårde en rapport slik som Peko har laget nå. Uten å ha lest gjennom hvert enkelt ord og vurdert om dette er bra. Til slutt må du ta med det menneskelige aspektet her. Nå har AN gjort 80-90% av grovarbeidet er gjort av AN. Supert. Klapp på skuldra, veldig bra. Men ti prosent er igjen. Nemlig, vi har nødt til å proofreade hele solomitten. Vi kan ikke bruke sånne sjuke ord, dårlige setninger, linker som ikke fungerer, eller sånne referanser som ikke finnes, og så videre. Ulogiske oppbygginger, og så videre. Det må sjekkes. Og vi har jo denne lista. Og det går alltid sånn å kjøre den med AE og la AE få gjøre reviewen, men lesen også. Vær vennlig mot din studentkollega, for å si det sånn. Fordi det er helt vesentlig, for hvis vi nå finner feil i disse rapportene, – så er det jo uvesentlig, fra minstens syn, om det er A eller om det er du som har gjort feil. Poenget er at du har gjort en feil som du ellers kanskje burde ha lagt marke til hvis du hadde giddet å lese gjennom det. Jeg vet ikke om det kom tydelig frem, men poenget her.
+
+Speaker 1: – Jo, helt rett etter det der. Og det vil jeg påstå her, at det er jo også poenget. Vi får spurt om hvorfor vi ikke kan legge ut denne her i pdf til? Nei, det er fordi at dette er bare eksklusivt for dere, fordi at de hjemme på ringene har ikke gredd å ha gjort den sjekken før, så vi ønsker at dette ikke er et offisielt dokument enda. Det er bare en midlertidig hjemmeside, så vi har fått en AI til å hjelpe oss med da, til å lage, for at dere skal få tilgang til dette der, for vi rakker ikke å lese gjennom 550 sider. Og kvalitetssjekke det før vi lager boka. Så det er grunnen til at denne her får dere bare midlertidig, og så kommer vi til å legge ned denne nettsiden her når kurset er ferdig, for å gjøre en bedre og mer skjent versjon til neste år. Så det er viktig at vi ikke slurper med dette med menneskelig gjennomgang til slutt.
+
+Speaker 3: Bruk gjerne AI til å gjennomføre review, men les i tillegg.
+
+Speaker 1: Selv. Her til slutt, folkens. Dere skal lage rapporter på to til fire sider, og levere seg pdf, som skal si noe om deres review. Dere vil ha en skriftlig tilbakemelding til den andre gruppen som skal reviue her, med forskeropplysninger, og skal ha et heilighetsuttrykk, så dere skriver bare en forlinje av det. Og områdevurdering. Så dere skal skrive en kort rapport til den andre gruppa, som er deres tilbakemelding på dette her nå. Og det skal ikke være mye, to sider kan være nok. Det skal ikke være mye, men det skal være en skriftlig tilbakemelding til den andre gruppa, der dere kommer med eventuelle vurderinger som kan gjøre dette bedre. Mangler, både på hva som er bra og dårlig, både positiv og negativ kritikk. Greit, da har vi ikke mer på hjertet for i dag.
+
+Speaker 2: Ja, vi kan.
+
+Speaker 1: Prøve å ha det, så vi kan ringe dokumentet og gjøre det nå med en gang. Så tar vi det, så får vi det unna helt i ordne. Ja, vi har ikke over tid nå, så vi tar det med en gang. Greit folkens, da får dere ha tusen takk for i dag. Erik, jeg kommer til å laste opp videoene etter hvert, så du gjør det vanlig. Du er ren her med å lage oppsummeringer og sånne ting. Supert, takk for i dag alle sammen. Så ringer jeg deg ganske snart,.
+
+Speaker 3: Julie. Ha det bra.
+
+---
+
+Generated by WhisperAI
+https://whisperai.com
