@@ -12,6 +12,7 @@ import {
   YAxis,
 } from "recharts";
 import {
+  HISTORIC_REVENUE_DEFAULTS,
   HISTORIC_START_YEAR,
   loadRevenueGoal,
   loadRevenueHistory,
@@ -150,6 +151,13 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     persistHistory([...history, { year: y, revenue: Number.isFinite(r) ? r : 0 }]);
     setNewYearText("");
     setNewRevenueText("");
+  }
+
+  function loadHistoricDefaults() {
+    const merged = new Map<number, number>();
+    for (const row of history) merged.set(row.year, row.revenue);
+    for (const row of HISTORIC_REVENUE_DEFAULTS) merged.set(row.year, row.revenue);
+    persistHistory(Array.from(merged, ([year, revenue]) => ({ year, revenue })));
   }
 
   function logout() {
@@ -314,6 +322,13 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             className="rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             + Add year
+          </button>
+          <button
+            onClick={loadHistoricDefaults}
+            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            title="Load 2020–2025 totals from cockpit_clean.csv"
+          >
+            Load 2020–2025 historic data
           </button>
         </div>
       </div>

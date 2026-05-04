@@ -14,6 +14,17 @@ export interface RevenueYear {
 
 const DEFAULT_GOAL: RevenueGoal = { targetRevenue: 0, targetYear: 2030 };
 
+// Sourced from "004 data/cockpit_clean.csv" → revenue_Total per year (EUR).
+// The CSV stores totals in thousands of EUR; values below are already expanded.
+export const HISTORIC_REVENUE_DEFAULTS: RevenueYear[] = [
+  { year: 2020, revenue: 47309 },
+  { year: 2021, revenue: 360535 },
+  { year: 2022, revenue: 322101 },
+  { year: 2023, revenue: 512996 },
+  { year: 2024, revenue: 1181699 },
+  { year: 2025, revenue: 1541399 },
+];
+
 function isBrowser(): boolean {
   return typeof window !== "undefined";
 }
@@ -42,7 +53,12 @@ export function loadRevenueHistory(): RevenueYear[] {
   if (!isBrowser()) return [];
   try {
     const raw = window.localStorage.getItem(HISTORY_KEY);
-    if (!raw) return [];
+    if (raw === null) {
+      // Seed with the historic 2020-2025 totals on first visit so the
+      // forecast/algorithm has data to fit immediately.
+      saveRevenueHistory(HISTORIC_REVENUE_DEFAULTS);
+      return [...HISTORIC_REVENUE_DEFAULTS];
+    }
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
     return parsed
