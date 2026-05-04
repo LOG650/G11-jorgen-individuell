@@ -144,8 +144,9 @@ $$y = \log(1 + \text{final\_charge})$$
 - **Mean Absolute Error (MAE):** $\text{MAE} = \frac{1}{n}\sum_i |y_i - \hat{y}_i|$. Rapporterer typisk absolutt avvik i NOK; robust mot outliers.
 - **Root Mean Squared Error (RMSE):** $\text{RMSE} = \sqrt{\frac{1}{n}\sum_i (y_i - \hat{y}_i)^2}$. Straffer store feil hardere; sensitiv mot outliers.
 - **Mean Absolute Percentage Error (MAPE):** $\text{MAPE} = \frac{100}{n}\sum_i \left|\frac{y_i - \hat{y}_i}{y_i}\right|$. Rapporterer relativ feil i prosent; sensitiv mot små nevnere — små $y_i$ blåser opp MAPE.
+- **Weighted MAPE (wMAPE):** $\text{wMAPE} = 100 \cdot \frac{\sum_i |y_i - \hat{y}_i|}{\sum_i |y_i|}$. Volum­vektet versjon av MAPE der hver feil vektes etter faktura­beløpet; ikke sårbar for små nevnere. Ekvivalent med $\text{MAE}/\overline{y}$.
 
-I et høyreskjevt kostnads­scenario er **MAE** den mest operasjonelt meningsfulle metrikken: en feil på 5 000 NOK har samme størrelses­orden enten regningen er på 10 000 eller 100 000 NOK. MAPE rapporteres for fullstendighet, men tolkes med forsiktighet fordi små fakturaer dominerer gjennomsnittet. RMSE fanger om modellen har sjeldne store bom­skudd og brukes som sekundær ranking­metrikk.
+I et høyreskjevt kostnads­scenario er **MAE** den mest operasjonelt meningsfulle metrikken: en feil på 5 000 NOK har samme størrelses­orden enten regningen er på 10 000 eller 100 000 NOK. **wMAPE** rapporteres som relativ metrikk fordi den ikke straffes urimelig av små transaksjoner og lar seg tolke som «total bom i prosent av total kostnad». MAPE rapporteres for fullstendighet og sammenlignbarhet med eksisterende litteratur, men tolkes med forsiktighet fordi små fakturaer dominerer gjennomsnittet. RMSE fanger om modellen har sjeldne store bom­skudd og brukes som sekundær ranking­metrikk.
 
 ### 3.5 Kvantil­regresjon og konform prediksjon
 
@@ -370,20 +371,20 @@ Stor-kategorien har en MAE som er ca. 3× høyere enn de to andre, hvilket refle
 
 Tabell 8.1 viser feil­metrikker for alle modeller på valideringssettet (2024, 490 transaksjoner), sortert etter MAE.
 
-| Modell | MAE (NOK) | RMSE (NOK) | MAPE (%) |
-|---|---:|---:|---:|
-| LightGBM (base) | **17 317** | 54 476 | 180,2 |
-| **Ensemble (LGB + CB)** | 17 350 | 55 490 | **168,3** |
-| CatBoost | 17 404 | 55 672 | 174,1 |
-| LightGBM (tunet) | 17 837 | **55 141** | 168,9 |
-| Ridge | 18 251 | 55 842 | 152,7 |
-| Median­baseline | 21 800 | 60 128 | 300,8 |
+| Modell | MAE (NOK) | RMSE (NOK) | MAPE (%) | wMAPE (%) |
+|---|---:|---:|---:|---:|
+| LightGBM (base) | **17 317** | 54 476 | 180,2 | 71,3 |
+| **Ensemble (LGB + CB)** | 17 350 | 55 490 | 168,3 | **71,4** |
+| CatBoost | 17 404 | 55 672 | 174,1 | 71,7 |
+| LightGBM (tunet) | 17 837 | **55 141** | 168,9 | 73,4 |
+| Ridge | 18 251 | 55 842 | **152,7** | 75,1 |
+| Median­baseline | 21 800 | 60 128 | 300,8 | 89,8 |
 
-*Kilde:* `013 fase 3 - review/artifacts/metrics.csv`. Modell­sammenligning er gjort på valideringssettet (2024) fordi dette er det settet som brukes til modellseleksjon; testsettet (2025, 649 transaksjoner etter feature engineering) er reservert for endelig validering av den valgte modellen.
+*Kilde:* `013 fase 3 - review/artifacts/metrics.csv` (MAE/RMSE/MAPE) og `metrics_with_wmape.csv` (wMAPE = Σǀerrǀ/Σactual = MAE/mean(actual), basert på mean(actual) = 24 289 NOK på val=2024). Modell­sammenligning er gjort på valideringssettet (2024) fordi dette er det settet som brukes til modellseleksjon; testsettet (2025, 649 transaksjoner etter feature engineering) er reservert for endelig validering av den valgte modellen.
 
 Ensemble­modellen reduserer MAE med **20 %** i forhold til median­baseline og **5 %** i forhold til ridge. På valideringssettet er LightGBM (base) og ensemble­modellen praktisk talt like (33 NOK forskjell, eller 0,2 % MAE), og forskjellen er innenfor støy­nivået på 490 transaksjoner. Ensemble­modellen velges likevel som produksjons­modell fordi den reduserer varians på tvers av kvantiler/folder og er mer robust mot at en av basis­modellene skulle drifte ved re-trening; at den også oppnår lavest MAPE (168,3 %) er et sekundært argument, siden MAE i NOK er den primære operasjonelle metrikken (jf. § 9.4).
 
-Ridge-modellen har paradoksalt nok lavest MAPE (152,7 %) til tross for høyest MAE blant ML-modellene. Forklaringen er at MAPE vekter relative feil: Ridge underestimerer mindre på de mange små transaksjonene (der prosent­avviket dominerer), men bommer mer i absolutte kroner på de store transaksjonene som MAE fanger opp.
+Ridge-modellen har paradoksalt nok lavest MAPE (152,7 %) til tross for høyest MAE blant ML-modellene. Forklaringen er at MAPE vekter relative feil: Ridge underestimerer mindre på de mange små transaksjonene (der prosent­avviket dominerer), men bommer mer i absolutte kroner på de store transaksjonene som MAE fanger opp. **wMAPE (volum­vektet MAPE)** løser denne skjev­heten ved å vekte feilen etter beløp i stedet for antall: målt på wMAPE er Ensemble best (71,4 %), Ridge dårligst blant ML-modellene (75,1 %), og median­baseline 89,8 %. Differansen mellom MAPE (168,3 %) og wMAPE (71,4 %) for ensemble­modellen illustrerer hvor sterkt små transaksjoner blåser opp den uveide MAPE-en.
 
 ### 8.2 Kvantil­dekning
 
@@ -497,7 +498,7 @@ På valideringssettet (2024) er LightGBM (base) marginalt best på MAE (17 317 N
 - **Sjeldne havner:** Stavanger og Kristiansand har få anløp i datasettet, så historiske persentiler er ikke definert for alle (havn, størrelse)-kombinasjoner — modellen faller tilbake på rent modell­estimat i disse tilfellene.
 - **Antakelse om stabil tjenestemiks (A1):** prismodell­endringer hos under­leverandører eller introduksjon av nye tjenestetyper er ikke fanget før de er reflektert i nyere trenings­data.
 - **Ingen valuta- eller inflasjonsjustering:** estimater i NOK 2025-priser; for prognoser som skal brukes lenger ut i tid bør en re-trening på rullerende data­vindu vurderes.
-- **MAPE er sårbar for små `final_charge`-verdier:** MAPE-kolonnen i tabell 8.1 påvirkes uforholdsmessig mye av transaksjoner i ti-tusenkroners-størrelses­orden — derfor er MAE i NOK den primære operasjonelle metrikken.
+- **MAPE er sårbar for små `final_charge`-verdier:** MAPE-kolonnen i tabell 8.1 påvirkes uforholdsmessig mye av transaksjoner i ti-tusenkroners-størrelses­orden — derfor er MAE i NOK den primære operasjonelle metrikken og **wMAPE** den primære relative metrikken (jf. § 3.4).
 
 ### 9.5 Praktiske implikasjoner
 

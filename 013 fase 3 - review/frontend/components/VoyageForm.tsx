@@ -5,11 +5,29 @@ import type { VoyageRequest, OptionsResponse } from "../lib/types";
 
 export interface StopRow {
   port: string;
-  arrivalDate: string;
+  arrivalDate: string;       // canonical ISO YYYY-MM-DD (or "" when unset/unparseable)
+  arrivalDateText: string;   // raw dd.mm.yyyy text the user typed; may be partial during typing
   months: string;
   weeks: string;
   days: string;
 }
+
+export interface AgentExpectedItem {
+  category: string;
+  value: string;
+  confirmed: boolean;
+}
+
+export const AGENT_EXPECTED_CATEGORIES = [
+  "Voyage total",
+  "Port Marina",
+  "Provisioning",
+  "Hospitality",
+  "Agency Services",
+  "Agency Fee",
+  "Bunkering",
+  "Technical Services",
+] as const;
 
 export interface VoyageFormInitial {
   yachtName?: string;
@@ -20,6 +38,14 @@ export interface VoyageFormInitial {
   fuel?: string;
   stops?: StopRow[];
   actualCost?: string;
+  agentExpectedItems?: AgentExpectedItem[];
+  actualCategoryTotals?: Record<string, string>;
+}
+
+export interface ParsedAgentExpected {
+  category: string;
+  value: number;
+  confirmed: boolean;
 }
 
 export interface VoyageFormSubmitOpts {
@@ -27,6 +53,8 @@ export interface VoyageFormSubmitOpts {
   yachtName: string;
   itinerary: StopRow[];
   actualCost: number | null;
+  agentExpectedItems: ParsedAgentExpected[];
+  actualCategoryTotals: Record<string, number>;
 }
 
 interface Props {
@@ -38,6 +66,8 @@ interface Props {
   primaryLabel?: string;
   showActualCost?: boolean;
   showAddToRegistry?: boolean;
+  showAgentExpected?: boolean;
+  actualCostCategories?: string[];
 }
 
 const DAYS_PER_MONTH = 30.4375;
@@ -57,6 +87,42 @@ function todayIso(): string {
   return `${d.getFullYear()}-${m}-${day}`;
 }
 
+function addDaysToIso(iso: string, days: number): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+export function isoToDmy(iso: string): string {
+  if (!iso) return "";
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return "";
+  return `${m[3]}.${m[2]}.${m[1]}`;
+}
+
+export function dmyToIso(dmy: string): string | null {
+  const trimmed = dmy.trim();
+  const m = trimmed.match(/^(\d{1,2})[./\-\s](\d{1,2})[./\-\s](\d{4})$/);
+  if (!m) return null;
+  const dnum = parseInt(m[1], 10);
+  const mnum = parseInt(m[2], 10);
+  const ynum = parseInt(m[3], 10);
+  if (mnum < 1 || mnum > 12 || dnum < 1 || dnum > 31 || ynum < 1900 || ynum > 2100) {
+    return null;
+  }
+  // Reject impossible day-of-month combinations (e.g. 31 February).
+  const probe = new Date(Date.UTC(ynum, mnum - 1, dnum));
+  if (
+    probe.getUTCFullYear() !== ynum ||
+    probe.getUTCMonth() !== mnum - 1 ||
+    probe.getUTCDate() !== dnum
+  ) {
+    return null;
+  }
+  return `${ynum}-${String(mnum).padStart(2, "0")}-${String(dnum).padStart(2, "0")}`;
+}
+
 export default function VoyageForm({
   options,
   onSubmit,
@@ -66,6 +132,8 @@ export default function VoyageForm({
   primaryLabel,
   showActualCost = false,
   showAddToRegistry = true,
+  showAgentExpected = true,
+  actualCostCategories,
 }: Props) {
   const [yachtName, setYachtName] = useState(initial?.yachtName ?? "");
   const [gt, setGt] = useState(initial?.gt ?? "");
@@ -74,12 +142,28 @@ export default function VoyageForm({
   const [draft, setDraft] = useState(initial?.draft ?? "");
   const [fuel, setFuel] = useState(initial?.fuel ?? "medium");
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
+  const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
+    initial?.agentExpectedItems ?? [],
+  );
+  const [actualCategoryTotals, setActualCategoryTotals] = useState<Record<string, string>>(
+    initial?.actualCategoryTotals ?? {},
+  );
 
   const firstPort = Object.values(options.ports).flat()[0] || "Bergen";
+  const todayInitial = todayIso();
   const [stops, setStops] = useState<StopRow[]>(
     initial?.stops && initial.stops.length > 0
       ? initial.stops
-      : [{ port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" }],
+      : [
+          {
+            port: firstPort,
+            arrivalDate: todayInitial,
+            arrivalDateText: isoToDmy(todayInitial),
+            months: "",
+            weeks: "",
+            days: "",
+          },
+        ],
   );
 
   function updateStop(idx: number, patch: Partial<StopRow>) {
@@ -87,14 +171,50 @@ export default function VoyageForm({
   }
 
   function addStop() {
+    const today = todayIso();
     setStops((prev) => [
       ...prev,
-      { port: firstPort, arrivalDate: todayIso(), months: "", weeks: "", days: "5" },
+      {
+        port: firstPort,
+        arrivalDate: today,
+        arrivalDateText: isoToDmy(today),
+        months: "",
+        weeks: "",
+        days: "",
+      },
     ]);
   }
 
   function removeStop(idx: number) {
     setStops((prev) => prev.filter((_, i) => i !== idx));
+  }
+
+  function setArrivalDateText(idx: number, text: string) {
+    const iso = dmyToIso(text);
+    setStops((prev) =>
+      prev.map((s, i) =>
+        i === idx
+          ? { ...s, arrivalDateText: text, arrivalDate: iso ?? "" }
+          : s,
+      ),
+    );
+  }
+
+  function addAgentExpectedRow() {
+    setAgentExpectedItems((prev) => [
+      ...prev,
+      { category: AGENT_EXPECTED_CATEGORIES[0], value: "", confirmed: false },
+    ]);
+  }
+
+  function updateAgentExpectedRow(idx: number, patch: Partial<AgentExpectedItem>) {
+    setAgentExpectedItems((prev) =>
+      prev.map((it, i) => (i === idx ? { ...it, ...patch } : it)),
+    );
+  }
+
+  function removeAgentExpectedRow(idx: number) {
+    setAgentExpectedItems((prev) => prev.filter((_, i) => i !== idx));
   }
 
   function submit(save: boolean) {
@@ -112,11 +232,30 @@ export default function VoyageForm({
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
     const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
+
+    const parsedAgent: ParsedAgentExpected[] = [];
+    for (const it of agentExpectedItems) {
+      const trimmed = it.value.trim();
+      if (trimmed === "") continue;
+      const n = parseFloat(trimmed);
+      if (isNaN(n) || n < 0) continue;
+      parsedAgent.push({ category: it.category, value: n, confirmed: it.confirmed });
+    }
+
+    const parsedCategoryTotals: Record<string, number> = {};
+    for (const [cat, val] of Object.entries(actualCategoryTotals)) {
+      const trimmed = val.trim();
+      if (trimmed === "") continue;
+      const n = parseFloat(trimmed);
+      if (!isNaN(n) && n >= 0) parsedCategoryTotals[cat] = n;
+    }
     onSubmit(req, {
       save,
       yachtName: yachtName.trim(),
       itinerary: stops,
       actualCost: actualValid ? parsedActual : null,
+      agentExpectedItems: parsedAgent,
+      actualCategoryTotals: parsedCategoryTotals,
     });
   }
 
@@ -133,6 +272,7 @@ export default function VoyageForm({
   );
 
   // Per-stop overlap error: a stop's arrival must be on/after the previous stop's end date.
+  // Uses ISO date-string comparison (YYYY-MM-DD sorts chronologically) to avoid timezone drift.
   const stopErrors: (string | null)[] = stops.map((stop, idx) => {
     if (idx === 0) return null;
     if (!stop.arrivalDate) return null;
@@ -140,12 +280,9 @@ export default function VoyageForm({
     if (!prev.arrivalDate) return null;
     const prevStayDays = stopToDays(prev);
     if (prevStayDays <= 0) return null;
-    const prevEnd = new Date(prev.arrivalDate);
-    prevEnd.setDate(prevEnd.getDate() + Math.ceil(prevStayDays));
-    const thisStart = new Date(stop.arrivalDate);
-    if (thisStart < prevEnd) {
-      const endIso = prevEnd.toISOString().slice(0, 10);
-      return `Arrival overlaps with previous stop at ${prev.port}. Earliest possible arrival is ${endIso}.`;
+    const earliest = addDaysToIso(prev.arrivalDate, Math.ceil(prevStayDays));
+    if (stop.arrivalDate < earliest) {
+      return `Arrival overlaps with previous stop at ${prev.port}. Earliest possible arrival is ${earliest}.`;
     }
     return null;
   });
@@ -293,12 +430,19 @@ export default function VoyageForm({
                   Arrival date
                 </label>
                 <input
-                  type="date"
-                  value={stop.arrivalDate}
-                  onChange={(e) => updateStop(idx, { arrivalDate: e.target.value })}
+                  type="text"
+                  inputMode="numeric"
+                  value={stop.arrivalDateText}
+                  onChange={(e) => setArrivalDateText(idx, e.target.value)}
+                  placeholder="dd.mm.yyyy"
                   required
                   className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
                 />
+                {stop.arrivalDateText.trim() !== "" && !stop.arrivalDate && (
+                  <p className="text-xs text-red-600 mt-1">
+                    Use format <code>dd.mm.yyyy</code> (e.g. 15.07.2026).
+                  </p>
+                )}
               </div>
 
               <div>
@@ -366,11 +510,77 @@ export default function VoyageForm({
         </div>
       </div>
 
+      {showAgentExpected && (
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Agent&apos;s Expected Costs</h2>
+          <p className="text-xs text-gray-500 mb-3">
+            Add one row per cost category you have an expectation for — pick the category, enter NOK, and tick &quot;Confirmed&quot; if it&apos;s a known invoice value (not just your guess).
+          </p>
+          {agentExpectedItems.length === 0 && (
+            <p className="text-xs text-gray-400 mb-3 italic">
+              No expectations added yet.
+            </p>
+          )}
+          <div className="space-y-2">
+            {agentExpectedItems.map((it, i) => (
+              <div
+                key={i}
+                className="grid grid-cols-12 gap-2 items-center"
+              >
+                <select
+                  value={it.category}
+                  onChange={(e) => updateAgentExpectedRow(i, { category: e.target.value })}
+                  className="nice-select col-span-5 rounded-lg border border-gray-300 px-2 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                >
+                  {AGENT_EXPECTED_CATEGORIES.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+                <input
+                  type="number"
+                  value={it.value}
+                  onChange={(e) => updateAgentExpectedRow(i, { value: e.target.value })}
+                  placeholder="NOK"
+                  min="0"
+                  step="any"
+                  className="col-span-3 rounded-lg border border-gray-300 px-2 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                />
+                <label className="col-span-3 flex items-center gap-1 text-xs text-gray-700 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={it.confirmed}
+                    onChange={(e) => updateAgentExpectedRow(i, { confirmed: e.target.checked })}
+                    disabled={it.value.trim() === ""}
+                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-40"
+                  />
+                  Confirmed
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeAgentExpectedRow(i)}
+                  aria-label="Remove"
+                  className="col-span-1 text-gray-400 hover:text-red-600 text-lg leading-none"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={addAgentExpectedRow}
+            className="mt-3 w-full rounded-lg border border-dashed border-gray-300 px-3 py-2 text-xs font-medium text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add expected cost
+          </button>
+        </div>
+      )}
+
       {showActualCost && (
         <div>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Actual Cost</h2>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Actual voyage cost (NOK)
+            Actual voyage cost — total (NOK)
           </label>
           <input
             type="number"
@@ -382,8 +592,40 @@ export default function VoyageForm({
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
           />
           <p className="text-xs text-gray-500 mt-1">
-            Leave blank if the actual cost is not yet known.
+            Leave blank if the actual total is not yet known. Per-category actuals can be entered below.
           </p>
+
+          {actualCostCategories && actualCostCategories.length > 0 && (
+            <div className="mt-5">
+              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                Per-category actuals (optional)
+              </h3>
+              <p className="text-xs text-gray-500 mb-3">
+                Fill in only the categories you have invoices for. Blank means unknown.
+              </p>
+              <div className="space-y-2">
+                {actualCostCategories.map((cat) => (
+                  <div key={cat} className="grid grid-cols-3 gap-3 items-center">
+                    <label className="text-sm text-gray-700 col-span-1">{cat}</label>
+                    <input
+                      type="number"
+                      value={actualCategoryTotals[cat] ?? ""}
+                      onChange={(e) =>
+                        setActualCategoryTotals((prev) => ({
+                          ...prev,
+                          [cat]: e.target.value,
+                        }))
+                      }
+                      placeholder="NOK"
+                      min="0"
+                      step="any"
+                      className="col-span-2 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

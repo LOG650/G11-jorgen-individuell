@@ -28,6 +28,10 @@ export default function Dashboard() {
       const res = await predictVoyage(req);
       setResult(res);
       if (opts.save && opts.yachtName) {
+        const confirmedAsActual =
+          opts.agentExpectedConfirmed && opts.agentExpected !== null
+            ? opts.agentExpected
+            : opts.actualCost;
         addEntry({
           yachtName: opts.yachtName,
           gt: req.gt,
@@ -41,7 +45,12 @@ export default function Dashboard() {
           itinerary: opts.itinerary,
           stops: res.stops,
           estimatedTotal: res.grand_total,
-          actualTotal: opts.actualCost,
+          estimatedCategoryTotals: res.category_totals,
+          actualTotal: confirmedAsActual,
+          actualCategoryTotals:
+            Object.keys(opts.actualCategoryTotals).length > 0 ? opts.actualCategoryTotals : undefined,
+          agentExpected: opts.agentExpected,
+          agentExpectedConfirmed: opts.agentExpectedConfirmed,
         });
         setSavedNotice(`Saved ${opts.yachtName} to the registry.`);
       }

@@ -10,6 +10,12 @@ export interface RegistryItineraryStop {
   days: string;
 }
 
+export interface AgentExpectedRecord {
+  category: string;
+  value: number;
+  confirmed: boolean;
+}
+
 export interface RegistryEntry {
   id: string;
   yachtName: string;
@@ -24,7 +30,14 @@ export interface RegistryEntry {
   itinerary: RegistryItineraryStop[];
   stops: StopResult[];
   estimatedTotal: number;
+  estimatedCategoryTotals?: Record<string, number>;
   actualTotal: number | null;
+  actualCategoryTotals?: Record<string, number>;
+  agentExpectedItems?: AgentExpectedRecord[];
+  // Legacy fields kept for backwards compatibility with entries saved before
+  // the per-category restructure. Not written by new code.
+  agentExpected?: number | null;
+  agentExpectedConfirmed?: boolean;
   createdAt: string;
 }
 

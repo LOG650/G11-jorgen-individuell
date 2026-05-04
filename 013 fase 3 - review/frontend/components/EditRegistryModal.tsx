@@ -54,6 +54,13 @@ function entryToInitial(entry: RegistryEntry): VoyageFormInitial {
     });
   }
 
+  const categoryStrings: Record<string, string> = {};
+  if (entry.actualCategoryTotals) {
+    for (const [k, v] of Object.entries(entry.actualCategoryTotals)) {
+      categoryStrings[k] = String(v);
+    }
+  }
+
   return {
     yachtName: entry.yachtName,
     gt: String(entry.gt),
@@ -63,6 +70,12 @@ function entryToInitial(entry: RegistryEntry): VoyageFormInitial {
     fuel: entry.fuel,
     stops,
     actualCost: entry.actualTotal === null ? "" : String(entry.actualTotal),
+    agentExpected:
+      entry.agentExpected === null || entry.agentExpected === undefined
+        ? ""
+        : String(entry.agentExpected),
+    agentExpectedConfirmed: entry.agentExpectedConfirmed ?? false,
+    actualCategoryTotals: categoryStrings,
   };
 }
 
@@ -91,6 +104,10 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
     setSaveError(null);
     try {
       const res = await predictVoyage(req);
+      const confirmedAsActual =
+        opts.agentExpectedConfirmed && opts.agentExpected !== null
+          ? opts.agentExpected
+          : opts.actualCost;
       updateEntry(entry.id, {
         yachtName: opts.yachtName || entry.yachtName,
         gt: req.gt,
@@ -104,7 +121,14 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
         itinerary: opts.itinerary,
         stops: res.stops,
         estimatedTotal: res.grand_total,
-        actualTotal: opts.actualCost,
+        estimatedCategoryTotals: res.category_totals,
+        actualTotal: confirmedAsActual,
+        actualCategoryTotals:
+          Object.keys(opts.actualCategoryTotals).length > 0
+            ? opts.actualCategoryTotals
+            : undefined,
+        agentExpected: opts.agentExpected,
+        agentExpectedConfirmed: opts.agentExpectedConfirmed,
       });
       onSaved();
       onClose();
@@ -176,6 +200,13 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
               primaryLabel="Save changes"
               showActualCost
               showAddToRegistry={false}
+              actualCostCategories={
+                entry.estimatedCategoryTotals
+                  ? Object.keys(entry.estimatedCategoryTotals)
+                  : entry.actualCategoryTotals
+                  ? Object.keys(entry.actualCategoryTotals)
+                  : []
+              }
             />
           )}
         </div>
