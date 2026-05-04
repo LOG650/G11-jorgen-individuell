@@ -8,8 +8,10 @@ import {
   HISTORIC_START_YEAR,
   goalForYear,
   loadRevenueGoal,
+  loadRevenueHistory,
   revenueByYear,
   type RevenueGoal,
+  type RevenueYear,
 } from "../../lib/revenue";
 import { FORECAST_METHOD_LABELS, pickBestMethod, runForecast } from "../../lib/forecasting";
 
@@ -56,6 +58,7 @@ export default function ForecastPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
   const [revenueGoal, setRevenueGoal] = useState<RevenueGoal>({ targetRevenue: 0, targetYear: 2030 });
+  const [revenueHistory, setRevenueHistory] = useState<RevenueYear[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
 
   function refreshEntries() {
@@ -68,6 +71,7 @@ export default function ForecastPage() {
     setTarget(cfg.targetRevenue > 0 ? String(cfg.targetRevenue) : "");
     setStretch(String(cfg.stretchPct));
     setRevenueGoal(loadRevenueGoal());
+    setRevenueHistory(loadRevenueHistory());
   }, []);
 
   const yearOptions = useMemo(() => {
@@ -76,7 +80,7 @@ export default function ForecastPage() {
     return years;
   }, []);
 
-  const yearTotals = useMemo(() => revenueByYear(entries), [entries]);
+  const yearTotals = useMemo(() => revenueByYear(revenueHistory), [revenueHistory]);
   const currentYear = new Date().getFullYear();
   const baselineRevenue = yearTotals.get(currentYear) ?? 0;
   const selectedYearRevenue = yearTotals.get(selectedYear) ?? 0;

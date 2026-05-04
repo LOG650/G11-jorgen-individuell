@@ -42,6 +42,15 @@ function AboutIcon({ className }: IconProps) {
   );
 }
 
+function RevenueHistoryIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="10" width="14" height="10" rx="2" />
+      <path d="M9 10V7a3 3 0 0 1 6 0v3" />
+    </svg>
+  );
+}
+
 interface NavItem {
   href: string;
   label: string;
@@ -52,6 +61,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Dashboard", Icon: DashboardIcon },
   { href: "/registry", label: "Registry", Icon: RegistryIcon },
   { href: "/forecast", label: "Forecast", Icon: ForecastIcon },
+  { href: "/revenue-history", label: "Revenue History", Icon: RevenueHistoryIcon },
   { href: "/about", label: "About", Icon: AboutIcon },
 ];
 

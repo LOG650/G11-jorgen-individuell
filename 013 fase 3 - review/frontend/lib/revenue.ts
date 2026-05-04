@@ -1,11 +1,15 @@
-import { listEntries, type RegistryEntry } from "./registry";
-
 const GOAL_KEY = "nauticost.revenuegoal.v1";
+const HISTORY_KEY = "nauticost.revenuehistory.v1";
 export const HISTORIC_START_YEAR = 2020;
 
 export interface RevenueGoal {
   targetRevenue: number;
   targetYear: number;
+}
+
+export interface RevenueYear {
+  year: number;
+  revenue: number;
 }
 
 const DEFAULT_GOAL: RevenueGoal = { targetRevenue: 0, targetYear: 2030 };
@@ -34,32 +38,48 @@ export function saveRevenueGoal(goal: RevenueGoal): void {
   window.localStorage.setItem(GOAL_KEY, JSON.stringify(goal));
 }
 
-function entryYear(entry: RegistryEntry): number | null {
-  const firstStopDate = entry.itinerary?.[0]?.arrivalDate;
-  if (firstStopDate) {
-    const y = parseInt(firstStopDate.slice(0, 4), 10);
-    if (Number.isFinite(y)) return y;
+export function loadRevenueHistory(): RevenueYear[] {
+  if (!isBrowser()) return [];
+  try {
+    const raw = window.localStorage.getItem(HISTORY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((p) => ({
+        year: Number(p?.year),
+        revenue: Number(p?.revenue) || 0,
+      }))
+      .filter((p) => Number.isFinite(p.year))
+      .sort((a, b) => a.year - b.year);
+  } catch {
+    return [];
   }
-  if (entry.createdAt) {
-    const y = new Date(entry.createdAt).getFullYear();
-    if (Number.isFinite(y)) return y;
-  }
-  return null;
 }
 
-export function revenueByYear(entries?: RegistryEntry[]): Map<number, number> {
-  const all = entries ?? listEntries();
+export function saveRevenueHistory(history: RevenueYear[]): void {
+  if (!isBrowser()) return;
+  const cleaned = history
+    .map((p) => ({ year: Number(p.year), revenue: Number(p.revenue) || 0 }))
+    .filter((p) => Number.isFinite(p.year));
+  window.localStorage.setItem(HISTORY_KEY, JSON.stringify(cleaned));
+}
+
+export function revenueByYear(history?: RevenueYear[]): Map<number, number> {
+  const data = history ?? loadRevenueHistory();
   const totals = new Map<number, number>();
-  for (const e of all) {
-    if (e.actualTotal === null || e.actualTotal === undefined) continue;
-    const y = entryYear(e);
-    if (y === null) continue;
-    totals.set(y, (totals.get(y) ?? 0) + e.actualTotal);
+  for (const p of data) {
+    totals.set(p.year, (totals.get(p.year) ?? 0) + p.revenue);
   }
   return totals;
 }
 
-export function goalForYear(goal: RevenueGoal, year: number, baselineYear: number, baselineRevenue: number): number | null {
+export function goalForYear(
+  goal: RevenueGoal,
+  year: number,
+  baselineYear: number,
+  baselineRevenue: number,
+): number | null {
   if (goal.targetRevenue <= 0 || goal.targetYear <= baselineYear) return null;
   if (year < baselineYear) return null;
   if (year >= goal.targetYear) return goal.targetRevenue;

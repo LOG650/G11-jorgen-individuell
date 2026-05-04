@@ -11,13 +11,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { listEntries, type RegistryEntry } from "../../lib/registry";
 import {
   HISTORIC_START_YEAR,
   loadRevenueGoal,
+  loadRevenueHistory,
   revenueByYear,
   saveRevenueGoal,
+  saveRevenueHistory,
   type RevenueGoal,
+  type RevenueYear,
 } from "../../lib/revenue";
 import {
   FORECAST_METHOD_LABELS,
@@ -88,20 +90,26 @@ function LoginGate({ onPass }: { onPass: () => void }) {
         >
           Sign in
         </button>
+        <p className="text-[11px] text-gray-400 text-center">
+          Demo credentials: <code className="font-mono">admin</code> /{" "}
+          <code className="font-mono">admin123</code>
+        </p>
       </form>
     </div>
   );
 }
 
 function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
-  const [entries, setEntries] = useState<RegistryEntry[]>([]);
+  const [history, setHistory] = useState<RevenueYear[]>([]);
   const [goal, setGoal] = useState<RevenueGoal>({ targetRevenue: 0, targetYear: 2030 });
   const [targetText, setTargetText] = useState("");
   const [yearText, setYearText] = useState("");
   const [forecastMethod, setForecastMethod] = useState<ForecastMethod | "auto">("auto");
+  const [newYearText, setNewYearText] = useState("");
+  const [newRevenueText, setNewRevenueText] = useState("");
 
   useEffect(() => {
-    setEntries(listEntries());
+    setHistory(loadRevenueHistory());
     const g = loadRevenueGoal();
     setGoal(g);
     setTargetText(g.targetRevenue > 0 ? String(g.targetRevenue) : "");
@@ -119,12 +127,37 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     setGoal(next);
   }
 
+  function persistHistory(rows: RevenueYear[]) {
+    const sorted = [...rows].sort((a, b) => a.year - b.year);
+    saveRevenueHistory(sorted);
+    setHistory(sorted);
+  }
+
+  function updateRow(year: number, revenue: number) {
+    const next = history.map((r) => (r.year === year ? { ...r, revenue } : r));
+    persistHistory(next);
+  }
+
+  function removeRow(year: number) {
+    persistHistory(history.filter((r) => r.year !== year));
+  }
+
+  function addRow() {
+    const y = parseInt(newYearText, 10);
+    const r = parseFloat(newRevenueText);
+    if (!Number.isFinite(y)) return;
+    if (history.some((row) => row.year === y)) return;
+    persistHistory([...history, { year: y, revenue: Number.isFinite(r) ? r : 0 }]);
+    setNewYearText("");
+    setNewRevenueText("");
+  }
+
   function logout() {
     sessionStorage.removeItem(SESSION_KEY);
     onLogout();
   }
 
-  const totals = useMemo(() => revenueByYear(entries), [entries]);
+  const totals = useMemo(() => revenueByYear(history), [history]);
 
   const currentYear = new Date().getFullYear();
   const lastYear = Math.max(currentYear, goal.targetYear || currentYear);
@@ -133,23 +166,21 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
 
   const baselineRevenue = totals.get(currentYear) ?? 0;
 
-  const history = useMemo(() => {
-    return Array.from(totals.entries())
-      .map(([year, value]) => ({ year, value }))
-      .sort((a, b) => a.year - b.year);
-  }, [totals]);
+  const seriesForFit = useMemo(() => {
+    return history.map((r) => ({ year: r.year, value: r.revenue })).sort((a, b) => a.year - b.year);
+  }, [history]);
 
-  const lastHistoryYear = history.length > 0 ? history[history.length - 1].year : currentYear;
+  const lastHistoryYear = seriesForFit.length > 0 ? seriesForFit[seriesForFit.length - 1].year : currentYear;
   const horizonYears = years.filter((y) => y > lastHistoryYear);
 
   const resolvedMethod: ForecastMethod = useMemo(() => {
-    if (forecastMethod === "auto") return pickBestMethod(history);
+    if (forecastMethod === "auto") return pickBestMethod(seriesForFit);
     return forecastMethod;
-  }, [forecastMethod, history]);
+  }, [forecastMethod, seriesForFit]);
 
   const forecastResult = useMemo(
-    () => runForecast(resolvedMethod, history, horizonYears),
-    [resolvedMethod, history, horizonYears],
+    () => runForecast(resolvedMethod, seriesForFit, horizonYears),
+    [resolvedMethod, seriesForFit, horizonYears],
   );
   const forecastMap = useMemo(() => {
     const m = new Map<number, number>();
@@ -194,8 +225,8 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Revenue History</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Past revenue is summed from registry entries by voyage year. Set a goal to
-            project the trajectory forward.
+            Type past-year revenue numbers below. They are stored only in this browser
+            and used by the chart and forecast page.
           </p>
         </div>
         <button
@@ -204,6 +235,87 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
         >
           Sign out
         </button>
+      </div>
+
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <h2 className="text-sm font-semibold text-gray-900 mb-4">Yearly revenue</h2>
+        {history.length === 0 ? (
+          <p className="text-xs text-gray-500 italic mb-3">
+            No years recorded yet. Add a row below to start.
+          </p>
+        ) : (
+          <table className="w-full text-sm mb-4">
+            <thead className="text-xs uppercase tracking-wide text-gray-500">
+              <tr>
+                <th className="text-left py-2 font-medium">Year</th>
+                <th className="text-right py-2 font-medium">Revenue (NOK)</th>
+                <th className="py-2"></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {history.map((row) => (
+                <tr key={row.year}>
+                  <td className="py-2 font-medium text-gray-900">{row.year}</td>
+                  <td className="py-2 text-right">
+                    <input
+                      type="number"
+                      defaultValue={row.revenue}
+                      onBlur={(e) => {
+                        const v = parseFloat(e.target.value);
+                        updateRow(row.year, Number.isFinite(v) ? v : 0);
+                      }}
+                      min="0"
+                      step="any"
+                      className="w-40 rounded border border-gray-300 px-2 py-1 text-sm text-right focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                    />
+                  </td>
+                  <td className="py-2 text-right">
+                    <button
+                      onClick={() => removeRow(row.year)}
+                      className="text-xs text-red-600 hover:text-red-700"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+
+        <div className="flex flex-wrap items-end gap-3 border-t border-gray-100 pt-4">
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">Year</label>
+            <input
+              type="number"
+              value={newYearText}
+              onChange={(e) => setNewYearText(e.target.value)}
+              placeholder="e.g. 2024"
+              min="1900"
+              step="1"
+              className="w-28 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">Revenue (NOK)</label>
+            <input
+              type="number"
+              value={newRevenueText}
+              onChange={(e) => setNewRevenueText(e.target.value)}
+              placeholder="e.g. 4500000"
+              min="0"
+              step="any"
+              className="w-44 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          <button
+            onClick={addRow}
+            disabled={!newYearText.trim()}
+            className="rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            + Add year
+          </button>
+        </div>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
@@ -251,7 +363,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">Current year ({currentYear})</p>
           <p className="text-2xl font-bold text-gray-900">{formatNOK(baselineRevenue)}</p>
-          <p className="text-xs text-gray-400 mt-1">Registry total for {currentYear}.</p>
+          <p className="text-xs text-gray-400 mt-1">Recorded for {currentYear}.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">
