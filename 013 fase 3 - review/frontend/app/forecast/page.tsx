@@ -1,9 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { listEntries, updateEntry, type RegistryEntry } from "../../lib/registry";
 import { loadForecastConfig, saveForecastConfig } from "../../lib/forecast";
+import {
+  HISTORIC_START_YEAR,
+  goalForYear,
+  loadRevenueGoal,
+  revenueByYear,
+  type RevenueGoal,
+} from "../../lib/revenue";
+import { FORECAST_METHOD_LABELS, pickBestMethod, runForecast } from "../../lib/forecasting";
 
 function formatNOK(n: number): string {
   return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
@@ -47,6 +55,8 @@ export default function ForecastPage() {
   const [stretch, setStretch] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
+  const [revenueGoal, setRevenueGoal] = useState<RevenueGoal>({ targetRevenue: 0, targetYear: 2030 });
+  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
 
   function refreshEntries() {
     setEntries(listEntries());
@@ -57,7 +67,35 @@ export default function ForecastPage() {
     const cfg = loadForecastConfig();
     setTarget(cfg.targetRevenue > 0 ? String(cfg.targetRevenue) : "");
     setStretch(String(cfg.stretchPct));
+    setRevenueGoal(loadRevenueGoal());
   }, []);
+
+  const yearOptions = useMemo(() => {
+    const years: number[] = [];
+    for (let y = HISTORIC_START_YEAR; y <= 2031; y++) years.push(y);
+    return years;
+  }, []);
+
+  const yearTotals = useMemo(() => revenueByYear(entries), [entries]);
+  const currentYear = new Date().getFullYear();
+  const baselineRevenue = yearTotals.get(currentYear) ?? 0;
+  const selectedYearRevenue = yearTotals.get(selectedYear) ?? 0;
+  const selectedYearGoal = goalForYear(revenueGoal, selectedYear, currentYear, baselineRevenue);
+  const selectedYearGap =
+    selectedYearGoal !== null ? selectedYearRevenue - selectedYearGoal : null;
+
+  const history = useMemo(() => {
+    return Array.from(yearTotals.entries())
+      .map(([year, value]) => ({ year, value }))
+      .sort((a, b) => a.year - b.year);
+  }, [yearTotals]);
+  const lastHistoryYear = history.length > 0 ? history[history.length - 1].year : currentYear;
+  const bestMethod = useMemo(() => pickBestMethod(history), [history]);
+  const algoForecast = useMemo(() => {
+    if (selectedYear <= lastHistoryYear) return null;
+    const r = runForecast(bestMethod, history, [selectedYear]);
+    return r.forecast[0]?.value ?? null;
+  }, [bestMethod, history, lastHistoryYear, selectedYear]);
 
   function startEdit(entry: RegistryEntry) {
     setEditingId(entry.id);
@@ -106,6 +144,91 @@ export default function ForecastPage() {
           based on entries in the{" "}
           <Link href="/registry" className="text-blue-600 hover:underline">registry</Link>.
         </p>
+      </div>
+
+      {/* Revenue progress for selected year */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
+          <div>
+            <h2 className="text-sm font-semibold text-gray-900">Revenue progress</h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Pick a year between {HISTORIC_START_YEAR} and 2031 to see how that year stands
+              against the revenue goal.
+            </p>
+          </div>
+          <select
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(parseInt(e.target.value, 10))}
+            className="nice-select rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+          >
+            {yearOptions.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4">
+            <p className="text-xs text-gray-500">Revenue {selectedYear}</p>
+            <p className="text-2xl font-bold text-gray-900">{formatNOK(selectedYearRevenue)}</p>
+            <p className="text-xs text-gray-400 mt-1">From registry entries.</p>
+          </div>
+          <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4">
+            <p className="text-xs text-emerald-700">Algorithm forecast {selectedYear}</p>
+            <p className="text-2xl font-bold text-emerald-800">
+              {algoForecast === null ? "—" : formatNOK(algoForecast)}
+            </p>
+            <p className="text-xs text-emerald-700/70 mt-1">
+              {algoForecast === null
+                ? selectedYear <= lastHistoryYear
+                  ? "Historic year — use registry value."
+                  : "Add registry data to forecast."
+                : `${FORECAST_METHOD_LABELS[bestMethod]} (auto-picked).`}
+            </p>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4">
+            <p className="text-xs text-gray-500">Goal trajectory {selectedYear}</p>
+            <p className="text-2xl font-bold text-gray-900">
+              {selectedYearGoal === null ? "—" : formatNOK(selectedYearGoal)}
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              {revenueGoal.targetRevenue > 0
+                ? `On the path to ${formatNOK(revenueGoal.targetRevenue)} by ${revenueGoal.targetYear}.`
+                : "No revenue goal set."}
+            </p>
+          </div>
+          <div
+            className={`rounded-lg border p-4 ${
+              selectedYearGap === null
+                ? "border-gray-200 bg-gray-50/60"
+                : selectedYearGap >= 0
+                  ? "border-green-200 bg-green-50"
+                  : "border-amber-200 bg-amber-50"
+            }`}
+          >
+            <p className="text-xs text-gray-500">Gap to goal</p>
+            <p
+              className={`text-2xl font-bold ${
+                selectedYearGap === null
+                  ? "text-gray-900"
+                  : selectedYearGap >= 0
+                    ? "text-green-700"
+                    : "text-amber-700"
+              }`}
+            >
+              {selectedYearGap === null
+                ? "—"
+                : `${selectedYearGap >= 0 ? "+" : ""}${formatNOK(selectedYearGap)}`}
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              {selectedYearGap === null
+                ? "Set a goal to compute."
+                : selectedYearGap >= 0
+                  ? "Above trajectory."
+                  : "Below trajectory."}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Inputs */}

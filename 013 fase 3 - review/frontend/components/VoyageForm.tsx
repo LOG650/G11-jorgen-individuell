@@ -5,8 +5,7 @@ import type { VoyageRequest, OptionsResponse } from "../lib/types";
 
 export interface StopRow {
   port: string;
-  arrivalDate: string;       // canonical ISO YYYY-MM-DD (or "" when unset/unparseable)
-  arrivalDateText: string;   // raw dd.mm.yyyy text the user typed; may be partial during typing
+  arrivalDate: string;       // canonical ISO YYYY-MM-DD (or "" when unset)
   months: string;
   weeks: string;
   days: string;
@@ -94,35 +93,6 @@ function addDaysToIso(iso: string, days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-export function isoToDmy(iso: string): string {
-  if (!iso) return "";
-  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!m) return "";
-  return `${m[3]}.${m[2]}.${m[1]}`;
-}
-
-export function dmyToIso(dmy: string): string | null {
-  const trimmed = dmy.trim();
-  const m = trimmed.match(/^(\d{1,2})[./\-\s](\d{1,2})[./\-\s](\d{4})$/);
-  if (!m) return null;
-  const dnum = parseInt(m[1], 10);
-  const mnum = parseInt(m[2], 10);
-  const ynum = parseInt(m[3], 10);
-  if (mnum < 1 || mnum > 12 || dnum < 1 || dnum > 31 || ynum < 1900 || ynum > 2100) {
-    return null;
-  }
-  // Reject impossible day-of-month combinations (e.g. 31 February).
-  const probe = new Date(Date.UTC(ynum, mnum - 1, dnum));
-  if (
-    probe.getUTCFullYear() !== ynum ||
-    probe.getUTCMonth() !== mnum - 1 ||
-    probe.getUTCDate() !== dnum
-  ) {
-    return null;
-  }
-  return `${ynum}-${String(mnum).padStart(2, "0")}-${String(dnum).padStart(2, "0")}`;
-}
-
 export default function VoyageForm({
   options,
   onSubmit,
@@ -150,15 +120,13 @@ export default function VoyageForm({
   );
 
   const firstPort = Object.values(options.ports).flat()[0] || "Bergen";
-  const todayInitial = todayIso();
   const [stops, setStops] = useState<StopRow[]>(
     initial?.stops && initial.stops.length > 0
       ? initial.stops
       : [
           {
             port: firstPort,
-            arrivalDate: todayInitial,
-            arrivalDateText: isoToDmy(todayInitial),
+            arrivalDate: todayIso(),
             months: "",
             weeks: "",
             days: "",
@@ -171,13 +139,11 @@ export default function VoyageForm({
   }
 
   function addStop() {
-    const today = todayIso();
     setStops((prev) => [
       ...prev,
       {
         port: firstPort,
-        arrivalDate: today,
-        arrivalDateText: isoToDmy(today),
+        arrivalDate: todayIso(),
         months: "",
         weeks: "",
         days: "",
@@ -187,17 +153,6 @@ export default function VoyageForm({
 
   function removeStop(idx: number) {
     setStops((prev) => prev.filter((_, i) => i !== idx));
-  }
-
-  function setArrivalDateText(idx: number, text: string) {
-    const iso = dmyToIso(text);
-    setStops((prev) =>
-      prev.map((s, i) =>
-        i === idx
-          ? { ...s, arrivalDateText: text, arrivalDate: iso ?? "" }
-          : s,
-      ),
-    );
   }
 
   function addAgentExpectedRow() {
@@ -430,19 +385,12 @@ export default function VoyageForm({
                   Arrival date
                 </label>
                 <input
-                  type="text"
-                  inputMode="numeric"
-                  value={stop.arrivalDateText}
-                  onChange={(e) => setArrivalDateText(idx, e.target.value)}
-                  placeholder="dd.mm.yyyy"
+                  type="date"
+                  value={stop.arrivalDate}
+                  onChange={(e) => updateStop(idx, { arrivalDate: e.target.value })}
                   required
                   className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
                 />
-                {stop.arrivalDateText.trim() !== "" && !stop.arrivalDate && (
-                  <p className="text-xs text-red-600 mt-1">
-                    Use format <code>dd.mm.yyyy</code> (e.g. 15.07.2026).
-                  </p>
-                )}
               </div>
 
               <div>

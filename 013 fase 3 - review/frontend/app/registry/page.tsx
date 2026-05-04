@@ -147,12 +147,28 @@ export default function RegistryPage() {
                         </button>
                       </div>
                     ) : (
-                      <button
-                        onClick={() => startEditName(e)}
-                        className="hover:text-blue-600 underline decoration-dotted underline-offset-2"
-                      >
-                        {e.yachtName}
-                      </button>
+                      <div className="flex flex-col gap-0.5">
+                        <Link
+                          href={`/registry/${e.id}`}
+                          className="text-blue-600 hover:text-blue-700 hover:underline"
+                        >
+                          {e.yachtName}
+                        </Link>
+                        <button
+                          onClick={() => startEditName(e)}
+                          className="self-start text-[10px] text-gray-400 hover:text-gray-600"
+                        >
+                          rename
+                        </button>
+                        {e.agentExpectedItems && e.agentExpectedItems.length > 0 && (
+                          <span className="text-[10px] text-gray-500 mt-0.5">
+                            {e.agentExpectedItems.length} agent expectation{e.agentExpectedItems.length === 1 ? "" : "s"}
+                            {e.agentExpectedItems.some((it) => it.confirmed) && (
+                              <> · {e.agentExpectedItems.filter((it) => it.confirmed).length} confirmed</>
+                            )}
+                          </span>
+                        )}
+                      </div>
                     )}
                   </td>
                   <td className="px-4 py-3 text-gray-600">
