@@ -101,6 +101,32 @@ export default function ForecastPage() {
     return r.forecast[0]?.value ?? null;
   }, [bestMethod, history, lastHistoryYear, selectedYear]);
 
+  // Multi-year forecast: from the year after the last historic year through
+  // either the user's revenue-goal year or 2031, whichever is later.
+  const forecastYears = useMemo(() => {
+    const horizonEnd = Math.max(revenueGoal.targetYear || 0, 2031);
+    const ys: number[] = [];
+    for (let y = lastHistoryYear + 1; y <= horizonEnd; y++) ys.push(y);
+    return ys;
+  }, [lastHistoryYear, revenueGoal.targetYear]);
+
+  const yearByYearForecast = useMemo(() => {
+    if (history.length === 0 || forecastYears.length === 0) return [];
+    const r = runForecast(bestMethod, history, forecastYears);
+    const map = new Map<number, number>();
+    for (const p of r.forecast) map.set(p.year, p.value);
+    const lastHistValue = history[history.length - 1].value;
+    let prev = lastHistValue;
+    return forecastYears.map((y) => {
+      const value = map.get(y) ?? prev;
+      const deltaAbs = value - prev;
+      const deltaPct = prev > 0 ? (deltaAbs / prev) * 100 : 0;
+      const row = { year: y, value, deltaAbs, deltaPct, basisPrev: prev };
+      prev = value;
+      return row;
+    });
+  }, [bestMethod, history, forecastYears]);
+
   function startEdit(entry: RegistryEntry) {
     setEditingId(entry.id);
     setEditValue(entry.actualTotal !== null ? String(entry.actualTotal) : "");
@@ -233,6 +259,70 @@ export default function ForecastPage() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Year-by-year algorithm forecast */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <div className="mb-4">
+          <h2 className="text-sm font-semibold text-gray-900">
+            Year-by-year algorithm forecast
+          </h2>
+          <p className="text-xs text-gray-500 mt-1">
+            Predicted revenue for each upcoming year using{" "}
+            <span className="font-medium">{FORECAST_METHOD_LABELS[bestMethod]}</span>{" "}
+            (auto-picked). Δ shows the increase vs. the previous year.
+            Last historic year ({lastHistoryYear}):{" "}
+            <span className="font-medium">
+              {formatNOK(history[history.length - 1]?.value ?? 0)} NOK
+            </span>
+            .
+          </p>
+        </div>
+        {yearByYearForecast.length === 0 ? (
+          <p className="text-sm text-gray-400 italic">
+            Add revenue history to compute a multi-year forecast.
+          </p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wide text-gray-500">
+                <tr>
+                  <th className="text-left py-2 font-medium">Year</th>
+                  <th className="text-right py-2 font-medium">Forecasted revenue (NOK)</th>
+                  <th className="text-right py-2 font-medium">Δ vs prev year (NOK)</th>
+                  <th className="text-right py-2 font-medium">Δ %</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {yearByYearForecast.map((row) => {
+                  const tone =
+                    row.deltaAbs > 0
+                      ? "text-green-700"
+                      : row.deltaAbs < 0
+                        ? "text-amber-700"
+                        : "text-gray-500";
+                  const sign = row.deltaAbs > 0 ? "+" : "";
+                  return (
+                    <tr key={row.year}>
+                      <td className="py-2 font-medium text-gray-900">{row.year}</td>
+                      <td className="py-2 text-right text-gray-900">
+                        {formatNOK(row.value)}
+                      </td>
+                      <td className={`py-2 text-right font-medium ${tone}`}>
+                        {sign}
+                        {formatNOK(row.deltaAbs)}
+                      </td>
+                      <td className={`py-2 text-right ${tone}`}>
+                        {sign}
+                        {row.deltaPct.toFixed(1)}%
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* Inputs */}
