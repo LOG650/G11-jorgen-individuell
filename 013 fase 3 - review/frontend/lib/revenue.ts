@@ -1,5 +1,6 @@
 const GOAL_KEY = "nauticost.revenuegoal.v1";
 const HISTORY_KEY = "nauticost.revenuehistory.v1";
+const DRIVERS_KEY = "nauticost.revenuedrivers.v1";
 export const HISTORIC_START_YEAR = 2020;
 
 export interface RevenueGoal {
@@ -88,6 +89,49 @@ export function revenueByYear(history?: RevenueYear[]): Map<number, number> {
     totals.set(p.year, (totals.get(p.year) ?? 0) + p.revenue);
   }
   return totals;
+}
+
+export interface DriverState {
+  /** Ordered list of driver column names. */
+  names: string[];
+  /** year → driver name → numeric value (covers both history and future years). */
+  values: Record<number, Record<string, number>>;
+}
+
+const DEFAULT_DRIVERS: DriverState = { names: [], values: {} };
+
+export function loadDrivers(): DriverState {
+  if (!isBrowser()) return { names: [], values: {} };
+  try {
+    const raw = window.localStorage.getItem(DRIVERS_KEY);
+    if (!raw) return { names: [], values: {} };
+    const parsed = JSON.parse(raw);
+    const names: string[] = Array.isArray(parsed?.names)
+      ? parsed.names.filter((s: unknown) => typeof s === "string" && s.trim() !== "")
+      : [];
+    const rawValues = parsed?.values;
+    const values: Record<number, Record<string, number>> = {};
+    if (rawValues && typeof rawValues === "object") {
+      for (const [yearKey, perDriver] of Object.entries(rawValues)) {
+        const y = Number(yearKey);
+        if (!Number.isFinite(y) || !perDriver || typeof perDriver !== "object") continue;
+        const row: Record<string, number> = {};
+        for (const [name, v] of Object.entries(perDriver as Record<string, unknown>)) {
+          const num = Number(v);
+          if (Number.isFinite(num)) row[name] = num;
+        }
+        values[y] = row;
+      }
+    }
+    return { names, values };
+  } catch {
+    return { ...DEFAULT_DRIVERS };
+  }
+}
+
+export function saveDrivers(state: DriverState): void {
+  if (!isBrowser()) return;
+  window.localStorage.setItem(DRIVERS_KEY, JSON.stringify(state));
 }
 
 export function goalForYear(

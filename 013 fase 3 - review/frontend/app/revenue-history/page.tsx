@@ -14,18 +14,23 @@ import {
 import {
   HISTORIC_REVENUE_DEFAULTS,
   HISTORIC_START_YEAR,
+  loadDrivers,
   loadRevenueGoal,
   loadRevenueHistory,
   revenueByYear,
+  saveDrivers,
   saveRevenueGoal,
   saveRevenueHistory,
+  type DriverState,
   type RevenueGoal,
   type RevenueYear,
 } from "../../lib/revenue";
 import {
   FORECAST_METHOD_LABELS,
+  multipleRegressionForecast,
   pickBestMethod,
   runForecast,
+  type DriverObservation,
   type ForecastMethod,
 } from "../../lib/forecasting";
 
@@ -108,6 +113,8 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
   const [forecastMethod, setForecastMethod] = useState<ForecastMethod | "auto">("auto");
   const [newYearText, setNewYearText] = useState("");
   const [newRevenueText, setNewRevenueText] = useState("");
+  const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
+  const [newDriverName, setNewDriverName] = useState("");
 
   useEffect(() => {
     setHistory(loadRevenueHistory());
@@ -115,7 +122,39 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     setGoal(g);
     setTargetText(g.targetRevenue > 0 ? String(g.targetRevenue) : "");
     setYearText(String(g.targetYear));
+    setDrivers(loadDrivers());
   }, []);
+
+  function persistDrivers(next: DriverState) {
+    saveDrivers(next);
+    setDrivers(next);
+  }
+
+  function addDriverColumn() {
+    const name = newDriverName.trim();
+    if (!name) return;
+    if (drivers.names.includes(name)) return;
+    persistDrivers({ ...drivers, names: [...drivers.names, name] });
+    setNewDriverName("");
+  }
+
+  function removeDriverColumn(name: string) {
+    const nextValues: Record<number, Record<string, number>> = {};
+    for (const [y, row] of Object.entries(drivers.values)) {
+      const cleaned: Record<string, number> = {};
+      for (const [k, v] of Object.entries(row)) if (k !== name) cleaned[k] = v;
+      nextValues[Number(y)] = cleaned;
+    }
+    persistDrivers({ names: drivers.names.filter((n) => n !== name), values: nextValues });
+  }
+
+  function setDriverValue(year: number, name: string, raw: string) {
+    const v = parseFloat(raw);
+    const row = { ...(drivers.values[year] ?? {}) };
+    if (Number.isFinite(v)) row[name] = v;
+    else delete row[name];
+    persistDrivers({ ...drivers, values: { ...drivers.values, [year]: row } });
+  }
 
   function commitGoal() {
     const t = parseFloat(targetText);
@@ -186,10 +225,21 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     return forecastMethod;
   }, [forecastMethod, seriesForFit]);
 
-  const forecastResult = useMemo(
-    () => runForecast(resolvedMethod, seriesForFit, horizonYears),
-    [resolvedMethod, seriesForFit, horizonYears],
-  );
+  const forecastResult = useMemo(() => {
+    if (resolvedMethod === "multiple_regression") {
+      const observations: DriverObservation[] = history.map((r) => ({
+        year: r.year,
+        value: r.revenue,
+        drivers: drivers.values[r.year] ?? {},
+      }));
+      const futureRows = horizonYears.map((y) => ({
+        year: y,
+        drivers: drivers.values[y] ?? {},
+      }));
+      return multipleRegressionForecast(observations, drivers.names, futureRows);
+    }
+    return runForecast(resolvedMethod, seriesForFit, horizonYears);
+  }, [resolvedMethod, seriesForFit, horizonYears, history, drivers]);
   const forecastMap = useMemo(() => {
     const m = new Map<number, number>();
     for (const p of forecastResult.forecast) m.set(p.year, p.value);
@@ -334,6 +384,91 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <h2 className="text-sm font-semibold text-gray-900 mb-1">
+          Explanatory drivers (multiple regression)
+        </h2>
+        <p className="text-xs text-gray-500 mb-4">
+          Add yearly drivers (e.g. fuel price, fleet size, EUR/NOK). Used only when
+          forecast method = &quot;Multiple regression&quot;. Provide values for both
+          historic years (to fit) and future years (to forecast).
+        </p>
+        <div className="flex flex-wrap items-end gap-3 mb-4">
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">New driver name</label>
+            <input
+              type="text"
+              value={newDriverName}
+              onChange={(e) => setNewDriverName(e.target.value)}
+              placeholder="e.g. fuel_price_eur"
+              className="w-56 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          <button
+            onClick={addDriverColumn}
+            disabled={!newDriverName.trim()}
+            className="rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          >
+            + Add driver column
+          </button>
+        </div>
+        {drivers.names.length === 0 ? (
+          <p className="text-xs text-gray-500 italic">No drivers defined yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wide text-gray-500">
+                <tr>
+                  <th className="text-left py-2 font-medium">Year</th>
+                  {drivers.names.map((name) => (
+                    <th key={name} className="text-right py-2 font-medium">
+                      <span className="inline-flex items-center gap-1">
+                        {name}
+                        <button
+                          onClick={() => removeDriverColumn(name)}
+                          title="Remove driver"
+                          className="text-red-500 hover:text-red-700 text-[11px]"
+                        >
+                          ×
+                        </button>
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {years.map((y) => {
+                  const isFuture = y > lastHistoryYear;
+                  return (
+                    <tr key={y} className={isFuture ? "bg-amber-50/40" : ""}>
+                      <td className="py-2 font-medium text-gray-900">
+                        {y}
+                        {isFuture && (
+                          <span className="ml-1 text-[10px] uppercase tracking-wider text-amber-700">
+                            future
+                          </span>
+                        )}
+                      </td>
+                      {drivers.names.map((name) => (
+                        <td key={name} className="py-2 text-right">
+                          <input
+                            type="number"
+                            defaultValue={drivers.values[y]?.[name] ?? ""}
+                            onBlur={(e) => setDriverValue(y, name, e.target.value)}
+                            step="any"
+                            className="w-32 rounded border border-gray-300 px-2 py-1 text-sm text-right focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
         <h2 className="text-sm font-semibold text-gray-900 mb-4">Revenue goal</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -409,7 +544,20 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
                     ` (α=${forecastResult.params.alpha}${
                       forecastResult.params.beta !== undefined ? `, β=${forecastResult.params.beta}` : ""
                     })`}
+                  {forecastResult.params?.slope !== undefined &&
+                    ` (slope=${formatNOK(forecastResult.params.slope)} NOK/yr, R²=${forecastResult.params.r2 ?? "—"})`}
                   .</>
+              )}
+              {forecastResult.params?.error && (
+                <span className="block text-amber-700 mt-1">⚠ {forecastResult.params.error}</span>
+              )}
+              {forecastResult.params?.coefficients && (
+                <span className="block text-gray-600 mt-1">
+                  R²={forecastResult.params.r2 ?? "—"}.{" "}
+                  Coefficients: {Object.entries(forecastResult.params.coefficients)
+                    .map(([k, v]) => `${k}=${formatNOK(v)}`)
+                    .join(", ")}
+                </span>
               )}
             </p>
           </div>
@@ -425,6 +573,8 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
               </option>
               <option value="holt">{FORECAST_METHOD_LABELS.holt}</option>
               <option value="ses">{FORECAST_METHOD_LABELS.ses}</option>
+              <option value="linear">{FORECAST_METHOD_LABELS.linear}</option>
+              <option value="multiple_regression">{FORECAST_METHOD_LABELS.multiple_regression}</option>
               <option value="moving_average">{FORECAST_METHOD_LABELS.moving_average}</option>
               <option value="naive">{FORECAST_METHOD_LABELS.naive}</option>
             </select>

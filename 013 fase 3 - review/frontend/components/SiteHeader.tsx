@@ -51,6 +51,15 @@ function RevenueHistoryIcon({ className }: IconProps) {
   );
 }
 
+function SeasonalIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
+      <path d="M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
+    </svg>
+  );
+}
+
 interface NavItem {
   href: string;
   label: string;
@@ -62,6 +71,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/registry", label: "Registry", Icon: RegistryIcon },
   { href: "/forecast", label: "Forecast", Icon: ForecastIcon },
   { href: "/revenue-history", label: "Revenue History", Icon: RevenueHistoryIcon },
+  { href: "/seasonal", label: "Seasonal", Icon: SeasonalIcon },
   { href: "/about", label: "About", Icon: AboutIcon },
 ];
 
