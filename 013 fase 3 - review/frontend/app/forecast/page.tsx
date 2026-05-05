@@ -19,13 +19,23 @@ import { loadForecastConfig, saveForecastConfig } from "../../lib/forecast";
 import {
   HISTORIC_START_YEAR,
   goalForYear,
+  loadDrivers,
   loadRevenueGoal,
   loadRevenueHistory,
   revenueByYear,
+  saveDrivers,
+  type DriverState,
   type RevenueGoal,
   type RevenueYear,
 } from "../../lib/revenue";
-import { FORECAST_METHOD_LABELS, pickBestMethod, runForecast } from "../../lib/forecasting";
+import {
+  FORECAST_METHOD_LABELS,
+  multipleRegressionForecast,
+  pickBestMethod,
+  runForecast,
+  type DriverObservation,
+  type ForecastMethod,
+} from "../../lib/forecasting";
 import {
   MONTH_NAMES,
   additiveDecomposition,
@@ -41,37 +51,6 @@ function formatNOK(n: number): string {
 function formatNum(n: number): string {
   return n.toLocaleString("nb-NO", { maximumFractionDigits: 2 });
 }
-
-const SEASONAL_STORAGE_KEY = "nauticost.seasonal.input.v1";
-
-const SEASONAL_SAMPLE_INPUT = [
-  "# Paste rows like: 2024-03,1234   (or 2024,3,1234   or 2024-03 1234)",
-  "# Need at least 24 months (2 full seasons) for decomposition.",
-  "2020-01,12",
-  "2020-02,15",
-  "2020-03,22",
-  "2020-04,30",
-  "2020-05,55",
-  "2020-06,90",
-  "2020-07,120",
-  "2020-08,115",
-  "2020-09,72",
-  "2020-10,38",
-  "2020-11,18",
-  "2020-12,14",
-  "2021-01,16",
-  "2021-02,18",
-  "2021-03,28",
-  "2021-04,40",
-  "2021-05,68",
-  "2021-06,108",
-  "2021-07,140",
-  "2021-08,135",
-  "2021-09,85",
-  "2021-10,46",
-  "2021-11,22",
-  "2021-12,17",
-].join("\n");
 
 function pct(part: number, whole: number): number {
   if (whole <= 0) return 0;
@@ -105,6 +84,37 @@ function Bar({ value, max, tone }: { value: number; max: number; tone: "blue" | 
   );
 }
 
+const SEASONAL_STORAGE_KEY = "nauticost.seasonal.input.v1";
+
+const SEASONAL_SAMPLE_INPUT = [
+  "# Paste rows like: 2024-03,1234   (or 2024,3,1234   or 2024-03 1234)",
+  "# Need at least 24 months (2 full seasons) for decomposition.",
+  "2020-01,12",
+  "2020-02,15",
+  "2020-03,22",
+  "2020-04,30",
+  "2020-05,55",
+  "2020-06,90",
+  "2020-07,120",
+  "2020-08,115",
+  "2020-09,72",
+  "2020-10,38",
+  "2020-11,18",
+  "2020-12,14",
+  "2021-01,16",
+  "2021-02,18",
+  "2021-03,28",
+  "2021-04,40",
+  "2021-05,68",
+  "2021-06,108",
+  "2021-07,140",
+  "2021-08,135",
+  "2021-09,85",
+  "2021-10,46",
+  "2021-11,22",
+  "2021-12,17",
+].join("\n");
+
 export default function ForecastPage() {
   const [entries, setEntries] = useState<RegistryEntry[]>([]);
   const [target, setTarget] = useState("");
@@ -114,6 +124,8 @@ export default function ForecastPage() {
   const [revenueGoal, setRevenueGoal] = useState<RevenueGoal>({ targetRevenue: 0, targetYear: 2030 });
   const [revenueHistory, setRevenueHistory] = useState<RevenueYear[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+  const [forecastMethod, setForecastMethod] = useState<ForecastMethod | "auto">("auto");
+  const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
   const [seasonalInput, setSeasonalInput] = useState("");
   const [seasonalHorizon, setSeasonalHorizon] = useState(12);
 
@@ -128,6 +140,7 @@ export default function ForecastPage() {
     setStretch(String(cfg.stretchPct));
     setRevenueGoal(loadRevenueGoal());
     setRevenueHistory(loadRevenueHistory());
+    setDrivers(loadDrivers());
     try {
       const stored = window.localStorage.getItem(SEASONAL_STORAGE_KEY);
       setSeasonalInput(stored ?? SEASONAL_SAMPLE_INPUT);
@@ -143,6 +156,19 @@ export default function ForecastPage() {
     } catch {
       /* ignore quota errors */
     }
+  }
+
+  function persistDrivers(next: DriverState) {
+    saveDrivers(next);
+    setDrivers(next);
+  }
+
+  function setDriverValue(year: number, name: string, raw: string) {
+    const v = parseFloat(raw);
+    const row = { ...(drivers.values[year] ?? {}) };
+    if (Number.isFinite(v)) row[name] = v;
+    else delete row[name];
+    persistDrivers({ ...drivers, values: { ...drivers.values, [year]: row } });
   }
 
   const yearOptions = useMemo(() => {
@@ -165,12 +191,11 @@ export default function ForecastPage() {
       .sort((a, b) => a.year - b.year);
   }, [yearTotals]);
   const lastHistoryYear = history.length > 0 ? history[history.length - 1].year : currentYear;
-  const bestMethod = useMemo(() => pickBestMethod(history), [history]);
-  const algoForecast = useMemo(() => {
-    if (selectedYear <= lastHistoryYear) return null;
-    const r = runForecast(bestMethod, history, [selectedYear]);
-    return r.forecast[0]?.value ?? null;
-  }, [bestMethod, history, lastHistoryYear, selectedYear]);
+
+  const resolvedMethod: ForecastMethod = useMemo(() => {
+    if (forecastMethod === "auto") return pickBestMethod(history);
+    return forecastMethod;
+  }, [forecastMethod, history]);
 
   // Multi-year forecast: from the year after the last historic year through
   // either the user's revenue-goal year or 2031, whichever is later.
@@ -181,12 +206,38 @@ export default function ForecastPage() {
     return ys;
   }, [lastHistoryYear, revenueGoal.targetYear]);
 
+  const fullForecast = useMemo(() => {
+    if (history.length === 0 || forecastYears.length === 0) {
+      return { method: resolvedMethod, forecast: [], error: undefined as string | undefined, params: {} as any };
+    }
+    if (resolvedMethod === "multiple_regression") {
+      const observations: DriverObservation[] = revenueHistory.map((r) => ({
+        year: r.year,
+        value: r.revenue,
+        drivers: drivers.values[r.year] ?? {},
+      }));
+      const futureRows = forecastYears.map((y) => ({
+        year: y,
+        drivers: drivers.values[y] ?? {},
+      }));
+      const r = multipleRegressionForecast(observations, drivers.names, futureRows);
+      return { method: r.method, forecast: r.forecast, error: r.params?.error, params: r.params };
+    }
+    const r = runForecast(resolvedMethod, history, forecastYears);
+    return { method: r.method, forecast: r.forecast, error: undefined, params: r.params };
+  }, [resolvedMethod, history, forecastYears, revenueHistory, drivers]);
+
+  const algoForecast = useMemo(() => {
+    if (selectedYear <= lastHistoryYear) return null;
+    const hit = fullForecast.forecast.find((p) => p.year === selectedYear);
+    return hit?.value ?? null;
+  }, [fullForecast, selectedYear, lastHistoryYear]);
+
   const yearByYearForecast = useMemo(() => {
-    if (history.length === 0 || forecastYears.length === 0) return [];
-    const r = runForecast(bestMethod, history, forecastYears);
+    if (fullForecast.forecast.length === 0) return [];
     const map = new Map<number, number>();
-    for (const p of r.forecast) map.set(p.year, p.value);
-    const lastHistValue = history[history.length - 1].value;
+    for (const p of fullForecast.forecast) map.set(p.year, p.value);
+    const lastHistValue = history[history.length - 1]?.value ?? 0;
     let prev = lastHistValue;
     return forecastYears.map((y) => {
       const value = map.get(y) ?? prev;
@@ -196,7 +247,7 @@ export default function ForecastPage() {
       prev = value;
       return row;
     });
-  }, [bestMethod, history, forecastYears]);
+  }, [fullForecast, forecastYears, history]);
 
   // Combined yearly chart: history + algorithm forecast (continuous line).
   const yearlyChartData = useMemo(() => {
@@ -367,7 +418,7 @@ export default function ForecastPage() {
                 ? selectedYear <= lastHistoryYear
                   ? "Historic year — use registry value."
                   : "Add registry data to forecast."
-                : `${FORECAST_METHOD_LABELS[bestMethod]} (auto-picked).`}
+                : `${FORECAST_METHOD_LABELS[fullForecast.method]}${forecastMethod === "auto" ? " (auto)" : ""}.`}
             </p>
           </div>
           <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4">
@@ -415,6 +466,103 @@ export default function ForecastPage() {
         </div>
       </div>
 
+      {/* Regression & Drivers settings */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+        <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
+          <div>
+            <h2 className="text-sm font-semibold text-gray-900">Regression & Drivers</h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Choose the forecasting algorithm and provide driver values for future years.
+              Drivers are managed in the{" "}
+              <Link href="/revenue-history" className="text-blue-600 hover:underline">history</Link> page.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <label className="text-xs text-gray-600">Method:</label>
+            <select
+              value={forecastMethod}
+              onChange={(e) => setForecastMethod(e.target.value as ForecastMethod | "auto")}
+              className="nice-select rounded-lg border border-gray-300 px-3 py-2 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            >
+              <option value="auto">
+                Auto (best fit) — currently {FORECAST_METHOD_LABELS[resolvedMethod]}
+              </option>
+              <option value="holt">{FORECAST_METHOD_LABELS.holt}</option>
+              <option value="ses">{FORECAST_METHOD_LABELS.ses}</option>
+              <option value="linear">{FORECAST_METHOD_LABELS.linear}</option>
+              <option value="multiple_regression">{FORECAST_METHOD_LABELS.multiple_regression}</option>
+              <option value="moving_average">{FORECAST_METHOD_LABELS.moving_average}</option>
+              <option value="naive">{FORECAST_METHOD_LABELS.naive}</option>
+            </select>
+          </div>
+        </div>
+
+        {fullForecast.error && (
+          <div className="mb-4 rounded-lg bg-amber-50 border border-amber-200 p-3 text-xs text-amber-800">
+            ⚠ {fullForecast.error}
+          </div>
+        )}
+
+        {drivers.names.length > 0 && (
+          <div className="overflow-x-auto">
+            <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Future Driver Projections</p>
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wide text-gray-500">
+                <tr>
+                  <th className="text-left py-2 font-medium">Year</th>
+                  {drivers.names.map(name => (
+                    <th key={name} className="text-right py-2 font-medium">{name}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {forecastYears.slice(0, 5).map(y => (
+                  <tr key={y}>
+                    <td className="py-2 font-medium text-gray-900">{y}</td>
+                    {drivers.names.map(name => (
+                      <td key={name} className="py-2 text-right">
+                        <input
+                          type="number"
+                          defaultValue={drivers.values[y]?.[name] ?? ""}
+                          onBlur={(e) => setDriverValue(y, name, e.target.value)}
+                          step="any"
+                          placeholder="0"
+                          className="w-24 rounded border border-gray-300 px-2 py-1 text-xs text-right focus:border-blue-500 outline-none"
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                {forecastYears.length > 5 && (
+                  <tr>
+                    <td colSpan={drivers.names.length + 1} className="py-2 text-center text-[10px] text-gray-400 italic">
+                      ... and {forecastYears.length - 5} more years.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {fullForecast.params?.coefficients && (
+          <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap gap-x-6 gap-y-2">
+             <div className="text-xs">
+                <span className="text-gray-500">Model Fit (R²):</span>{" "}
+                <span className="font-mono font-bold text-blue-600">{fullForecast.params.r2?.toFixed(3) ?? "—"}</span>
+             </div>
+             <div className="text-xs">
+                <span className="text-gray-500">Coefficients:</span>{" "}
+                <span className="font-mono text-gray-700">
+                  {Object.entries(fullForecast.params.coefficients)
+                    .map(([k, v]) => `${k}:${v > 0 ? "+" : ""}${v.toFixed(2)}`)
+                    .join(", ")}
+                </span>
+             </div>
+          </div>
+        )}
+      </div>
+
       {/* Year-by-year algorithm forecast */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
         <div className="mb-4">
@@ -423,8 +571,8 @@ export default function ForecastPage() {
           </h2>
           <p className="text-xs text-gray-500 mt-1">
             Predicted revenue for each upcoming year using{" "}
-            <span className="font-medium">{FORECAST_METHOD_LABELS[bestMethod]}</span>{" "}
-            (auto-picked). Δ shows the increase vs. the previous year.
+            <span className="font-medium">{FORECAST_METHOD_LABELS[fullForecast.method]}</span>.
+            Δ shows the increase vs. the previous year.
             Last historic year ({lastHistoryYear}):{" "}
             <span className="font-medium">
               {formatNOK(history[history.length - 1]?.value ?? 0)} NOK
@@ -446,7 +594,7 @@ export default function ForecastPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                 <XAxis dataKey="year" fontSize={12} />
                 <YAxis tickFormatter={(v) => formatNOK(v)} fontSize={11} width={80} />
-                <Tooltip contentStyle={{ fontSize: 12 }} />
+                <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v: any) => v === null ? "—" : formatNOK(v)} />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
                 <Line
                   type="monotone"
@@ -618,7 +766,7 @@ export default function ForecastPage() {
                     interval={Math.max(0, Math.floor(seasonalChartData.length / 12))}
                   />
                   <YAxis fontSize={11} width={70} />
-                  <Tooltip contentStyle={{ fontSize: 12 }} />
+                  <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v: any) => v === null ? "—" : formatNum(v)} />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
                   <Line type="monotone" dataKey="observed" name="Observed" stroke="#2563eb" strokeWidth={2} dot={{ r: 2 }} connectNulls={false} />
                   <Line type="monotone" dataKey="trend" name="Trend (centered MA)" stroke="#9333ea" strokeWidth={2} dot={false} connectNulls={false} />
@@ -644,7 +792,7 @@ export default function ForecastPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                   <XAxis dataKey="month" fontSize={11} />
                   <YAxis fontSize={11} width={70} />
-                  <Tooltip contentStyle={{ fontSize: 12 }} />
+                  <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v: any) => formatNum(v)} />
                   <RechartsBar dataKey="seasonal" name="Seasonal effect" fill="#0ea5e9" />
                 </BarChart>
               </ResponsiveContainer>
