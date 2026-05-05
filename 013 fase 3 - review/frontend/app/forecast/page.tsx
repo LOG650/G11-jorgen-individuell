@@ -125,6 +125,7 @@ export default function ForecastPage() {
   const [revenueHistory, setRevenueHistory] = useState<RevenueYear[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
   const [forecastMethod, setForecastMethod] = useState<ForecastMethod | "auto">("auto");
+  const [showComparison, setShowComparison] = useState(false);
   const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
   const [seasonalInput, setSeasonalInput] = useState("");
   const [seasonalHorizon, setSeasonalHorizon] = useState(12);
@@ -227,6 +228,27 @@ export default function ForecastPage() {
     return { method: r.method, forecast: r.forecast, error: undefined, params: r.params };
   }, [resolvedMethod, history, forecastYears, revenueHistory, drivers]);
 
+  // Compute ALL forecasts for comparison mode
+  const allForecasts = useMemo(() => {
+    if (!showComparison || history.length === 0 || forecastYears.length === 0) return [];
+    const methods: ForecastMethod[] = ["holt", "ses", "linear", "moving_average", "naive", "multiple_regression"];
+    return methods.map(m => {
+      if (m === "multiple_regression") {
+        const observations: DriverObservation[] = revenueHistory.map((r) => ({
+          year: r.year,
+          value: r.revenue,
+          drivers: drivers.values[r.year] ?? {},
+        }));
+        const futureRows = forecastYears.map((y) => ({
+          year: y,
+          drivers: drivers.values[y] ?? {},
+        }));
+        return multipleRegressionForecast(observations, drivers.names, futureRows);
+      }
+      return runForecast(m, history, forecastYears);
+    });
+  }, [showComparison, history, forecastYears, revenueHistory, drivers]);
+
   const algoForecast = useMemo(() => {
     if (selectedYear <= lastHistoryYear) return null;
     const hit = fullForecast.forecast.find((p) => p.year === selectedYear);
@@ -261,7 +283,16 @@ export default function ForecastPage() {
       for (let y = startY; y <= endY; y++) allYears.push(y);
     }
     const histMap = new Map(history.map((r) => [r.year, r.value]));
+    
+    // Main forecast map
     const fcMap = new Map(yearByYearForecast.map((r) => [r.year, r.value]));
+    
+    // Comparison maps
+    const compMaps = allForecasts.map(f => ({
+      method: f.method,
+      map: new Map(f.forecast.map(p => [p.year, p.value]))
+    }));
+
     return allYears.map((y) => {
       const actual = histMap.get(y);
       let forecast: number | undefined = undefined;
@@ -270,13 +301,27 @@ export default function ForecastPage() {
       } else if (fcMap.has(y)) {
         forecast = fcMap.get(y);
       }
-      return {
+
+      const row: any = {
         year: y,
         actual: actual ?? null,
         forecast: forecast ?? null,
       };
+
+      // Add comparison lines
+      compMaps.forEach(cm => {
+        let v: number | null = null;
+        if (y === lastHistoryYear && actual !== undefined) {
+          v = actual;
+        } else if (cm.map.has(y)) {
+          v = cm.map.get(y) ?? null;
+        }
+        row[cm.method] = v;
+      });
+
+      return row;
     });
-  }, [history, yearByYearForecast, forecastYears, lastHistoryYear]);
+  }, [history, yearByYearForecast, forecastYears, lastHistoryYear, allForecasts]);
 
   // Seasonal (monthly) analysis.
   const monthlyPoints = useMemo<MonthlyPoint[]>(
@@ -472,32 +517,14 @@ export default function ForecastPage() {
           <div>
             <h2 className="text-sm font-semibold text-gray-900">Regression & Drivers</h2>
             <p className="text-xs text-gray-500 mt-1">
-              Choose the forecasting algorithm and provide driver values for future years.
+              Provide driver values for future years to refine the &quot;Multiple regression&quot; model.
               Drivers are managed in the{" "}
               <Link href="/revenue-history" className="text-blue-600 hover:underline">history</Link> page.
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <label className="text-xs text-gray-600">Method:</label>
-            <select
-              value={forecastMethod}
-              onChange={(e) => setForecastMethod(e.target.value as ForecastMethod | "auto")}
-              className="nice-select rounded-lg border border-gray-300 px-3 py-2 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-            >
-              <option value="auto">
-                Auto (best fit) — currently {FORECAST_METHOD_LABELS[resolvedMethod]}
-              </option>
-              <option value="holt">{FORECAST_METHOD_LABELS.holt}</option>
-              <option value="ses">{FORECAST_METHOD_LABELS.ses}</option>
-              <option value="linear">{FORECAST_METHOD_LABELS.linear}</option>
-              <option value="multiple_regression">{FORECAST_METHOD_LABELS.multiple_regression}</option>
-              <option value="moving_average">{FORECAST_METHOD_LABELS.moving_average}</option>
-              <option value="naive">{FORECAST_METHOD_LABELS.naive}</option>
-            </select>
-          </div>
         </div>
 
-        {fullForecast.error && (
+        {fullForecast.error && resolvedMethod === "multiple_regression" && (
           <div className="mb-4 rounded-lg bg-amber-50 border border-amber-200 p-3 text-xs text-amber-800">
             ⚠ {fullForecast.error}
           </div>
@@ -565,21 +592,49 @@ export default function ForecastPage() {
 
       {/* Year-by-year algorithm forecast */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <div className="mb-4">
-          <h2 className="text-sm font-semibold text-gray-900">
-            Year-by-year algorithm forecast
-          </h2>
-          <p className="text-xs text-gray-500 mt-1">
-            Predicted revenue for each upcoming year using{" "}
-            <span className="font-medium">{FORECAST_METHOD_LABELS[fullForecast.method]}</span>.
-            Δ shows the increase vs. the previous year.
-            Last historic year ({lastHistoryYear}):{" "}
-            <span className="font-medium">
-              {formatNOK(history[history.length - 1]?.value ?? 0)} NOK
-            </span>
-            .
-          </p>
+        <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
+          <div>
+            <h2 className="text-sm font-semibold text-gray-900">
+              Year-by-year algorithm forecast
+            </h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Predicted revenue using{" "}
+              <span className="font-medium">{FORECAST_METHOD_LABELS[fullForecast.method]}</span>.
+              Δ shows the increase vs. the previous year.
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowComparison(!showComparison)}
+              className={`rounded-lg border px-3 py-2 text-xs font-medium transition-colors ${
+                showComparison
+                  ? "bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100"
+                  : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              {showComparison ? "Hide comparison" : "Compare all methods"}
+            </button>
+            <div className="flex items-center gap-2">
+              <label className="text-xs text-gray-600">Method:</label>
+              <select
+                value={forecastMethod}
+                onChange={(e) => setForecastMethod(e.target.value as ForecastMethod | "auto")}
+                className="nice-select rounded-lg border border-gray-300 px-3 py-2 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              >
+                <option value="auto">
+                  Auto (best fit) — currently {FORECAST_METHOD_LABELS[resolvedMethod]}
+                </option>
+                <option value="holt">{FORECAST_METHOD_LABELS.holt}</option>
+                <option value="ses">{FORECAST_METHOD_LABELS.ses}</option>
+                <option value="linear">{FORECAST_METHOD_LABELS.linear}</option>
+                <option value="multiple_regression">{FORECAST_METHOD_LABELS.multiple_regression}</option>
+                <option value="moving_average">{FORECAST_METHOD_LABELS.moving_average}</option>
+                <option value="naive">{FORECAST_METHOD_LABELS.naive}</option>
+              </select>
+            </div>
+          </div>
         </div>
+
         {yearByYearForecast.length === 0 ? (
           <p className="text-sm text-gray-400 italic">
             Add revenue history to compute a multi-year forecast.
@@ -594,8 +649,27 @@ export default function ForecastPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                 <XAxis dataKey="year" fontSize={12} />
                 <YAxis tickFormatter={(v) => formatNOK(v)} fontSize={11} width={80} />
-                <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v: any) => v === null ? "—" : formatNOK(v)} />
+                <Tooltip 
+                  contentStyle={{ fontSize: 12 }} 
+                  formatter={(v: any, name: string) => {
+                    if (v === null) return [null, null];
+                    const label = FORECAST_METHOD_LABELS[name as ForecastMethod] || name;
+                    return [`${formatNOK(v)} NOK`, label];
+                  }}
+                />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
+                
+                {showComparison && (
+                  <>
+                    <Line type="monotone" dataKey="holt" name="Holt's" stroke="#9333ea" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                    <Line type="monotone" dataKey="ses" name="SES" stroke="#ec4899" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                    <Line type="monotone" dataKey="linear" name="Linear" stroke="#f59e0b" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                    <Line type="monotone" dataKey="moving_average" name="MA" stroke="#6366f1" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                    <Line type="monotone" dataKey="naive" name="Naive" stroke="#94a3b8" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                    <Line type="monotone" dataKey="multiple_regression" name="Regression" stroke="#ef4444" strokeWidth={1} strokeDasharray="5 5" dot={false} connectNulls={false} />
+                  </>
+                )}
+
                 <Line
                   type="monotone"
                   dataKey="actual"
@@ -608,14 +682,43 @@ export default function ForecastPage() {
                 <Line
                   type="monotone"
                   dataKey="forecast"
-                  name="Algorithm forecast"
+                  name="Active forecast"
                   stroke="#10b981"
-                  strokeWidth={2.5}
-                  dot={{ r: 3 }}
+                  strokeWidth={3}
+                  dot={{ r: 4 }}
                   connectNulls={false}
                 />
               </LineChart>
             </ResponsiveContainer>
+
+            {showComparison && (
+               <div className="mt-4 flex flex-wrap gap-2">
+                 <span className="text-xs text-gray-500 py-1 mr-1">Switch to:</span>
+                 {Object.entries(FORECAST_METHOD_LABELS).map(([m, label]) => (
+                   <button
+                     key={m}
+                     onClick={() => setForecastMethod(m as ForecastMethod)}
+                     className={`px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded border transition-colors ${
+                       forecastMethod === m
+                         ? "bg-emerald-600 border-emerald-600 text-white"
+                         : "bg-white border-gray-200 text-gray-600 hover:border-gray-400"
+                     }`}
+                   >
+                     {label.split(" (")[0]}
+                   </button>
+                 ))}
+                 <button
+                   onClick={() => setForecastMethod("auto")}
+                   className={`px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded border transition-colors ${
+                     forecastMethod === "auto"
+                       ? "bg-blue-600 border-blue-600 text-white"
+                       : "bg-white border-gray-200 text-gray-600 hover:border-gray-400"
+                   }`}
+                 >
+                   Auto
+                 </button>
+               </div>
+            )}
             <div className="overflow-x-auto mt-4">
             <table className="w-full text-sm">
               <thead className="text-xs uppercase tracking-wide text-gray-500">
