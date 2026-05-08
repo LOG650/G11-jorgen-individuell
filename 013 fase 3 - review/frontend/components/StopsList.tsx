@@ -30,7 +30,12 @@ export default function StopsList({
             key={i}
             className="grid grid-cols-[1fr_auto_auto_auto] gap-4 py-2 text-sm text-gray-800"
           >
-            <span className="font-medium">{s.port}</span>
+            <span className="font-medium">
+              {s.port}
+              {s.country && (
+                <span className="ml-2 text-xs font-normal text-gray-400">{s.country}</span>
+              )}
+            </span>
             <span className="text-gray-600">{MONTH_NAMES[s.month - 1]}</span>
             <span className="text-right text-gray-600">{formatDays(s.stay_days)}</span>
             <span className="text-right font-medium">{formatCurrency(s.total, currency)}</span>

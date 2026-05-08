@@ -77,6 +77,15 @@ class VoyageRequest(BaseModel):
         None, gt=0,
         description="Diesel price per litre in the selected currency.",
     )
+    provisioning_override: float | None = Field(
+        None, ge=0,
+        description=(
+            "Manual override for provisioning cost in the selected currency. "
+            "When provided, replaces the model's probabilistic Provisioning estimate. "
+            "Use this when the model is far off — typically because guest_experience "
+            "(unmodelled) drives provisioning hard. See guest_experience field."
+        ),
+    )
     guest_experience: str | None = Field(
         None,
         description=(
@@ -95,6 +104,7 @@ class HistoricalRange(BaseModel):
 
 class StopResult(BaseModel):
     port: str
+    country: str
     month: int
     stay_days: float
     total: float
@@ -144,6 +154,21 @@ def options():
 
 # Case-insensitive lookup: "bergen", "BERGEN", "BerGen" -> "Bergen"
 _PORT_LOOKUP = {p.casefold(): p for p in PORT_TEMPLATES}
+
+# Reverse lookup: port name -> country. Built from COUNTRY_PORTS so the model's
+# arrival_port categorical feature can be reported alongside its country.
+# NOTE: the model's per-port behaviour already differentiates costs by country
+# implicitly (Bergen vs København are distinct categorical levels). However,
+# the supplementary aggregate features in model.py (size_stats, size_svc_stats)
+# are pooled across all countries, which dampens country-level signal for the
+# size-class baseline. A proper fix would split those aggregates by country
+# and retrain. This response field surfaces the country dimension so the UI
+# can display it and the report can quantify the limitation.
+_PORT_TO_COUNTRY: dict[str, str] = {
+    port: country
+    for country, ports in COUNTRY_PORTS.items()
+    for port in ports
+}
 
 
 @app.post("/api/predict", response_model=VoyageResponse)
@@ -243,6 +268,7 @@ def predict(req: VoyageRequest):
 
         stops_out.append({
             "port": port,
+            "country": _PORT_TO_COUNTRY.get(port, "Unknown"),
             "month": stop.month,
             "stay_days": stop.stay_days,
             "total": round(stop_total * fx, 2),
@@ -290,6 +316,16 @@ def predict(req: VoyageRequest):
             converted_cats.get("Pilotage", 0.0) + req.pilot_cost, 2
         )
         grand_total_converted = round(grand_total_converted + req.pilot_cost, 2)
+
+    # Provisioning override: replace the model's "Provisioning" category.
+    # The model under-/over-shoots provisioning systematically because
+    # guest_experience (the dominant driver) is not in its feature set.
+    if req.provisioning_override is not None and req.provisioning_override >= 0:
+        existing_provisioning = converted_cats.pop("Provisioning", 0.0)
+        grand_total_converted = round(
+            grand_total_converted - existing_provisioning + req.provisioning_override, 2
+        )
+        converted_cats["Provisioning"] = round(req.provisioning_override, 2)
 
     return {
         "category_totals": dict(sorted(converted_cats.items(), key=lambda x: -x[1])),

@@ -41,6 +41,7 @@ export interface VoyageFormInitial {
   pilotType?: "national" | "private" | "";
   cruisingSpeedKn?: string;
   dieselPricePerL?: string;
+  provisioningOverride?: string;
   guestExperience?: GuestExperience | "";
   stops?: StopRow[];
   actualCost?: string;
@@ -124,6 +125,7 @@ export default function VoyageForm({
   const [pilotType, setPilotType] = useState<"national" | "private" | "">(initial?.pilotType ?? "national");
   const [cruisingSpeedKn, setCruisingSpeedKn] = useState(initial?.cruisingSpeedKn ?? "");
   const [dieselPricePerL, setDieselPricePerL] = useState(initial?.dieselPricePerL ?? "");
+  const [provisioningOverride, setProvisioningOverride] = useState(initial?.provisioningOverride ?? "");
   const [guestExperience, setGuestExperience] = useState<GuestExperience | "">(
     initial?.guestExperience ?? "",
   );
@@ -194,6 +196,7 @@ export default function VoyageForm({
     const parsedPilot = pilotCost.trim() === "" ? null : parseFloat(pilotCost);
     const parsedSpeed = cruisingSpeedKn.trim() === "" ? null : parseFloat(cruisingSpeedKn);
     const parsedDiesel = dieselPricePerL.trim() === "" ? null : parseFloat(dieselPricePerL);
+    const parsedProvisioning = provisioningOverride.trim() === "" ? null : parseFloat(provisioningOverride);
     const req: VoyageRequest = {
       gt: parseFloat(gt),
       loa: parseFloat(loa),
@@ -215,6 +218,7 @@ export default function VoyageForm({
       pilot_type: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 && pilotType !== "" ? pilotType : null,
       cruising_speed_kn: parsedSpeed !== null && !isNaN(parsedSpeed) && parsedSpeed > 0 ? parsedSpeed : null,
       diesel_price_per_l: parsedDiesel !== null && !isNaN(parsedDiesel) && parsedDiesel > 0 ? parsedDiesel : null,
+      provisioning_override: parsedProvisioning !== null && !isNaN(parsedProvisioning) && parsedProvisioning >= 0 ? parsedProvisioning : null,
       guest_experience: guestExperience === "" ? null : guestExperience,
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
@@ -588,6 +592,25 @@ export default function VoyageForm({
           <option value="neutral">Neutral</option>
           <option value="demanding">Demanding</option>
         </select>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-semibold text-gray-900 mb-1">Provisioning override</h2>
+        <p className="text-xs text-gray-500 mb-3">
+          Optional. The model under-/over-shoots Provisioning systematically because the
+          dominant driver — guest experience — isn&apos;t in its training features. If you
+          have a better number, enter it here in <span className="font-medium">{currency}</span>;
+          it replaces the model&apos;s Provisioning category.
+        </p>
+        <input
+          type="number"
+          value={provisioningOverride}
+          onChange={(e) => setProvisioningOverride(e.target.value)}
+          placeholder={`Replace model's Provisioning (${currency})`}
+          min="0"
+          step="any"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+        />
       </div>
 
       {pilotageMandatory && (
