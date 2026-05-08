@@ -582,6 +582,11 @@ export default function VoyageForm({
           current model has no labeled data for this variable, so it does not affect the prediction
           today. Most relevant to provisioning and hospitality once data is collected.
         </p>
+        <p className="text-xs text-amber-700 mb-3">
+          ⚠ Operational definition pending — agency to author a rubric (e.g. guest count, event
+          frequency, provisioning style). Until then, labels will be inconsistent. See the report
+          for the proposed rubric and missing-data discussion.
+        </p>
         <select
           value={guestExperience}
           onChange={(e) => setGuestExperience(e.target.value as GuestExperience | "")}
