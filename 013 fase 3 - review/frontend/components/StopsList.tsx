@@ -1,18 +1,20 @@
 "use client";
 
 import type { StopResult } from "../lib/types";
-import { MONTH_NAMES } from "../lib/api";
-
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
-}
+import { MONTH_NAMES, formatCurrency } from "../lib/api";
 
 function formatDays(d: number): string {
   const rounded = Math.round(d * 10) / 10;
   return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
 }
 
-export default function StopsList({ stops }: { stops: StopResult[] }) {
+export default function StopsList({
+  stops,
+  currency = "NOK",
+}: {
+  stops: StopResult[];
+  currency?: string;
+}) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
       <h3 className="text-sm font-semibold text-gray-900 mb-3">Per-Stop Breakdown</h3>
@@ -21,7 +23,7 @@ export default function StopsList({ stops }: { stops: StopResult[] }) {
           <span>Port</span>
           <span>Month</span>
           <span className="text-right">Days</span>
-          <span className="text-right">Total (NOK)</span>
+          <span className="text-right">Total ({currency})</span>
         </div>
         {stops.map((s, i) => (
           <div
@@ -31,7 +33,7 @@ export default function StopsList({ stops }: { stops: StopResult[] }) {
             <span className="font-medium">{s.port}</span>
             <span className="text-gray-600">{MONTH_NAMES[s.month - 1]}</span>
             <span className="text-right text-gray-600">{formatDays(s.stay_days)}</span>
-            <span className="text-right font-medium">{formatNOK(s.total)}</span>
+            <span className="text-right font-medium">{formatCurrency(s.total, currency)}</span>
           </div>
         ))}
       </div>

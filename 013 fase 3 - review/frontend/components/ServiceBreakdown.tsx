@@ -2,17 +2,15 @@
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import type { VoyageResponse } from "../lib/types";
+import { formatCurrency } from "../lib/api";
 
 const COLORS = [
   "#3b82f6", "#10b981", "#f59e0b", "#ef4444",
   "#8b5cf6", "#06b6d4", "#f97316",
 ];
 
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
-}
-
 export default function ServiceBreakdown({ result }: { result: VoyageResponse }) {
+  const { currency } = result;
   const data = Object.entries(result.category_totals).map(([name, value]) => ({
     name,
     value: Math.round(value),
@@ -23,10 +21,10 @@ export default function ServiceBreakdown({ result }: { result: VoyageResponse })
       <h3 className="text-sm font-semibold text-gray-900 mb-4">Cost by Service Category</h3>
       <ResponsiveContainer width="100%" height={data.length * 48 + 20}>
         <BarChart data={data} layout="vertical" margin={{ left: 10, right: 30 }}>
-          <XAxis type="number" tickFormatter={(v) => formatNOK(v)} fontSize={11} />
+          <XAxis type="number" tickFormatter={(v) => formatCurrency(v, currency)} fontSize={11} />
           <YAxis type="category" dataKey="name" width={140} fontSize={12} />
           <Tooltip
-            formatter={(value) => [`${formatNOK(Number(value))} NOK`, "Estimate"]}
+            formatter={(value) => [`${formatCurrency(Number(value), currency)} ${currency}`, "Estimate"]}
             contentStyle={{ fontSize: 12 }}
           />
           <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={24}>
@@ -51,7 +49,7 @@ export default function ServiceBreakdown({ result }: { result: VoyageResponse })
                   {d.name}
                 </td>
                 <td className="py-1.5 text-right font-medium text-gray-900">
-                  {formatNOK(d.value)} NOK
+                  {formatCurrency(d.value, currency)} {currency}
                 </td>
               </tr>
             ))}

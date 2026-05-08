@@ -18,6 +18,15 @@ from model import (
     ensemble_w,
 )
 
+# Training data (cockpit reports + costs_clean.csv) is denominated in EUR.
+# Outputs are converted to the requested currency at the API boundary.
+# Update these constants periodically against an authoritative source (ECB).
+EXCHANGE_RATES_FROM_EUR: dict[str, float] = {
+    "EUR": 1.0,
+    "NOK": 11.50,   # Reference rate (May 2026); EUR/NOK floats — refresh when stale
+    "DKK": 7.46,    # DKK is pegged to EUR at 7.46038 ± 2.25% (ERM II)
+}
+
 app = FastAPI(
     title="NautiCost API",
     description="Voyage cost prediction for superyacht agency services",
@@ -47,6 +56,7 @@ class VoyageRequest(BaseModel):
     draft: float = Field(..., gt=0, description="Draft depth (m)")
     fuel: str = Field("medium", description='Fuel: "low", "medium", "high", or a number in L/h')
     stops: list[PortStop] = Field(..., min_length=1, description="Itinerary stops")
+    currency: str = Field("NOK", description='Output currency: "NOK", "DKK", or "EUR"')
 
 
 class HistoricalRange(BaseModel):
@@ -71,6 +81,8 @@ class VoyageResponse(BaseModel):
     fuel_lph: float
     stops: list[StopResult]
     historical_range: HistoricalRange | None
+    currency: str
+    exchange_rate_from_eur: float
 
 
 # ── Endpoints ───────────────────────────────────────────────────
@@ -95,6 +107,8 @@ def options():
         },
         "fuel_levels": ["low", "medium", "high"],
         "months": list(range(1, 13)),
+        "currencies": list(EXCHANGE_RATES_FROM_EUR.keys()),
+        "exchange_rates_from_eur": EXCHANGE_RATES_FROM_EUR,
     }
 
 
@@ -104,6 +118,14 @@ _PORT_LOOKUP = {p.casefold(): p for p in PORT_TEMPLATES}
 
 @app.post("/api/predict", response_model=VoyageResponse)
 def predict(req: VoyageRequest):
+    currency = req.currency.upper()
+    if currency not in EXCHANGE_RATES_FROM_EUR:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported currency '{req.currency}'. Supported: {', '.join(EXCHANGE_RATES_FROM_EUR)}",
+        )
+    fx = EXCHANGE_RATES_FROM_EUR[currency]
+
     fuel = req.fuel.strip().casefold()
     if fuel in ("low", "medium", "high"):
         fuel_lph = estimate_fuel(req.gt, fuel)
@@ -153,29 +175,40 @@ def predict(req: VoyageRequest):
             agg_p25 += p25
             agg_p50 += p50
             agg_p75 += p75
-            stop_range = {"p25": float(p25), "p50": float(p50), "p75": float(p75)}
+            stop_range = {
+                "p25": round(p25 * fx, 2),
+                "p50": round(p50 * fx, 2),
+                "p75": round(p75 * fx, 2),
+            }
 
         stops_out.append({
             "port": port,
             "month": stop.month,
             "stay_days": stop.stay_days,
-            "total": round(stop_total, 2),
+            "total": round(stop_total * fx, 2),
             "historical_range": stop_range,
         })
 
     voyage_range = (
-        {"p25": agg_p25, "p50": agg_p50, "p75": agg_p75} if all_have_baseline else None
+        {
+            "p25": round(agg_p25 * fx, 2),
+            "p50": round(agg_p50 * fx, 2),
+            "p75": round(agg_p75 * fx, 2),
+        }
+        if all_have_baseline else None
     )
 
     return {
         "category_totals": {
-            k: round(v, 2)
+            k: round(v * fx, 2)
             for k, v in sorted(aggregated_cats.items(), key=lambda x: -x[1])
         },
-        "grand_total": round(grand_total, 2),
+        "grand_total": round(grand_total * fx, 2),
         "size_category": size_cat,
         "loskrav": loskrav,
         "fuel_lph": fuel_lph,
         "stops": stops_out,
         "historical_range": voyage_range,
+        "currency": currency,
+        "exchange_rate_from_eur": fx,
     }

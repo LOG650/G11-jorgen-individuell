@@ -13,7 +13,7 @@ export default function ResultsPanel({ result }: Props) {
   return (
     <div className="space-y-6">
       <CostSummary result={result} />
-      {result.stops.length > 1 && <StopsList stops={result.stops} />}
+      {result.stops.length > 1 && <StopsList stops={result.stops} currency={result.currency} />}
       <ServiceBreakdown result={result} />
     </div>
   );

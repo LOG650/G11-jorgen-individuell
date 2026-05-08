@@ -11,6 +11,7 @@ export interface VoyageRequest {
   draft: number;
   fuel: string;
   stops: PortStop[];
+  currency: string;
 }
 
 export interface HistoricalRange {
@@ -35,6 +36,8 @@ export interface VoyageResponse {
   fuel_lph: number;
   stops: StopResult[];
   historical_range: HistoricalRange | null;
+  currency: string;
+  exchange_rate_from_eur: number;
 }
 
 export interface OptionsResponse {
@@ -42,6 +45,8 @@ export interface OptionsResponse {
   ports: Record<string, string[]>;
   fuel_levels: string[];
   months: number[];
+  currencies: string[];
+  exchange_rates_from_eur: Record<string, number>;
 }
 
 export interface HealthResponse {

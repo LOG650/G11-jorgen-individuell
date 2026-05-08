@@ -35,6 +35,7 @@ export interface VoyageFormInitial {
   beam?: string;
   draft?: string;
   fuel?: string;
+  currency?: string;
   stops?: StopRow[];
   actualCost?: string;
   agentExpectedItems?: AgentExpectedItem[];
@@ -111,6 +112,7 @@ export default function VoyageForm({
   const [beam, setBeam] = useState(initial?.beam ?? "");
   const [draft, setDraft] = useState(initial?.draft ?? "");
   const [fuel, setFuel] = useState(initial?.fuel ?? "medium");
+  const [currency, setCurrency] = useState(initial?.currency ?? (options.currencies?.[0] ?? "NOK"));
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
   const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
     initial?.agentExpectedItems ?? [],
@@ -179,6 +181,7 @@ export default function VoyageForm({
       beam: parseFloat(beam),
       draft: parseFloat(draft),
       fuel,
+      currency,
       stops: stops.map((s) => ({
         port: s.port,
         month: new Date(s.arrivalDate).getMonth() + 1,
@@ -337,6 +340,20 @@ export default function VoyageForm({
               ))}
             </select>
           </div>
+          <div className="col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Currency
+            </label>
+            <select
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            >
+              {(options.currencies ?? ["NOK", "DKK", "EUR"]).map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -462,7 +479,7 @@ export default function VoyageForm({
         <div>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Agent&apos;s Expected Costs</h2>
           <p className="text-xs text-gray-500 mb-3">
-            Add one row per cost category you have an expectation for — pick the category, enter NOK, and tick &quot;Confirmed&quot; if it&apos;s a known invoice value (not just your guess).
+            Add one row per cost category you have an expectation for — pick the category, enter {currency}, and tick &quot;Confirmed&quot; if it&apos;s a known invoice value (not just your guess).
           </p>
           {agentExpectedItems.length === 0 && (
             <p className="text-xs text-gray-400 mb-3 italic">
@@ -488,7 +505,7 @@ export default function VoyageForm({
                   type="number"
                   value={it.value}
                   onChange={(e) => updateAgentExpectedRow(i, { value: e.target.value })}
-                  placeholder="NOK"
+                  placeholder={currency}
                   min="0"
                   step="any"
                   className="col-span-3 rounded-lg border border-gray-300 px-2 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
@@ -528,7 +545,7 @@ export default function VoyageForm({
         <div>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Actual Cost</h2>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Actual voyage cost — total (NOK)
+            Actual voyage cost — total ({currency})
           </label>
           <input
             type="number"
@@ -564,7 +581,7 @@ export default function VoyageForm({
                           [cat]: e.target.value,
                         }))
                       }
-                      placeholder="NOK"
+                      placeholder={currency}
                       min="0"
                       step="any"
                       className="col-span-2 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"

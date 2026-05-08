@@ -31,3 +31,14 @@ export const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
 ];
+
+const CURRENCY_LOCALE: Record<string, string> = {
+  NOK: "nb-NO",
+  DKK: "da-DK",
+  EUR: "de-DE",
+};
+
+export function formatCurrency(value: number, currency: string = "NOK"): string {
+  const locale = CURRENCY_LOCALE[currency] ?? "nb-NO";
+  return value.toLocaleString(locale, { maximumFractionDigits: 0 });
+}

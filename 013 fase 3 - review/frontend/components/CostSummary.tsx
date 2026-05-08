@@ -1,13 +1,10 @@
 "use client";
 
 import type { VoyageResponse } from "../lib/types";
-
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
-}
+import { formatCurrency } from "../lib/api";
 
 export default function CostSummary({ result }: { result: VoyageResponse }) {
-  const { grand_total, historical_range, size_category, loskrav, fuel_lph } = result;
+  const { grand_total, historical_range, size_category, loskrav, fuel_lph, currency } = result;
 
   const markerPct = historical_range
     ? (() => {
@@ -22,7 +19,7 @@ export default function CostSummary({ result }: { result: VoyageResponse }) {
     <div className="bg-white rounded-xl border border-gray-200 p-6">
       <div className="text-center mb-6">
         <p className="text-sm text-gray-500 mb-1">Estimated Voyage Cost</p>
-        <p className="text-4xl font-bold text-gray-900">{formatNOK(grand_total)} NOK</p>
+        <p className="text-4xl font-bold text-gray-900">{formatCurrency(grand_total, currency)} {currency}</p>
       </div>
 
       {historical_range ? (
@@ -38,8 +35,8 @@ export default function CostSummary({ result }: { result: VoyageResponse }) {
             />
           </div>
           <div className="flex justify-between text-xs font-medium text-gray-700 mt-1">
-            <span>{formatNOK(historical_range.p25)} NOK</span>
-            <span>{formatNOK(historical_range.p75)} NOK</span>
+            <span>{formatCurrency(historical_range.p25, currency)} {currency}</span>
+            <span>{formatCurrency(historical_range.p75, currency)} {currency}</span>
           </div>
         </div>
       ) : (
