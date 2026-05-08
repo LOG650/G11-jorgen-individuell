@@ -36,6 +36,8 @@ export interface VoyageFormInitial {
   draft?: string;
   fuel?: string;
   currency?: string;
+  pilotCost?: string;
+  pilotType?: "national" | "private" | "";
   stops?: StopRow[];
   actualCost?: string;
   agentExpectedItems?: AgentExpectedItem[];
@@ -113,6 +115,8 @@ export default function VoyageForm({
   const [draft, setDraft] = useState(initial?.draft ?? "");
   const [fuel, setFuel] = useState(initial?.fuel ?? "medium");
   const [currency, setCurrency] = useState(initial?.currency ?? (options.currencies?.[0] ?? "NOK"));
+  const [pilotCost, setPilotCost] = useState(initial?.pilotCost ?? "");
+  const [pilotType, setPilotType] = useState<"national" | "private" | "">(initial?.pilotType ?? "national");
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
   const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
     initial?.agentExpectedItems ?? [],
@@ -175,6 +179,7 @@ export default function VoyageForm({
   }
 
   function submit(save: boolean) {
+    const parsedPilot = pilotCost.trim() === "" ? null : parseFloat(pilotCost);
     const req: VoyageRequest = {
       gt: parseFloat(gt),
       loa: parseFloat(loa),
@@ -187,6 +192,8 @@ export default function VoyageForm({
         month: new Date(s.arrivalDate).getMonth() + 1,
         stay_days: stopToDays(s),
       })),
+      pilot_cost: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 ? parsedPilot : null,
+      pilot_type: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 && pilotType !== "" ? pilotType : null,
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
     const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
@@ -222,6 +229,12 @@ export default function VoyageForm({
     submit(false);
   }
 
+  const loaNum = parseFloat(loa);
+  const pilotageMandatory = !isNaN(loaNum) && loaNum > 70;
+  const pilotCostNum = parseFloat(pilotCost);
+  const pilotProvided = pilotCost.trim() !== "" && !isNaN(pilotCostNum) && pilotCostNum > 0;
+  const pilotValid = !pilotageMandatory || pilotProvided;
+
   const specsValid =
     gt && loa && beam && draft && parseFloat(gt) > 0 &&
     parseFloat(loa) > 0 && parseFloat(beam) > 0 && parseFloat(draft) > 0;
@@ -245,7 +258,7 @@ export default function VoyageForm({
     return null;
   });
   const hasOverlap = stopErrors.some((e) => e !== null);
-  const valid = specsValid && stopsFieldsValid && !hasOverlap;
+  const valid = specsValid && stopsFieldsValid && !hasOverlap && pilotValid;
   const hasAnySpec = Boolean(yachtName.trim() || gt || loa || beam || draft);
   const canSaveToRegistry = valid && yachtName.trim().length > 0;
 
@@ -474,6 +487,53 @@ export default function VoyageForm({
           </button>
         </div>
       </div>
+
+      {pilotageMandatory && (
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">
+            Pilotage <span className="text-red-600">*</span>
+          </h2>
+          <p className="text-xs text-gray-500 mb-3">
+            LOA &gt; 70 m — pilotage is mandatory. The model only assigns a low historic
+            probability to pilot fees, so enter the actual cost yourself.
+          </p>
+          <div className="space-y-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Pilot arrangement
+              </label>
+              <select
+                value={pilotType}
+                onChange={(e) => setPilotType(e.target.value as "national" | "private")}
+                className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              >
+                <option value="national">National pilotage association</option>
+                <option value="private">Private pilot (entire voyage)</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Pilotage cost ({currency})
+              </label>
+              <input
+                type="number"
+                value={pilotCost}
+                onChange={(e) => setPilotCost(e.target.value)}
+                placeholder={`Total pilot cost in ${currency}`}
+                min="0"
+                step="any"
+                required
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              />
+              {!pilotProvided && (
+                <p className="text-xs text-red-600 mt-1">
+                  Required: enter the pilotage cost for this voyage.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {showAgentExpected && (
         <div>

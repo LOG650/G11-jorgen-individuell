@@ -57,6 +57,14 @@ class VoyageRequest(BaseModel):
     fuel: str = Field("medium", description='Fuel: "low", "medium", "high", or a number in L/h')
     stops: list[PortStop] = Field(..., min_length=1, description="Itinerary stops")
     currency: str = Field("NOK", description='Output currency: "NOK", "DKK", or "EUR"')
+    pilot_cost: float | None = Field(
+        None, ge=0,
+        description="Pilotage cost for the voyage, in the selected currency. Required when LOA > 70m (mandatory pilotage).",
+    )
+    pilot_type: str | None = Field(
+        None,
+        description='Pilotage arrangement: "national" (national pilotage association) or "private" (private pilot for entire voyage).',
+    )
 
 
 class HistoricalRange(BaseModel):
@@ -138,6 +146,23 @@ def predict(req: VoyageRequest):
     size_cat = get_size_category(req.gt)
     loskrav = get_loskrav(req.loa)
 
+    # Mandatory pilotage: when LOA > 70m, the user must declare pilotage cost
+    # because the model under-weights it (line items appear with low historic
+    # probability across all yachts, but for this size class the probability is 1).
+    if loskrav == "Ja" and (req.pilot_cost is None or req.pilot_cost <= 0):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Pilotage is mandatory for LOA > 70m. Provide pilot_cost (in the "
+                "selected currency) and pilot_type ('national' or 'private')."
+            ),
+        )
+    if req.pilot_type is not None and req.pilot_type not in ("national", "private"):
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid pilot_type '{req.pilot_type}'. Use 'national' or 'private'.",
+        )
+
     aggregated_cats: dict[str, float] = {}
     stops_out: list[dict] = []
     grand_total = 0.0
@@ -198,12 +223,21 @@ def predict(req: VoyageRequest):
         if all_have_baseline else None
     )
 
+    # Pilotage is entered in the user's selected currency, so it's added after
+    # the EUR→currency conversion of model outputs (no further fx scaling).
+    converted_cats: dict[str, float] = {
+        k: round(v * fx, 2) for k, v in aggregated_cats.items()
+    }
+    grand_total_converted = round(grand_total * fx, 2)
+    if req.pilot_cost is not None and req.pilot_cost > 0:
+        converted_cats["Pilotage"] = round(
+            converted_cats.get("Pilotage", 0.0) + req.pilot_cost, 2
+        )
+        grand_total_converted = round(grand_total_converted + req.pilot_cost, 2)
+
     return {
-        "category_totals": {
-            k: round(v * fx, 2)
-            for k, v in sorted(aggregated_cats.items(), key=lambda x: -x[1])
-        },
-        "grand_total": round(grand_total * fx, 2),
+        "category_totals": dict(sorted(converted_cats.items(), key=lambda x: -x[1])),
+        "grand_total": grand_total_converted,
         "size_category": size_cat,
         "loskrav": loskrav,
         "fuel_lph": fuel_lph,

@@ -12,6 +12,8 @@ export interface VoyageRequest {
   fuel: string;
   stops: PortStop[];
   currency: string;
+  pilot_cost?: number | null;
+  pilot_type?: "national" | "private" | null;
 }
 
 export interface HistoricalRange {
