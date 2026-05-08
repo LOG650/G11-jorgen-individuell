@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { VoyageRequest, OptionsResponse } from "../lib/types";
+import type { VoyageRequest, OptionsResponse, GuestExperience } from "../lib/types";
 
 export interface StopRow {
   port: string;
@@ -41,6 +41,7 @@ export interface VoyageFormInitial {
   pilotType?: "national" | "private" | "";
   cruisingSpeedKn?: string;
   dieselPricePerL?: string;
+  guestExperience?: GuestExperience | "";
   stops?: StopRow[];
   actualCost?: string;
   agentExpectedItems?: AgentExpectedItem[];
@@ -60,6 +61,7 @@ export interface VoyageFormSubmitOpts {
   actualCost: number | null;
   agentExpectedItems: ParsedAgentExpected[];
   actualCategoryTotals: Record<string, number>;
+  guestExperience: GuestExperience | null;
 }
 
 interface Props {
@@ -122,6 +124,9 @@ export default function VoyageForm({
   const [pilotType, setPilotType] = useState<"national" | "private" | "">(initial?.pilotType ?? "national");
   const [cruisingSpeedKn, setCruisingSpeedKn] = useState(initial?.cruisingSpeedKn ?? "");
   const [dieselPricePerL, setDieselPricePerL] = useState(initial?.dieselPricePerL ?? "");
+  const [guestExperience, setGuestExperience] = useState<GuestExperience | "">(
+    initial?.guestExperience ?? "",
+  );
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
   const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
     initial?.agentExpectedItems ?? [],
@@ -210,6 +215,7 @@ export default function VoyageForm({
       pilot_type: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 && pilotType !== "" ? pilotType : null,
       cruising_speed_kn: parsedSpeed !== null && !isNaN(parsedSpeed) && parsedSpeed > 0 ? parsedSpeed : null,
       diesel_price_per_l: parsedDiesel !== null && !isNaN(parsedDiesel) && parsedDiesel > 0 ? parsedDiesel : null,
+      guest_experience: guestExperience === "" ? null : guestExperience,
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
     const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
@@ -237,6 +243,7 @@ export default function VoyageForm({
       actualCost: actualValid ? parsedActual : null,
       agentExpectedItems: parsedAgent,
       actualCategoryTotals: parsedCategoryTotals,
+      guestExperience: guestExperience === "" ? null : guestExperience,
     });
   }
 
@@ -562,6 +569,25 @@ export default function VoyageForm({
             />
           </div>
         </div>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-semibold text-gray-900 mb-1">Guest experience</h2>
+        <p className="text-xs text-gray-500 mb-3">
+          Optional. <span className="font-medium">Recorded for future model retraining</span> — the
+          current model has no labeled data for this variable, so it does not affect the prediction
+          today. Most relevant to provisioning and hospitality once data is collected.
+        </p>
+        <select
+          value={guestExperience}
+          onChange={(e) => setGuestExperience(e.target.value as GuestExperience | "")}
+          className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+        >
+          <option value="">— not specified —</option>
+          <option value="not_demanding">Not demanding</option>
+          <option value="neutral">Neutral</option>
+          <option value="demanding">Demanding</option>
+        </select>
       </div>
 
       {pilotageMandatory && (

@@ -5,6 +5,8 @@ export interface PortStop {
   distance_nm?: number | null;
 }
 
+export type GuestExperience = "demanding" | "neutral" | "not_demanding";
+
 export interface VoyageRequest {
   gt: number;
   loa: number;
@@ -17,6 +19,7 @@ export interface VoyageRequest {
   pilot_type?: "national" | "private" | null;
   cruising_speed_kn?: number | null;
   diesel_price_per_l?: number | null;
+  guest_experience?: GuestExperience | null;
 }
 
 export interface HistoricalRange {
@@ -43,6 +46,8 @@ export interface VoyageResponse {
   historical_range: HistoricalRange | null;
   currency: string;
   exchange_rate_from_eur: number;
+  guest_experience: GuestExperience | null;
+  guest_experience_note: string | null;
 }
 
 export interface OptionsResponse {

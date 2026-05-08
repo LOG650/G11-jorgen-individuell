@@ -1,4 +1,4 @@
-import type { StopResult } from "./types";
+import type { GuestExperience, StopResult } from "./types";
 
 const STORAGE_KEY = "nauticost.registry.v1";
 
@@ -34,6 +34,7 @@ export interface RegistryEntry {
   actualTotal: number | null;
   actualCategoryTotals?: Record<string, number>;
   agentExpectedItems?: AgentExpectedRecord[];
+  guestExperience?: GuestExperience | null;
   // Legacy fields kept for backwards compatibility with entries saved before
   // the per-category restructure. Not written by new code.
   agentExpected?: number | null;

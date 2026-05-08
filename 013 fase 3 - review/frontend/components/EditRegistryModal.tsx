@@ -68,13 +68,9 @@ function entryToInitial(entry: RegistryEntry): VoyageFormInitial {
     beam: String(entry.beam),
     draft: String(entry.draft),
     fuel: entry.fuel,
+    guestExperience: entry.guestExperience ?? "",
     stops,
     actualCost: entry.actualTotal === null ? "" : String(entry.actualTotal),
-    agentExpected:
-      entry.agentExpected === null || entry.agentExpected === undefined
-        ? ""
-        : String(entry.agentExpected),
-    agentExpectedConfirmed: entry.agentExpectedConfirmed ?? false,
     actualCategoryTotals: categoryStrings,
   };
 }
@@ -104,10 +100,6 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
     setSaveError(null);
     try {
       const res = await predictVoyage(req);
-      const confirmedAsActual =
-        opts.agentExpectedConfirmed && opts.agentExpected !== null
-          ? opts.agentExpected
-          : opts.actualCost;
       updateEntry(entry.id, {
         yachtName: opts.yachtName || entry.yachtName,
         gt: req.gt,
@@ -122,13 +114,13 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
         stops: res.stops,
         estimatedTotal: res.grand_total,
         estimatedCategoryTotals: res.category_totals,
-        actualTotal: confirmedAsActual,
+        actualTotal: opts.actualCost,
         actualCategoryTotals:
           Object.keys(opts.actualCategoryTotals).length > 0
             ? opts.actualCategoryTotals
             : undefined,
-        agentExpected: opts.agentExpected,
-        agentExpectedConfirmed: opts.agentExpectedConfirmed,
+        agentExpectedItems: opts.agentExpectedItems.length > 0 ? opts.agentExpectedItems : undefined,
+        guestExperience: opts.guestExperience,
       });
       onSaved();
       onClose();

@@ -77,6 +77,14 @@ class VoyageRequest(BaseModel):
         None, gt=0,
         description="Diesel price per litre in the selected currency.",
     )
+    guest_experience: str | None = Field(
+        None,
+        description=(
+            "Expected guest demand level: 'demanding', 'neutral', or 'not_demanding'. "
+            "Recorded for future model retraining; does not affect the current prediction "
+            "(the model was not trained on this variable — no labeled data exists yet)."
+        ),
+    )
 
 
 class HistoricalRange(BaseModel):
@@ -103,6 +111,8 @@ class VoyageResponse(BaseModel):
     historical_range: HistoricalRange | None
     currency: str
     exchange_rate_from_eur: float
+    guest_experience: str | None
+    guest_experience_note: str | None
 
 
 # ── Endpoints ───────────────────────────────────────────────────
@@ -174,6 +184,19 @@ def predict(req: VoyageRequest):
             status_code=400,
             detail=f"Invalid pilot_type '{req.pilot_type}'. Use 'national' or 'private'.",
         )
+
+    valid_guest = {"demanding", "neutral", "not_demanding"}
+    if req.guest_experience is not None and req.guest_experience not in valid_guest:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid guest_experience '{req.guest_experience}'. Use one of: {', '.join(sorted(valid_guest))}.",
+        )
+    guest_note = (
+        "Recorded for future model retraining. The current model was not trained "
+        "on guest_experience, so this field does not influence the prediction."
+        if req.guest_experience is not None
+        else None
+    )
 
     aggregated_cats: dict[str, float] = {}
     stops_out: list[dict] = []
@@ -278,4 +301,6 @@ def predict(req: VoyageRequest):
         "historical_range": voyage_range,
         "currency": currency,
         "exchange_rate_from_eur": fx,
+        "guest_experience": req.guest_experience,
+        "guest_experience_note": guest_note,
     }
