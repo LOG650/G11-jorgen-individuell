@@ -133,6 +133,7 @@ export default function ForecastPage() {
   const [seasonalInput, setSeasonalInput] = useState("");
   const [seasonalHorizon, setSeasonalHorizon] = useState(12);
   const [currency, setCurrency] = useState("NOK");
+  const [scaleUpFleetText, setScaleUpFleetText] = useState("");
 
   function refreshEntries() {
     setEntries(listEntries());
@@ -418,6 +419,44 @@ export default function ForecastPage() {
   const projected = entries.reduce((sum, e) => sum + e.estimatedTotal, 0);
   const actualsCount = entries.filter((e) => e.actualTotal !== null).length;
   const pendingCount = entries.length - actualsCount;
+
+  // Per-yacht roll-up. Entries can be in mixed currencies, so we normalise
+  // each value to EUR via its stored currency (default NOK for legacy
+  // entries that pre-date currency tracking), aggregate in EUR, and let the
+  // page-level currency selector multiply the displayed totals.
+  const perYacht = useMemo(() => {
+    const map = new Map<
+      string,
+      { name: string; voyages: number; estimatedEur: number; actualEur: number; actualKnown: number }
+    >();
+    for (const e of entries) {
+      const fxStored = fxFromEur(e.currency ?? "NOK");
+      const estEur = e.estimatedTotal / fxStored;
+      const actEur = e.actualTotal !== null ? e.actualTotal / fxStored : 0;
+      const row = map.get(e.yachtName) ?? {
+        name: e.yachtName,
+        voyages: 0,
+        estimatedEur: 0,
+        actualEur: 0,
+        actualKnown: 0,
+      };
+      row.voyages += 1;
+      row.estimatedEur += estEur;
+      if (e.actualTotal !== null) {
+        row.actualEur += actEur;
+        row.actualKnown += 1;
+      }
+      map.set(e.yachtName, row);
+    }
+    return Array.from(map.values()).sort((a, b) => b.estimatedEur - a.estimatedEur);
+  }, [entries]);
+
+  const fleetSize = perYacht.length;
+  const fleetTotalEstimatedEur = perYacht.reduce((s, y) => s + y.estimatedEur, 0);
+  const avgPerYachtEur = fleetSize > 0 ? fleetTotalEstimatedEur / fleetSize : 0;
+  const scaleUpFleet = parseInt(scaleUpFleetText, 10);
+  const scaleUpProjectionEur =
+    Number.isFinite(scaleUpFleet) && scaleUpFleet > 0 ? avgPerYachtEur * scaleUpFleet : 0;
 
   const targetNum = parseFloat(target) || 0;
   const stretchNum = parseFloat(stretch);
@@ -1142,6 +1181,94 @@ export default function ForecastPage() {
           No entries in the registry yet. Run a prediction on the{" "}
           <Link href="/" className="underline font-medium">dashboard</Link>
           {" "}and click &quot;Add to Registry&quot; so this page has something to aggregate.
+        </div>
+      )}
+
+      {fleetSize > 0 && (
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-sm font-semibold text-gray-900">Per-yacht roll-up</h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Aggregated across all registry entries grouped by yacht. Mixed-currency
+              entries are normalised to EUR using their stored exchange rate, then
+              shown × {fxFromEur(currency).toFixed(2)} for display in {currency}.
+            </p>
+          </div>
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+              <tr>
+                <th className="text-left px-6 py-3 font-medium">Yacht</th>
+                <th className="text-right px-6 py-3 font-medium">Voyages</th>
+                <th className="text-right px-6 py-3 font-medium">Total estimated ({currency})</th>
+                <th className="text-right px-6 py-3 font-medium">Total actual ({currency})</th>
+                <th className="text-right px-6 py-3 font-medium">Avg / voyage ({currency})</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {perYacht.map((y) => (
+                <tr key={y.name} className="hover:bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-900">{y.name}</td>
+                  <td className="px-6 py-3 text-right text-gray-700">{y.voyages}</td>
+                  <td className="px-6 py-3 text-right text-gray-700">
+                    {fmt(y.estimatedEur)}
+                  </td>
+                  <td className="px-6 py-3 text-right text-gray-700">
+                    {y.actualKnown > 0 ? fmt(y.actualEur) : <span className="text-gray-400 italic">N/A</span>}
+                  </td>
+                  <td className="px-6 py-3 text-right text-gray-700">
+                    {fmt(y.estimatedEur / y.voyages)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="bg-gray-50 text-xs">
+              <tr>
+                <td className="px-6 py-3 font-semibold text-gray-700">
+                  Fleet ({fleetSize} yacht{fleetSize === 1 ? "" : "s"})
+                </td>
+                <td className="px-6 py-3 text-right text-gray-700 font-semibold">
+                  {entries.length}
+                </td>
+                <td className="px-6 py-3 text-right text-gray-700 font-semibold">
+                  {fmt(fleetTotalEstimatedEur)}
+                </td>
+                <td className="px-6 py-3 text-right text-gray-400">—</td>
+                <td className="px-6 py-3 text-right text-gray-700 font-semibold">
+                  {fmt(avgPerYachtEur)}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <div className="px-6 py-4 border-t border-gray-200 bg-blue-50/40">
+            <h3 className="text-sm font-semibold text-gray-900 mb-1">Scale-up projection</h3>
+            <p className="text-xs text-gray-500 mb-3">
+              Naive linear roll-out: assumes the average revenue per yacht
+              ({fmt(avgPerYachtEur)} {currency}) stays the same as the fleet grows.
+              Useful for the &quot;25 → 30 yachts&quot; question, but it ignores any
+              capacity, port, or seasonality constraints.
+            </p>
+            <div className="flex items-end gap-3 flex-wrap">
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Future fleet size</label>
+                <input
+                  type="number"
+                  value={scaleUpFleetText}
+                  onChange={(e) => setScaleUpFleetText(e.target.value)}
+                  placeholder={`e.g. ${fleetSize + 5}`}
+                  min="1"
+                  step="1"
+                  className="w-32 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                />
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <p className="text-xs text-gray-500">Projected total revenue</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {scaleUpProjectionEur > 0 ? `${fmt(scaleUpProjectionEur)} ${currency}` : "—"}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
