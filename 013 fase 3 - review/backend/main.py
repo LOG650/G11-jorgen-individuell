@@ -47,6 +47,10 @@ class PortStop(BaseModel):
     port: str = Field(..., description="Port name (e.g. Bergen, Tromsø, Stockholm)")
     month: int = Field(..., ge=1, le=12, description="Month of arrival (1-12)")
     stay_days: float = Field(..., gt=0, description="Stay duration in days")
+    distance_nm: float | None = Field(
+        None, ge=0,
+        description="Sailing distance from previous port in nautical miles. Ignored for the first stop. Used (with cruising speed and diesel price) to compute bunkering deterministically.",
+    )
 
 
 class VoyageRequest(BaseModel):
@@ -64,6 +68,14 @@ class VoyageRequest(BaseModel):
     pilot_type: str | None = Field(
         None,
         description='Pilotage arrangement: "national" (national pilotage association) or "private" (private pilot for entire voyage).',
+    )
+    cruising_speed_kn: float | None = Field(
+        None, gt=0,
+        description="Average cruising speed in knots. With per-stop distance and diesel price, replaces the model's probabilistic bunkering estimate with a deterministic computation.",
+    )
+    diesel_price_per_l: float | None = Field(
+        None, gt=0,
+        description="Diesel price per litre in the selected currency.",
     )
 
 
@@ -223,12 +235,33 @@ def predict(req: VoyageRequest):
         if all_have_baseline else None
     )
 
-    # Pilotage is entered in the user's selected currency, so it's added after
-    # the EUR→currency conversion of model outputs (no further fx scaling).
+    # Pilotage and bunkering inputs are already in the user's selected currency,
+    # so they're applied after the EUR→currency conversion (no further fx scaling).
     converted_cats: dict[str, float] = {
         k: round(v * fx, 2) for k, v in aggregated_cats.items()
     }
     grand_total_converted = round(grand_total * fx, 2)
+
+    # Deterministic bunkering: distance / speed × fuel_lph × diesel_price.
+    # When all three voyage-geometry inputs are present, override the model's
+    # probabilistic bunkering line items with the computed cost.
+    total_distance_nm = sum(
+        (s.distance_nm or 0.0) for s in req.stops
+    )
+    if (
+        total_distance_nm > 0
+        and req.cruising_speed_kn is not None
+        and req.diesel_price_per_l is not None
+    ):
+        voyage_hours = total_distance_nm / req.cruising_speed_kn
+        fuel_qty_l = voyage_hours * fuel_lph
+        bunkering_cost = round(fuel_qty_l * req.diesel_price_per_l, 2)
+        existing_bunkering = converted_cats.pop("Bunkering", 0.0)
+        grand_total_converted = round(
+            grand_total_converted - existing_bunkering + bunkering_cost, 2
+        )
+        converted_cats["Bunkering"] = bunkering_cost
+
     if req.pilot_cost is not None and req.pilot_cost > 0:
         converted_cats["Pilotage"] = round(
             converted_cats.get("Pilotage", 0.0) + req.pilot_cost, 2

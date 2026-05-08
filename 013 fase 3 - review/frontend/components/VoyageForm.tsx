@@ -9,6 +9,7 @@ export interface StopRow {
   months: string;
   weeks: string;
   days: string;
+  distanceNm?: string;       // sailing distance from previous port (nm); blank/0 for first stop
 }
 
 export interface AgentExpectedItem {
@@ -38,6 +39,8 @@ export interface VoyageFormInitial {
   currency?: string;
   pilotCost?: string;
   pilotType?: "national" | "private" | "";
+  cruisingSpeedKn?: string;
+  dieselPricePerL?: string;
   stops?: StopRow[];
   actualCost?: string;
   agentExpectedItems?: AgentExpectedItem[];
@@ -117,6 +120,8 @@ export default function VoyageForm({
   const [currency, setCurrency] = useState(initial?.currency ?? (options.currencies?.[0] ?? "NOK"));
   const [pilotCost, setPilotCost] = useState(initial?.pilotCost ?? "");
   const [pilotType, setPilotType] = useState<"national" | "private" | "">(initial?.pilotType ?? "national");
+  const [cruisingSpeedKn, setCruisingSpeedKn] = useState(initial?.cruisingSpeedKn ?? "");
+  const [dieselPricePerL, setDieselPricePerL] = useState(initial?.dieselPricePerL ?? "");
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
   const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
     initial?.agentExpectedItems ?? [],
@@ -136,6 +141,7 @@ export default function VoyageForm({
             months: "",
             weeks: "",
             days: "",
+            distanceNm: "",
           },
         ],
   );
@@ -153,6 +159,7 @@ export default function VoyageForm({
         months: "",
         weeks: "",
         days: "",
+        distanceNm: "",
       },
     ]);
   }
@@ -180,6 +187,8 @@ export default function VoyageForm({
 
   function submit(save: boolean) {
     const parsedPilot = pilotCost.trim() === "" ? null : parseFloat(pilotCost);
+    const parsedSpeed = cruisingSpeedKn.trim() === "" ? null : parseFloat(cruisingSpeedKn);
+    const parsedDiesel = dieselPricePerL.trim() === "" ? null : parseFloat(dieselPricePerL);
     const req: VoyageRequest = {
       gt: parseFloat(gt),
       loa: parseFloat(loa),
@@ -187,13 +196,20 @@ export default function VoyageForm({
       draft: parseFloat(draft),
       fuel,
       currency,
-      stops: stops.map((s) => ({
-        port: s.port,
-        month: new Date(s.arrivalDate).getMonth() + 1,
-        stay_days: stopToDays(s),
-      })),
+      stops: stops.map((s, idx) => {
+        const distNum = parseFloat(s.distanceNm ?? "");
+        return {
+          port: s.port,
+          month: new Date(s.arrivalDate).getMonth() + 1,
+          stay_days: stopToDays(s),
+          // First stop has no "from previous" leg
+          distance_nm: idx === 0 || isNaN(distNum) || distNum < 0 ? null : distNum,
+        };
+      }),
       pilot_cost: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 ? parsedPilot : null,
       pilot_type: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 && pilotType !== "" ? pilotType : null,
+      cruising_speed_kn: parsedSpeed !== null && !isNaN(parsedSpeed) && parsedSpeed > 0 ? parsedSpeed : null,
+      diesel_price_per_l: parsedDiesel !== null && !isNaN(parsedDiesel) && parsedDiesel > 0 ? parsedDiesel : null,
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
     const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
@@ -470,6 +486,26 @@ export default function VoyageForm({
                 )}
               </div>
 
+              {idx > 0 && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Distance from previous port (nm)
+                  </label>
+                  <input
+                    type="number"
+                    value={stop.distanceNm ?? ""}
+                    onChange={(e) => updateStop(idx, { distanceNm: e.target.value })}
+                    placeholder="Optional"
+                    min="0"
+                    step="any"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Used (with cruising speed and diesel price below) to compute bunkering deterministically.
+                  </p>
+                </div>
+              )}
+
               {stopErrors[idx] && (
                 <div className="rounded-md bg-red-50 border border-red-200 px-3 py-2">
                   <p className="text-xs text-red-700">{stopErrors[idx]}</p>
@@ -485,6 +521,46 @@ export default function VoyageForm({
           >
             + Add another port
           </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-semibold text-gray-900 mb-1">Bunkering</h2>
+        <p className="text-xs text-gray-500 mb-3">
+          Optional — when cruising speed and diesel price are both provided
+          (and at least one stop has a distance), the model&apos;s probabilistic
+          bunkering estimate is replaced by{" "}
+          <span className="font-mono">distance / speed × fuel L/h × diesel price</span>.
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Cruising speed (kn)
+            </label>
+            <input
+              type="number"
+              value={cruisingSpeedKn}
+              onChange={(e) => setCruisingSpeedKn(e.target.value)}
+              placeholder="e.g. 12"
+              min="0"
+              step="any"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Diesel price ({currency}/L)
+            </label>
+            <input
+              type="number"
+              value={dieselPricePerL}
+              onChange={(e) => setDieselPricePerL(e.target.value)}
+              placeholder={`Price per L in ${currency}`}
+              min="0"
+              step="any"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
         </div>
       </div>
 

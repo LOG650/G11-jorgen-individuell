@@ -2,6 +2,7 @@ export interface PortStop {
   port: string;
   month: number;
   stay_days: number;
+  distance_nm?: number | null;
 }
 
 export interface VoyageRequest {
@@ -14,6 +15,8 @@ export interface VoyageRequest {
   currency: string;
   pilot_cost?: number | null;
   pilot_type?: "national" | "private" | null;
+  cruising_speed_kn?: number | null;
+  diesel_price_per_l?: number | null;
 }
 
 export interface HistoricalRange {
