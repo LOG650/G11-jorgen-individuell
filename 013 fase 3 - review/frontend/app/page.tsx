@@ -47,6 +47,7 @@ export default function Dashboard() {
             Object.keys(opts.actualCategoryTotals).length > 0 ? opts.actualCategoryTotals : undefined,
           agentExpectedItems: opts.agentExpectedItems.length > 0 ? opts.agentExpectedItems : undefined,
           guestExperience: opts.guestExperience,
+          currency: res.currency,
         });
         setSavedNotice(`Saved ${opts.yachtName} to the registry.`);
       }

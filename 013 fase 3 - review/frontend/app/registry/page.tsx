@@ -5,8 +5,10 @@ import Link from "next/link";
 import { listEntries, updateEntry, removeEntry, type RegistryEntry } from "../../lib/registry";
 import EditRegistryModal from "../../components/EditRegistryModal";
 
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
+import { formatCurrency } from "../../lib/api";
+
+function entryCurrency(e: RegistryEntry): string {
+  return e.currency ?? "NOK";
 }
 
 function formatDate(iso: string): string {
@@ -23,12 +25,12 @@ function diffClass(actual: number | null, estimated: number): string {
   return "text-red-600";
 }
 
-function diffLabel(actual: number | null, estimated: number): string {
+function diffLabel(actual: number | null, estimated: number, currency: string): string {
   if (actual === null) return "—";
   const diff = actual - estimated;
   const pct = (diff / estimated) * 100;
   const sign = diff >= 0 ? "+" : "";
-  return `${sign}${formatNOK(diff)} (${sign}${pct.toFixed(1)}%)`;
+  return `${sign}${formatCurrency(diff, currency)} ${currency} (${sign}${pct.toFixed(1)}%)`;
 }
 
 export default function RegistryPage() {
@@ -113,8 +115,8 @@ export default function RegistryPage() {
                 <th className="text-left px-4 py-3 font-medium">Yacht</th>
                 <th className="text-left px-4 py-3 font-medium">Specs</th>
                 <th className="text-left px-4 py-3 font-medium">Itinerary</th>
-                <th className="text-right px-4 py-3 font-medium">Estimated (NOK)</th>
-                <th className="text-right px-4 py-3 font-medium">Actual (NOK)</th>
+                <th className="text-right px-4 py-3 font-medium">Estimated</th>
+                <th className="text-right px-4 py-3 font-medium">Actual</th>
                 <th className="text-right px-4 py-3 font-medium">Diff</th>
                 <th className="text-right px-4 py-3 font-medium">Saved</th>
                 <th className="px-4 py-3"></th>
@@ -183,7 +185,8 @@ export default function RegistryPage() {
                       : `${e.stops.length} stops: ${e.stops.map((s) => s.port).join(" → ")}`}
                   </td>
                   <td className="px-4 py-3 text-right font-medium">
-                    {formatNOK(e.estimatedTotal)}
+                    {formatCurrency(e.estimatedTotal, entryCurrency(e))}{" "}
+                    <span className="text-xs text-gray-400 font-normal">{entryCurrency(e)}</span>
                   </td>
                   <td className="px-4 py-3 text-right">
                     {editingId === e.id ? (
@@ -216,12 +219,14 @@ export default function RegistryPage() {
                         onClick={() => startEdit(e)}
                         className="text-gray-700 hover:text-blue-600 underline decoration-dotted underline-offset-2"
                       >
-                        {e.actualTotal !== null ? formatNOK(e.actualTotal) : "—"}
+                        {e.actualTotal !== null
+                          ? `${formatCurrency(e.actualTotal, entryCurrency(e))} ${entryCurrency(e)}`
+                          : "—"}
                       </button>
                     )}
                   </td>
                   <td className={`px-4 py-3 text-right text-xs ${diffClass(e.actualTotal, e.estimatedTotal)}`}>
-                    {diffLabel(e.actualTotal, e.estimatedTotal)}
+                    {diffLabel(e.actualTotal, e.estimatedTotal, entryCurrency(e))}
                   </td>
                   <td className="px-4 py-3 text-right text-xs text-gray-500">
                     {formatDate(e.createdAt)}

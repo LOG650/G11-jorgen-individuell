@@ -43,10 +43,13 @@ import {
   parseMonthlyInput,
   type MonthlyPoint,
 } from "../../lib/seasonal";
-
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
-}
+import {
+  EXCHANGE_RATES_FROM_EUR,
+  formatCurrency,
+  fxFromEur,
+  loadCurrencyPref,
+  saveCurrencyPref,
+} from "../../lib/api";
 
 function formatNum(n: number): string {
   return n.toLocaleString("nb-NO", { maximumFractionDigits: 2 });
@@ -129,6 +132,7 @@ export default function ForecastPage() {
   const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
   const [seasonalInput, setSeasonalInput] = useState("");
   const [seasonalHorizon, setSeasonalHorizon] = useState(12);
+  const [currency, setCurrency] = useState("NOK");
 
   function refreshEntries() {
     setEntries(listEntries());
@@ -142,6 +146,7 @@ export default function ForecastPage() {
     setRevenueGoal(loadRevenueGoal());
     setRevenueHistory(loadRevenueHistory());
     setDrivers(loadDrivers());
+    setCurrency(loadCurrencyPref());
     try {
       const stored = window.localStorage.getItem(SEASONAL_STORAGE_KEY);
       setSeasonalInput(stored ?? SEASONAL_SAMPLE_INPUT);
@@ -149,6 +154,13 @@ export default function ForecastPage() {
       setSeasonalInput(SEASONAL_SAMPLE_INPUT);
     }
   }, []);
+
+  const fx = fxFromEur(currency);
+  const fmt = (eur: number) => formatCurrency(eur * fx, currency);
+  function changeCurrency(c: string) {
+    setCurrency(c);
+    saveCurrencyPref(c);
+  }
 
   function persistSeasonalInput(v: string) {
     setSeasonalInput(v);
@@ -417,13 +429,25 @@ export default function ForecastPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Revenue Forecast</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Compare realized revenue against NautiCost&apos;s forecasted target. Sums are
-          based on entries in the{" "}
-          <Link href="/registry" className="text-blue-600 hover:underline">registry</Link>.
-        </p>
+      <div className="mb-8 flex items-start justify-between flex-wrap gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Revenue Forecast</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Revenue-history values are stored in EUR; the currency selector converts
+            <em> shown</em> values via the rate in the API. Per-yacht registry entries
+            keep their own stored currency (shown next to each row).
+          </p>
+        </div>
+        <select
+          value={currency}
+          onChange={(e) => changeCurrency(e.target.value)}
+          className="nice-select rounded-lg border border-gray-300 px-3 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+          title="Display currency for revenue history and forecasts"
+        >
+          {Object.keys(EXCHANGE_RATES_FROM_EUR).map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
       </div>
 
       {/* Revenue progress for selected year */}
@@ -450,13 +474,13 @@ export default function ForecastPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4">
             <p className="text-xs text-gray-500">Revenue {selectedYear}</p>
-            <p className="text-2xl font-bold text-gray-900">{formatNOK(selectedYearRevenue)}</p>
+            <p className="text-2xl font-bold text-gray-900">{fmt(selectedYearRevenue)}</p>
             <p className="text-xs text-gray-400 mt-1">From registry entries.</p>
           </div>
           <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-4">
             <p className="text-xs text-emerald-700">Algorithm forecast {selectedYear}</p>
             <p className="text-2xl font-bold text-emerald-800">
-              {algoForecast === null ? "—" : formatNOK(algoForecast)}
+              {algoForecast === null ? "—" : fmt(algoForecast)}
             </p>
             <p className="text-xs text-emerald-700/70 mt-1">
               {algoForecast === null
@@ -469,11 +493,11 @@ export default function ForecastPage() {
           <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4">
             <p className="text-xs text-gray-500">Goal trajectory {selectedYear}</p>
             <p className="text-2xl font-bold text-gray-900">
-              {selectedYearGoal === null ? "—" : formatNOK(selectedYearGoal)}
+              {selectedYearGoal === null ? "—" : fmt(selectedYearGoal)}
             </p>
             <p className="text-xs text-gray-400 mt-1">
               {revenueGoal.targetRevenue > 0
-                ? `On the path to ${formatNOK(revenueGoal.targetRevenue)} by ${revenueGoal.targetYear}.`
+                ? `On the path to ${fmt(revenueGoal.targetRevenue)} by ${revenueGoal.targetYear}.`
                 : "No revenue goal set."}
             </p>
           </div>
@@ -498,7 +522,7 @@ export default function ForecastPage() {
             >
               {selectedYearGap === null
                 ? "—"
-                : `${selectedYearGap >= 0 ? "+" : ""}${formatNOK(selectedYearGap)}`}
+                : `${selectedYearGap >= 0 ? "+" : ""}${fmt(selectedYearGap)}`}
             </p>
             <p className="text-xs text-gray-400 mt-1">
               {selectedYearGap === null
@@ -648,13 +672,13 @@ export default function ForecastPage() {
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                 <XAxis dataKey="year" fontSize={12} />
-                <YAxis tickFormatter={(v) => formatNOK(v)} fontSize={11} width={80} />
+                <YAxis tickFormatter={(v) => fmt(v)} fontSize={11} width={80} />
                 <Tooltip 
                   contentStyle={{ fontSize: 12 }} 
                   formatter={(v: any, name: string) => {
                     if (v === null) return [null, null];
                     const label = FORECAST_METHOD_LABELS[name as ForecastMethod] || name;
-                    return [`${formatNOK(v)} NOK`, label];
+                    return [`${fmt(v)} ${currency}`, label];
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
@@ -724,8 +748,8 @@ export default function ForecastPage() {
               <thead className="text-xs uppercase tracking-wide text-gray-500">
                 <tr>
                   <th className="text-left py-2 font-medium">Year</th>
-                  <th className="text-right py-2 font-medium">Forecasted revenue (NOK)</th>
-                  <th className="text-right py-2 font-medium">Δ vs prev year (NOK)</th>
+                  <th className="text-right py-2 font-medium">Forecasted revenue ({currency})</th>
+                  <th className="text-right py-2 font-medium">Δ vs prev year ({currency})</th>
                   <th className="text-right py-2 font-medium">Δ %</th>
                 </tr>
               </thead>
@@ -742,11 +766,11 @@ export default function ForecastPage() {
                     <tr key={row.year}>
                       <td className="py-2 font-medium text-gray-900">{row.year}</td>
                       <td className="py-2 text-right text-gray-900">
-                        {formatNOK(row.value)}
+                        {fmt(row.value)}
                       </td>
                       <td className={`py-2 text-right font-medium ${tone}`}>
                         {sign}
-                        {formatNOK(row.deltaAbs)}
+                        {fmt(row.deltaAbs)}
                       </td>
                       <td className={`py-2 text-right ${tone}`}>
                         {sign}
@@ -910,7 +934,7 @@ export default function ForecastPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Forecasted total revenue (NOK)
+              Forecasted total revenue ({currency})
             </label>
             <input
               type="number"
@@ -956,7 +980,7 @@ export default function ForecastPage() {
           <div className="text-right">
             <p className="text-xs text-gray-500">Recognized</p>
             <p className="text-2xl font-bold text-gray-900">
-              {formatNOK(recognized)} NOK
+              {fmt(recognized)} {currency}
             </p>
           </div>
         </div>
@@ -970,8 +994,8 @@ export default function ForecastPage() {
               </span>
               <span className={gapToTarget > 0 ? "text-gray-700" : "text-green-600 font-medium"}>
                 {gapToTarget > 0
-                  ? `${formatNOK(gapToTarget)} NOK to go`
-                  : `Forecast beaten by ${formatNOK(-gapToTarget)} NOK`}
+                  ? `${fmt(gapToTarget)} {currency} to go`
+                  : `Forecast beaten by ${fmt(-gapToTarget)} ${currency}`}
               </span>
             </div>
           </>
@@ -991,15 +1015,15 @@ export default function ForecastPage() {
                 Stretch target (+{stretchPct}%)
               </h2>
               <p className="text-xs text-gray-500 mt-1">
-                {formatNOK(stretchTarget)} NOK — forecast × (1 + {stretchPct}%).
+                {fmt(stretchTarget)} {currency} — forecast × (1 + {stretchPct}%).
               </p>
             </div>
             <div className="text-right">
               <p className="text-xs text-gray-500">Gap to stretch</p>
               <p className={`text-xl font-semibold ${gapToStretch > 0 ? "text-gray-900" : "text-green-600"}`}>
                 {gapToStretch > 0
-                  ? `${formatNOK(gapToStretch)} NOK`
-                  : `Beaten by ${formatNOK(-gapToStretch)} NOK`}
+                  ? `${fmt(gapToStretch)} ${currency}`
+                  : `Beaten by ${fmt(-gapToStretch)} ${currency}`}
               </p>
             </div>
           </div>
@@ -1021,7 +1045,7 @@ export default function ForecastPage() {
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">Projected (all estimates)</p>
-          <p className="text-2xl font-bold text-gray-900">{formatNOK(projected)}</p>
+          <p className="text-2xl font-bold text-gray-900">{fmt(projected)}</p>
           <p className="text-xs text-gray-400 mt-1">
             What the registry would book if every quote converted.
           </p>
@@ -1029,9 +1053,9 @@ export default function ForecastPage() {
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">Avg per call (estimated)</p>
           <p className="text-2xl font-bold text-gray-900">
-            {entries.length > 0 ? formatNOK(projected / entries.length) : "—"}
+            {entries.length > 0 ? fmt(projected / entries.length) : "—"}
           </p>
-          <p className="text-xs text-gray-400 mt-1">NOK per registry entry.</p>
+          <p className="text-xs text-gray-400 mt-1">{currency} per registry entry.</p>
         </div>
       </div>
 
@@ -1049,19 +1073,23 @@ export default function ForecastPage() {
             <thead className="bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
               <tr>
                 <th className="text-left px-6 py-3 font-medium">Yacht</th>
-                <th className="text-right px-6 py-3 font-medium">Estimated (NOK)</th>
-                <th className="text-right px-6 py-3 font-medium">Actual Cost (NOK)</th>
+                <th className="text-right px-6 py-3 font-medium">Estimated</th>
+                <th className="text-right px-6 py-3 font-medium">Actual Cost</th>
                 <th className="text-right px-6 py-3 font-medium">Difference</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {entries.map((e) => {
                 const dp = diffPctLabel(e.actualTotal, e.estimatedTotal);
+                const entryFx = fxFromEur(e.currency ?? "NOK");
+                const entryFmt = (v: number) => formatCurrency(v, e.currency ?? "NOK");
+                void entryFx;
                 return (
                   <tr key={e.id} className="hover:bg-gray-50">
                     <td className="px-6 py-3 font-medium text-gray-900">{e.yachtName}</td>
                     <td className="px-6 py-3 text-right text-gray-700">
-                      {formatNOK(e.estimatedTotal)}
+                      {entryFmt(e.estimatedTotal)}{" "}
+                      <span className="text-xs text-gray-400">{e.currency ?? "NOK"}</span>
                     </td>
                     <td className="px-6 py-3 text-right">
                       {editingId === e.id ? (
@@ -1094,7 +1122,7 @@ export default function ForecastPage() {
                           onClick={() => startEdit(e)}
                           className={`underline decoration-dotted underline-offset-2 hover:text-blue-600 ${e.actualTotal === null ? "text-gray-400 italic" : "text-gray-900 font-medium"}`}
                         >
-                          {e.actualTotal === null ? "N/A" : formatNOK(e.actualTotal)}
+                          {e.actualTotal === null ? "N/A" : `${entryFmt(e.actualTotal)} ${e.currency ?? "NOK"}`}
                         </button>
                       )}
                     </td>

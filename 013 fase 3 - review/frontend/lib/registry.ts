@@ -35,6 +35,9 @@ export interface RegistryEntry {
   actualCategoryTotals?: Record<string, number>;
   agentExpectedItems?: AgentExpectedRecord[];
   guestExperience?: GuestExperience | null;
+  // Currency the estimated/actual totals are stored in. Missing on entries saved
+  // before currency support — assume NOK (the historic default label).
+  currency?: string;
   // Legacy fields kept for backwards compatibility with entries saved before
   // the per-category restructure. Not written by new code.
   agentExpected?: number | null;

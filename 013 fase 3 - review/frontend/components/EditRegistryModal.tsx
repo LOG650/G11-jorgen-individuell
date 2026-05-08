@@ -121,6 +121,7 @@ export default function EditRegistryModal({ entry, onClose, onSaved }: Props) {
             : undefined,
         agentExpectedItems: opts.agentExpectedItems.length > 0 ? opts.agentExpectedItems : undefined,
         guestExperience: opts.guestExperience,
+        currency: res.currency,
       });
       onSaved();
       onClose();

@@ -26,6 +26,13 @@ import {
   type RevenueYear,
 } from "../../lib/revenue";
 import {
+  EXCHANGE_RATES_FROM_EUR,
+  formatCurrency,
+  fxFromEur,
+  loadCurrencyPref,
+  saveCurrencyPref,
+} from "../../lib/api";
+import {
   FORECAST_METHOD_LABELS,
   multipleRegressionForecast,
   pickBestMethod,
@@ -38,9 +45,6 @@ const SESSION_KEY = "nauticost.auth.revenue";
 const ADMIN_USER = "admin";
 const ADMIN_PASS = "admin123";
 
-function formatNOK(n: number): string {
-  return n.toLocaleString("nb-NO", { maximumFractionDigits: 0 });
-}
 
 function LoginGate({ onPass }: { onPass: () => void }) {
   const [user, setUser] = useState("");
@@ -115,6 +119,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
   const [newRevenueText, setNewRevenueText] = useState("");
   const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
   const [newDriverName, setNewDriverName] = useState("");
+  const [currency, setCurrency] = useState("NOK");
 
   useEffect(() => {
     setHistory(loadRevenueHistory());
@@ -123,7 +128,15 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     setTargetText(g.targetRevenue > 0 ? String(g.targetRevenue) : "");
     setYearText(String(g.targetYear));
     setDrivers(loadDrivers());
+    setCurrency(loadCurrencyPref());
   }, []);
+
+  const fx = fxFromEur(currency);
+  const fmt = (eur: number) => formatCurrency(eur * fx, currency);
+  function changeCurrency(c: string) {
+    setCurrency(c);
+    saveCurrencyPref(c);
+  }
 
   function persistDrivers(next: DriverState) {
     saveDrivers(next);
@@ -283,16 +296,29 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Revenue History</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Type past-year revenue numbers below. They are stored only in this browser
-            and used by the chart and forecast page.
+            Type past-year revenue numbers below in <span className="font-medium">EUR</span> —
+            that&apos;s the unit of the source cockpit reports. The display currency selector
+            on the right converts <em>shown</em> values; storage stays in EUR.
           </p>
         </div>
-        <button
-          onClick={logout}
-          className="text-xs text-gray-500 hover:text-gray-700 underline"
-        >
-          Sign out
-        </button>
+        <div className="flex items-center gap-3">
+          <select
+            value={currency}
+            onChange={(e) => changeCurrency(e.target.value)}
+            className="nice-select rounded-lg border border-gray-300 px-3 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            title="Display currency (storage remains EUR)"
+          >
+            {Object.keys(EXCHANGE_RATES_FROM_EUR).map((c) => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
+          <button
+            onClick={logout}
+            className="text-xs text-gray-500 hover:text-gray-700 underline"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
@@ -306,7 +332,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             <thead className="text-xs uppercase tracking-wide text-gray-500">
               <tr>
                 <th className="text-left py-2 font-medium">Year</th>
-                <th className="text-right py-2 font-medium">Revenue (NOK)</th>
+                <th className="text-right py-2 font-medium">Revenue (EUR)</th>
                 <th className="py-2"></th>
               </tr>
             </thead>
@@ -355,7 +381,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             />
           </div>
           <div>
-            <label className="block text-xs text-gray-600 mb-1">Revenue (NOK)</label>
+            <label className="block text-xs text-gray-600 mb-1">Revenue (EUR)</label>
             <input
               type="number"
               value={newRevenueText}
@@ -473,7 +499,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Target revenue (NOK)
+              Target revenue (EUR)
             </label>
             <input
               type="number"
@@ -507,12 +533,12 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">Recognized to date</p>
-          <p className="text-2xl font-bold text-gray-900">{formatNOK(recognizedTotal)}</p>
+          <p className="text-2xl font-bold text-gray-900">{fmt(recognizedTotal)}</p>
           <p className="text-xs text-gray-400 mt-1">Sum across all years.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
           <p className="text-xs text-gray-500">Current year ({currentYear})</p>
-          <p className="text-2xl font-bold text-gray-900">{formatNOK(baselineRevenue)}</p>
+          <p className="text-2xl font-bold text-gray-900">{fmt(baselineRevenue)}</p>
           <p className="text-xs text-gray-400 mt-1">Recorded for {currentYear}.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
@@ -520,11 +546,11 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             {goal.targetRevenue > 0 ? `To ${goal.targetYear} goal` : "Goal"}
           </p>
           <p className="text-2xl font-bold text-gray-900">
-            {goal.targetRevenue > 0 ? formatNOK(remainingToGoal) : "—"}
+            {goal.targetRevenue > 0 ? fmt(remainingToGoal) : "—"}
           </p>
           <p className="text-xs text-gray-400 mt-1">
             {goal.targetRevenue > 0
-              ? `Need ${formatNOK(remainingToGoal)} more.`
+              ? `Need ${fmt(remainingToGoal)} more.`
               : "Set a target above."}
           </p>
         </div>
@@ -539,13 +565,13 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             <p className="text-xs text-gray-500 mt-1">
               Algorithm forecast extends past the last historic year using the chosen method.
               {forecastResult.mae !== null && (
-                <> One-step MAE on history: {formatNOK(forecastResult.mae)} NOK
+                <> One-step MAE on history: {fmt(forecastResult.mae)} {currency}
                   {forecastResult.params?.alpha !== undefined &&
                     ` (α=${forecastResult.params.alpha}${
                       forecastResult.params.beta !== undefined ? `, β=${forecastResult.params.beta}` : ""
                     })`}
                   {forecastResult.params?.slope !== undefined &&
-                    ` (slope=${formatNOK(forecastResult.params.slope)} NOK/yr, R²=${forecastResult.params.r2 ?? "—"})`}
+                    ` (slope=${fmt(forecastResult.params.slope)} ${currency}/yr, R²=${forecastResult.params.r2 ?? "—"})`}
                   .</>
               )}
               {forecastResult.params?.error && (
@@ -555,7 +581,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
                 <span className="block text-gray-600 mt-1">
                   R²={forecastResult.params.r2 ?? "—"}.{" "}
                   Coefficients: {Object.entries(forecastResult.params.coefficients)
-                    .map(([k, v]) => `${k}=${formatNOK(v)}`)
+                    .map(([k, v]) => `${k}=${fmt(v)}`)
                     .join(", ")}
                 </span>
               )}
@@ -584,9 +610,9 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
           <LineChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
             <XAxis dataKey="year" fontSize={12} />
-            <YAxis tickFormatter={(v) => formatNOK(v)} fontSize={11} width={80} />
+            <YAxis tickFormatter={(v) => fmt(v)} fontSize={11} width={80} />
             <Tooltip
-              formatter={(v: number | null) => (v === null ? "—" : `${formatNOK(v)} NOK`)}
+              formatter={(v: number | null) => (v === null ? "—" : `${fmt(v)} ${currency}`)}
               contentStyle={{ fontSize: 12 }}
             />
             <Legend wrapperStyle={{ fontSize: 12 }} />
