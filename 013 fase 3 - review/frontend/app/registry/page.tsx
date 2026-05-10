@@ -162,14 +162,6 @@ export default function RegistryPage() {
                         >
                           rename
                         </button>
-                        {e.agentExpectedItems && e.agentExpectedItems.length > 0 && (
-                          <span className="text-[10px] text-gray-500 mt-0.5">
-                            {e.agentExpectedItems.length} agent expectation{e.agentExpectedItems.length === 1 ? "" : "s"}
-                            {e.agentExpectedItems.some((it) => it.confirmed) && (
-                              <> · {e.agentExpectedItems.filter((it) => it.confirmed).length} confirmed</>
-                            )}
-                          </span>
-                        )}
                       </div>
                     )}
                   </td>

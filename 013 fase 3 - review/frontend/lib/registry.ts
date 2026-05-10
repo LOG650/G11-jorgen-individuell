@@ -10,12 +10,6 @@ export interface RegistryItineraryStop {
   days: string;
 }
 
-export interface AgentExpectedRecord {
-  category: string;
-  value: number;
-  confirmed: boolean;
-}
-
 export interface RegistryEntry {
   id: string;
   yachtName: string;
@@ -33,15 +27,10 @@ export interface RegistryEntry {
   estimatedCategoryTotals?: Record<string, number>;
   actualTotal: number | null;
   actualCategoryTotals?: Record<string, number>;
-  agentExpectedItems?: AgentExpectedRecord[];
   guestExperience?: GuestExperience | null;
   // Currency the estimated/actual totals are stored in. Missing on entries saved
   // before currency support — assume NOK (the historic default label).
   currency?: string;
-  // Legacy fields kept for backwards compatibility with entries saved before
-  // the per-category restructure. Not written by new code.
-  agentExpected?: number | null;
-  agentExpectedConfirmed?: boolean;
   createdAt: string;
 }
 

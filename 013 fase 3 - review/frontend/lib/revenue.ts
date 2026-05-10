@@ -11,6 +11,9 @@ export interface RevenueGoal {
 export interface RevenueYear {
   year: number;
   revenue: number;
+  // Number of yachts active that year. Optional — historic rows pre-dating this
+  // field have it undefined; treat as "unknown" rather than 0 in the UI.
+  yachtCount?: number;
 }
 
 const DEFAULT_GOAL: RevenueGoal = { targetRevenue: 0, targetYear: 2030 };
@@ -63,10 +66,14 @@ export function loadRevenueHistory(): RevenueYear[] {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
     return parsed
-      .map((p) => ({
-        year: Number(p?.year),
-        revenue: Number(p?.revenue) || 0,
-      }))
+      .map((p) => {
+        const rawCount = Number(p?.yachtCount);
+        return {
+          year: Number(p?.year),
+          revenue: Number(p?.revenue) || 0,
+          yachtCount: Number.isFinite(rawCount) && rawCount >= 0 ? rawCount : undefined,
+        };
+      })
       .filter((p) => Number.isFinite(p.year))
       .sort((a, b) => a.year - b.year);
   } catch {
@@ -77,7 +84,16 @@ export function loadRevenueHistory(): RevenueYear[] {
 export function saveRevenueHistory(history: RevenueYear[]): void {
   if (!isBrowser()) return;
   const cleaned = history
-    .map((p) => ({ year: Number(p.year), revenue: Number(p.revenue) || 0 }))
+    .map((p) => {
+      const out: RevenueYear = {
+        year: Number(p.year),
+        revenue: Number(p.revenue) || 0,
+      };
+      if (Number.isFinite(p.yachtCount) && (p.yachtCount as number) >= 0) {
+        out.yachtCount = p.yachtCount;
+      }
+      return out;
+    })
     .filter((p) => Number.isFinite(p.year));
   window.localStorage.setItem(HISTORY_KEY, JSON.stringify(cleaned));
 }

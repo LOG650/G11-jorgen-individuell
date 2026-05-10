@@ -45,7 +45,6 @@ export default function Dashboard() {
           actualTotal: opts.actualCost,
           actualCategoryTotals:
             Object.keys(opts.actualCategoryTotals).length > 0 ? opts.actualCategoryTotals : undefined,
-          agentExpectedItems: opts.agentExpectedItems.length > 0 ? opts.agentExpectedItems : undefined,
           guestExperience: opts.guestExperience,
           currency: res.currency,
         });

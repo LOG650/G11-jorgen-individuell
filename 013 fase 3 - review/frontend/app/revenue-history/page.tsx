@@ -117,6 +117,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
   const [forecastMethod, setForecastMethod] = useState<ForecastMethod | "auto">("auto");
   const [newYearText, setNewYearText] = useState("");
   const [newRevenueText, setNewRevenueText] = useState("");
+  const [newYachtCountText, setNewYachtCountText] = useState("");
   const [drivers, setDrivers] = useState<DriverState>({ names: [], values: {} });
   const [newDriverName, setNewDriverName] = useState("");
   const [currency, setCurrency] = useState("NOK");
@@ -191,6 +192,20 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
     persistHistory(next);
   }
 
+  function updateYachtCount(year: number, raw: string) {
+    const v = parseInt(raw, 10);
+    const next = history.map((r) => {
+      if (r.year !== year) return r;
+      if (raw.trim() === "" || !Number.isFinite(v) || v < 0) {
+        const { yachtCount: _drop, ...rest } = r;
+        void _drop;
+        return rest;
+      }
+      return { ...r, yachtCount: v };
+    });
+    persistHistory(next);
+  }
+
   function removeRow(year: number) {
     persistHistory(history.filter((r) => r.year !== year));
   }
@@ -198,11 +213,15 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
   function addRow() {
     const y = parseInt(newYearText, 10);
     const r = parseFloat(newRevenueText);
+    const c = parseInt(newYachtCountText, 10);
     if (!Number.isFinite(y)) return;
     if (history.some((row) => row.year === y)) return;
-    persistHistory([...history, { year: y, revenue: Number.isFinite(r) ? r : 0 }]);
+    const row: RevenueYear = { year: y, revenue: Number.isFinite(r) ? r : 0 };
+    if (Number.isFinite(c) && c >= 0) row.yachtCount = c;
+    persistHistory([...history, row]);
     setNewYearText("");
     setNewRevenueText("");
+    setNewYachtCountText("");
   }
 
   function loadHistoricDefaults() {
@@ -322,7 +341,11 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <h2 className="text-sm font-semibold text-gray-900 mb-4">Yearly revenue</h2>
+        <h2 className="text-sm font-semibold text-gray-900 mb-1">Yearly revenue</h2>
+        <p className="text-xs text-gray-500 mb-4">
+          Yachts is optional — leave blank if unknown. When set, the table shows
+          revenue per yacht for that year.
+        </p>
         {history.length === 0 ? (
           <p className="text-xs text-gray-500 italic mb-3">
             No years recorded yet. Add a row below to start.
@@ -333,36 +356,62 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
               <tr>
                 <th className="text-left py-2 font-medium">Year</th>
                 <th className="text-right py-2 font-medium">Revenue (EUR)</th>
+                <th className="text-right py-2 font-medium">Yachts</th>
+                <th className="text-right py-2 font-medium">Avg / yacht</th>
                 <th className="py-2"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {history.map((row) => (
-                <tr key={row.year}>
-                  <td className="py-2 font-medium text-gray-900">{row.year}</td>
-                  <td className="py-2 text-right">
-                    <input
-                      type="number"
-                      defaultValue={row.revenue}
-                      onBlur={(e) => {
-                        const v = parseFloat(e.target.value);
-                        updateRow(row.year, Number.isFinite(v) ? v : 0);
-                      }}
-                      min="0"
-                      step="any"
-                      className="w-40 rounded border border-gray-300 px-2 py-1 text-sm text-right focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                    />
-                  </td>
-                  <td className="py-2 text-right">
-                    <button
-                      onClick={() => removeRow(row.year)}
-                      className="text-xs text-red-600 hover:text-red-700"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {history.map((row) => {
+                const avgPerYacht =
+                  row.yachtCount && row.yachtCount > 0
+                    ? row.revenue / row.yachtCount
+                    : null;
+                return (
+                  <tr key={row.year}>
+                    <td className="py-2 font-medium text-gray-900">{row.year}</td>
+                    <td className="py-2 text-right">
+                      <input
+                        type="number"
+                        defaultValue={row.revenue}
+                        onBlur={(e) => {
+                          const v = parseFloat(e.target.value);
+                          updateRow(row.year, Number.isFinite(v) ? v : 0);
+                        }}
+                        min="0"
+                        step="any"
+                        className="w-40 rounded border border-gray-300 px-2 py-1 text-sm text-right focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                      />
+                    </td>
+                    <td className="py-2 text-right">
+                      <input
+                        type="number"
+                        defaultValue={row.yachtCount ?? ""}
+                        onBlur={(e) => updateYachtCount(row.year, e.target.value)}
+                        placeholder="—"
+                        min="0"
+                        step="1"
+                        className="w-20 rounded border border-gray-300 px-2 py-1 text-sm text-right focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                      />
+                    </td>
+                    <td className="py-2 text-right text-gray-700">
+                      {avgPerYacht === null ? (
+                        <span className="text-gray-400 italic">—</span>
+                      ) : (
+                        fmt(avgPerYacht)
+                      )}
+                    </td>
+                    <td className="py-2 text-right">
+                      <button
+                        onClick={() => removeRow(row.year)}
+                        className="text-xs text-red-600 hover:text-red-700"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}
@@ -390,6 +439,18 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
               min="0"
               step="any"
               className="w-44 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">Yachts (optional)</label>
+            <input
+              type="number"
+              value={newYachtCountText}
+              onChange={(e) => setNewYachtCountText(e.target.value)}
+              placeholder="e.g. 12"
+              min="0"
+              step="1"
+              className="w-28 rounded border border-gray-300 px-2 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
             />
           </div>
           <button

@@ -12,23 +12,6 @@ export interface StopRow {
   distanceNm?: string;       // sailing distance from previous port (nm); blank/0 for first stop
 }
 
-export interface AgentExpectedItem {
-  category: string;
-  value: string;
-  confirmed: boolean;
-}
-
-export const AGENT_EXPECTED_CATEGORIES = [
-  "Voyage total",
-  "Port Marina",
-  "Provisioning",
-  "Hospitality",
-  "Agency Services",
-  "Agency Fee",
-  "Bunkering",
-  "Technical Services",
-] as const;
-
 export interface VoyageFormInitial {
   yachtName?: string;
   gt?: string;
@@ -45,14 +28,7 @@ export interface VoyageFormInitial {
   guestExperience?: GuestExperience | "";
   stops?: StopRow[];
   actualCost?: string;
-  agentExpectedItems?: AgentExpectedItem[];
   actualCategoryTotals?: Record<string, string>;
-}
-
-export interface ParsedAgentExpected {
-  category: string;
-  value: number;
-  confirmed: boolean;
 }
 
 export interface VoyageFormSubmitOpts {
@@ -60,7 +36,6 @@ export interface VoyageFormSubmitOpts {
   yachtName: string;
   itinerary: StopRow[];
   actualCost: number | null;
-  agentExpectedItems: ParsedAgentExpected[];
   actualCategoryTotals: Record<string, number>;
   guestExperience: GuestExperience | null;
 }
@@ -74,7 +49,6 @@ interface Props {
   primaryLabel?: string;
   showActualCost?: boolean;
   showAddToRegistry?: boolean;
-  showAgentExpected?: boolean;
   actualCostCategories?: string[];
 }
 
@@ -111,7 +85,6 @@ export default function VoyageForm({
   primaryLabel,
   showActualCost = false,
   showAddToRegistry = true,
-  showAgentExpected = true,
   actualCostCategories,
 }: Props) {
   const [yachtName, setYachtName] = useState(initial?.yachtName ?? "");
@@ -130,9 +103,6 @@ export default function VoyageForm({
     initial?.guestExperience ?? "",
   );
   const [actualCost, setActualCost] = useState(initial?.actualCost ?? "");
-  const [agentExpectedItems, setAgentExpectedItems] = useState<AgentExpectedItem[]>(
-    initial?.agentExpectedItems ?? [],
-  );
   const [actualCategoryTotals, setActualCategoryTotals] = useState<Record<string, string>>(
     initial?.actualCategoryTotals ?? {},
   );
@@ -175,23 +145,6 @@ export default function VoyageForm({
     setStops((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function addAgentExpectedRow() {
-    setAgentExpectedItems((prev) => [
-      ...prev,
-      { category: AGENT_EXPECTED_CATEGORIES[0], value: "", confirmed: false },
-    ]);
-  }
-
-  function updateAgentExpectedRow(idx: number, patch: Partial<AgentExpectedItem>) {
-    setAgentExpectedItems((prev) =>
-      prev.map((it, i) => (i === idx ? { ...it, ...patch } : it)),
-    );
-  }
-
-  function removeAgentExpectedRow(idx: number) {
-    setAgentExpectedItems((prev) => prev.filter((_, i) => i !== idx));
-  }
-
   function submit(save: boolean) {
     const parsedPilot = pilotCost.trim() === "" ? null : parseFloat(pilotCost);
     const parsedSpeed = cruisingSpeedKn.trim() === "" ? null : parseFloat(cruisingSpeedKn);
@@ -224,15 +177,6 @@ export default function VoyageForm({
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
     const actualValid = parsedActual === null || (!isNaN(parsedActual) && parsedActual >= 0);
 
-    const parsedAgent: ParsedAgentExpected[] = [];
-    for (const it of agentExpectedItems) {
-      const trimmed = it.value.trim();
-      if (trimmed === "") continue;
-      const n = parseFloat(trimmed);
-      if (isNaN(n) || n < 0) continue;
-      parsedAgent.push({ category: it.category, value: n, confirmed: it.confirmed });
-    }
-
     const parsedCategoryTotals: Record<string, number> = {};
     for (const [cat, val] of Object.entries(actualCategoryTotals)) {
       const trimmed = val.trim();
@@ -245,7 +189,6 @@ export default function VoyageForm({
       yachtName: yachtName.trim(),
       itinerary: stops,
       actualCost: actualValid ? parsedActual : null,
-      agentExpectedItems: parsedAgent,
       actualCategoryTotals: parsedCategoryTotals,
       guestExperience: guestExperience === "" ? null : guestExperience,
     });
@@ -293,7 +236,7 @@ export default function VoyageForm({
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Yacht Specifications</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 items-end">
           <div className="col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Yacht Name
@@ -308,13 +251,13 @@ export default function VoyageForm({
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Gross Tonnage (GT)
+              GT
             </label>
             <input
               type="number"
               value={gt}
               onChange={(e) => setGt(e.target.value)}
-              placeholder="e.g. 500"
+              placeholder="Gross tonnage, e.g. 500"
               min="1"
               step="any"
               required
@@ -329,7 +272,7 @@ export default function VoyageForm({
               type="number"
               value={loa}
               onChange={(e) => setLoa(e.target.value)}
-              placeholder="e.g. 55"
+              placeholder="Length overall, e.g. 55"
               min="1"
               step="any"
               required
@@ -577,15 +520,14 @@ export default function VoyageForm({
 
       <div>
         <h2 className="text-lg font-semibold text-gray-900 mb-1">Guest experience</h2>
-        <p className="text-xs text-gray-500 mb-3">
-          Optional. <span className="font-medium">Recorded for future model retraining</span> — the
-          current model has no labeled data for this variable, so it does not affect the prediction
-          today. Most relevant to provisioning and hospitality once data is collected.
+        <p className="text-xs text-gray-500 mb-2">
+          Optional label for the kind of trip the guests want — drives provisioning,
+          hospitality, and crew workload in real life.
         </p>
-        <p className="text-xs text-amber-700 mb-3">
-          ⚠ Operational definition pending — agency to author a rubric (e.g. guest count, event
-          frequency, provisioning style). Until then, labels will be inconsistent. See the report
-          for the proposed rubric and missing-data discussion.
+        <p className="text-xs text-blue-700 mb-3">
+          ℹ Picking an option <span className="font-medium">does not change the prediction today</span>{" "}
+          — the model has no labeled data for this variable yet. We record your choice so a future
+          retrain can use it.
         </p>
         <select
           value={guestExperience}
@@ -593,10 +535,14 @@ export default function VoyageForm({
           className="nice-select w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
         >
           <option value="">— not specified —</option>
-          <option value="not_demanding">Not demanding</option>
-          <option value="neutral">Neutral</option>
-          <option value="demanding">Demanding</option>
+          <option value="not_demanding">Not demanding — small group, simple meals, few/no events</option>
+          <option value="neutral">Neutral — typical charter, standard provisions and service</option>
+          <option value="demanding">Demanding — full guest count, premium provisions, frequent events</option>
         </select>
+        <p className="text-xs text-amber-700 mt-3">
+          ⚠ Rubric pending — until the agency formalises &quot;demanding vs neutral&quot;, the
+          three labels above are guidance only. See report §9.5.
+        </p>
       </div>
 
       <div>
@@ -662,72 +608,6 @@ export default function VoyageForm({
               )}
             </div>
           </div>
-        </div>
-      )}
-
-      {showAgentExpected && (
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Agent&apos;s Expected Costs</h2>
-          <p className="text-xs text-gray-500 mb-3">
-            Add one row per cost category you have an expectation for — pick the category, enter {currency}, and tick &quot;Confirmed&quot; if it&apos;s a known invoice value (not just your guess).
-          </p>
-          {agentExpectedItems.length === 0 && (
-            <p className="text-xs text-gray-400 mb-3 italic">
-              No expectations added yet.
-            </p>
-          )}
-          <div className="space-y-2">
-            {agentExpectedItems.map((it, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-12 gap-2 items-center"
-              >
-                <select
-                  value={it.category}
-                  onChange={(e) => updateAgentExpectedRow(i, { category: e.target.value })}
-                  className="nice-select col-span-5 rounded-lg border border-gray-300 px-2 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                >
-                  {AGENT_EXPECTED_CATEGORIES.map((c) => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  value={it.value}
-                  onChange={(e) => updateAgentExpectedRow(i, { value: e.target.value })}
-                  placeholder={currency}
-                  min="0"
-                  step="any"
-                  className="col-span-3 rounded-lg border border-gray-300 px-2 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                />
-                <label className="col-span-3 flex items-center gap-1 text-xs text-gray-700 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={it.confirmed}
-                    onChange={(e) => updateAgentExpectedRow(i, { confirmed: e.target.checked })}
-                    disabled={it.value.trim() === ""}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-40"
-                  />
-                  Confirmed
-                </label>
-                <button
-                  type="button"
-                  onClick={() => removeAgentExpectedRow(i)}
-                  aria-label="Remove"
-                  className="col-span-1 text-gray-400 hover:text-red-600 text-lg leading-none"
-                >
-                  ×
-                </button>
-              </div>
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={addAgentExpectedRow}
-            className="mt-3 w-full rounded-lg border border-dashed border-gray-300 px-3 py-2 text-xs font-medium text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
-          >
-            + Add expected cost
-          </button>
         </div>
       )}
 

@@ -134,6 +134,7 @@ export default function ForecastPage() {
   const [seasonalHorizon, setSeasonalHorizon] = useState(12);
   const [currency, setCurrency] = useState("NOK");
   const [scaleUpFleetText, setScaleUpFleetText] = useState("");
+  const [showMethodHelp, setShowMethodHelp] = useState(false);
 
   function refreshEntries() {
     setEntries(listEntries());
@@ -694,9 +695,77 @@ export default function ForecastPage() {
                 <option value="moving_average">{FORECAST_METHOD_LABELS.moving_average}</option>
                 <option value="naive">{FORECAST_METHOD_LABELS.naive}</option>
               </select>
+              <button
+                type="button"
+                onClick={() => setShowMethodHelp((v) => !v)}
+                aria-expanded={showMethodHelp}
+                className="text-xs text-blue-600 hover:underline"
+              >
+                {showMethodHelp ? "Hide help" : "Which one?"}
+              </button>
             </div>
           </div>
         </div>
+
+        {showMethodHelp && (
+          <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50/60 p-4">
+            <p className="text-xs text-gray-700 mb-3">
+              Pick by how your revenue history <em>looks</em>. If unsure, leave it on{" "}
+              <span className="font-medium">Auto</span> — it picks the method with the
+              lowest in-sample error.
+            </p>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+              <div>
+                <dt className="font-semibold text-gray-900">Auto (best fit)</dt>
+                <dd className="text-gray-600">
+                  Tries every method on your history and picks the one with the smallest error. Safe default.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Holt&apos;s linear</dt>
+                <dd className="text-gray-600">
+                  Best when revenue grows (or shrinks) at a fairly steady pace year over year.
+                  Captures both level and trend.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Simple exponential smoothing</dt>
+                <dd className="text-gray-600">
+                  Best when revenue is flat with no clear trend — just hovering around a level.
+                  Predicts &quot;more of the same.&quot;
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Linear regression</dt>
+                <dd className="text-gray-600">
+                  Fits a straight line through every year. Use when growth is roughly linear and
+                  recent years are not more important than older ones.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Multiple regression (drivers)</dt>
+                <dd className="text-gray-600">
+                  Use when you can name <em>why</em> revenue changes — e.g. fleet size, marketing
+                  spend. Requires driver values for past + future years.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Moving average (3-yr)</dt>
+                <dd className="text-gray-600">
+                  Smooths recent noise. Good when the last few years are erratic and you want a
+                  cautious, stable forecast.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-gray-900">Naive (random walk)</dt>
+                <dd className="text-gray-600">
+                  Next year = last year. Useful as a sanity-check baseline; rarely the best choice
+                  on its own.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        )}
 
         {yearByYearForecast.length === 0 ? (
           <p className="text-sm text-gray-400 italic">
