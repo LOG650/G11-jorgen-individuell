@@ -19,7 +19,6 @@ export interface VoyageRequest {
   pilot_type?: "national" | "private" | null;
   cruising_speed_kn?: number | null;
   diesel_price_per_l?: number | null;
-  provisioning_override?: number | null;
   guest_experience?: GuestExperience | null;
 }
 

@@ -77,15 +77,6 @@ class VoyageRequest(BaseModel):
         None, gt=0,
         description="Diesel price per litre in the selected currency.",
     )
-    provisioning_override: float | None = Field(
-        None, ge=0,
-        description=(
-            "Manual override for provisioning cost in the selected currency. "
-            "When provided, replaces the model's probabilistic Provisioning estimate. "
-            "Use this when the model is far off — typically because guest_experience "
-            "(unmodelled) drives provisioning hard. See guest_experience field."
-        ),
-    )
     guest_experience: str | None = Field(
         None,
         description=(
@@ -316,16 +307,6 @@ def predict(req: VoyageRequest):
             converted_cats.get("Pilotage", 0.0) + req.pilot_cost, 2
         )
         grand_total_converted = round(grand_total_converted + req.pilot_cost, 2)
-
-    # Provisioning override: replace the model's "Provisioning" category.
-    # The model under-/over-shoots provisioning systematically because
-    # guest_experience (the dominant driver) is not in its feature set.
-    if req.provisioning_override is not None and req.provisioning_override >= 0:
-        existing_provisioning = converted_cats.pop("Provisioning", 0.0)
-        grand_total_converted = round(
-            grand_total_converted - existing_provisioning + req.provisioning_override, 2
-        )
-        converted_cats["Provisioning"] = round(req.provisioning_override, 2)
 
     return {
         "category_totals": dict(sorted(converted_cats.items(), key=lambda x: -x[1])),

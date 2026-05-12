@@ -1,9 +1,9 @@
 """
-API contract tests for /api/predict v0.3.
+API contract tests for /api/predict.
 
-Covers the five user-test-driven changes (commits 07a955f, fc29fdf, 7f955b4,
-883c74a, 3e475a3): currency conversion, mandatory pilotage at LOA > 70 m,
-deterministic bunkering, provisioning override, and guest_experience validation.
+Covers the user-test-driven changes: currency conversion, mandatory pilotage
+at LOA > 70 m, deterministic bunkering from voyage geometry, country surfaced
+on each stop, and guest_experience validation.
 
 Run from `013 fase 3 - review/backend`:
     pytest -v test_api.py
@@ -148,28 +148,6 @@ def test_bunkering_unchanged_when_geometry_missing():
     assert no_speed["category_totals"].get("Bunkering") == bare["category_totals"].get("Bunkering")
     # Sanity: with full inputs, the bunker line is generally different from probabilistic.
     assert full["category_totals"].get("Bunkering") != bare["category_totals"].get("Bunkering")
-
-
-# ── Provisioning override ───────────────────────────────────────
-def test_provisioning_override_replaces_category():
-    body = client.post(
-        "/api/predict",
-        json=_base_request(currency="EUR", provisioning_override=5000),
-    ).json()
-    assert body["category_totals"]["Provisioning"] == 5000.0
-
-
-def test_provisioning_override_changes_grand_total():
-    bare = client.post("/api/predict", json=_base_request(currency="EUR")).json()
-    over = client.post(
-        "/api/predict",
-        json=_base_request(currency="EUR", provisioning_override=5000),
-    ).json()
-    bare_prov = bare["category_totals"].get("Provisioning", 0.0)
-    expected_delta = 5000.0 - bare_prov
-    assert over["grand_total"] == pytest.approx(
-        bare["grand_total"] + expected_delta, rel=1e-3
-    )
 
 
 # ── guest_experience ────────────────────────────────────────────

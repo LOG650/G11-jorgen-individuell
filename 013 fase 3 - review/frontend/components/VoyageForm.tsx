@@ -9,7 +9,7 @@ export interface StopRow {
   months: string;
   weeks: string;
   days: string;
-  distanceNm?: string;       // sailing distance from previous port (nm); blank/0 for first stop
+  distanceNm?: string;       // sailing distance to this port (nm); summed across stops for bunker formula
 }
 
 export interface VoyageFormInitial {
@@ -24,7 +24,6 @@ export interface VoyageFormInitial {
   pilotType?: "national" | "private" | "";
   cruisingSpeedKn?: string;
   dieselPricePerL?: string;
-  provisioningOverride?: string;
   guestExperience?: GuestExperience | "";
   stops?: StopRow[];
   actualCost?: string;
@@ -98,7 +97,6 @@ export default function VoyageForm({
   const [pilotType, setPilotType] = useState<"national" | "private" | "">(initial?.pilotType ?? "national");
   const [cruisingSpeedKn, setCruisingSpeedKn] = useState(initial?.cruisingSpeedKn ?? "");
   const [dieselPricePerL, setDieselPricePerL] = useState(initial?.dieselPricePerL ?? "");
-  const [provisioningOverride, setProvisioningOverride] = useState(initial?.provisioningOverride ?? "");
   const [guestExperience, setGuestExperience] = useState<GuestExperience | "">(
     initial?.guestExperience ?? "",
   );
@@ -149,7 +147,6 @@ export default function VoyageForm({
     const parsedPilot = pilotCost.trim() === "" ? null : parseFloat(pilotCost);
     const parsedSpeed = cruisingSpeedKn.trim() === "" ? null : parseFloat(cruisingSpeedKn);
     const parsedDiesel = dieselPricePerL.trim() === "" ? null : parseFloat(dieselPricePerL);
-    const parsedProvisioning = provisioningOverride.trim() === "" ? null : parseFloat(provisioningOverride);
     const req: VoyageRequest = {
       gt: parseFloat(gt),
       loa: parseFloat(loa),
@@ -157,21 +154,19 @@ export default function VoyageForm({
       draft: parseFloat(draft),
       fuel,
       currency,
-      stops: stops.map((s, idx) => {
+      stops: stops.map((s) => {
         const distNum = parseFloat(s.distanceNm ?? "");
         return {
           port: s.port,
           month: new Date(s.arrivalDate).getMonth() + 1,
           stay_days: stopToDays(s),
-          // First stop has no "from previous" leg
-          distance_nm: idx === 0 || isNaN(distNum) || distNum < 0 ? null : distNum,
+          distance_nm: isNaN(distNum) || distNum < 0 ? null : distNum,
         };
       }),
       pilot_cost: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 ? parsedPilot : null,
       pilot_type: parsedPilot !== null && !isNaN(parsedPilot) && parsedPilot > 0 && pilotType !== "" ? pilotType : null,
       cruising_speed_kn: parsedSpeed !== null && !isNaN(parsedSpeed) && parsedSpeed > 0 ? parsedSpeed : null,
       diesel_price_per_l: parsedDiesel !== null && !isNaN(parsedDiesel) && parsedDiesel > 0 ? parsedDiesel : null,
-      provisioning_override: parsedProvisioning !== null && !isNaN(parsedProvisioning) && parsedProvisioning >= 0 ? parsedProvisioning : null,
       guest_experience: guestExperience === "" ? null : guestExperience,
     };
     const parsedActual = actualCost.trim() === "" ? null : parseFloat(actualCost);
@@ -440,25 +435,23 @@ export default function VoyageForm({
                 )}
               </div>
 
-              {idx > 0 && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Distance from previous port (nm)
-                  </label>
-                  <input
-                    type="number"
-                    value={stop.distanceNm ?? ""}
-                    onChange={(e) => updateStop(idx, { distanceNm: e.target.value })}
-                    placeholder="Optional"
-                    min="0"
-                    step="any"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Used (with cruising speed and diesel price below) to compute bunkering deterministically.
-                  </p>
-                </div>
-              )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Sailing distance to this port (nm)
+                </label>
+                <input
+                  type="number"
+                  value={stop.distanceNm ?? ""}
+                  onChange={(e) => updateStop(idx, { distanceNm: e.target.value })}
+                  placeholder={idx === 0 ? "Distance from departure" : "Distance from previous port"}
+                  min="0"
+                  step="any"
+                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Used (with cruising speed and diesel price below) to compute bunkering deterministically.
+                </p>
+              </div>
 
               {stopErrors[idx] && (
                 <div className="rounded-md bg-red-50 border border-red-200 px-3 py-2">
@@ -543,25 +536,6 @@ export default function VoyageForm({
           ⚠ Rubric pending — until the agency formalises &quot;demanding vs neutral&quot;, the
           three labels above are guidance only. See report §9.5.
         </p>
-      </div>
-
-      <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-1">Provisioning override</h2>
-        <p className="text-xs text-gray-500 mb-3">
-          Optional. The model under-/over-shoots Provisioning systematically because the
-          dominant driver — guest experience — isn&apos;t in its training features. If you
-          have a better number, enter it here in <span className="font-medium">{currency}</span>;
-          it replaces the model&apos;s Provisioning category.
-        </p>
-        <input
-          type="number"
-          value={provisioningOverride}
-          onChange={(e) => setProvisioningOverride(e.target.value)}
-          placeholder={`Replace model's Provisioning (${currency})`}
-          min="0"
-          step="any"
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
-        />
       </div>
 
       {pilotageMandatory && (
