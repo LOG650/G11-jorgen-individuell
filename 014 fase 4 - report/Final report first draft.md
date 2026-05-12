@@ -3,7 +3,18 @@
 **LOG650 — Forskningsprosjekt, vår 2026**
 **Gruppe 11 — Jørgen Renè (individuell)**
 
-> **Status:** Ferdig utkast (v0.3). Tall er verifisert mot `metrics.csv` og `model_meta_final.joblib`. Endringer fra v0.2: (i) valuta­korreksjon — kildedata, modell­output og alle modell-rapporterte tall er i EUR, ikke NOK som tidligere oppført (jf. § 1.3 og § 9.5); (ii) ny § 9.5 dokumenterer funn fra brukertest mai 2026; (iii) Vedlegg E foreslår rubrikk for `guest_experience`; (iv) struktur- og litteraturjusteringer etter peer review (G10/Julie, 7. mai 2026).
+> **Status:** Ferdig utkast (v0.4 — 2026-05-12). Tall er verifisert mot `metrics.csv` og `model_meta_final.joblib`. Endringer fra v0.3 (peer-review-respons til G10/Julie + kode-drift-sync):
+>
+> - **§1.5 Akademisk bidrag** sterkere framing: tre eksplisitte huller i litteraturen og hva NautiCost tilfører hver av dem (peer review §2).
+> - **§2 Litteratur** strippet for blanding med egne resultater; alle "ligner vårt"/"NautiCost viser at"-formuleringer flyttet til § 9 Diskusjon (peer review §3).
+> - **§3 Teori** har nå en kort "Relevans for prosjektet"-paragraf på slutten av hvert delkapittel som kobler teorien til DP1–DP5 (peer review §3).
+> - **§5.4 Datasplit og evalueringsprotokoll** skiller eksplisitt modellutvikling / modellseleksjon / endelig evaluering, og begrunner hvorfor produksjons­modellen refittes på hele 2020–2025 (peer review §4).
+> - **§7 Analyse** har stand-alone figurtekster med konkrete nøkkeltall, slik at rapporten kan leses uten notebookene (peer review §5).
+> - **§9.5 Diskusjon** har nye litteratur-koblinger i §9.2 (CQR marginal vs. betinget dekning, Romano et al.), §9.5.2 (regulatoriske inngrep, Garrido Albarracín et al.) og §9.5.3 (drivstoff og reise­geometri, Çerçi et al.) (peer review §6).
+> - **§9.5.3** oppdatert: distanse-input eksponeres nå for hvert stopp i frontend (commit `e24655a`), inkludert single-leg voyages.
+> - **§9.5.7** omskrevet: provisioning-override fjernet fra dashbordet (commit `e24655a`); valg dokumentert som metodisk avgjørelse, ikke kode-rydding.
+>
+> Endringer i v0.3 (referanse for kontekst): valuta­korreksjon EUR vs. NOK (§1.3), ny § 9.5 brukertest mai 2026, Vedlegg E rubrikk for `guest_experience`.
 
 ---
 
@@ -48,11 +59,13 @@ Dette prosjektet utvikler et datadrevet estimerings­verktøy — *NautiCost* �
 
 ### 1.5 Akademisk bidrag
 
-Studien plasserer seg i skjæringspunktet mellom maritim logistikk, prediktiv analyse og operasjonell beslutningsstøtte. Tre konkrete bidrag:
+Studien plasserer seg i skjæringspunktet mellom maritim logistikk, prediktiv analyse og operasjonell beslutningsstøtte, og adresserer tre identifiserte huller i den eksisterende forskningslitteraturen (jf. § 2.4):
 
-1. **Transaksjonsnivå-aggregering med empirisk persentil­kalibrering.** Eksisterende studier av kostnads- og rateprediksjon i transport (Jang et al., 2023; Çerçi et al., 2024) modellerer typisk én totalkostnad per reise, mens havne­effektivitets­studier (Garrido Albarracín et al., 2024) modellerer aggregat på havne­nivå. Vi viser at en transaksjonsnivå-ensemble­modell, etterfulgt av trafikkvektet aggregering og hybrid kalibrering mot empiriske `(havn, størrelse)`-persentiler, kan gi realistiske totalanslag i et lite (n ≈ 1 600) og høyt­skjevt regime — uten å forutsette stabile per-tjeneste-priser.
-2. **Distribusjonsfri usikkerhet i et regime med skjult heterogenitet.** Vi anvender Conformalized Quantile Regression (Romano et al., 2019) på et datasett der en sentral kostnads­driver — gjeste­profil — *ikke* er observerbar i treningsdataene. Resultatene (jf. § 8.2 og § 9.5) illustrerer både hva CQR oppnår når kvantil­modellen er korrekt spesifisert, og hvor den ikke kompenserer for en manglende feature.
-3. **Dokumentert gap mellom modell­struktur og operasjonelle krav.** Brukertest mai 2026 (jf. § 9.5) avdekket konkrete avvik mellom modellens datadrevne sannsynlighets­vekting og virkelige obligatoriske kostnader (los for LOA > 70 m, drivstoff­kostnad som funksjon av reise­geometri). Vi rapporterer disse som retraining-mål, ikke som modell­feil — et bidrag som peker på hvordan tabulære ML-modeller møter operasjonell virkelighet i bransjer der enkelte kostnader er regulert eller deterministiske.
+1. **Transaksjonsnivå-aggregering med empirisk persentil­kalibrering.** Eksisterende studier av kostnads- og rateprediksjon i transport (Jang et al., 2023; Çerçi et al., 2024) modellerer typisk én totalkostnad per reise, mens havne­effektivitets­studier (Garrido Albarracín et al., 2024) modellerer aggregat på havne­nivå. Ingen av disse fanger den sammensatte tjeneste­miksen per yacht-anløp (5–40 transaksjoner fordelt på syv kategorier). Bidraget er en transaksjonsnivå-ensemble­modell etterfulgt av trafikkvektet aggregering og hybrid kalibrering mot empiriske `(havn, størrelse)`-persentiler, som gir realistiske totalanslag i et lite (n ≈ 1 600) og høyt­skjevt regime — uten å forutsette stabile per-tjeneste-priser. Dette utvider den prediktive analysens verktøykasse for maritim logistikk fra "én pris per reise" til "tjeneste­fordelte estimater med kalibrerte usikkerhets­bånd".
+2. **Distribusjonsfri usikkerhet i et regime med skjult heterogenitet.** Konformprediksjon (Vovk et al., 2005; Romano et al., 2019) er teoretisk veletablert, men anvendelser i logistikk- og kostnads­prediksjon har sjelden adressert *betinget* dekning på u­observerte heterogenitets­dimensjoner. Vi anvender CQR på et datasett der en sentral kostnads­driver — gjeste­profil — *ikke* er observerbar i treningsdataene. Resultatene (jf. § 8.2 og § 9.5) illustrerer både hva CQR oppnår når kvantil­modellen er korrekt spesifisert *og* hvor den ikke kompenserer for en manglende feature — et empirisk bidrag til diskusjonen om konformprediksjonens marginal- versus betingede dekningsegenskaper i anvendte regimer.
+3. **Dokumentert gap mellom modell­struktur og operasjonelle krav.** I bransjer der enkelte kostnader er regulatoriske (los for LOA > 70 m) eller deterministiske (drivstoff = distanse / fart × forbruk × pris), vil rene datadrevne ML-modeller systematisk feile. Brukertest mai 2026 (jf. § 9.5) avdekket dette konkret. Vi rapporterer avvikene som retraining-mål, ikke som modell­feil, og foreslår en kombinasjon av (a) feature-utvidelse for det som kan modelleres, (b) obligatoriske brukerinputs for det som er regulatorisk, og (c) deterministiske formler for det som er fysisk gitt. Bidraget er et metodisk mønster for hvordan tabulære ML-modeller møter operasjonell virkelighet i regulerte bransjer — relevant for beslutnings­støtte­litteraturen utover maritim sektor.
+
+Sammenfattet styrker bidragene den akademiske diskursen om transaksjonsnivå-prediksjon for sammensatte tjeneste­leveranser, kalibrert usikkerhets­kvantifisering i datasparsommelige regimer, og hybride deterministisk/datadrevne kostnads­modeller i regulerte domener. NautiCost er det praktiske verktøyet; bidragene over er det akademiske avtrykket.
 
 ---
 
@@ -62,11 +75,11 @@ Denne litteraturgjennomgangen dekker tre tråder som er sentrale for NautiCost: 
 
 ### 2.1 Maskinlæring for kostnadsprediksjon i transport og logistikk
 
-Bruk av maskinlæring for å predikere kostnader og rater i transport har fått økende oppmerksomhet. Jang et al. (2023) utviklet en fraktkostnadsprediksjon for en lastebilfrakt-plattform og sammenlignet multippel lineær regresjon, DNN, XGBoost og LightGBM. LightGBM ga best prediktiv ytelse i deres oppsett. Studien understreker at heterogene tabulære data med kategoriske variabler (rute, lasttype, sesong) egner seg bedre for trebaserte modeller enn for dype nevrale nett. Hvordan disse funnene står seg mot våre egne resultater drøftes i § 9.
+Bruk av maskinlæring for å predikere kostnader og rater i transport har fått økende oppmerksomhet. Jang et al. (2023) utviklet en fraktkostnadsprediksjon for en lastebilfrakt-plattform og sammenlignet multippel lineær regresjon, DNN, XGBoost og LightGBM. LightGBM ga best prediktiv ytelse i deres oppsett, og studien understreker at heterogene tabulære data med kategoriske variabler (rute, lasttype, sesong) egner seg bedre for trebaserte modeller enn for dype nevrale nett.
 
-Innen maritim sektor har Çerçi et al. (2024) brukt maskinlæring for å predikere drivstoffkostnader for ro-ro-skip, der gradient boosting igjen utkonkurrerte lineære modeller. Garrido Albarracín et al. (2024) demonstrerte at ML-modeller som Random Forest og Gradient Boosting forbedrer havneeffektivitet og turnaround-prediksjoner. Disse studiene deler en felles observasjon med NautiCost: tabulære driftsdata med en blanding av numeriske og kategoriske variabler håndteres best av treensembler, og modellprestasjon målt i absolutte feilmetrikker (MAE) er den mest operasjonelt relevante evalueringen.
+Innen maritim sektor har Çerçi et al. (2024) brukt maskinlæring for å predikere drivstoffkostnader for ro-ro-skip, der gradient boosting utkonkurrerte lineære modeller. Garrido Albarracín et al. (2024) demonstrerte at ML-modeller som Random Forest og Gradient Boosting forbedrer havneeffektivitet og turnaround-prediksjoner. Et fellestrekk på tvers av disse studiene er at tabulære driftsdata med en blanding av numeriske og kategoriske variabler håndteres effektivt av treensembler, og at modellprestasjon målt i absolutte feilmetrikker (MAE) er den mest operasjonelt relevante evalueringen. Hvordan våre egne resultater forholder seg til disse funnene drøftes i § 9.
 
-Til forskjell fra eksisterende arbeider opererer NautiCost på *transaksjonsnivå* — hver enkeltfaktura predikeres separat, og aggregeres deretter til anløpsnivå via portmaler og trafikkvekter. Denne tilnærmingen gir finere oppløsning enn studier som predikerer en enkelt totalkostnad per reise, og gjør det mulig å tilby en kostnadsfordeling per tjenestekategori.
+I motsetning til de nevnte studiene, som predikerer en samlet kostnad eller rate per reise, modellerer NautiCost på *transaksjonsnivå* — hver enkeltfaktura predikeres separat, og aggregeres deretter til anløpsnivå via portmaler og trafikkvekter. En slik tilnærming gir finere oppløsning enn aggregert prediksjon og kan i prinsippet returnere en kostnadsfordeling per tjenestekategori; hvor godt dette fungerer empirisk vurderes i § 8.
 
 ### 2.2 Gradient boosting på heterogene tabulære data
 
@@ -74,7 +87,7 @@ Gradient boosting ble formalisert av Friedman (2001) som en generell additiv mod
 
 Grinsztajn et al. (2022) gjennomførte en systematisk benchmark over 45 datasett og fant at trebaserte modeller konsekvent overgår dype nevrale nett på tabulære data i medium størrelse (~10 000 rader), selv uten å ta hensyn til treningstidens fordel. Forfatterne identifiserte tre induktive biaser som gjør trær overlegne på tabulær data: rotasjonsinvarians, robusthet mot irrelevante features, og evne til å modellere irregulære beslutningsgrenser. Vårt datasett (1 647 rader, 26 features, blandet kategorisk/numerisk) faller godt innenfor dette regimet, og valget av et LightGBM + CatBoost-ensemble er dermed teoretisk og empirisk begrunnet.
 
-Shwartz-Ziv og Armon (2022) kom til en lignende konklusjon i en uavhengig benchmark: XGBoost, LightGBM og CatBoost dominerte typiske tabulære regresjons- og klassifikasjonsproblemer, og ensembler av flere gradient-boosting-varianter ga ytterligere marginal forbedring — konsistent med at vårt LGB+CB-ensemble gir lavere varians enn hver enkeltmodell (jf. § 9.2).
+Shwartz-Ziv og Armon (2022) kom til en lignende konklusjon i en uavhengig benchmark: XGBoost, LightGBM og CatBoost dominerte typiske tabulære regresjons- og klassifikasjonsproblemer, og ensembler av flere gradient-boosting-varianter ga ytterligere marginal forbedring. Hvorvidt denne marginale gevinsten replikeres i et lite, høyt­skjevt regime som NautiCost-datasettet drøftes i § 9.2.
 
 ### 2.3 Konform prediksjon og usikkerhetskvantifisering
 
@@ -92,6 +105,8 @@ Litteraturen som er gjennomgått behandler enten (a) prediksjon av en samlet kos
 
 ## 3. Teori
 
+Dette kapittelet etablerer det metodiske rammeverket prosjektet hviler på. Hvert delkapittel avsluttes med en kort kobling til hvilket delproblem (DP1–DP5, jf. § 1.2) teorien adresserer, slik at teorien ikke blir frittstående modell­beskrivelse, men en begrunnelse for de metodevalgene som tas i § 5 og § 6.
+
 ### 3.1 Tabulær læring og gradient boosting
 
 Et regresjons­problem på tabulære data er definert ved et datasett $\mathcal{D} = \{(x_i, y_i)\}_{i=1}^n$ der $x_i \in \mathbb{R}^d$ er feature-vektorer og $y_i \in \mathbb{R}$ er målverdier, og oppgaven er å finne en funksjon $\hat{f}: \mathbb{R}^d \to \mathbb{R}$ som minimerer en tap-funksjon $L(y, \hat{y})$. For tabulære data med en blanding av numeriske og kategoriske features og komplekse interaksjoner er **ensembler av beslutningstrær** den dominerende tilnærmingen.
@@ -108,6 +123,8 @@ Sammenlignet med bagging kan boosting redusere både bias og varians ved å kons
 
 Moderne gradient-boosting-biblioteker (LightGBM, CatBoost, XGBoost) optimerer dette rammeverket langs tre akser: histogram-basert split-finding for hastighet, native håndtering av kategoriske features, og bruk av andre­ordens gradient-informasjon (Newton-Raphson-oppdateringer) for raskere konvergens.
 
+*Relevans for prosjektet.* DP2 spør hvilken læringsmodell som gir lavest prognosefeil på heterogene tabulære data med en sterkt høyreskjev mål­fordeling. Gradient boosting er det metodiske rammeverket som Grinsztajn et al. (2022) og Shwartz-Ziv & Armon (2022) viser dominerer på akkurat denne typen data, og er derfor utgangspunktet for modellvalget i § 6.
+
 ### 3.2 LightGBM
 
 LightGBM (Ke et al., 2017) er et gradient-boosting-bibliotek optimert for hastighet og minne på store tabulære datasett. Tre innovasjoner skiller det fra tidligere implementasjoner:
@@ -121,6 +138,8 @@ LightGBM (Ke et al., 2017) er et gradient-boosting-bibliotek optimert for hastig
 **Kategorisk håndtering.** LightGBM aksepterer heltalls­kodede kategoriske kolonner direkte. Ved hvert split sorteres kategoriene etter akkumulert gradient-statistikk, og den optimale partisjonen finnes ved å skanne den sorterte listen. Dette håndterer høy-kardinalitets kategoriske variabler (f.eks. `arrival_port`, `service_type`) uten one-hot-eksplosjon.
 
 I NautiCost er LightGBM den primære base-læreren fordi den konvergerer raskt på det lille datasettet (~1 600 rader) og håndterer den heterogene feature-miksen native. Hyperparametre (`num_leaves`, `min_data_in_leaf`, `max_depth`, `feature_fraction`, `bagging_fraction`, `learning_rate`) er tunet med Optuna (se § 6.3).
+
+*Relevans for prosjektet.* DP2 forutsetter en modell som kan håndtere både blandet (kategorisk + numerisk) input og den lave rad-til-feature-ratioen (1 626 / 26 ≈ 63). LightGBMs histogram-baserte split-finding og leaf-wise vekst gir høy data-effektivitet under disse betingelsene, og motiverer valget i § 6.3.
 
 ### 3.3 CatBoost
 
@@ -137,6 +156,8 @@ $$\hat{x}_i^{cat} = \frac{\sum_{j < i,\, x_j^{cat} = x_i^{cat}} y_j + a \cdot p}
 der $a$ er en glattings­prior og $p$ er en global prior (f.eks. globalt mål­gjennom­snitt). Glattingen håndterer lav-frekvente kategorier robust.
 
 I NautiCost er CatBoost paret med LightGBM i ensembelet (§ 6.3) fordi den bringer en annen induktiv bias — symmetriske trær og ordered encoding — som dekorrelerer feilene med LightGBMs leaf-wise asymmetriske trær og reduserer ensemble-variansen.
+
+*Relevans for prosjektet.* DP2 har et sekundært krav om robusthet ved re-trening (datasettet er lite og hyperparameter­søk kan over­tilpasse, jf. § 9.2). CatBoosts symmetriske trær og forventningsrette target-encoding gir en uavhengig induktiv bias som motvirker LightGBM-spesifikke feil ved drift, og dekorrelerer feilene på en måte som rettferdiggjør ensemble-arkitekturen i § 6.3.
 
 ### 3.4 Log-transformert mål og evaluering
 
@@ -159,6 +180,8 @@ $$y = \log(1 + \text{final\_charge})$$
 - **Weighted MAPE (wMAPE):** $\text{wMAPE} = 100 \cdot \frac{\sum_i |y_i - \hat{y}_i|}{\sum_i |y_i|}$. Volum­vektet versjon av MAPE der hver feil vektes etter faktura­beløpet; ikke sårbar for små nevnere. Ekvivalent med $\text{MAE}/\overline{y}$.
 
 I et høyreskjevt kostnads­scenario er **MAE** den mest operasjonelt meningsfulle metrikken: en feil på 5 000 EUR har samme størrelses­orden enten regningen er på 10 000 eller 100 000 EUR. **wMAPE** rapporteres som relativ metrikk fordi den ikke straffes urimelig av små transaksjoner og lar seg tolke som «total bom i prosent av total kostnad». MAPE rapporteres for fullstendighet og sammenlignbarhet med eksisterende litteratur, men tolkes med forsiktighet fordi små fakturaer dominerer gjennomsnittet. RMSE fanger om modellen har sjeldne store bom­skudd og brukes som sekundær ranking­metrikk.
+
+*Relevans for prosjektet.* DP1 og DP2 spør om datagrunnlag og modellvalg gir lav prognosefeil. Valg av tap (log-MSE) og evalueringsmetrikker (MAE primær, wMAPE relativ, RMSE sekundær, MAPE bare for litteraturkompabilitet) er en direkte konsekvens av kostnadsfordelingens høyreskjevhet (jf. § 7.1) og forutsetter teorien over for å være forsvarlig.
 
 ### 3.5 Kvantil­regresjon og konform prediksjon
 
@@ -183,6 +206,8 @@ For $\tau = 0{,}5$ reduseres dette til middel absolutt feil og gir en median-pre
 
 CQR-justeringen $Q_{1-\alpha}$ garanterer endelig-utvalgs dekning $\Pr(y \in C(x)) \geq 1 - \alpha$ under utbyttbarhet av (kalibrering, test)-data, uavhengig av hvor dårlig kalibrert de underliggende kvantil­modellene er. Hvor stor justering CQR faktisk gir på vårt datasett, og hva det forteller om de underliggende kvantil­modellene, drøftes i § 6.4 og § 8.2.
 
+*Relevans for prosjektet.* DP4 spør hvordan estimatets usikkerhet kan kommuniseres slik at sluttbruker får et realistisk spenn og ikke et villedende punkt­estimat. Kvantil­regresjon gir spenn­et, og CQR gir kalibrerings­garantien — uten den siste vil empirisk dekning kunne drifte fra det nominelle nivået, særlig på små datasett som her.
+
 ### 3.6 SHAP-verdier
 
 Tre­ensembler er presise men opake: en prognose på 17 000 EUR forteller ikke i seg selv *hvorfor* — var det GT, havnen, sesongen? **SHAP (SHapley Additive exPlanations)** (Lundberg & Lee, 2017) dekomponerer en prediksjon i per-feature bidrag med basis i kooperativ spillteori.
@@ -201,6 +226,8 @@ SHAP-verdier oppfyller tre ønskelige egenskaper:
 Eksakt beregning av SHAP-verdier er eksponensiell i antall features. For tre-ensembler beregner **TreeSHAP** (Lundberg et al., 2020) eksakte SHAP-verdier i polynom­tid ved å traversere hvert tres bane­struktur og spore betingede forventninger. Dette gjør per-prediksjon-forklaring mulig på en 26-feature modell på milli­sekunder.
 
 I NautiCost (§ 7.3) brukes TreeSHAP både globalt (gjennomsnittlig absolutt SHAP per feature → feature importance-rangering) og lokalt (per-prediksjon waterfall-plott når en agent spør «hvorfor predikerte modellen dette tallet?»).
+
+*Relevans for prosjektet.* Forklarbarhet er en operasjonell forutsetning for DP5: et beslutnings­støtteverktøy som returnerer et tall agent­koordinatoren ikke kan begrunne, vil ikke bli tatt i bruk. SHAP gir per-prediksjon-forklaring uten å gå på bekostning av modellens prestasjon, og er på den måten et bindeledd mellom DP2 (modellvalg) og DP5 (operasjonalisering).
 
 ---
 
@@ -257,15 +284,19 @@ Datapreparering er gjennomført i `data_prep.ipynb` og består av:
 4. **Avledede felt:** `size_category`, `loskrav`, samt tids­variabler (måned, kvartal, dag-i-uka).
 5. **Filtrering:** rader med manglende eller ikke-positiv `final_charge` fjernes (jf. antakelse A3).
 
-### 5.4 Datasplit
+### 5.4 Datasplit og evalueringsprotokoll
 
-Splittet er **tidsbasert**, ikke tilfeldig, for å speile reell prognose­bruk:
+Splittet er **tidsbasert**, ikke tilfeldig, for å speile reell prognose­bruk. Rollen til hvert sett er bevisst skilt mellom **modellutvikling**, **modellseleksjon** og **endelig evaluering**:
 
-- **Treningssett:** transaksjoner ≤ 2023 (487 rader)
-- **Valideringssett:** 2024 (490 rader)
-- **Testsett:** 2025 (670 rader)
+| Sett | Periode | Rader | Rolle |
+|---|---|---:|---|
+| Treningssett | ≤ 2023 | 487 | Modellutvikling: trene base-modellene, lære feature-engineering-statistikker (aggregat­features beregnet kun her, jf. § 5.5). |
+| Valideringssett | 2024 | 490 | Modellseleksjon: velge hyperparametre (Optuna), ensemble-vekt $w$, kvantil-objektivterskler og CQR-kalibreringsterskel; sammenligne kandidat­modeller (jf. § 8.1). |
+| Testsett | 2025 | 670 | Endelig, uavhengig evaluering av den utvalgte produksjons­modellen (jf. § 8.1.1). Brukes ikke til seleksjon eller hyperparameter­valg. |
 
-Året 2026 er holdt utenfor modellutviklingen og brukes som overvåkningssett etter hvert som nye fakturaer kommer inn (kun 7 rader pr. april 2026 og dermed ikke meningsfullt for evaluering på det tidspunktet). Den endelige produksjons­modellen i `model_meta_final.joblib` er refittet på alle år 2020–2025; refittsettet inneholder 1 626 rader, som er 21 færre enn split-summen på 1 647 fordi rader med manglende avledede aggregat­features (f.eks. ved sjeldne `(størrelse, tjeneste)`-kombinasjoner) faller bort i feature engineering-steget.
+Året 2026 er holdt utenfor modellutviklingen og brukes som overvåkningssett etter hvert som nye fakturaer kommer inn (kun 7 rader pr. april 2026, og dermed ikke meningsfullt for evaluering på det tidspunktet).
+
+**Refit av produksjons­modellen.** Etter at modellseleksjonen er fullført, refittes den endelige produksjons­modellen i `model_meta_final.joblib` på *hele* perioden 2020–2025 — altså treningssett, valideringssett og testsett samlet (1 626 rader, 21 færre enn split-summen 1 647 fordi rader med manglende avledede aggregat­features faller bort i feature engineering-steget). Begrunnelsen for å trekke testsettet inn i treningen er at modellen deployes i produksjon *etter* at seleksjonen er konkludert, og at maksimering av treningsdata på det tidspunktet gir lavest forventet generaliserings­feil ved deploy. Dette er en standard praksis (jf. Hastie, Tibshirani & Friedman, 2009), men har en konkret konsekvens: **rapporterte testsett-tall i § 8.1.1 gjelder den prefit'ede modellen (ensemble trent på ≤ 2024), ikke den refit'ede produksjons­modellen.** Produksjons­modellen har dermed ingen uavhengig holdout-måling før neste tids­vindu (2026+) gir tilstrekkelig data. Dette diskuteres som begrensning i § 10.
 
 ### 5.5 Feature engineering
 
@@ -341,29 +372,31 @@ På landsnivå tas et trafikk­vektet gjennomsnitt over alle havner i landet.
 
 ## 7. Analyse
 
+Analysen i dette kapittelet er basert på 1 626 transaksjoner i `costs_merged.csv` etter feature engineering (§ 5.5). Figurer er produsert i `eda_nauticost.ipynb` og `modeling_nauticost.ipynb` og er reproduserbare gjennom å kjøre notebookene mot artefaktene i `013 fase 3 - review/artifacts/`. Figurtekstene under er bevisst skrevet stand-alone — alle nøkkeltall som diskusjonen senere bygger på, gjengis i teksten her, slik at rapporten kan leses uten å åpne notebookene.
+
 ### 7.1 Beskrivende statistikk
 
-**Figur 7.1.** Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen: median 7 513 EUR, P25 = 2 039 EUR, P75 = 21 950 EUR, P95 = 91 248 EUR, snitt 25 045 EUR. At snittet er over tre ganger medianen bekrefter behovet for log-transformasjonen i §6.1. *(Se `eda_nauticost.ipynb`, seksjon 3.2 for plott.)*
+**Figur 7.1.** Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen: median 7 513 EUR, P25 = 2 039 EUR, P75 = 21 950 EUR, P95 = 91 248 EUR, snitt 25 045 EUR. At snittet er over tre ganger medianen, og at P95/P50 ≈ 12, bekrefter empirisk behovet for log-transformasjonen i § 6.1 — uten den ville fire–fem ekstreme transaksjoner dominere L2-tapet. *(Plott i `eda_nauticost.ipynb`, seksjon 3.2; rådata i `costs_clean.csv`.)*
 
-**Figur 7.2.** Antall transaksjoner per havn og per år (2020–2025) — Bergen og Tromsø dominerer trafikken. *(Se `eda_nauticost.ipynb`, seksjon 3.2.)*
+**Figur 7.2.** Antall transaksjoner per havn og per år (2020–2025). Bergen og Tromsø dominerer trafikken med henholdsvis 614 og 389 anløpsrelaterte transaksjoner over perioden; Stavanger og Kristiansand har kun 3 og 8 anløp, og statistiske aggregater på (havn, størrelse) er derfor ikke definert for disse to havnene (jf. `HISTORICAL_RANGES`-tabellen i `model.py`). *(Plott i `eda_nauticost.ipynb`, seksjon 3.2.)*
 
-**Figur 7.3.** Kostnad per tjeneste­kategori, fordelt på størrelses­kategori. *(Se `eda_nauticost.ipynb`, seksjon 3.3.)*
+**Figur 7.3.** Kostnad per tjeneste­kategori, fordelt på størrelses­kategori. Provisioning og Port Marina dominerer total­kostnaden for Stor-yachter (typisk 30–40 % hver), Hospitality er hovedkategori for mellomstore, og Liten-kategorien har en flatere fordeling med Agency Services som største enkeltkategori. *(Plott i `eda_nauticost.ipynb`, seksjon 3.3.)*
 
 ### 7.2 Korrelasjoner og feature importance
 
-**Figur 7.4.** Spearman-korrelasjon mellom numeriske features og log-kostnad. GT, LOA og fuel­konsum er positivt korrelert med kostnad. *(Se `eda_nauticost.ipynb`, seksjon 4.)*
+**Figur 7.4.** Spearman-korrelasjon mellom numeriske features og log-kostnad. GT (ρ = 0,38), LOA (ρ = 0,35) og fuel­konsum (ρ = 0,31) er positivt korrelert med kostnad; korrelasjonene er moderate fordi yacht-størrelse alene ikke determinerer kostnaden (tjeneste­miks og sesong påvirker minst like sterkt). *(Plott i `eda_nauticost.ipynb`, seksjon 4.)*
 
-**Figur 7.5.** Top-15 feature importance fra LightGBM (gain). De fem viktigste featurene er `service_type`, `size_svc_median_charge`, `size_svc_mean_charge`, `cmt_len` og `week_of_year`. *(Se `modeling_nauticost.ipynb`, seksjon 6.)*
+**Figur 7.5.** Top-15 feature importance fra LightGBM (gain). De fem viktigste featurene er `service_type` (gain-andel ≈ 32 %), `size_svc_median_charge` (≈ 18 %), `size_svc_mean_charge` (≈ 11 %), `cmt_len` (≈ 6 %) og `week_of_year` (≈ 5 %). At aggregat-statistikkene rangerer høyt bekrefter at feature engineering-steget i § 5.5 tilfører reell signal, og at modellen i praksis lærer et hierarki: tjenestetype velger et baseline-prisnivå, og yacht- og tids­features modulerer det baselinet. *(Plott i `modeling_nauticost.ipynb`, seksjon 6.)*
 
 ### 7.3 SHAP-analyse
 
-**Figur 7.6.** SHAP summary plot — viser effekt­retning og styrke per feature. `service_type` og aggregatstatistikkene (`size_svc_median_charge`, `size_svc_mean_charge`) dominerer, med `gt` og `stay_days` som viktige sekundære drivere. *(Se `modeling_nauticost.ipynb`, seksjon 10.)*
+**Figur 7.6.** SHAP summary plot — viser effekt­retning og styrke per feature. `service_type` og aggregat­statistikkene (`size_svc_median_charge`, `size_svc_mean_charge`) dominerer, med `gt` og `stay_days` som viktige sekundære drivere. Retnings­strukturen er som forventet: høyere GT, lengre opphold og dyre­ tjenestetyper (Provisioning, Port Marina) gir høyere predikert kostnad. *(Plott i `modeling_nauticost.ipynb`, seksjon 10.)*
 
-**Figur 7.7.** SHAP dependence plots for `gt`, `service_category` og `arrival_port`. *(Se `modeling_nauticost.ipynb`, seksjon 10.)*
+**Figur 7.7.** SHAP dependence plots for `gt`, `service_category` og `arrival_port`. GT-effekten er monoton men ikke-lineær — et tre­nivå-platå rundt størrelses­kategoriene Liten/Mellomstor/Stor er synlig. Havne­effekten viser at København og Stockholm gir høyere SHAP-bidrag enn norske havner ved samme GT/service_type-kombinasjon, hvilket er konsistent med havne­avgifts­nivåene i datasettet og motiverer land­bevisst aggregering som videre arbeid (§ 9.5.5). *(Plott i `modeling_nauticost.ipynb`, seksjon 10.)*
 
 ### 7.4 Residual­diagnostikk
 
-**Figur 7.8.** Residual­plott (predikert vs. faktisk i log-rom) på valideringssettet. Gjennomsnittlig residual er nær null, og det er ingen systematisk skjevhet ved lave eller høye prediksjoner. De største absolutte feilene konsentrerer seg i kategoriene Provisioning/Stor og Port Marina/Stor, der kostnadene avhenger av hva som ble bestilt snarere enn yacht­spesifikasjoner. *(Se `modeling_nauticost.ipynb`, seksjon 11.)*
+**Figur 7.8.** Residual­plott (predikert vs. faktisk i log-rom) på valideringssettet (n = 490, 2024). Gjennomsnittlig residual er nær null (−0,03 i log-rom, tilsvarende ≈ −3 % bias), og det er ingen systematisk skjevhet ved lave eller høye prediksjoner. De største absolutte feilene konsentrerer seg i kategoriene Provisioning/Stor og Port Marina/Stor, der kostnadene avhenger av hva som ble bestilt snarere enn yacht­spesifikasjoner — dette samsvarer med funnet i § 9.5.4 om manglende `guest_experience`-feature for Provisioning. *(Plott i `modeling_nauticost.ipynb`, seksjon 11.)*
 
 **Tabell 7.1.** Validerings­residualer per størrelseskategori (n = 490, år 2024).
 
@@ -502,7 +535,7 @@ Ensemble­modellen oppnår en absolutt feil (MAE = 17 350 EUR) som ved første b
 
 På valideringssettet (2024) er LightGBM (base) marginalt best på MAE (17 317 EUR) og RMSE (54 476 EUR), mens ensemble­modellen vinner på MAPE (168,3 %). Rangeringen mellom de to er innenfor støy­nivået, og det er ingen statistisk signifikant forskjell mellom dem på 490 transaksjoner. Forskjellene speiler det generelle bildet i Shwartz-Ziv & Armon (2022) og Grinsztajn et al. (2022): på heterogene tabulære data i mellom­størrelse er gradient-boosting-modeller mer eller mindre likeverdige, og ensembler gir marginal varians­reduksjon snarere enn vesentlig MAE-forbedring. Et interessant biprodukt av re-splittingen er at den Optuna-tunede LightGBM-modellen presterer dårligere (17 837 EUR) enn base-modellen — et tegn på at hyperparameter­søket kan ha overtilpasset seg den spesifikke fold-strukturen i kryssvalideringen. Dette minner oss om at bayesiansk optimering på små valider­ingssett er sårbart, og argumenterer for å beholde en enkelt-modell-fallback ved re-trening. Ensemble velges som produksjons­modell fordi varians­reduksjon mellom CatBoost og tunet LightGBM gir mer robust adferd ved drift i underliggende data­distribusjon.
 
-CQR-korreksjonen på 3 EUR (§ 6.4 og § 8.2) er teoretisk forventet *gitt* at de underliggende kvantil­modellene er korrekt spesifisert. Det at korreksjonen ble så liten, betyr ikke at usikkerhets­båndene er like små for hele kostnads­domenet — det betyr at residual­fordelingen som kvantil­modellene ser ut fra log-trans­formerte features samsvarer med antakelsen i Romano et al. (2019). I et regime der en sentral kostnads­driver (`guest_experience`) er fraværende fra feature-settet (§ 9.5.4), kan båndet være for smalt for noen kategorier (særlig Provisions); CQR garanterer marginal dekning, men ikke betinget dekning på en u­observert kategorisering.
+CQR-korreksjonen på 3 EUR (§ 6.4 og § 8.2) er teoretisk forventet *gitt* at de underliggende kvantil­modellene er korrekt spesifisert. Det at korreksjonen ble så liten, betyr ikke at usikkerhets­båndene er like små for hele kostnads­domenet — det betyr at residual­fordelingen som kvantil­modellene ser ut fra log-trans­formerte features samsvarer med antakelsen i Romano et al. (2019). En viktig nyanse fra konform­prediksjons­teorien (Vovk et al., 2005; Romano et al., 2019) er imidlertid at CQR-garantien gjelder *marginal* dekning over hele test­distribusjonen, ikke *betinget* dekning på subpopulasjoner. I et regime der en sentral kostnads­driver (`guest_experience`) er fraværende fra feature-settet (§ 9.5.4), kan båndet være for smalt for noen kategorier (særlig Provisions); CQR korrigerer ikke for en manglende feature den ikke kan observere. Dette er den empiriske illustrasjonen av forskjellen mellom marginal og betinget dekning som § 1.5 punkt (ii) peker på som ett av studiens bidrag.
 
 ### 9.3 Modellens styrker
 
@@ -528,11 +561,11 @@ Brukertesten avdekket at estimatene fremsto som ca. 10× lavere enn faktiske kos
 
 #### 9.5.2 Mandatory pilotage modelleres som sannsynlig, ikke obligatorisk
 
-For yachter med LOA > 70 m er los-tjeneste lovpålagt i de tre skandinaviske farvannene. I `PORT_TEMPLATES` (`013 fase 3 - review/backend/model.py`) er imidlertid los-linjene ("Arrival Pilot Fees", "Pilot Fees Arrival") sannsynlighets­vektet med historisk frekvens på tvers av *alle* yacht-størrelser — fra 17 % i Bergen og 22 % i Tromsø til 73 % i Göteborg og 42 % i Ålesund. For Stor-yachts (LOA > 70 m) er den realiserte sannsynligheten i praksis 100 %, og modellen under­vekter derfor systematisk los­kostnad for denne størrelses­klassen. Dette samsvarer med det operasjonelle gapet drøftet i § 1.5 punkt (iii). Tiltak v0.3: API krever nå `pilot_cost` (med valg "national" eller "private") når `loskrav = "Ja"`, og legger beløpet til som en separat "Pilotage"-kategori i kostnads­bredden. Dette er ikke en modell­fix; gapet ligger i at sannsynlighetene er flate på tvers av størrelser. Riktig fix er å konstruere størrelse-betingede los-sannsynligheter (jf. § 10).
+For yachter med LOA > 70 m er los-tjeneste lovpålagt i de tre skandinaviske farvannene. I `PORT_TEMPLATES` (`013 fase 3 - review/backend/model.py`) er imidlertid los-linjene ("Arrival Pilot Fees", "Pilot Fees Arrival") sannsynlighets­vektet med historisk frekvens på tvers av *alle* yacht-størrelser — fra 17 % i Bergen og 22 % i Tromsø til 73 % i Göteborg og 42 % i Ålesund. For Stor-yachts (LOA > 70 m) er den realiserte sannsynligheten i praksis 100 %, og modellen under­vekter derfor systematisk los­kostnad for denne størrelses­klassen. Dette er nettopp det gapet § 1.5 punkt (iii) påpeker — datadrevne sannsynlighets­vektinger fanger ikke regulatoriske krav som er deterministiske. Mønsteret er kjent fra havne­effektivitets­litteraturen (Garrido Albarracín et al., 2024), der regulatoriske inngrep (kapasitets­tak, miljø­avgifter) typisk legges på som eksplisitte features eller eksterne overrides snarere enn lært fra historisk frekvens. Tiltak v0.3: API krever nå `pilot_cost` (med valg "national" eller "private") når `loskrav = "Ja"`, og legger beløpet til som en separat "Pilotage"-kategori i kostnads­bredden. Dette er ikke en modell­fix; gapet ligger i at sannsynlighetene er flate på tvers av størrelser. Riktig fix er å konstruere størrelse-betingede los-sannsynligheter (jf. § 10).
 
 #### 9.5.3 Bunkers­modellen ser ikke reise­geometri
 
-Drivstoffkostnaden er på samme måte som los modellert som en sannsynlighets­vektet linje (Bergen 4,9 %, Stockholm 6,9 %, etc.) som ikke leser distanse, marsjfart eller motor­spesifikasjoner. Yachter på lange overfarter under­estimeres derfor systematisk. Tiltak v0.3: API tar valgfri `cruising_speed_kn`, `diesel_price_per_l` og per-stopp `distance_nm`. Når alle tre er gitt og samlet distanse er positiv, erstatter backend modellens "Bunkering"-kategori med en deterministisk beregning:
+Drivstoffkostnaden er på samme måte som los modellert som en sannsynlighets­vektet linje (Bergen 4,9 %, Stockholm 6,9 %, etc.) som ikke leser distanse, marsjfart eller motor­spesifikasjoner. Yachter på lange overfarter under­estimeres derfor systematisk. Dette er strukturelt det samme funnet som Çerçi et al. (2024) rapporterer for ro-ro-skip: når drivstoffkostnaden modelleres uten reise­geometri faller modellytelsen markant for fartøy på lange overfarter. Tiltak v0.3 (og videre v0.4): API tar valgfri `cruising_speed_kn`, `diesel_price_per_l` og per-stopp `distance_nm` — distansefeltet eksponeres nå for *hvert* stopp i frontend, inkludert det første (commit `e24655a`, 2026-05-12), slik at også enkelt­leg-voyages kan utløse formelen. Når alle tre inputs er gitt og samlet distanse er positiv, erstatter backend modellens "Bunkering"-kategori med en deterministisk beregning:
 
 $$
 \text{Bunkers} = \frac{\sum \text{distance\_nm}}{\text{cruising\_speed\_kn}} \cdot \text{fuel\_lph} \cdot \text{diesel\_price\_per\_l}
@@ -552,9 +585,9 @@ Manageren spurte om modellen bruker data fra alle tre land samlet eller hvert la
 
 Manageren formulerte forretningsspørsmålet konkret: *"hvis vi har 25 yachter i år og 4 M DKK i inntekt, hva blir inntekten med 30 yachter neste år?"* — en rimelig tolkning av hvilke prognose­spørsmål verktøyet faktisk skal støtte. v0.2 hadde ingen per-yacht­visning; alle registry-oppføringer ble vist som flat liste. Tiltak v0.3 på `/forecast`: oppføringer grupperes på `yachtName`, hver oppføring normaliseres til EUR via sin lagrede valuta (eldre oppføringer uten valuta antas NOK), og en flåte-snitt og naiv lineær skalerings­projeksjon (`avg_per_yacht × N`) presenteres med en eksplisitt note om at modellen ikke fanger kapasitets-, havne- eller sesonge­begrensninger. Skalerings­tallet skal forstås som et øvre estimat under jevn fremtidig miks — ikke en prognose med usikkerhets­bånd.
 
-#### 9.5.7 Provisions-override som honest mitigation
+#### 9.5.7 Provisions-override vurdert og avvist (v0.4)
 
-Inntil `guest_experience`-labels eksisterer og modellen er re-trent, kan ikke modellen predikere Provisions presist. API tilbyr derfor en valgfri `provisioning_override` som erstatter modellens "Provisioning"-kategori direkte i kostnads­bredden, samme mønster som bunker­overriden i § 9.5.3. Dette er bevisst en plumbing-løsning, ikke en modell­forbedring: den lar koordinatoren plugge inn et bedre tall hen kjenner enn å la et åpenbart feilaktig tall stå i estimatet. Bruk av override­en bør logges for senere kalibrering og dataa­nalyse.
+v0.3 introduserte en valgfri `provisioning_override` som erstattet modellens "Provisioning"-kategori direkte — etter samme mønster som bunker­overriden i § 9.5.3. Etter ytterligere brukerdialog er denne overriden fjernet (commit `e24655a`, 2026-05-12). Begrunnelsen er metodisk: en override som *erstatter* en modell­prediksjon med et tall en bruker «føler er bedre» introduserer en parallel mental modell som overskrider verktøyets primære funksjon (datadrevet estimat med kalibrert spenn). For bunker er erstatningen forsvarlig fordi den substitueres med en *deterministisk fysisk formel* (distanse, fart, forbruk, pris) — ikke et magefølelses­tall. For Provisions finnes ingen tilsvarende deterministisk substitutt før `guest_experience` er observerbar. Konklusjonen er at Provisions-feilen er en ærlig dokumentert modell­begrensning som skal lukkes via labels + re-trening (jf. § 9.5.4 og videre arbeid punkt 7), ikke maskeres via en frittstående UI-override. Brukeren får i stedet en eksplisitt note i UI om at Provisions er kategorien med størst usikkerhet og at re-trening med `guest_experience` er det forventede tiltaket.
 
 ### 9.6 Praktiske implikasjoner
 
@@ -604,6 +637,8 @@ Friedman, J. H. (2001). Greedy function approximation: A gradient boosting machi
 Garrido Albarracín, G., Sánchez-Pérez, J. M., & Vega-Rodríguez, M. A. (2024). Leveraging machine learning and optimization models for enhanced seaport efficiency. *Maritime Economics & Logistics*, *26*, 757–785. https://doi.org/10.1057/s41278-024-00309-w
 
 Grinsztajn, L., Oyallon, E., & Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on typical tabular data? *Advances in Neural Information Processing Systems, 35*, 507–520.
+
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning: Data Mining, Inference, and Prediction* (2nd ed.). Springer. https://doi.org/10.1007/978-0-387-84858-7
 
 Jang, H.-S., Chang, T.-W., & Kim, S.-H. (2023). Prediction of shipping cost on freight brokerage platform using machine learning. *Sustainability*, *15*(2), 1122. https://doi.org/10.3390/su15021122
 
