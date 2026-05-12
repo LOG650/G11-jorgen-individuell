@@ -15,6 +15,7 @@
 > - **§9.1** har ny kvantitativ litteratur­sammenligning: våre wMAPE-tall settes opp mot rapporterte tall fra Jang et al. (2023) og Çerçi et al. (2024).
 > - **§9.4** er omskrevet fra fem kulepunkter til en utvidet kritisk drøfting av prediksjons­svakheter (16 punkter), strukturert etter data, modell, antakelser og operasjonalisering.
 > - **§9.6** er ny: eksplisitt drøfting av ekstern og konstrukt­validitet — generaliserbarhet utover de 17 yachtene og om `final_charge` er en gyldig proxy for total­kostnad.
+> - **§9.7** er ny: refleksjon over utfordringer underveis i fem klynger (data, modell, brukertest, prosess, rapportskriving) med ærlig vurdering av hvilke som ble løst, delvis løst eller forblir åpne. Tidligere §9.7 og §9.8 er flyttet til §9.8 og §9.9.
 > - **Sammendrag** er oppdatert med test-sett-resultatet og pensum­koblings­setning.
 >
 > Endringer i v0.4 (referanse for kontekst): peer-review-respons til G10/Julie (akademisk bidrag, lit/teori-blanding, val/test-skille, figur­tekster med nøkkeltall, teori­kobling i diskusjon, APA 7). Endringer i v0.3: valuta­korreksjon EUR vs. NOK (§1.3), § 9.5 brukertest mai 2026, Vedlegg E rubrikk for `guest_experience`.
@@ -703,11 +704,95 @@ En streng vurdering av forskningsdesignet krever at vi adresserer validitet eksp
 
 Konklusjonen er at NautiCost har **akseptabel intern validitet** for Yachting Operations sine egne fremtidige anløp innenfor 12–18 måneder, men **begrenset ekstern validitet** utover dette. Dette er ikke et forsknings­designsfeil; det er en konsekvens av at studien er case-spesifikk per design (§ 4 og kompendiet § B.4). Generaliserings­funn er likevel et rimelig sekundærbidrag — særlig at gradient-boosting + hybrid persentil­kalibrering fungerer i et regime med n ≈ 1 600 og 17 enheter, hvilket utvider den eksisterende litteraturens dekning ned i datasparsomme størrelses­ordener.
 
-### 9.7 Praktiske implikasjoner
+### 9.7 Refleksjon over utfordringer underveis
+
+En forskningsrapport rapporterer typisk det ferdige resultatet og skjuler den iterative prosessen som ledet dit. For en master-rapport som dette — der prosessen i seg selv er en del av læringsutbyttet — er det metodisk relevant å løfte fram utfordringene som dukket opp underveis, hvilke tiltak som ble iverksatt, og om tiltakene faktisk lukket utfordringen. Vi grupperer utfordringene i fem klynger: data, modell, brukertest, prosess og rapportskriving.
+
+#### 9.7.1 Data-utfordringer
+
+| Utfordring | Tiltak | Status |
+|---|---|---|
+| **Tynn flåte (17 yachter)** gir høy varians i (havn × størrelse)-statistikk | Empirisk persentil-anker per (havn, størrelse); for sjeldne havner faller modellen tilbake til rent modell­estimat | **Delvis løst.** Modell­arkitekturen kan ikke kompensere for at trenings­utvalget er lite — videre arbeid punkt 1 (utvide flåten) er forutsetning for full lukking. |
+| **Sjeldne havner** (Stavanger n = 3, Kristiansand n = 8) mangler statistisk grunnlag | Dokumentert i § 9.4 og i `HISTORICAL_RANGES`; modellen rapporterer ikke usikkerhets­bånd for disse havnene | **Dokumentert, ikke løst.** Krever flere historiske anløp. |
+| **Mellomstor underrepresentert** (n = 113 val, dekning 74,3 %) | Identifisert og rapportert i § 8.2 og § 9.4 | **Dokumentert, ikke løst.** |
+| **Manglende `guest_experience`** — hovedfaktor for Provisions og Hospitality finnes ikke i datasettet | (a) Lagt til som valgfritt API-felt og UI-velger; (b) lagret med registry-oppføringer; (c) foreslått operasjonell rubrikk i Vedlegg E; (d) `provisioning_override` introdusert og senere fjernet (jf. § 9.5.7) | **Delvis håndtert.** Datainnsamlings­mekanisme er på plass, men feature er ikke i bruk i modellen før labels foreligger. Bevisst avgrenset for å unngå syntetiske data. |
+| **Ingen inflasjonsjustering** | Identifisert i § 9.4, flagget som videre arbeid | **Ikke løst.** Krever rullerende re-trening på inflasjons­justert grunnlag. |
+| **Statiske yacht-spesifikasjoner** | Antakelse A3 dokumentert i § 1.4 | **Ikke løst.** Akseptert som begrensning. |
+| **21 rader faller bort i feature engineering** (1 647 → 1 626) | Identifisert i § 5.4, flagget som videre arbeid | **Delvis dokumentert.** Eksakt årsak (manglende `service_category` eller `size_category` på et lite knippe rader) er ikke kvantifisert per kolonne. |
+
+#### 9.7.2 Modell-utfordringer
+
+| Utfordring | Tiltak | Status |
+|---|---|---|
+| **Optuna-tunet LightGBM ble dårligere** enn base-modellen på både val og test | Identifisert med bootstrap-KI i § 8.1; beholdt ensemble som produksjons­modell på varians­robusthet snarere enn MAE-gevinst | **Løst metodisk.** Empirisk dokumentert i § 9.4 som tegn på overtilpasning ved Bayes­optimering på 490 valideringsrader. |
+| **Ensemble-gevinsten innenfor støy** | Bootstrap-konfidensintervall (1 000 utvalg): Δ MAE = −33 ± 870 EUR; KI omslutter null | **Løst metodisk.** Erkjent at ensemble holdes som forsikring, ikke som signifikant gevinst. |
+| **Modellen overpredikerer i log-rom** (mean residual = −0,20 ≈ 18 % overprediksjon) | Beskrevet i Figur 7.8 og § 7.4; aggregering på anløpsnivå demper effekten via hybrid kalibrering | **Delvis løst.** Bias-en er konsentrert i lave faktura­beløp og dempes på anløpsnivå, men ikke korrigert i selve modellen. |
+| **CQR gir marginal, ikke betinget dekning** | Eksplisitt dokumentert i § 6.4, § 8.2 og § 9.2 som ett av studiens bidragspunkter (jf. § 1.5 punkt ii) | **Akademisk håndtert.** Begrensningen er gjort om til et akademisk bidrag, men praktisk effekt på Mellomstor-gruppa (74 % vs 80 %) gjenstår å lukke. |
+| **Regulatoriske krav (los > 70 m LOA) er sannsynlighets­vektet** | Innført obligatorisk `pilot_cost`-felt i API som override; rapportert som videre arbeid punkt 8 (lære størrelse-betinget sannsynlighet) | **Operasjonelt løst, modellstrukturelt åpent.** |
+| **Bunkers­modellen ser ikke reise­geometri** | Innført deterministisk formel `distanse × forbruk × pris` som override når input er gitt; eksponert distansefelt for hvert stopp i frontend | **Operasjonelt løst, modellstrukturelt åpent.** Videre arbeid punkt 6 lukker det ved å gjøre reise­geometri til lært feature. |
+| **Land-aggregater er poolet** på tvers av NO/SE/DK | Synliggjort `country` i API-respons og frontend; rapportert som videre arbeid punkt 5 | **Dokumentert, ikke løst.** |
+| **SHAP-generering feilet teknisk** (categorical feature mismatch ved encoding) | Fallback til LightGBM gain-importance for Figur 7.6 | **Pragmatisk løst.** Figur 7.6 i denne rapporten bruker importance som proxy snarere enn ekte SHAP-summary; opprinnelig SHAP-utdata ligger i `modeling_nauticost.ipynb`. |
+| **Ridge eksploderte på testsettet** (RMSE = 369 462 EUR) | Identifisert i § 8.1.1; ekstrapolasjon utenfor trenings­range feiler | **Empirisk bekreftet.** Brukt som argument for tre­ensemble framfor lineære modeller. |
+
+#### 9.7.3 Funn fra brukertest mai 2026
+
+Disse er detaljert dokumentert i § 9.5.1–§ 9.5.7. Sammendrag:
+
+| Utfordring | Tiltak | Status |
+|---|---|---|
+| § 9.5.1 Enhetsfeil NOK vs. EUR | Valuta­felt på API + frontend-velger via `EXCHANGE_RATES_FROM_EUR` | **Løst.** |
+| § 9.5.2 Mandatory pilotage | Obligatorisk `pilot_cost`-input når `loskrav = "Ja"` | **Operasjonelt løst.** |
+| § 9.5.3 Bunkers uten reise­geometri | Deterministisk override­formel; distansefelt for hvert stopp | **Operasjonelt løst.** |
+| § 9.5.4 Manglende `guest_experience` | API-felt + Vedlegg E rubrikk-forslag | **Datainnsamling forberedt.** |
+| § 9.5.5 Land-aggregater poolet | `country` synliggjort i API/UI | **Synliggjort, ikke modellfikset.** |
+| § 9.5.6 Per-yacht aggregering | Implementert i `/forecast` med naiv skaleringsprojeksjon | **Løst.** |
+| § 9.5.7 Provisions-override vurdert og avvist | Override fjernet i v0.4 (commit `e24655a`) | **Metodisk konkludert.** |
+
+#### 9.7.4 Verktøy- og prosess-utfordringer
+
+| Utfordring | Tiltak | Status |
+|---|---|---|
+| **Token-forbruk er stort** ved komplekse rapport-oppgaver | Bevisst delt arbeid mellom Claude-sesjoner; brukt Claude Code-worktrees for parallelt arbeid på teori og diskusjon | **Håndtert.** |
+| **AI hallusinerer referanser** | Hver referanse manuelt verifisert mot Google Scholar; PDF-er anbefalt lastet ned til `003 references/` | **Delvis håndtert.** Manuell verifikasjon gjenstår som siste kvalitets­sjekk før innlevering. |
+| **Markdown → Word-konvertering** krevde verktøy som ikke var pre-installert | Installert `pypandoc-binary`; skrevet `convert_to_word.py` med metadata-skille slik at tittel ikke dupliseres | **Løst.** |
+| **VS Code må åpnes i riktig mappe** for at Claude Code-kontekst skal være korrekt | Eksplisitt sjekklist­punkt — fra transkripsjonene en kjent felle | **Lært bevisst.** |
+| **Pre-commit hooks og merge-konflikter** ved parallelle worktrees | Manuell merge med "force replace" der konflikter var bevisste overskrivelser | **Håndtert per case.** |
+
+#### 9.7.5 Rapport-skriving og peer review
+
+| Utfordring | Tiltak | Status |
+|---|---|---|
+| **Peer review (G10/Julie, 2026-05-07) punkt 1**: Akademisk bidrag uklart i innledning | § 1.5 omskrevet med tre eksplisitte hull i litteraturen | **Løst.** |
+| **Peer review punkt 2**: Litteratur blandet med egne resultater | Alle "ligner vårt"-formuleringer flyttet til § 9; § 2 strippet | **Løst.** |
+| **Peer review punkt 3**: Teori-kobling til delproblemer | "Relevans for prosjektet"-bokser ved hvert delkapittel i § 3 | **Løst.** |
+| **Peer review punkt 4**: Skille modellutvikling / seleksjon / endelig evaluering | § 5.4 fikk ny tabell med roller; § 8.1.1 fylt med faktiske testsett-tall | **Løst.** |
+| **Peer review punkt 5**: Figurer henvist til notebooks i stedet for å vises | Eksportert som PNG og embedet i § 7 | **Løst.** |
+| **Peer review punkt 6**: Diskusjon manglet teoretisk forankring | Lagt til litteratur­koblinger i § 9.2, § 9.5.2 og § 9.5.3 | **Løst.** |
+| **Peer review punkt 7**: APA 7-konsistens | Bibliografi gjennomgått; DOI lagt til der det fantes | **Løst.** |
+| **Endelig testsett-evaluering manglet** (v0.4-svakhet) | Skrevet `eval_test_2025.py`, publisert `metrics_test_2025.csv`, fylt § 8.1.1 med Tabell 8.2 | **Løst.** |
+| **Figur 7.8 påsto −0,03 bias** (feil) | Reprodusert figur fra Optuna-tunet modell; faktisk bias er −0,20 og rapportert ærlig | **Løst.** |
+| **Statistisk signifikans manglet** | Bootstrap-KI lagt til i § 8.1 | **Løst.** |
+| **Pensum-kobling mot kompendiet** var implisitt | Eksplisitt referert til Pettersen & Rekdal (2026) tabell 1.1 i § 2.2 og § 5.0 | **Løst.** |
+
+#### 9.7.6 Strukturelle og metodologiske utfordringer som forblir åpne
+
+Ikke alle utfordringer kan lukkes innenfor rammene av en master-rapport. De følgende er bevisst akseptert som åpne for fremtidig arbeid:
+
+- **Produksjons­modellen har ikke uavhengig holdout** (§ 8.1.1). `model_meta_final.joblib` er refittet på hele 2020–2025 inkludert testsettet. Test-sett-tallene gjelder prefit-modellen som proxy. Lukkes når 2026-data er tilstrekkelig (videre arbeid punkt 10).
+- **Operasjonell validering ikke gjennomført.** Verktøyet er ikke kjørt live over måneder. Lukkes ved videre arbeid punkt 9 — også eksplisitt etterlyst av peer reviewer.
+- **Ekstern validitet begrenset til Yachting Operations.** Modellen er ikke testet på andre operatører (§ 9.6). Strukturell case-avgrensning, ikke fikserbar uten ny datakilde.
+- **Konstrukt­validitet er delvis** (§ 9.6). `final_charge` fanger agentens fakturasum, ikke yachteierens totale anløpskostnad. Akseptert som dokumentert avgrensning.
+- **Diebold-Mariano-test ikke gjennomført.** Bootstrap-KI dekker den essensielle delen; DM kunne styrket håndteringen av tids­korrelerte residualer. Flagget som videre arbeid punkt 11.
+
+#### 9.7.7 Sammenfattende refleksjon
+
+Den røde tråden gjennom utfordringene er at *data­utfordringene* (klynge 9.7.1) og *strukturelle begrensninger* (klynge 9.7.6) ikke kan lukkes ved bedre modellering alene — de krever enten flere data eller fortsatt operasjonell drift. *Modell-* og *prosess­utfordringene* (klynge 9.7.2 og 9.7.4) er i hovedsak løst eller pragmatisk håndtert. *Rapport­skrivings­utfordringene* (klynge 9.7.5) er fullstendig løst — alle peer-review-punkter er adressert, og v1.0 inneholder testsett-tall, statistisk signifikans, embedde figurer og pensum­kobling som manglet i tidligere versjoner. Denne åpenheten om hva som er løst, hva som er delvis løst og hva som forblir åpent er i tråd med kompendiets sjekkliste A.3: *"Begrensninger, usikkerhet og feilkilder er tydeliggjort."*
+
+### 9.8 Praktiske implikasjoner
 
 For Yachting Operations betyr verktøyet at en agent­koordinator på sekunder kan gi yachteier et estimat med tydelig kommunisert spenn i stedet for et magefølelses­anslag. På lengre sikt kan loggføring av faktiske anløps­kostnader mot estimater drive en automatisk re-treningsløkke, slik at modellen forbedres mot faktiske prestasjoner. På kort sikt — og spesielt før labels for `guest_experience` er innhentet (jf. § 9.5.4 og Vedlegg E) — fungerer override-mekanismene for los, bunkers og provisions som en operasjonell sikkerhets­ventil: koordinatoren har et estimat som *kan* korrigeres for kjente begrensninger uten å vente på en re-trening.
 
-### 9.8 Etiske og personvernmessige hensyn
+### 9.9 Etiske og personvernmessige hensyn
 
 Faktura­data inneholder yacht­identifikatorer, men ingen direkte person­data. Yacht-ID-er er allerede anonymisert i datasettet (`yacht_1, yacht_2, …, yacht_19`). Kontornavn (Bergen Office, Stockholm Office, Copenhagen Office) er beholdt fordi de identifiserer offentlig kjente lokasjoner og ikke representerer sensitive personopplysninger i seg selv. Fakturabeløp i rapporten er aggregert per persentil eller havn slik at enkelt­transaksjoner ikke kan rekonstrueres.
 
