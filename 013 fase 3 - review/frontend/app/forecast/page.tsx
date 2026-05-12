@@ -645,7 +645,7 @@ export default function ForecastPage() {
              <div className="text-xs">
                 <span className="text-gray-500">Coefficients:</span>{" "}
                 <span className="font-mono text-gray-700">
-                  {Object.entries(fullForecast.params.coefficients)
+                  {(Object.entries(fullForecast.params.coefficients) as [string, number][])
                     .map(([k, v]) => `${k}:${v > 0 ? "+" : ""}${v.toFixed(2)}`)
                     .join(", ")}
                 </span>
@@ -781,12 +781,12 @@ export default function ForecastPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                 <XAxis dataKey="year" fontSize={12} />
                 <YAxis tickFormatter={(v) => fmt(v)} fontSize={11} width={80} />
-                <Tooltip 
-                  contentStyle={{ fontSize: 12 }} 
-                  formatter={(v: any, name: string) => {
-                    if (v === null) return [null, null];
-                    const label = FORECAST_METHOD_LABELS[name as ForecastMethod] || name;
-                    return [`${fmt(v)} ${currency}`, label];
+                <Tooltip
+                  contentStyle={{ fontSize: 12 }}
+                  formatter={(value, name) => {
+                    if (value === null || value === undefined) return ["", ""];
+                    const label = FORECAST_METHOD_LABELS[name as ForecastMethod] || String(name ?? "");
+                    return [`${fmt(Number(value))} ${currency}`, label];
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: 12 }} />

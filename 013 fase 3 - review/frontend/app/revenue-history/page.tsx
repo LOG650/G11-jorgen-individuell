@@ -673,7 +673,7 @@ function RevenueHistoryContent({ onLogout }: { onLogout: () => void }) {
             <XAxis dataKey="year" fontSize={12} />
             <YAxis tickFormatter={(v) => fmt(v)} fontSize={11} width={80} />
             <Tooltip
-              formatter={(v: number | null) => (v === null ? "—" : `${fmt(v)} ${currency}`)}
+              formatter={(value) => (value === null || value === undefined ? "—" : `${fmt(Number(value))} ${currency}`)}
               contentStyle={{ fontSize: 12 }}
             />
             <Legend wrapperStyle={{ fontSize: 12 }} />
