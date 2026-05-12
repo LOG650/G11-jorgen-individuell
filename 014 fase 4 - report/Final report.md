@@ -407,27 +407,43 @@ Analysen i dette kapittelet er basert på 1 626 transaksjoner i `costs_merged.cs
 
 ### 7.1 Beskrivende statistikk
 
-**Figur 7.1.** Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen: median 7 513 EUR, P25 = 2 039 EUR, P75 = 21 950 EUR, P95 = 91 248 EUR, snitt 25 045 EUR. At snittet er over tre ganger medianen, og at P95/P50 ≈ 12, bekrefter empirisk behovet for log-transformasjonen i § 6.1 — uten den ville fire–fem ekstreme transaksjoner dominere L2-tapet. *(Plott i `eda_nauticost.ipynb`, seksjon 3.2; rådata i `costs_clean.csv`.)*
+![Figur 7.1](figures/figur_7_1_kostnadsfordeling.png)
+
+**Figur 7.1.** Distribusjon av `final_charge` (log-skala) viser den forventede høyreskjeve fordelingen: median 7 513 EUR, P25 = 2 039 EUR, P75 = 21 950 EUR, P95 = 91 248 EUR, snitt 25 045 EUR. At snittet er over tre ganger medianen, og at P95/P50 ≈ 12, bekrefter empirisk behovet for log-transformasjonen i § 6.1 — uten den ville fire–fem ekstreme transaksjoner dominere L2-tapet. *(Plott i `eda_nauticost.ipynb`, seksjon 3.2; rådata i `costs_clean.csv`; reprodusert i `013 fase 3 - review/generate_figures.py`.)*
+
+![Figur 7.2](figures/figur_7_2_havn_per_aar.png)
 
 **Figur 7.2.** Antall transaksjoner per havn og per år (2020–2025). Bergen og Tromsø dominerer trafikken med henholdsvis 614 og 389 anløpsrelaterte transaksjoner over perioden; Stavanger og Kristiansand har kun 3 og 8 anløp, og statistiske aggregater på (havn, størrelse) er derfor ikke definert for disse to havnene (jf. `HISTORICAL_RANGES`-tabellen i `model.py`). *(Plott i `eda_nauticost.ipynb`, seksjon 3.2.)*
+
+![Figur 7.3](figures/figur_7_3_tjeneste_x_storrelse.png)
 
 **Figur 7.3.** Kostnad per tjeneste­kategori, fordelt på størrelses­kategori. Provisioning og Port Marina dominerer total­kostnaden for Stor-yachter (typisk 30–40 % hver), Hospitality er hovedkategori for mellomstore, og Liten-kategorien har en flatere fordeling med Agency Services som største enkeltkategori. *(Plott i `eda_nauticost.ipynb`, seksjon 3.3.)*
 
 ### 7.2 Korrelasjoner og feature importance
 
+![Figur 7.4](figures/figur_7_4_spearman.png)
+
 **Figur 7.4.** Spearman-korrelasjon mellom numeriske features og log-kostnad. GT (ρ = 0,38), LOA (ρ = 0,35) og fuel­konsum (ρ = 0,31) er positivt korrelert med kostnad; korrelasjonene er moderate fordi yacht-størrelse alene ikke determinerer kostnaden (tjeneste­miks og sesong påvirker minst like sterkt). *(Plott i `eda_nauticost.ipynb`, seksjon 4.)*
 
-**Figur 7.5.** Top-15 feature importance fra LightGBM (gain). De fem viktigste featurene er `service_type` (gain-andel ≈ 32 %), `size_svc_median_charge` (≈ 18 %), `size_svc_mean_charge` (≈ 11 %), `cmt_len` (≈ 6 %) og `week_of_year` (≈ 5 %). At aggregat-statistikkene rangerer høyt bekrefter at feature engineering-steget i § 5.5 tilfører reell signal, og at modellen i praksis lærer et hierarki: tjenestetype velger et baseline-prisnivå, og yacht- og tids­features modulerer det baselinet. *(Plott i `modeling_nauticost.ipynb`, seksjon 6.)*
+![Figur 7.5](figures/figur_7_5_feature_importance.png)
+
+**Figur 7.5.** Top-15 feature importance fra LightGBM (gain). De fem viktigste featurene er `service_type` (gain-andel ≈ 32 %), `size_svc_median_charge` (≈ 18 %), `size_svc_mean_charge` (≈ 11 %), `cmt_len` (≈ 6 %) og `week_of_year` (≈ 5 %). At aggregat-statistikkene rangerer høyt bekrefter at feature engineering-steget i § 5.5 tilfører reell signal, og at modellen i praksis lærer et hierarki: tjenestetype velger et baseline-prisnivå, og yacht- og tids­features modulerer det baselinet. *(Plott i `modeling_nauticost.ipynb`, seksjon 6; reprodusert i `generate_figures.py`.)*
 
 ### 7.3 SHAP-analyse
 
+![Figur 7.6](figures/figur_7_6_shap_summary.png)
+
 **Figur 7.6.** SHAP summary plot — viser effekt­retning og styrke per feature. `service_type` og aggregat­statistikkene (`size_svc_median_charge`, `size_svc_mean_charge`) dominerer, med `gt` og `stay_days` som viktige sekundære drivere. Retnings­strukturen er som forventet: høyere GT, lengre opphold og dyre­ tjenestetyper (Provisioning, Port Marina) gir høyere predikert kostnad. *(Plott i `modeling_nauticost.ipynb`, seksjon 10.)*
 
-**Figur 7.7.** SHAP dependence plots for `gt`, `service_category` og `arrival_port`. GT-effekten er monoton men ikke-lineær — et tre­nivå-platå rundt størrelses­kategoriene Liten/Mellomstor/Stor er synlig. Havne­effekten viser at København og Stockholm gir høyere SHAP-bidrag enn norske havner ved samme GT/service_type-kombinasjon, hvilket er konsistent med havne­avgifts­nivåene i datasettet og motiverer land­bevisst aggregering som videre arbeid (§ 9.5.5). *(Plott i `modeling_nauticost.ipynb`, seksjon 10.)*
+![Figur 7.7](figures/figur_7_7_dependence.png)
+
+**Figur 7.7.** Predikerte kostnader fordelt på sentrale features på valideringssettet: (a) predikert kostnad vs. GT (log-skala), (b) median prediksjon per `service_category`, (c) median prediksjon per `arrival_port`. GT-effekten er monoton men ikke-lineær. Havne­effekten viser at København og Stockholm gir høyere prediksjoner enn norske havner ved samme yacht­størrelse, hvilket er konsistent med havne­avgifts­nivåene i datasettet og motiverer land­bevisst aggregering som videre arbeid (§ 9.5.5). *(Plott i `modeling_nauticost.ipynb`, seksjon 10; reprodusert i `generate_figures.py`.)*
 
 ### 7.4 Residual­diagnostikk
 
-**Figur 7.8.** Residual­plott (predikert vs. faktisk i log-rom) på valideringssettet (n = 490, 2024). Gjennomsnittlig residual er nær null (−0,03 i log-rom, tilsvarende ≈ −3 % bias), og det er ingen systematisk skjevhet ved lave eller høye prediksjoner. De største absolutte feilene konsentrerer seg i kategoriene Provisioning/Stor og Port Marina/Stor, der kostnadene avhenger av hva som ble bestilt snarere enn yacht­spesifikasjoner — dette samsvarer med funnet i § 9.5.4 om manglende `guest_experience`-feature for Provisioning. *(Plott i `modeling_nauticost.ipynb`, seksjon 11.)*
+![Figur 7.8](figures/figur_7_8_residuals.png)
+
+**Figur 7.8.** Residual­plott (predikert vs. faktisk i log-rom) på valideringssettet (n = 490, 2024) for den tunede LightGBM-modellen. Gjennomsnittlig residual er **−0,20 i log-rom** (tilsvarende ≈ 18 % overprediksjon på opprinnelig skala): modellen estimerer i snitt høyere enn faktisk kostnad. Bias-en er konsentrert i transaksjoner der faktisk beløp er lavt (typisk små Agency Services-fakturaer < 1 000 EUR) — modellen klarer ikke å predikere ned i dette beløpsspennet med presisjon. På anløpsnivå, der mange transaksjoner aggregeres, har bias-en mindre effekt fordi store og små transaksjoner blandes, og den hybride persentil-kalibreringen i § 6.5 forankrer totalen mot empirisk median. De største absolutte feilene konsentrerer seg i kategoriene Provisioning/Stor og Port Marina/Stor, der kostnadene avhenger av hva som ble bestilt snarere enn yacht­spesifikasjoner — dette samsvarer med funnet i § 9.5.4 om manglende `guest_experience`-feature for Provisioning. *(Plott i `modeling_nauticost.ipynb`, seksjon 11, og reprodusert i `013 fase 3 - review/generate_figures.py`.)*
 
 **Tabell 7.1.** Validerings­residualer per størrelseskategori (n = 490, år 2024). MAPE er rapportert som **forholdstall** (gjennomsnittlig |feil| / faktisk verdi); 0,89 betyr 89 % gjennomsnittlig avvik, 4,07 betyr 407 %. De høye forholds­tallene drives av mange små transaksjoner (jf. drøftingen av MAPE-sensitivitet i § 3.4).
 
@@ -673,7 +689,7 @@ v0.3 introduserte en valgfri `provisioning_override` som erstattet modellens "Pr
 
 ### 9.6 Validitet og generaliserbarhet
 
-En streng vurdering av forskningsdesignet krever at vi adresserer validitet eksplisitt. Vi følger Shadish, Cook & Campbell-rammeverket og diskuterer tre typer validitet som er mest relevante for NautiCost.
+En streng vurdering av forskningsdesignet krever at vi adresserer validitet eksplisitt. Vi drøfter tre typer validitet som er mest relevante for NautiCost: konstrukt­validitet, intern validitet og ekstern validitet.
 
 **Konstrukt­validitet** stiller spørsmålet om `final_charge` er en gyldig operasjonalisering av begrepet "totalkostnad for et havneanløp". Variabelen er fakturabeløpet før moms slik det er registrert hos Yachting Operations, og fanger derfor agentens direkte tjeneste­kostnad pluss innkjøpt under­leverandør­arbeid. Det den *ikke* fanger er: (a) markedsmessige rabatter eller margin­justeringer som agenten ikke har dokumentert som linje, (b) skjulte kostnader hos yachteier (egen besetnings­lønn under anløpet, valutarisiko på betalingstidspunktet), og (c) opportunitets­kostnad hvis anløpet forsinker neste reisesegment. Konstrukt­validiteten er dermed *delvis*: målvariabelen er en valid proxy for agentens egen faktura­sum, men en partiell proxy for det yachteieren faktisk betaler. Brukere som ønsker å estimere yachteierens *totale* anløps­kostnad må legge til egne kostnader på toppen.
 
