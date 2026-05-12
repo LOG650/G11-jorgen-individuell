@@ -50,7 +50,7 @@ try:
             "--metadata=title:NautiCost — Datadreven kostnadsestimering for yachthavneanløp i Skandinavia",
             "--metadata=subtitle:LOG650 Forskningsprosjekt, vår 2026 — Gruppe 11, Jørgen Renè (individuell)",
             "--metadata=author:Jørgen Renè",
-            "--metadata=date:2026-05-12",
+            "--metadata=date:2026-05-13",
         ],
     )
 finally:
