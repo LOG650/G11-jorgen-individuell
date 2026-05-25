@@ -1,12 +1,16 @@
-**LOG650 — FORSKNINGSPROSJEKT**
+![](figures/him-logo.png){width=4cm}
 
 # NautiCost
 
 *Datadreven kostnadsestimering for yachthavneanløp i Skandinavia*
 
-**Gruppe 11**
+LOG650 — Forskningsprosjekt, vår 2026
 
-Jørgen Rene (individuell)
+Gruppe 11
+
+**Jørgen Rene** (individuell)
+
+Veiledere: Bård Inge Pettersen · Per Kristian Rekdal · Erik Langelo
 
 Molde, mai 2026
 

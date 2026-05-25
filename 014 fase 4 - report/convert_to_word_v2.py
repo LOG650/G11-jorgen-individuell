@@ -1,23 +1,27 @@
 """
 Convert "Final report draft.md" -> .docx -> .pdf
 
-Endringer fra convert_to_word.py (v1):
-- Dropper --number-sections fra pandoc, slik at de manuelle kapittelnumrene
-  i markdown ("1. Innledning", "2. Litteratur", ...) ikke får et ekstra
-  pandoc-generert prefiks ("2. 1. Innledning"). "Sammendrag" og "Takk til"
-  forblir unummerert fordi md-en ikke har nummer på dem.
-- Post-prosesserer docx-en: setter Normal-stilen og alle heading-styles
-  til Times New Roman 12 pt med 1,5 linjeavstand.
-- Forfatter-metadata: "Jørgen Rene" (uten aksent).
+Forsiden bygges direkte i markdown med HiM-logoen (figures/him-logo.png),
+tittel, subtittel og bibliografiske data. Post-prosessen sentrerer alle
+forside-elementer, gjør tittelen til en stor sentrert overskrift og setter
+luftig topp-marg på logoen.
+
+Body etter forsiden følger standard Word-stiler:
+- Times New Roman 12 pt med 1,5 linjeavstand
+- Overskrift 1/2/3 fra Word-malen (Calibri Light, mørkeblå)
+
+TOC og PDF eksporteres via Word COM i samme sesjon.
 
 Run:  python convert_to_word_v2.py
 """
 
 from pathlib import Path
 import re
+import shutil
+import tempfile
 import pypandoc
 from docx import Document
-from docx.shared import Pt, RGBColor
+from docx.shared import Pt
 from docx.enum.text import WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 
 BASE = Path(__file__).parent
@@ -25,12 +29,19 @@ SRC = BASE / "Final report draft.md"
 DST_DOCX = BASE / "Final report draft.docx"
 DST_PDF = BASE / "Final report draft.pdf"
 
-raw = SRC.read_text(encoding="utf-8")
+FONT_NAME = "Times New Roman"
+BODY_SIZE = Pt(12)
+LINE_SPACING = 1.5
 
-# Pandoc kjører nå direkte mot markdown — vi striper IKKE H1/course/group
-# lenger, og bruker ikke metadata title/subtitle. # NautiCost: ... blir
-# Overskrift 1 (tittelen) på forsiden, og resten følger ## = Overskrift 2,
-# ### = Overskrift 3 osv.
+HEADING_STYLES = {
+    "Title", "Subtitle",
+    "Heading 1", "Heading 2", "Heading 3",
+    "Heading 4", "Heading 5", "Heading 6",
+    "TOC Heading",
+}
+
+# 1) Pandoc → docx
+raw = SRC.read_text(encoding="utf-8")
 TMP = BASE / "_tmp_for_pandoc_v2.md"
 TMP.write_text(raw, encoding="utf-8")
 
@@ -41,44 +52,25 @@ try:
         outputfile=str(DST_DOCX),
         extra_args=[
             "--standalone",
-            # NB: --toc er fjernet — TOC plasseres manuelt etter Takk til.
-            # NB: ingen --number-sections — markdown har egne numre.
-            # NB: --shift-heading-level-by er fjernet — # blir Overskrift 1,
-            # ## blir Overskrift 2, ### blir Overskrift 3.
             f"--resource-path={BASE}",
-            # NB: ingen --metadata=title/subtitle/author/date — forsiden
-            # bygges direkte i markdown for at # NautiCost skal bli Overskrift 1.
         ],
     )
 finally:
     TMP.unlink(missing_ok=True)
 
 
-# --- Post-prosessering: TNR 12 pt, 1,5 linjeavstand ----------------------
-FONT_NAME = "Times New Roman"
-BODY_SIZE = Pt(12)
-LINE_SPACING = 1.5
-
-doc = Document(DST_DOCX)
-
-
+# 2) Stiler: body-paragrafer får TNR 12 pt + 1,5 linjeavstand;
+#    overskrifter beholdes som Word-stilene definerer dem.
 def _apply_run_font(run, size=None):
-    """Sett Times New Roman på run-nivå. Sett kun size hvis eksplisitt
-    angitt — ellers la paragraph-stilen styre størrelse (slik at Title
-    og Heading 1/2/3 beholder sine store overskriftsstørrelser)."""
     run.font.name = FONT_NAME
     if size is not None:
         run.font.size = size
-    # Sett også east-asian font slik at Word ikke overstyrer
     rpr = run._element.get_or_add_rPr()
-    rfonts = rpr.find(
-        "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}rFonts"
-    )
+    from docx.oxml.ns import qn
+    rfonts = rpr.find(qn("w:rFonts"))
     if rfonts is None:
-        from docx.oxml.ns import qn
         rfonts = rpr.makeelement(qn("w:rFonts"), {})
         rpr.insert(0, rfonts)
-    from docx.oxml.ns import qn
     rfonts.set(qn("w:ascii"), FONT_NAME)
     rfonts.set(qn("w:hAnsi"), FONT_NAME)
     rfonts.set(qn("w:cs"), FONT_NAME)
@@ -91,57 +83,79 @@ def _set_paragraph_spacing(paragraph, line_spacing=LINE_SPACING):
     pf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
 
 
-# 1) Oppdater stiler:
-#    - Body (Normal, Body Text, lists, captions): Times New Roman 12 pt
-#    - Headings (Title, Heading 1-6, TOC Heading): RØR IKKE — la Words
-#      standard "Overskrift 1/2/3"-stiler rendere som vanlig (Calibri
-#      Light, blå, distinkte størrelser).
-body_specs = {
-    "Normal": (BODY_SIZE, False),
-    "Body Text": (BODY_SIZE, False),
-    "First Paragraph": (BODY_SIZE, False),
-    "Compact": (BODY_SIZE, False),
-    "Caption": (Pt(11), False),
-    "Image Caption": (Pt(11), False),
-    "Quote": (BODY_SIZE, False),
-    "Intense Quote": (BODY_SIZE, False),
-    "List Paragraph": (BODY_SIZE, False),
-    "Block Text": (BODY_SIZE, False),
-}
+doc = Document(DST_DOCX)
 
-for style in doc.styles:
-    name = style.name
+# Oppdater body-stiler
+body_styles = ["Normal", "Body Text", "First Paragraph", "Compact",
+               "Caption", "Image Caption", "Quote", "Intense Quote",
+               "List Paragraph", "Block Text"]
+for sname in body_styles:
     try:
-        if name in body_specs:
-            font = style.font
-            font.name = FONT_NAME
-            size, bold = body_specs[name]
-            font.size = size
-            font.bold = bold
-        # NB: Heading-stiler og Title røres ikke — Word's standard look beholdes.
-    except (AttributeError, NotImplementedError):
+        s = doc.styles[sname]
+        s.font.name = FONT_NAME
+        if sname not in ("Caption", "Image Caption"):
+            s.font.size = BODY_SIZE
+    except KeyError:
         pass
 
-HEADING_STYLES = {
-    "Title", "Subtitle",
-    "Heading 1", "Heading 2", "Heading 3",
-    "Heading 4", "Heading 5", "Heading 6",
-    "TOC Heading",
-}
 
-# 2) Oppdater hver paragraph.
-#    For overskrifter: rør IKKE font/størrelse — la Word's standard
-#    Overskrift 1/2/3 (typisk Calibri Light, blå, distinkte størrelser)
-#    rendere som vanlig. Linjeavstand 1,5 brukes også på overskrifter.
-#    For body: tving Times New Roman 12 pt.
-for paragraph in doc.paragraphs:
-    _set_paragraph_spacing(paragraph)
+# 3) Forside-styling: sentrer logo, tittel, subtittel og bibliografiske
+#    linjer. Gjør tittelen visuelt stor (48 pt) og legg på topp-marg
+#    over logoen slik at innholdet sitter pent på siden.
+COVER_INDEX_END = None
+for i, paragraph in enumerate(doc.paragraphs):
+    if paragraph.style.name == "Heading 2":
+        # Første Overskrift 2 = "Obligatorisk egenerklæring" → utenfor forside
+        COVER_INDEX_END = i
+        break
+
+if COVER_INDEX_END is None:
+    COVER_INDEX_END = 0  # ingen H2 → ingen forside å style
+
+for i, paragraph in enumerate(doc.paragraphs[:COVER_INDEX_END]):
+    # Sentrer alt på forsiden
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.paragraph_format.line_spacing = 1.15
+    paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+
+    # Sjekk om paragrafen inneholder logoen (bildet)
+    from docx.oxml.ns import qn
+    has_image = bool(paragraph._element.findall('.//' + qn('w:drawing')))
+    if has_image:
+        # Gi luftig topp-marg over logoen (≈ 3 cm)
+        paragraph.paragraph_format.space_before = Pt(72)
+        paragraph.paragraph_format.space_after = Pt(48)
+
+    # Sjekk om paragrafen er tittelen (Heading 1)
+    if paragraph.style.name == "Heading 1":
+        paragraph.paragraph_format.space_before = Pt(36)
+        paragraph.paragraph_format.space_after = Pt(12)
+        paragraph.paragraph_format.line_spacing = 1.0
+        paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+        for run in paragraph.runs:
+            run.font.size = Pt(48)
+            run.font.bold = True
+    elif paragraph.style.name in ("First Paragraph", "Body Text", "Normal"):
+        for run in paragraph.runs:
+            _apply_run_font(run, size=Pt(14) if i == COVER_INDEX_END - 1 else None)
+        # Bruk større skrift på subtittel (linje rett etter Heading 1)
+        # Identifiser subtittel: italic body etter tittel
+        if i > 0:
+            prev = doc.paragraphs[i - 1]
+            if prev.style.name == "Heading 1":
+                for run in paragraph.runs:
+                    run.font.size = Pt(16)
+                    run.font.italic = True
+
+# Body-paragrafer (etter forsiden): TNR 12 pt + 1,5 linjeavstand
+for paragraph in doc.paragraphs[COVER_INDEX_END:]:
     if paragraph.style.name in HEADING_STYLES:
-        continue  # ikke rør overskriftene
+        continue
+    _set_paragraph_spacing(paragraph)
     for run in paragraph.runs:
         _apply_run_font(run, size=BODY_SIZE)
 
-# 3) Også for tabellinnhold (alltid body-størrelse i tabeller)
+# Tabeller
 for table in doc.tables:
     for row in table.rows:
         for cell in row.cells:
@@ -150,63 +164,22 @@ for table in doc.tables:
                 for run in paragraph.runs:
                     _apply_run_font(run, size=BODY_SIZE)
 
-# 4) Forside-styling: sentrer tittel + forsidelinjer, øk tittelstørrelse,
-#    legg til luftig topp-marg, og enkel linjeavstand på forsiden.
-for paragraph in doc.paragraphs:
-    if paragraph.style.name == "Heading 1":
-        # Førsteforekomst av H1 = tittelen "NautiCost"
-        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        paragraph.paragraph_format.space_before = Pt(140)  # ~5 cm topp-marg
-        paragraph.paragraph_format.space_after = Pt(24)
-        paragraph.paragraph_format.line_spacing = 1.0
-        paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
-        for run in paragraph.runs:
-            run.font.size = Pt(48)
-            run.font.bold = True
-        # Sentrer alle paragrafer etter tittelen, fram til neste H2
-        found_title = True
-        next_p = paragraph._element.getnext()
-        while next_p is not None:
-            from docx.oxml.ns import qn
-            if next_p.tag != qn("w:p"):
-                break
-            # Stopp ved første w:p med Heading 2-stil eller raw page break sdt-elementer er allerede passert
-            from docx.text.paragraph import Paragraph
-            np = Paragraph(next_p, paragraph._parent)
-            if np.style.name == "Heading 2":
-                break
-            np.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            np.paragraph_format.line_spacing = 1.15
-            np.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
-            next_p = next_p.getnext()
-        break  # bare første H1
-
-# Også sentrer linjer FØR tittelen (LOG650-linjen)
-for paragraph in doc.paragraphs:
-    if paragraph.style.name == "Heading 1":
-        break
-    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    paragraph.paragraph_format.line_spacing = 1.0
-    paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
-    paragraph.paragraph_format.space_before = Pt(0)
-    paragraph.paragraph_format.space_after = Pt(0)
-
 doc.save(DST_DOCX)
+print(f"Stiler oppdatert i {DST_DOCX.name}")
 
 
-# --- TOC + PDF via Word COM i én sesjon ---------------------------------
-toc_pdf_done = False
+# 4) TOC + PDF via Word COM i én sesjon, fra ASCII-temp-mappe
+print()
+print("Oppdaterer TOC og eksporterer PDF via Word COM …")
+import win32com.client
+import pythoncom
+
+tmpdir = tempfile.mkdtemp(prefix="nauticost_")
+tmp_docx = Path(tmpdir) / "report.docx"
+tmp_pdf = Path(tmpdir) / "report.pdf"
+shutil.copy2(DST_DOCX, tmp_docx)
+
 try:
-    import win32com.client
-    import pythoncom
-    print()
-    print("Oppdaterer TOC og eksporterer PDF via Word COM …")
-    # Word COM tåler dårlig OneDrive-stier med æøå — kopiér til ASCII-temp først
-    import shutil, tempfile
-    tmpdir = tempfile.mkdtemp(prefix="nauticost_")
-    tmp_docx = Path(tmpdir) / "report.docx"
-    tmp_pdf = Path(tmpdir) / "report.pdf"
-    shutil.copy2(DST_DOCX, tmp_docx)
     pythoncom.CoInitialize()
     word_app = win32com.client.Dispatch("Word.Application")
     word_app.Visible = False
@@ -216,61 +189,36 @@ try:
         toc.Update()
     wdoc.Fields.Update()
     wdoc.Save()
-    wdFormatPDF = 17
-    wdoc.SaveAs2(str(tmp_pdf), FileFormat=wdFormatPDF)
+    wdoc.SaveAs2(str(tmp_pdf), FileFormat=17)
     wdoc.Close(False)
     word_app.Quit()
     pythoncom.CoUninitialize()
-    # Kopier tilbake
     shutil.copy2(tmp_docx, DST_DOCX)
     shutil.copy2(tmp_pdf, DST_PDF)
-    shutil.rmtree(tmpdir, ignore_errors=True)
     print(f"  TOC oppdatert. PDF: {DST_PDF.name} ({DST_PDF.stat().st_size // 1024} KB)")
-    toc_pdf_done = True
 
-    # Post-fix: rename "Table of Contents" → "Innholdsfortegnelse" direkte i docx-XML
-    try:
-        import zipfile, shutil, tempfile
-        tmp_path = DST_DOCX.with_suffix(".docx.tmp")
-        with zipfile.ZipFile(DST_DOCX, "r") as zin:
-            with zipfile.ZipFile(tmp_path, "w", zipfile.ZIP_DEFLATED) as zout:
-                for item in zin.infolist():
-                    data = zin.read(item.filename)
-                    if item.filename == "word/document.xml":
-                        data = data.replace(b"Table of Contents", b"Innholdsfortegnelse")
-                    zout.writestr(item, data)
-        shutil.move(str(tmp_path), str(DST_DOCX))
-        print("  TOC-overskrift: 'Table of Contents' → 'Innholdsfortegnelse'.")
-    except Exception as e:
-        print(f"  Kunne ikke omdøpe TOC-overskrift i XML: {e}")
+    # Post-fix: rename "Table of Contents" → "Innholdsfortegnelse"
+    import zipfile
+    tmp_zip = str(DST_DOCX) + ".tmp"
+    with zipfile.ZipFile(DST_DOCX, "r") as zin:
+        with zipfile.ZipFile(tmp_zip, "w", zipfile.ZIP_DEFLATED) as zout:
+            for item in zin.infolist():
+                data = zin.read(item.filename)
+                if item.filename == "word/document.xml":
+                    data = data.replace(b"Table of Contents", b"Innholdsfortegnelse")
+                zout.writestr(item, data)
+    shutil.move(tmp_zip, str(DST_DOCX))
 except Exception as e:
-    print(f"  Kunne ikke oppdatere TOC/PDF via Word COM: {e}")
-    print("  Åpne docx i Word og høyreklikk på innholdsfortegnelsen → 'Oppdater felt'.")
+    print(f"  Word COM feilet: {e}")
+finally:
+    shutil.rmtree(tmpdir, ignore_errors=True)
 
-# Sanity check
+
+# 5) Sanity check
 doc = Document(DST_DOCX)
+print()
 print(f"Skrev {DST_DOCX.name}")
 print(f"  Avsnitt: {len(doc.paragraphs)}")
 print(f"  Tabeller: {len(doc.tables)}")
 print(f"  Bilder: {len(doc.inline_shapes)}")
 print(f"  Størrelse: {DST_DOCX.stat().st_size // 1024} KB")
-print()
-print("Første 8 avsnitt (style + tekst):")
-for p in doc.paragraphs[:10]:
-    style = p.style.name
-    text = p.text[:80]
-    if text:
-        print(f"  [{style}] {text}")
-
-
-# --- Fallback: PDF-eksport via docx2pdf hvis COM-sti feilet -------------
-if not toc_pdf_done:
-    try:
-        from docx2pdf import convert as docx_to_pdf
-        print()
-        print(f"Fallback PDF via docx2pdf: {DST_PDF.name} …")
-        docx_to_pdf(str(DST_DOCX), str(DST_PDF))
-        print(f"  Skrev {DST_PDF.name} ({DST_PDF.stat().st_size // 1024} KB)")
-    except Exception as e:
-        print(f"  Fallback feilet også: {e}")
-        print("  Åpne docx-en i Word og lagre som PDF manuelt.")
