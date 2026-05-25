@@ -3,13 +3,19 @@
 **LOG650 — Forskningsprosjekt, vår 2026**
 **Gruppe 11 — Jørgen Rene (individuell)**
 
-> **Versjon 2.0 — 2026-05-25.** Andre utkast (second draft) etter egen gjennomgang av first draft. Endringer fra v1.1: navneretting (Renè → Rene), kapittelnummerering ryddet (Sammendrag uten nummer, ingen dobbel nummerering på under­kapitler), beskrivende figurtekster, "Takk til"-seksjon lagt til, Word-eksport i Times New Roman 12 pt med 1,5 linjeavstand.
+> **Versjon 2.1 — 2026-05-25.** Andre utkast. Endringer fra v1.1: navneretting (Renè → Rene), kapittel­nummerering ryddet, beskrivende figurtekster, "Takk til" og engelsk Abstract lagt til (jf. malen), bibliografi alfabetisk sortert (APA 7), Figur 7.6-caption rettet til ærlig gain-importance (jf. § 9.7), TNR 12 pt + 1,5 linjeavstand i Word.
 
 ---
 
 ## Sammendrag
 
 NautiCost er et beslutningsstøtteverktøy som estimerer totalkostnaden for et superyachthavneanløp i Norge, Sverige eller Danmark før yachten ankommer. Verktøyet baserer seg på 1 647 historiske tjenestetransaksjoner (2020–2025) fra Yachting Operations, koblet mot 17 yachters spesifikasjoner. Metodevalget er pensum­forankret (Pettersen & Rekdal, 2026, tabell 1.1): gradient boosting + kryssvalidering + SHAP + hyperparameter­tuning. Kostnaden modelleres på transaksjonsnivå med log-transformert mål og en LightGBM + CatBoost-ensemble. Prediksjoner aggregeres via portmaler og trafikkvekter, og kalibreres mot empiriske persentiler (P25/P50/P75) per (havn, størrelse). Kildedata er i EUR; frontend konverterer til NOK/DKK ved API-grensa. På valideringssettet (2024, n = 490) oppnår ensemblet **MAE = 17 350 EUR, wMAPE = 71,4 %** — 20 % bedre enn median­baseline. På det uavhengige testsettet (2025, n = 649) oppnår samme model­klasse **MAE = 19 051 EUR, wMAPE = 74,3 %** — ≈ 10 % degradering val→test, forventet etter seleksjon. Modellen er pakket som FastAPI + Next.js med svar­tid under to sekunder.
+
+---
+
+## Abstract
+
+NautiCost is a pre-arrival decision-support tool that estimates the total cost of a super­yacht port call in Norway, Sweden or Denmark. Trained on 1,647 service transactions (2020–2025) from Yachting Operations covering 17 yachts, it follows a curriculum-anchored methodology (Pettersen & Rekdal, 2026, Table 1.1): gradient boosting, cross-validation, SHAP and hyper­parameter tuning. Cost is modelled per transaction with a log-transformed target and a LightGBM + CatBoost ensemble, then aggregated via port templates and traffic weights, and calibrated against empirical P25/P50/P75 percentiles per (port, size). Source data are in EUR; the frontend converts to NOK/DKK at the API boundary. Validation (2024, n = 490): **MAE = €17,350 / wMAPE = 71.4 %** — 20 % better than median baseline. Hold-out test (2025, n = 649): **MAE = €19,051 / wMAPE = 74.3 %** — a ≈ 10 % val→test degradation, as expected from model selection. Deployed as FastAPI + Next.js with sub-two-second response.
 
 ---
 
@@ -423,9 +429,9 @@ Analysen i dette kapittelet er basert på 1 626 transaksjoner i `costs_merged.cs
 
 ### 7.3 SHAP-analyse
 
-![Figur 7.6: SHAP summary plot — effekt­retning og styrke per feature i ensemble­modellen](figures/figur_7_6_shap_summary.png)
+![Figur 7.6: LightGBM gain-importance (fallback for SHAP, jf. § 9.7) — relativ styrke per feature i ensemble­modellen](figures/figur_7_6_shap_summary.png)
 
-**Figur 7.6.** SHAP summary plot — viser effekt­retning og styrke per feature. `service_type` og aggregat­statistikkene (`size_svc_median_charge`, `size_svc_mean_charge`) dominerer, med `gt` og `stay_days` som viktige sekundære drivere. Retnings­strukturen er som forventet: høyere GT, lengre opphold og dyre­ tjenestetyper (Provisioning, Port Marina) gir høyere predikert kostnad. *(Plott i `modeling_nauticost.ipynb`, seksjon 10.)*
+**Figur 7.6.** LightGBM gain-importance brukt som fallback for SHAP-summary (TreeSHAP-generering feilet på et `categorical_feature`-mismatch, jf. § 9.7). Figuren viser relativ styrke (ikke effekt­retning) per feature. `service_type` og aggregat­statistikkene (`size_svc_median_charge`, `size_svc_mean_charge`) dominerer, med `gt` og `stay_days` som viktige sekundære drivere. Et ekte SHAP-plott ville i tillegg gitt fortegns­informasjon (positiv/negativ påvirkning på predikert kostnad) som denne proxyen ikke fanger — fortegnet er rekonstruert kvalitativt i teksten under: høyere GT, lengre opphold og dyre tjenestetyper (Provisioning, Port Marina) gir høyere predikert kostnad. *(Plott i `modeling_nauticost.ipynb`, seksjon 10; regenerering med ekte TreeSHAP er flagget som videre arbeid.)*
 
 ![Figur 7.7: Predikerte kostnader fordelt på GT (log-skala), tjenestekategori og ankomsthavn — viser monoton GT-effekt og tydelig havne­variasjon](figures/figur_7_7_dependence.png)
 
@@ -713,23 +719,21 @@ Studien bidrar (§ 1.5) ved å demonstrere transaksjonsnivå-ensemble med hybrid
 
 ## 11. Bibliografi
 
-Su, M., Lee, H. J., Wang, X., & Bae, S.-H. (2024). Fuel consumption cost prediction model for ro-ro carriers: A machine learning-based application. *Maritime Policy & Management*, *52*(2), 229–249. https://doi.org/10.1080/03088839.2024.2303120
-
 Friedman, J. H. (2001). Greedy function approximation: A gradient boosting machine. *The Annals of Statistics*, *29*(5), 1189–1232. https://doi.org/10.1214/aos/1013203451
-
-Jahangard, M., Xie, Y., & Feng, Y. (2025). Leveraging machine learning and optimization models for enhanced seaport efficiency. *Maritime Economics & Logistics*, *27*(4), 710–751. https://doi.org/10.1057/s41278-024-00309-w
 
 Grinsztajn, L., Oyallon, E., & Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on typical tabular data? *Advances in Neural Information Processing Systems, 35*, 507–520.
 
 Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning: Data Mining, Inference, and Prediction* (2nd ed.). Springer. https://doi.org/10.1007/978-0-387-84858-7
 
+Jahangard, M., Xie, Y., & Feng, Y. (2025). Leveraging machine learning and optimization models for enhanced seaport efficiency. *Maritime Economics & Logistics*, *27*(4), 710–751. https://doi.org/10.1057/s41278-024-00309-w
+
 Jang, H.-S., Chang, T.-W., & Kim, S.-H. (2023). Prediction of shipping cost on freight brokerage platform using machine learning. *Sustainability*, *15*(2), 1122. https://doi.org/10.3390/su15021122
 
 Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. *Advances in Neural Information Processing Systems, 30*, 3146–3154.
 
-Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. *Advances in Neural Information Processing Systems, 30*, 4765–4774.
-
 Lundberg, S. M., Erion, G., Chen, H., DeGrave, A., Prutkin, J. M., Nair, B., Katz, R., Himmelfarb, J., Bansal, N., & Lee, S.-I. (2020). From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*, *2*(1), 56–67. https://doi.org/10.1038/s42256-019-0138-9
+
+Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. *Advances in Neural Information Processing Systems, 30*, 4765–4774.
 
 Pettersen, B.-I., & Rekdal, P. K. (2026). *Kvantitative metoder i logistikk — implementert via KI* [Kompendium]. LOG650 Forskningsprosjekt: Logistikk og kunstig intelligens, Høgskolen i Molde.
 
@@ -740,6 +744,8 @@ Romano, Y., Patterson, E., & Candès, E. (2019). Conformalized quantile regressi
 Shafer, G., & Vovk, V. (2008). A tutorial on conformal prediction. *Journal of Machine Learning Research*, *9*, 371–421. https://jmlr.csail.mit.edu/papers/volume9/shafer08a/shafer08a.pdf
 
 Shwartz-Ziv, R., & Armon, A. (2022). Tabular data: Deep learning is not all you need. *Information Fusion*, *81*, 84–90. https://doi.org/10.1016/j.inffus.2021.11.011
+
+Su, M., Lee, H. J., Wang, X., & Bae, S.-H. (2024). Fuel consumption cost prediction model for ro-ro carriers: A machine learning-based application. *Maritime Policy & Management*, *52*(2), 229–249. https://doi.org/10.1080/03088839.2024.2303120
 
 ---
 
