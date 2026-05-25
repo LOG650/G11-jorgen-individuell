@@ -1,5 +1,5 @@
 """
-Convert "Report draft.md" -> .docx -> .pdf
+Convert "Final report draft.md" -> .docx -> .pdf
 
 Endringer fra convert_to_word.py (v1):
 - Dropper --number-sections fra pandoc, slik at de manuelle kapittelnumrene
@@ -21,23 +21,18 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_LINE_SPACING
 
 BASE = Path(__file__).parent
-SRC = BASE / "Report draft.md"
-DST_DOCX = BASE / "Report draft.docx"
-DST_PDF = BASE / "Report draft.pdf"
+SRC = BASE / "Final report draft.md"
+DST_DOCX = BASE / "Final report draft.docx"
+DST_PDF = BASE / "Final report draft.pdf"
 
 raw = SRC.read_text(encoding="utf-8")
 
-# Strip leading H1 + author/course lines (passes them as pandoc metadata).
-pattern = re.compile(
-    r"^# NautiCost:.*?\n+"
-    r"(\*\*LOG650.*?\*\*\n+)"
-    r"(\*\*Gruppe.*?\*\*\n+)",
-    re.DOTALL | re.MULTILINE,
-)
-body = pattern.sub("", raw, count=1)
-
+# Pandoc kjører nå direkte mot markdown — vi striper IKKE H1/course/group
+# lenger, og bruker ikke metadata title/subtitle. # NautiCost: ... blir
+# Overskrift 1 (tittelen) på forsiden, og resten følger ## = Overskrift 2,
+# ### = Overskrift 3 osv.
 TMP = BASE / "_tmp_for_pandoc_v2.md"
-TMP.write_text(body, encoding="utf-8")
+TMP.write_text(raw, encoding="utf-8")
 
 try:
     pypandoc.convert_file(
@@ -48,13 +43,11 @@ try:
             "--standalone",
             # NB: --toc er fjernet — TOC plasseres manuelt etter Takk til.
             # NB: ingen --number-sections — markdown har egne numre.
-            # Forfremme '##' → Overskrift 1, '###' → Overskrift 2 osv.
-            "--shift-heading-level-by=-1",
+            # NB: --shift-heading-level-by er fjernet — # blir Overskrift 1,
+            # ## blir Overskrift 2, ### blir Overskrift 3.
             f"--resource-path={BASE}",
-            "--metadata=title:NautiCost — Datadreven kostnadsestimering for yachthavneanløp i Skandinavia",
-            "--metadata=subtitle:LOG650 Forskningsprosjekt, vår 2026 — Gruppe 11, Jørgen Rene (individuell)",
-            "--metadata=author:Jørgen Rene",
-            "--metadata=date:2026-05-25",
+            # NB: ingen --metadata=title/subtitle/author/date — forsiden
+            # bygges direkte i markdown for at # NautiCost skal bli Overskrift 1.
         ],
     )
 finally:

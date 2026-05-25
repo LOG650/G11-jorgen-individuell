@@ -1,8 +1,8 @@
-"""Quick style/proofread check on Report draft.md (most recent active draft)."""
+"""Quick style/proofread check on Final report draft.md (most recent active draft)."""
 import re
 from pathlib import Path
 
-text = Path("Report draft.md").read_text(encoding="utf-8")
+text = Path("Final report draft.md").read_text(encoding="utf-8")
 
 # Strip code-blocks and LaTeX so they don't pollute the checks
 clean = re.sub(r"```.*?```|`[^`]+`", "", text, flags=re.DOTALL)

@@ -1,9 +1,12 @@
 # NautiCost: Datadreven kostnadsestimering for yachthavneanløp i Skandinavia
 
 **LOG650 — Forskningsprosjekt, vår 2026**
+
 **Gruppe 11 — Jørgen Rene (individuell)**
 
----
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## Obligatorisk egenerklæring
 
@@ -47,7 +50,7 @@ Takk til **SDK Shipping** for tilgang til 2020–2025-fakturadata og yacht­spes
 ## Innholdsfortegnelse {.unnumbered .unlisted}
 
 ```{=openxml}
-<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u </w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p>
+<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "2-3" \h \z \u </w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p>
 ```
 
 ```{=openxml}
