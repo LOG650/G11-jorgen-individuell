@@ -1,6 +1,6 @@
 ---
 title: "Forsvarsforberedelse — NautiCost muntlig eksamen"
-subtitle: "LOG650 Forskningsprosjekt, juni 2026 — Gruppe 11, Jørgen Renè"
+subtitle: "LOG650 Forskningsprosjekt, juni 2026 — Gruppe 11, Jørgen Rene"
 author: "Forberedelse til muntlig eksamen"
 date: "2026-05-13"
 ---
