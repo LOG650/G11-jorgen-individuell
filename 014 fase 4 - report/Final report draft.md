@@ -1,8 +1,16 @@
-# NautiCost: Datadreven kostnadsestimering for yachthavneanløp i Skandinavia
+**LOG650 — FORSKNINGSPROSJEKT**
 
-**LOG650 — Forskningsprosjekt, vår 2026**
+# NautiCost
 
-**Gruppe 11 — Jørgen Rene (individuell)**
+*Datadreven kostnadsestimering for yachthavneanløp i Skandinavia*
+
+**Gruppe 11**
+
+Jørgen Rene (individuell)
+
+Molde, mai 2026
+
+Høgskolen i Molde · Avdeling for logistikk
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

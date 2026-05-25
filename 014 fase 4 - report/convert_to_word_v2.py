@@ -18,7 +18,7 @@ import re
 import pypandoc
 from docx import Document
 from docx.shared import Pt, RGBColor
-from docx.enum.text import WD_LINE_SPACING
+from docx.enum.text import WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 
 BASE = Path(__file__).parent
 SRC = BASE / "Final report draft.md"
@@ -149,6 +149,47 @@ for table in doc.tables:
                 _set_paragraph_spacing(paragraph)
                 for run in paragraph.runs:
                     _apply_run_font(run, size=BODY_SIZE)
+
+# 4) Forside-styling: sentrer tittel + forsidelinjer, øk tittelstørrelse,
+#    legg til luftig topp-marg, og enkel linjeavstand på forsiden.
+for paragraph in doc.paragraphs:
+    if paragraph.style.name == "Heading 1":
+        # Førsteforekomst av H1 = tittelen "NautiCost"
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        paragraph.paragraph_format.space_before = Pt(140)  # ~5 cm topp-marg
+        paragraph.paragraph_format.space_after = Pt(24)
+        paragraph.paragraph_format.line_spacing = 1.0
+        paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+        for run in paragraph.runs:
+            run.font.size = Pt(48)
+            run.font.bold = True
+        # Sentrer alle paragrafer etter tittelen, fram til neste H2
+        found_title = True
+        next_p = paragraph._element.getnext()
+        while next_p is not None:
+            from docx.oxml.ns import qn
+            if next_p.tag != qn("w:p"):
+                break
+            # Stopp ved første w:p med Heading 2-stil eller raw page break sdt-elementer er allerede passert
+            from docx.text.paragraph import Paragraph
+            np = Paragraph(next_p, paragraph._parent)
+            if np.style.name == "Heading 2":
+                break
+            np.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            np.paragraph_format.line_spacing = 1.15
+            np.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+            next_p = next_p.getnext()
+        break  # bare første H1
+
+# Også sentrer linjer FØR tittelen (LOG650-linjen)
+for paragraph in doc.paragraphs:
+    if paragraph.style.name == "Heading 1":
+        break
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.paragraph_format.line_spacing = 1.0
+    paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    paragraph.paragraph_format.space_before = Pt(0)
+    paragraph.paragraph_format.space_after = Pt(0)
 
 doc.save(DST_DOCX)
 
