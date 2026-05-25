@@ -23,7 +23,7 @@ date: "2026-05-13"
 
 ### Spørsmål 1.2 — "Hvorfor er datasettet i EUR når brukerne er i Norge?"
 
-**Stikkord-svar (30 sek):** Yachting Operations registrerer fakturaer i EUR — cockpit-rapportenes egne kolonneoverskrifter sier "EUR". Vi trener modellen i kildevaluta for å unngå dobbel valuta­konvertering, og lar frontend gange opp med kurs ved API-grensa. En tidligere v0.2-feil hadde merket output NOK, noe brukertesten avdekket og v0.3 fikset.
+**Stikkord-svar (30 sek):** SDK Shipping registrerer fakturaer i EUR — cockpit-rapportenes egne kolonneoverskrifter sier "EUR". Vi trener modellen i kildevaluta for å unngå dobbel valuta­konvertering, og lar frontend gange opp med kurs ved API-grensa. En tidligere v0.2-feil hadde merket output NOK, noe brukertesten avdekket og v0.3 fikset.
 
 **Rapport-ref:** § 1.3 valuta, § 9.5.1 enhetsfeil, § 9.4 punkt 6.
 
@@ -123,7 +123,7 @@ date: "2026-05-13"
 
 ### Spørsmål 5.2 — "Generaliseres modellen til andre yacht-agenter?"
 
-**Stikkord-svar (30 sek):** Nei, ikke validert. Modellen er trent kun på Yachting Operations sine fakturaer og lærer denne agentens spesifikke pris­modeller. Vi anbefaler ikke bruk hos en annen agent uten re-trening — § 9.6 ekstern validitet på operatør­nivå.
+**Stikkord-svar (30 sek):** Nei, ikke validert. Modellen er trent kun på SDK Shipping sine fakturaer og lærer denne agentens spesifikke pris­modeller. Vi anbefaler ikke bruk hos en annen agent uten re-trening — § 9.6 ekstern validitet på operatør­nivå.
 
 **Rapport-ref:** § 9.6.
 
@@ -179,7 +179,7 @@ date: "2026-05-13"
 
 **Rapport-ref:** § 9.9 etiske hensyn.
 
-### Spørsmål 8.2 — "Hva er nettoverdien for Yachting Operations?"
+### Spørsmål 8.2 — "Hva er nettoverdien for SDK Shipping?"
 
 **Stikkord-svar (45 sek):** Verktøyet gjør at en agent­koordinator kan gi yachteier et estimat på sekunder med kommunisert spenn — i stedet for et magefølelses­anslag som tar minutter og er inkonsistent mellom koordinatorer. På sikt kan logging av faktura mot estimat drive automatisk re-trening. Forecast-funksjonen svarer på forretningsspørsmål som "30 yachter neste år, hvilken inntekt?". Krav er at brukeren forstår at det er estimater, ikke pristilbud.
 
