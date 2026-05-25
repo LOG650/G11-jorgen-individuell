@@ -1,5 +1,5 @@
 """
-Convert "Report second draft v1.md" -> .docx -> .pdf
+Convert "Report draft.md" -> .docx -> .pdf
 
 Endringer fra convert_to_word.py (v1):
 - Dropper --number-sections fra pandoc, slik at de manuelle kapittelnumrene
@@ -21,9 +21,9 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_LINE_SPACING
 
 BASE = Path(__file__).parent
-SRC = BASE / "Report second draft v1.md"
-DST_DOCX = BASE / "Report second draft v1.docx"
-DST_PDF = BASE / "Report second draft v1.pdf"
+SRC = BASE / "Report draft.md"
+DST_DOCX = BASE / "Report draft.docx"
+DST_PDF = BASE / "Report draft.pdf"
 
 raw = SRC.read_text(encoding="utf-8")
 
@@ -46,8 +46,10 @@ try:
         outputfile=str(DST_DOCX),
         extra_args=[
             "--standalone",
-            # NB: --toc er fjernet (v2.5) — TOC plasseres manuelt etter Takk til.
+            # NB: --toc er fjernet — TOC plasseres manuelt etter Takk til.
             # NB: ingen --number-sections — markdown har egne numre.
+            # Forfremme '##' → Overskrift 1, '###' → Overskrift 2 osv.
+            "--shift-heading-level-by=-1",
             f"--resource-path={BASE}",
             "--metadata=title:NautiCost — Datadreven kostnadsestimering for yachthavneanløp i Skandinavia",
             "--metadata=subtitle:LOG650 Forskningsprosjekt, vår 2026 — Gruppe 11, Jørgen Rene (individuell)",
@@ -96,47 +98,34 @@ def _set_paragraph_spacing(paragraph, line_spacing=LINE_SPACING):
     pf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
 
 
-# 1) Oppdater stiler (Normal + headings + sitater + figur/tabell-tekst)
-HEADING_COLOR = RGBColor(0x1F, 0x1F, 0x1F)  # nesten-svart, mye sterkere enn pandocs blå
-heading_specs = {
-    # name -> (size_pt, bold)
-    "Heading 1": (Pt(20), True),
-    "Heading 2": (Pt(18), True),
-    "Heading 3": (Pt(14), True),
-    "Heading 4": (Pt(13), True),
-    "Heading 5": (Pt(12), True),
-    "Heading 6": (Pt(12), True),
-    "Title": (Pt(24), True),
-    "Subtitle": (Pt(14), False),
-    "TOC Heading": (Pt(18), True),
-}
+# 1) Oppdater stiler:
+#    - Body (Normal, Body Text, lists, captions): Times New Roman 12 pt
+#    - Headings (Title, Heading 1-6, TOC Heading): RØR IKKE — la Words
+#      standard "Overskrift 1/2/3"-stiler rendere som vanlig (Calibri
+#      Light, blå, distinkte størrelser).
 body_specs = {
+    "Normal": (BODY_SIZE, False),
+    "Body Text": (BODY_SIZE, False),
+    "First Paragraph": (BODY_SIZE, False),
+    "Compact": (BODY_SIZE, False),
     "Caption": (Pt(11), False),
+    "Image Caption": (Pt(11), False),
     "Quote": (BODY_SIZE, False),
     "Intense Quote": (BODY_SIZE, False),
     "List Paragraph": (BODY_SIZE, False),
-    "Normal": (BODY_SIZE, False),
-    "Body Text": (BODY_SIZE, False),
+    "Block Text": (BODY_SIZE, False),
 }
 
 for style in doc.styles:
     name = style.name
     try:
-        font = style.font
-        font.name = FONT_NAME
-        if name in heading_specs:
-            size, bold = heading_specs[name]
-            font.size = size
-            font.bold = bold
-            font.color.rgb = HEADING_COLOR
-        elif name in body_specs:
+        if name in body_specs:
+            font = style.font
+            font.name = FONT_NAME
             size, bold = body_specs[name]
             font.size = size
             font.bold = bold
-        elif name.startswith("TOC"):
-            font.size = BODY_SIZE
-        else:
-            font.size = BODY_SIZE
+        # NB: Heading-stiler og Title røres ikke — Word's standard look beholdes.
     except (AttributeError, NotImplementedError):
         pass
 
@@ -147,14 +136,17 @@ HEADING_STYLES = {
     "TOC Heading",
 }
 
-# 2) Oppdater hver paragraph (line spacing + run-fonter).
-#    For overskrifter: sett kun font-navn, la stilen styre størrelse.
-#    For body: sett font-navn + 12 pt.
+# 2) Oppdater hver paragraph.
+#    For overskrifter: rør IKKE font/størrelse — la Word's standard
+#    Overskrift 1/2/3 (typisk Calibri Light, blå, distinkte størrelser)
+#    rendere som vanlig. Linjeavstand 1,5 brukes også på overskrifter.
+#    For body: tving Times New Roman 12 pt.
 for paragraph in doc.paragraphs:
     _set_paragraph_spacing(paragraph)
-    is_heading = paragraph.style.name in HEADING_STYLES
+    if paragraph.style.name in HEADING_STYLES:
+        continue  # ikke rør overskriftene
     for run in paragraph.runs:
-        _apply_run_font(run, size=None if is_heading else BODY_SIZE)
+        _apply_run_font(run, size=BODY_SIZE)
 
 # 3) Også for tabellinnhold (alltid body-størrelse i tabeller)
 for table in doc.tables:
