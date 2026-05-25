@@ -42,7 +42,19 @@ Takk til **SDK Shipping** for tilgang til 2020–2025-fakturadata og yacht­spes
 
 **KI-erklæring** (jf. HiMs retningslinjer for transparent KI-bruk): **Anthropic Claude** (Claude Sonnet/Opus via Claude Code-CLI) er brukt som skrive- og kode-assistent. *Kode*: store deler av Python-pipeline og frontend er ko-utviklet i Claude-sesjoner; all kode er versjons­kontrollert på GitHub. *Rapporttekst*: utkast til § 2–§ 3, § 6.5, § 9.4 og § 9.5 er skrevet via prompt-og-redigér; alle tall, sitater og referanser er gjenkontrollert mot kildene. *Litteratur*: DOI-er krysssjekket mot Crossref etter at to KI-hallusinerte forfatter­navn ble oppdaget i tidlig versjon. *Forfatterens eget arbeid*: case­beskrivelse, data, modell­valg, brukertest mai 2026 og denne erklæringen. KI er brukt som assistent, ikke forsknings­erstatning. Alle resultat­tall er reproduserbare via skriptene i `013 fase 3 - review/`.
 
----
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Innholdsfortegnelse {.unnumbered .unlisted}
+
+```{=openxml}
+<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u </w:instrText><w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/></w:r></w:p>
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## 1. Innledning
 
@@ -722,7 +734,9 @@ Studien bidrar (§ 1.5) ved å demonstrere transaksjonsnivå-ensemble med hybrid
 
 **Videre arbeid:** (1) Utvide flåten med flere yachter/operatører. (2) Online re-trening med rullerende vindu. (3) Multimodale pris­drivere (drivstoffpris, valuta, vær). (4) AB-test av koordinator-effektivitet med vs. uten verktøy. (5) Land-bevisste aggregat-features og re-trening (§ 9.5.5). (6) Reise­geometri som lært feature (§ 9.5.3). (7) `guest_experience` labelling og re-trening (§ 9.5.4). (8) Størrelses-betinget pilot-sannsynlighet (§ 9.5.2). (9) Operasjonell validering over 3 måneder. (10) Rullerende test-evaluering når 2026-data foreligger. (11) Diebold-Mariano-test mot bootstrap-KI. (12) Sensitivitets­analyse på vekslingskurs.
 
----
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ## 11. Bibliografi
 

@@ -46,8 +46,7 @@ try:
         outputfile=str(DST_DOCX),
         extra_args=[
             "--standalone",
-            "--toc",
-            "--toc-depth=3",
+            # NB: --toc er fjernet (v2.5) — TOC plasseres manuelt etter Takk til.
             # NB: ingen --number-sections — markdown har egne numre.
             f"--resource-path={BASE}",
             "--metadata=title:NautiCost — Datadreven kostnadsestimering for yachthavneanløp i Skandinavia",
@@ -68,9 +67,13 @@ LINE_SPACING = 1.5
 doc = Document(DST_DOCX)
 
 
-def _apply_run_font(run, size=BODY_SIZE):
+def _apply_run_font(run, size=None):
+    """Sett Times New Roman på run-nivå. Sett kun size hvis eksplisitt
+    angitt — ellers la paragraph-stilen styre størrelse (slik at Title
+    og Heading 1/2/3 beholder sine store overskriftsstørrelser)."""
     run.font.name = FONT_NAME
-    run.font.size = size
+    if size is not None:
+        run.font.size = size
     # Sett også east-asian font slik at Word ikke overstyrer
     rpr = run._element.get_or_add_rPr()
     rfonts = rpr.find(
@@ -137,20 +140,30 @@ for style in doc.styles:
     except (AttributeError, NotImplementedError):
         pass
 
-# 2) Oppdater hver paragraph (line spacing + run-fonter)
+HEADING_STYLES = {
+    "Title", "Subtitle",
+    "Heading 1", "Heading 2", "Heading 3",
+    "Heading 4", "Heading 5", "Heading 6",
+    "TOC Heading",
+}
+
+# 2) Oppdater hver paragraph (line spacing + run-fonter).
+#    For overskrifter: sett kun font-navn, la stilen styre størrelse.
+#    For body: sett font-navn + 12 pt.
 for paragraph in doc.paragraphs:
     _set_paragraph_spacing(paragraph)
+    is_heading = paragraph.style.name in HEADING_STYLES
     for run in paragraph.runs:
-        _apply_run_font(run)
+        _apply_run_font(run, size=None if is_heading else BODY_SIZE)
 
-# 3) Også for tabellinnhold
+# 3) Også for tabellinnhold (alltid body-størrelse i tabeller)
 for table in doc.tables:
     for row in table.rows:
         for cell in row.cells:
             for paragraph in cell.paragraphs:
                 _set_paragraph_spacing(paragraph)
                 for run in paragraph.runs:
-                    _apply_run_font(run)
+                    _apply_run_font(run, size=BODY_SIZE)
 
 doc.save(DST_DOCX)
 
