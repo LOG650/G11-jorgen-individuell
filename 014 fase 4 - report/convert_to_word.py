@@ -1,5 +1,5 @@
 """
-Convert Final report.md to Final report.docx using pandoc (via pypandoc-binary).
+Convert Report first draft.md to Report first draft.docx using pandoc (via pypandoc-binary).
 
 Strategy:
 - Strip the leading H1 + LOG650/group markup from the markdown body and pass
@@ -15,8 +15,8 @@ import re
 import pypandoc
 
 BASE = Path(__file__).parent
-SRC = BASE / "Final report.md"
-DST = BASE / "Final report.docx"
+SRC = BASE / "Report first draft.md"
+DST = BASE / "Report first draft.docx"
 
 raw = SRC.read_text(encoding="utf-8")
 

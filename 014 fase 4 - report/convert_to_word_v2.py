@@ -1,5 +1,5 @@
 """
-Convert "Final report second draft v1.md" -> .docx -> .pdf
+Convert "Report second draft v1.md" -> .docx -> .pdf
 
 Endringer fra convert_to_word.py (v1):
 - Dropper --number-sections fra pandoc, slik at de manuelle kapittelnumrene
@@ -21,9 +21,9 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_LINE_SPACING
 
 BASE = Path(__file__).parent
-SRC = BASE / "Final report second draft v1.md"
-DST_DOCX = BASE / "Final report second draft v1.docx"
-DST_PDF = BASE / "Final report second draft v1.pdf"
+SRC = BASE / "Report second draft v1.md"
+DST_DOCX = BASE / "Report second draft v1.docx"
+DST_PDF = BASE / "Report second draft v1.pdf"
 
 raw = SRC.read_text(encoding="utf-8")
 
