@@ -17,7 +17,7 @@ from pathlib import Path
 import re
 import pypandoc
 from docx import Document
-from docx.shared import Pt
+from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_LINE_SPACING
 
 BASE = Path(__file__).parent
@@ -94,22 +94,26 @@ def _set_paragraph_spacing(paragraph, line_spacing=LINE_SPACING):
 
 
 # 1) Oppdater stiler (Normal + headings + sitater + figur/tabell-tekst)
-heading_sizes = {
-    "Heading 1": Pt(16),
-    "Heading 2": Pt(14),
-    "Heading 3": Pt(13),
-    "Heading 4": Pt(12),
-    "Heading 5": Pt(12),
-    "Heading 6": Pt(12),
-    "Title": Pt(20),
-    "Subtitle": Pt(14),
-    "Caption": Pt(11),
-    "Quote": BODY_SIZE,
-    "Intense Quote": BODY_SIZE,
-    "List Paragraph": BODY_SIZE,
-    "Normal": BODY_SIZE,
-    "Body Text": BODY_SIZE,
-    "TOC Heading": Pt(14),
+HEADING_COLOR = RGBColor(0x1F, 0x1F, 0x1F)  # nesten-svart, mye sterkere enn pandocs blå
+heading_specs = {
+    # name -> (size_pt, bold)
+    "Heading 1": (Pt(20), True),
+    "Heading 2": (Pt(18), True),
+    "Heading 3": (Pt(14), True),
+    "Heading 4": (Pt(13), True),
+    "Heading 5": (Pt(12), True),
+    "Heading 6": (Pt(12), True),
+    "Title": (Pt(24), True),
+    "Subtitle": (Pt(14), False),
+    "TOC Heading": (Pt(18), True),
+}
+body_specs = {
+    "Caption": (Pt(11), False),
+    "Quote": (BODY_SIZE, False),
+    "Intense Quote": (BODY_SIZE, False),
+    "List Paragraph": (BODY_SIZE, False),
+    "Normal": (BODY_SIZE, False),
+    "Body Text": (BODY_SIZE, False),
 }
 
 for style in doc.styles:
@@ -117,8 +121,15 @@ for style in doc.styles:
     try:
         font = style.font
         font.name = FONT_NAME
-        if name in heading_sizes:
-            font.size = heading_sizes[name]
+        if name in heading_specs:
+            size, bold = heading_specs[name]
+            font.size = size
+            font.bold = bold
+            font.color.rgb = HEADING_COLOR
+        elif name in body_specs:
+            size, bold = body_specs[name]
+            font.size = size
+            font.bold = bold
         elif name.startswith("TOC"):
             font.size = BODY_SIZE
         else:
@@ -143,6 +154,60 @@ for table in doc.tables:
 
 doc.save(DST_DOCX)
 
+
+# --- TOC + PDF via Word COM i én sesjon ---------------------------------
+toc_pdf_done = False
+try:
+    import win32com.client
+    import pythoncom
+    print()
+    print("Oppdaterer TOC og eksporterer PDF via Word COM …")
+    # Word COM tåler dårlig OneDrive-stier med æøå — kopiér til ASCII-temp først
+    import shutil, tempfile
+    tmpdir = tempfile.mkdtemp(prefix="nauticost_")
+    tmp_docx = Path(tmpdir) / "report.docx"
+    tmp_pdf = Path(tmpdir) / "report.pdf"
+    shutil.copy2(DST_DOCX, tmp_docx)
+    pythoncom.CoInitialize()
+    word_app = win32com.client.Dispatch("Word.Application")
+    word_app.Visible = False
+    word_app.DisplayAlerts = False
+    wdoc = word_app.Documents.Open(str(tmp_docx))
+    for toc in wdoc.TablesOfContents:
+        toc.Update()
+    wdoc.Fields.Update()
+    wdoc.Save()
+    wdFormatPDF = 17
+    wdoc.SaveAs2(str(tmp_pdf), FileFormat=wdFormatPDF)
+    wdoc.Close(False)
+    word_app.Quit()
+    pythoncom.CoUninitialize()
+    # Kopier tilbake
+    shutil.copy2(tmp_docx, DST_DOCX)
+    shutil.copy2(tmp_pdf, DST_PDF)
+    shutil.rmtree(tmpdir, ignore_errors=True)
+    print(f"  TOC oppdatert. PDF: {DST_PDF.name} ({DST_PDF.stat().st_size // 1024} KB)")
+    toc_pdf_done = True
+
+    # Post-fix: rename "Table of Contents" → "Innholdsfortegnelse" direkte i docx-XML
+    try:
+        import zipfile, shutil, tempfile
+        tmp_path = DST_DOCX.with_suffix(".docx.tmp")
+        with zipfile.ZipFile(DST_DOCX, "r") as zin:
+            with zipfile.ZipFile(tmp_path, "w", zipfile.ZIP_DEFLATED) as zout:
+                for item in zin.infolist():
+                    data = zin.read(item.filename)
+                    if item.filename == "word/document.xml":
+                        data = data.replace(b"Table of Contents", b"Innholdsfortegnelse")
+                    zout.writestr(item, data)
+        shutil.move(str(tmp_path), str(DST_DOCX))
+        print("  TOC-overskrift: 'Table of Contents' → 'Innholdsfortegnelse'.")
+    except Exception as e:
+        print(f"  Kunne ikke omdøpe TOC-overskrift i XML: {e}")
+except Exception as e:
+    print(f"  Kunne ikke oppdatere TOC/PDF via Word COM: {e}")
+    print("  Åpne docx i Word og høyreklikk på innholdsfortegnelsen → 'Oppdater felt'.")
+
 # Sanity check
 doc = Document(DST_DOCX)
 print(f"Skrev {DST_DOCX.name}")
@@ -159,19 +224,14 @@ for p in doc.paragraphs[:10]:
         print(f"  [{style}] {text}")
 
 
-# --- PDF-eksport via docx2pdf (krever Word installert) -------------------
-try:
-    from docx2pdf import convert as docx_to_pdf
-
-    print()
-    print(f"Konverterer til PDF: {DST_PDF.name} …")
-    docx_to_pdf(str(DST_DOCX), str(DST_PDF))
-    print(f"  Skrev {DST_PDF.name} ({DST_PDF.stat().st_size // 1024} KB)")
-except ImportError:
-    print()
-    print("docx2pdf ikke installert — hopper over PDF. Kjør:")
-    print("  pip install docx2pdf")
-except Exception as e:
-    print()
-    print(f"PDF-konvertering feilet: {e}")
-    print("  Åpne docx-en i Word og lagre som PDF manuelt.")
+# --- Fallback: PDF-eksport via docx2pdf hvis COM-sti feilet -------------
+if not toc_pdf_done:
+    try:
+        from docx2pdf import convert as docx_to_pdf
+        print()
+        print(f"Fallback PDF via docx2pdf: {DST_PDF.name} …")
+        docx_to_pdf(str(DST_DOCX), str(DST_PDF))
+        print(f"  Skrev {DST_PDF.name} ({DST_PDF.stat().st_size // 1024} KB)")
+    except Exception as e:
+        print(f"  Fallback feilet også: {e}")
+        print("  Åpne docx-en i Word og lagre som PDF manuelt.")
