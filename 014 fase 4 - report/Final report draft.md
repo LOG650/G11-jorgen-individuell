@@ -51,7 +51,7 @@ NautiCost is a pre-arrival decision-support tool that estimates the total cost o
 
 ## Takk til
 
-Takk til **SDK Shipping** for tilgang til reelle 2025-fakturadata og yacht­spesifikasjoner som danner studiens testsett, og til *agency manager* for brukertesten i mai 2026 — funnene i § 9.5 hadde ikke vært mulige uten dialogen. Reelle fakturaer for 2020–2024 var ikke tilgjengelige fra bedriften; disse årene er representert ved simulerte transaksjoner som speiler case-strukturen, slik at modellen får tilstrekkelig tids­dybde til trening og validering (jf. § 5.2). Takk til veilederne **Bård Inge Pettersen**, **Per Kristian Rekdal** og **Erik Langelo** for kompendiet og veiledning; metodevalget er direkte forankret i deres rammeverk (§ 2.2 og § 5.0). Takk også til Gruppe 10 for peer-review 2026-05-07.
+Takk til **SDK Shipping** for tilgang til reelle 2025-fakturadata og yacht­spesifikasjoner som danner studiens testsett, og til Operations manager **Melanie Oksjö** for brukertesten i mai 2026 — funnene i § 9.5 hadde ikke vært mulige uten dialogen. Reelle fakturaer for 2020–2024 var ikke tilgjengelige fra bedriften; disse årene er representert ved simulerte transaksjoner som speiler case-strukturen, slik at modellen får tilstrekkelig tids­dybde til trening og validering (jf. § 5.2). Takk til veilederne **Bård Inge Pettersen**, **Per Kristian Rekdal** og **Erik Langelo** for kompendiet og veiledning; metodevalget er direkte forankret i deres rammeverk (§ 2.2 og § 5.0). Takk også til Gruppe 10 for peer-review 2026-05-07.
 
 **KI-erklæring** (jf. HiMs retningslinjer for transparent KI-bruk): **Anthropic Claude** (Claude Sonnet/Opus via Claude Code-CLI) er brukt som skrive- og kode-assistent. *Kode*: store deler av Python-pipeline og frontend er ko-utviklet i Claude-sesjoner; all kode er versjons­kontrollert på GitHub. *Rapporttekst*: utkast til § 2–§ 3, § 6.5, § 9.4 og § 9.5 er skrevet via prompt-og-redigér; alle tall, sitater og referanser er gjenkontrollert mot kildene. *Litteratur*: DOI-er krysssjekket mot Crossref etter at to KI-hallusinerte forfatter­navn ble oppdaget i tidlig versjon. *Forfatterens eget arbeid*: case­beskrivelse, data, modell­valg, brukertest mai 2026 og denne erklæringen. KI er brukt som assistent, ikke forsknings­erstatning. Alle resultat­tall er reproduserbare via skriptene i `013 fase 3 - review/`.
 
@@ -675,7 +675,7 @@ Den røde tråden er at *strukturell hovedkilde* (S1, simulert 2020–2024-treni
 
 ### 9.5 Funn fra brukertest mai 2026
 
-En end-to-end brukertest med agency-manageren avdekket syv systematiske avvik. Hvert er adressert som modell­korreksjon, override eller datainnsamlings­mekanisme. Kode­endringer er versjons­kontrollert.
+En end-to-end brukertest med Operations manager avdekket syv systematiske avvik. Hvert er adressert som modell­korreksjon, override eller datainnsamlings­mekanisme. Kode­endringer er versjons­kontrollert.
 
 #### 9.5.1 Valutatagging i modell­outputen
 
@@ -705,7 +705,7 @@ Provisions er kategorien der modellen avviker mest, og hovedfaktoren — gjeste�
 
 #### 9.5.6 Per-yacht aggregering for skalerings­spørsmålet
 
-Manageren spurte: *"hvis vi har 25 yachter i år og 4 M DKK i inntekt, hva blir det med 30 neste år?"* v0.2 hadde ingen per-yacht­visning. Tiltak: `/forecast` grupperer på `yachtName`, normaliserer til EUR, og viser flåte-snitt + naiv lineær skalerings­projeksjon (`avg_per_yacht × N`) med eksplisitt note om at modellen ikke fanger kapasitets-, havne- eller sesong­begrensninger.
+Operations manager spurte: *"hvis vi har 25 yachter i år og 4 M DKK i inntekt, hva blir det med 30 neste år?"* v0.2 hadde ingen per-yacht­visning. Tiltak: `/forecast` grupperer på `yachtName`, normaliserer til EUR, og viser flåte-snitt + naiv lineær skalerings­projeksjon (`avg_per_yacht × N`) med eksplisitt note om at modellen ikke fanger kapasitets-, havne- eller sesong­begrensninger.
 
 #### 9.5.7 Provisions-override vurdert og avvist (v0.4)
 
