@@ -1,6 +1,6 @@
 ![](figures/him-logo.png){width=4cm}
 
-# NautiCost
+# YO_Predcost
 
 *Datadreven kostnadsestimering for yachthavneanløp i Skandinavia*
 
@@ -114,7 +114,7 @@ Studien er en case-studie (jf. kompendiets § B.4) i en konkret bedrift. Innenfo
 
 ## 2. Litteratur
 
-Denne litteraturgjennomgangen dekker tre tråder som er sentrale for NautiCost: (1) maskinlæring for kostnads- og rateprognoser i maritim logistikk, (2) gradient boosting på tabulære data, og (3) usikkerhetskvantifisering med kvantilregresjon og konform prediksjon.
+Denne litteraturgjennomgangen dekker tre tråder som er sentrale for YO_Predcost: (1) maskinlæring for kostnads- og rateprognoser i maritim logistikk, (2) gradient boosting på tabulære data, og (3) usikkerhetskvantifisering med kvantilregresjon og konform prediksjon.
 
 ### 2.1 Maskinlæring for kostnadsprediksjon i transport og logistikk
 
@@ -130,7 +130,7 @@ Gradient boosting ble formalisert av Friedman (2001) som en generell additiv mod
 
 Grinsztajn et al. (2022) gjennomførte en systematisk benchmark over 45 datasett og fant at trebaserte modeller konsekvent overgår dype nevrale nett på tabulære data i medium størrelse (~10 000 rader), selv uten å ta hensyn til treningstidens fordel. Forfatterne identifiserte tre induktive biaser som gjør trær overlegne på tabulær data: rotasjonsinvarians, robusthet mot irrelevante features, og evne til å modellere irregulære beslutningsgrenser. Datasettet i denne studien (1 647 rader, 26 features, blandet kategorisk/numerisk) faller godt innenfor dette regimet, og valget av et LightGBM + CatBoost-ensemble er dermed teoretisk og empirisk begrunnet.
 
-Shwartz-Ziv og Armon (2022) kom til en lignende konklusjon i en uavhengig benchmark: XGBoost, LightGBM og CatBoost dominerte typiske tabulære regresjons- og klassifikasjonsproblemer, og ensembler av flere gradient-boosting-varianter ga ytterligere marginal forbedring. Hvorvidt denne marginale gevinsten replikeres i et lite, høyt­skjevt regime som NautiCost-datasettet drøftes i § 9.2.
+Shwartz-Ziv og Armon (2022) kom til en lignende konklusjon i en uavhengig benchmark: XGBoost, LightGBM og CatBoost dominerte typiske tabulære regresjons- og klassifikasjonsproblemer, og ensembler av flere gradient-boosting-varianter ga ytterligere marginal forbedring. Hvorvidt denne marginale gevinsten replikeres i et lite, høyt­skjevt regime som YO_Predcost-datasettet drøftes i § 9.2.
 
 Pensum­kompendiet i LOG650 (Pettersen & Rekdal, 2026, tabell 1.1) klassifiserer prosjekter med mange forklaringsvariabler under metode­familien Random Forest / XGBoost / **LightGBM** med metodene gradient boosting, kryssvalidering, SHAP og hyperparameter­tuning. Metodevalget i NautiCost — LightGBM + CatBoost-ensemble, 5-fold kryssvalidering ved Optuna-tuning, TreeSHAP for forklarbarhet — er nøyaktig denne kombinasjonen, og er dermed direkte pensum­forankret. Det skiller seg fra kompendiets standard­eksempel ved at modelleringen skjer på transaksjonsnivå snarere enn aggregert nivå, supplert med konform kalibrering (§ 2.3) for usikkerhets­bånd.
 
@@ -306,9 +306,9 @@ I dag utarbeides forhånds­estimater manuelt og varierer i kvalitet mellom koor
 
 ### 5.0 Prosess­mapping mot pensum­kompendiet
 
-Pensum­kompendiet (Pettersen & Rekdal, 2026, § i.4) foreskriver en femtrinns prosess for et kvantitativt logistikk­prosjekt. NautiCost følger denne prosessen, og tabellen under viser hvilke kapitler som realiserer hvert steg:
+Pensum­kompendiet (Pettersen & Rekdal, 2026, § i.4) foreskriver en femtrinns prosess for et kvantitativt logistikk­prosjekt. YO_Predcost følger denne prosessen, og tabellen under viser hvilke kapitler som realiserer hvert steg:
 
-| Prosess­steg (kompendiet § i.4) | Realisert i NautiCost-rapporten |
+| Prosess­steg (kompendiet § i.4) | Realisert i YO_Predcost-rapporten |
 |---|---|
 | Steg 1: Datainnsamling | § 5.2 datakilder, § 5.3 datapreparering |
 | Steg 2: Sjekk av antakelser | § 5.7 antakelses­diagnostikk, § 7.4 residual­analyse |
@@ -715,7 +715,7 @@ v0.3 hadde valgfri `provisioning_override`; den ble fjernet i v0.4 (commit `e246
 
 ### 9.6 Validitet og generaliserbarhet
 
-En streng vurdering av forskningsdesignet krever at validitet adresseres eksplisitt. Tre typer validitet som er mest relevante for NautiCost drøftes: konstrukt­validitet, intern validitet og ekstern validitet.
+En streng vurdering av forskningsdesignet krever at validitet adresseres eksplisitt. Tre typer validitet som er mest relevante for YO_Predcost drøftes: konstrukt­validitet, intern validitet og ekstern validitet.
 
 **Konstrukt­validitet** stiller spørsmålet om `final_charge` er en gyldig operasjonalisering av begrepet "totalkostnad for et havneanløp". Variabelen er fakturabeløpet før moms slik det er registrert hos SDK Shipping, og fanger derfor agentens direkte tjeneste­kostnad pluss innkjøpt under­leverandør­arbeid. Det den *ikke* fanger er: (a) markedsmessige rabatter eller margin­justeringer som agenten ikke har dokumentert som linje, (b) skjulte kostnader hos yachteier (egen besetnings­lønn under anløpet, valutarisiko på betalingstidspunktet), og (c) opportunitets­kostnad hvis anløpet forsinker neste reisesegment. Konstrukt­validiteten er dermed *delvis*: målvariabelen er en valid proxy for agentens egen faktura­sum, men en partiell proxy for det yachteieren faktisk betaler. Brukere som ønsker å estimere yachteierens *totale* anløps­kostnad må legge til egne kostnader på toppen.
 
@@ -727,7 +727,7 @@ En streng vurdering av forskningsdesignet krever at validitet adresseres eksplis
 - **Til andre operatører:** Modellen er trent kun på SDK Shipping sine fakturaer og fanger derfor denne agentens *konkrete* prismodeller (f.eks. agent fee struktur, hospitality-leverandør­valg). En annen agent ville hatt andre absolutt­tall, selv for samme anløp. Ekstern validitet på operatør­nivå er dermed ikke etablert, og verktøyet anbefales ikke brukt på en annen agents anløp uten re-trening.
 - **Til andre tids­perioder:** Test­set-evalueringen viser at modellen generaliserer fra 2020–2023 til 2025 med 10 % MAE-degradering. For 2026–2027-bruk forventes tilsvarende eller noe høyere degradering, med mindre rullerende re-trening implementeres (§ 10 punkt 2).
 
-Konklusjonen er at NautiCost har **akseptabel intern validitet** for SDK Shipping sine egne fremtidige anløp innenfor 12–18 måneder, men **begrenset ekstern validitet** utover dette. Dette er ikke et forsknings­designsfeil; det er en konsekvens av at studien er case-spesifikk per design (§ 4 og kompendiet § B.4). Generaliserings­funn er likevel et rimelig sekundærbidrag — særlig at gradient-boosting + hybrid persentil­kalibrering fungerer i et regime med n ≈ 1 600 og 17 enheter, hvilket utvider den eksisterende litteraturens dekning ned i datasparsomme størrelses­ordener.
+Konklusjonen er at YO_Predcost har **akseptabel intern validitet** for SDK Shipping sine egne fremtidige anløp innenfor 12–18 måneder, men **begrenset ekstern validitet** utover dette. Dette er ikke et forsknings­designsfeil; det er en konsekvens av at studien er case-spesifikk per design (§ 4 og kompendiet § B.4). Generaliserings­funn er likevel et rimelig sekundærbidrag — særlig at gradient-boosting + hybrid persentil­kalibrering fungerer i et regime med n ≈ 1 600 og 17 enheter, hvilket utvider den eksisterende litteraturens dekning ned i datasparsomme størrelses­ordener.
 
 ### 9.7 Praktiske implikasjoner
 
