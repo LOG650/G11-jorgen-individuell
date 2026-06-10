@@ -160,7 +160,7 @@ Et beslutningstre partisjonerer feature-rommet rekursivt i akse-justerte regione
 
 I gradient boosting (Friedman, 2001) bygges modellen additivt:
 
-$$F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x)$$
+$$F_m(x) = F_{m-1}(x) + \nu \cdot h_m(x) \qquad (1)$$
 
 der $h_m$ er et regresjons­tre tilpasset den negative gradienten av tapet med hensyn på forrige prediksjon, og $\nu \in (0, 1]$ er en lærings­rate. Etter $M$ runder er modellen $F_M(x) = F_0(x) + \nu \sum_{m=1}^{M} h_m(x)$.
 
@@ -196,7 +196,7 @@ CatBoost (Prokhorenkova et al., 2018) er et gradient-boosting-bibliotek med foku
 
 **Kategorisk encoding via ordered target statistics:**
 
-$$\hat{x}_i^{cat} = \frac{\sum_{j < i,\, x_j^{cat} = x_i^{cat}} y_j + a \cdot p}{\#\{j < i : x_j^{cat} = x_i^{cat}\} + a}$$
+$$\hat{x}_i^{cat} = \frac{\sum_{j < i,\, x_j^{cat} = x_i^{cat}} y_j + a \cdot p}{\#\{j < i : x_j^{cat} = x_i^{cat}\} + a} \qquad (2)$$
 
 der $a$ er en glattings­prior og $p$ er en global prior (f.eks. globalt mål­gjennom­snitt). Glattingen håndterer lav-frekvente kategorier robust.
 
@@ -213,18 +213,29 @@ Mål­variabelen `final_charge` er sterkt høyreskjev: enkelte transaksjoner er 
 
 Standardløsningen er en log-transformasjon:
 
-$$y = \log(1 + \text{final\_charge})$$
+$$y = \log(1 + \text{final\_charge}) \qquad (3)$$
 
 «+1»-shiftet håndterer null-kostnads­transaksjoner uten at $\log$ divergerer. Prediksjoner inverteres med $\hat{c} = \exp(\hat{y}) - 1$ før de rapporteres.
 
-**Evalueringsmetrikker på opprinnelig EUR-skala (jf. § 1.3 om valutaen i kildedataene):**
+**Evalueringsmetrikker på opprinnelig EUR-skala (jf. § 1.3 om valutaen i kildedataene).** Felles for alle fire metrikkene er at $y_i$ er den *faktiske* kostnaden for transaksjon $i$, $\hat{y}_i$ er modellens *predikerte* kostnad, og $n$ er antall transaksjoner i settet. Alle måler hvor langt prediksjonen bommer fra fasit; forskjellen ligger i *hvordan* bommen vektes. Fordi metrikkene refereres gjennomgående i resultatkapittelet (§ 8), defineres de eksplisitt her:
 
-- **Mean Absolute Error (MAE):** $\text{MAE} = \frac{1}{n}\sum_i |y_i - \hat{y}_i|$. Rapporterer absolutt avvik i EUR; robust mot outliers.
-- **Root Mean Squared Error (RMSE):** $\text{RMSE} = \sqrt{\frac{1}{n}\sum_i (y_i - \hat{y}_i)^2}$. Straffer store feil hardere; sensitiv mot outliers.
-- **Mean Absolute Percentage Error (MAPE):** $\text{MAPE} = \frac{100}{n}\sum_i \left|\frac{y_i - \hat{y}_i}{y_i}\right|$. Rapporterer relativ feil i prosent; sensitiv mot små nevnere — små $y_i$ blåser opp MAPE.
-- **Weighted MAPE (wMAPE):** $\text{wMAPE} = 100 \cdot \frac{\sum_i |y_i - \hat{y}_i|}{\sum_i |y_i|}$. Volum­vektet versjon av MAPE der hver feil vektes etter faktura­beløpet; ikke sårbar for små nevnere. Ekvivalent med $\text{MAE}/\overline{y}$.
+- **MAE — Mean Absolute Error (gjennomsnittlig absoluttfeil):**
+  $$\text{MAE} = \frac{1}{n}\sum_i |y_i - \hat{y}_i| \qquad (4)$$
+  *Hva den måler:* gjennomsnittlig avstand mellom predikert og faktisk beløp, målt i EUR. En MAE på 19 000 betyr at modellen i snitt bommer med 19 000 EUR per transaksjon. *Hvorfor den er viktig:* den er uttrykt i samme enhet som kostnaden (EUR) og er derfor direkte tolkbar for en agent­koordinator, og den vekter alle bom likt slik at den ikke domineres av noen få ekstreme fakturaer. Dette er studiens **primære** metrikk.
 
-I et høyreskjevt kostnads­scenario er **MAE** den mest operasjonelt meningsfulle metrikken: en feil på 5 000 EUR har samme størrelses­orden enten regningen er på 10 000 eller 100 000 EUR. **wMAPE** rapporteres som relativ metrikk fordi den ikke straffes urimelig av små transaksjoner og lar seg tolke som «total bom i prosent av total kostnad». MAPE rapporteres for fullstendighet og sammenlignbarhet med eksisterende litteratur, men tolkes med forsiktighet fordi små fakturaer dominerer gjennomsnittet. RMSE fanger om modellen har sjeldne store bom­skudd og brukes som sekundær ranking­metrikk.
+- **RMSE — Root Mean Squared Error (kvadratrot av gjennomsnittlig kvadrert feil):**
+  $$\text{RMSE} = \sqrt{\frac{1}{n}\sum_i (y_i - \hat{y}_i)^2} \qquad (5)$$
+  *Hva den måler:* også et gjennomsnittlig avvik i EUR, men kvadreringen gjør at store bom teller uforholdsmessig mye mer enn små. *Hvorfor den er viktig:* RMSE er alltid ≥ MAE, og et stort gap mellom de to avslører at modellen har noen få *grove* bomskudd (store feil på enkelttransaksjoner). Den brukes derfor som sekundær metrikk for å fange sjeldne, men kostbare feil.
+
+- **MAPE — Mean Absolute Percentage Error (gjennomsnittlig absolutt prosentfeil):**
+  $$\text{MAPE} = \frac{100}{n}\sum_i \left|\frac{y_i - \hat{y}_i}{y_i}\right| \qquad (6)$$
+  *Hva den måler:* den gjennomsnittlige bommen uttrykt som prosent av det faktiske beløpet, slik at en feil på 100 EUR på en regning på 200 EUR (50 %) teller like mye som 50 000 EUR på en regning på 100 000 EUR (50 %). *Hvorfor den er viktig:* den er enhetsuavhengig og gjør resultatene sammenlignbare på tvers av studier. *Forbehold:* fordi den deler på $y_i$, blåses MAPE kunstig opp av små fakturaer (en bom på 800 EUR på en regning på 200 EUR gir 400 %). Den tolkes derfor med forsiktighet i dette høyreskjeve datasettet.
+
+- **wMAPE — Weighted Mean Absolute Percentage Error (volumvektet prosentfeil):**
+  $$\text{wMAPE} = 100 \cdot \frac{\sum_i |y_i - \hat{y}_i|}{\sum_i |y_i|} \qquad (7)$$
+  *Hva den måler:* total bom i EUR delt på total faktisk kostnad i EUR — altså «hvor mange prosent av den samlede kostnaden bommer modellen på til sammen». Den er matematisk ekvivalent med $\text{MAE}/\overline{y}$ (MAE delt på gjennomsnittskostnaden). *Hvorfor den er viktig:* den gir et relativt tall som MAPE, men er *ikke* sårbar for små nevnere fordi store fakturaer veier tyngst. Dette er studiens **primære relative** metrikk.
+
+Oppsummert i én setning: **MAE** sier hvor mange EUR modellen bommer med i snitt, **RMSE** avslører om den har noen få store bomskudd, **MAPE** gir prosentfeil men overdrives av småfakturaer, og **wMAPE** gir den mest rettferdige prosentfeilen for et høyreskjevt datasett. I et høyreskjevt kostnads­scenario er **MAE** den mest operasjonelt meningsfulle metrikken: en feil på 5 000 EUR har samme størrelses­orden enten regningen er på 10 000 eller 100 000 EUR. **wMAPE** rapporteres som relativ metrikk fordi den ikke straffes urimelig av små transaksjoner og lar seg tolke som «total bom i prosent av total kostnad». MAPE rapporteres for fullstendighet og sammenlignbarhet med eksisterende litteratur, men tolkes med forsiktighet fordi små fakturaer dominerer gjennomsnittet. RMSE fanger om modellen har sjeldne store bom­skudd og brukes som sekundær ranking­metrikk.
 
 *Relevans:* Log-MSE-tap og MAE som primær metrikk er direkte konsekvenser av kostnadsfordelingens skjevhet (§ 7.1).
 
@@ -234,7 +245,7 @@ Punktprediksjoner er utilstrekkelige når kostnads­fordelingen er høyreskjev o
 
 **Kvantil­regresjon** trener en modell til å predikere $\tau$-kvantilet av $y \mid x$ ved å minimere pinball-tapet:
 
-$$L_\tau(y, \hat{y}) = \begin{cases} \tau (y - \hat{y}) & \text{hvis } y \geq \hat{y} \\ (1 - \tau)(\hat{y} - y) & \text{hvis } y < \hat{y} \end{cases}$$
+$$L_\tau(y, \hat{y}) = \begin{cases} \tau (y - \hat{y}) & \text{hvis } y \geq \hat{y} \\ (1 - \tau)(\hat{y} - y) & \text{hvis } y < \hat{y} \end{cases} \qquad (8)$$
 
 For $\tau = 0{,}5$ reduseres dette til middel absolutt feil og gir en median-prediktor. For $\tau = 0{,}9$ gir det en modell der prediksjonen overstiges av sann verdi 10 % av tiden (asymptotisk). LightGBM støtter pinball-tapet som innebygd objektiv; tre separate modeller trenes for $\tau \in \{0{,}1; 0{,}5; 0{,}9\}$ for å oppnå P10/P50/P90-prediksjon.
 
@@ -244,10 +255,10 @@ For $\tau = 0{,}5$ reduseres dette til middel absolutt feil og gir en median-pre
 
 1. Tren kvantil­modeller for $\tau = \alpha/2$ og $\tau = 1-\alpha/2$ på trenings­settet, og oppnå $\hat{q}_{lo}(x)$ og $\hat{q}_{hi}(x)$.
 2. På kalibrerings­settet, beregn ikke-konformitets­score:
-   $$E_i = \max\{\hat{q}_{lo}(x_i) - y_i, \; y_i - \hat{q}_{hi}(x_i)\}$$
+   $$E_i = \max\{\hat{q}_{lo}(x_i) - y_i, \; y_i - \hat{q}_{hi}(x_i)\} \qquad (9)$$
 3. La $Q_{1-\alpha}$ være $\lceil (n_{cal}+1)(1-\alpha)\rceil / n_{cal}$-kvantilet av $\{E_i\}$.
 4. CQR-prediksjons­intervallet er:
-   $$C(x) = \left[\hat{q}_{lo}(x) - Q_{1-\alpha}, \; \hat{q}_{hi}(x) + Q_{1-\alpha}\right]$$
+   $$C(x) = \left[\hat{q}_{lo}(x) - Q_{1-\alpha}, \; \hat{q}_{hi}(x) + Q_{1-\alpha}\right] \qquad (10)$$
 
 CQR-justeringen $Q_{1-\alpha}$ garanterer endelig-utvalgs dekning $\Pr(y \in C(x)) \geq 1 - \alpha$ under utbyttbarhet av (kalibrering, test)-data, uavhengig av hvor dårlig kalibrert de underliggende kvantil­modellene er. Hvor stor justering CQR faktisk gir på datasettet i denne studien, og hva det forteller om de underliggende kvantil­modellene, drøftes i § 6.4 og § 8.2.
 
@@ -259,7 +270,7 @@ Tre­ensembler er presise men opake: en prognose på 17 000 EUR forteller ikke i
 
 For en modell $f$ og et input $x$ er SHAP-verdien til feature $j$:
 
-$$\phi_j(x) = \sum_{S \subseteq F \setminus \{j\}} \frac{|S|! \,(|F| - |S| - 1)!}{|F|!} \left[\, f_{S \cup \{j\}}(x) - f_S(x) \,\right]$$
+$$\phi_j(x) = \sum_{S \subseteq F \setminus \{j\}} \frac{|S|! \,(|F| - |S| - 1)!}{|F|!} \left[\, f_{S \cup \{j\}}(x) - f_S(x) \,\right] \qquad (11)$$
 
 der $F$ er feature-mengden, $S$ løper over delmengder uten $j$, og $f_S(x)$ er modellens forventede prediksjon når kun features i $S$ er observert. Dette er Shapley-verdien fra koalisjons-spillteori: $\phi_j$ er det gjennomsnittlige marginale bidraget fra $j$ over alle mulige feature-rekkefølger.
 
@@ -399,7 +410,7 @@ Konklusjonen er at antakelses­bruddet som ville vært mest skadelig — sterk s
 Mål­variabelen er kostnaden per transaksjon, `final_charge`, log-transformert:
 
 $$
-y = \log(1 + \text{final\_charge})
+y = \log(1 + \text{final\_charge}) \qquad (12)
 $$
 
 Modellene optimerer L2-tap i log-rommet; predikerte verdier inverteres med `expm1` ved evaluering.
@@ -417,7 +428,7 @@ Den endelige modellen er et veid gjennomsnitt i log-rommet av to gradient-boosti
 
 $$
 \hat{y}_\text{ens} = w \cdot \hat{y}_\text{LGB} + (1 - w) \cdot \hat{y}_\text{CB},
-\quad w \in [0, 1]
+\quad w \in [0, 1] \qquad (13)
 $$
 
 der vekten $w$ velges ved gridsøk på valideringssettet og er lagret i `model_meta_final.joblib` (`ensemble_weight = 0.30`, dvs. 30 % LightGBM + 70 % CatBoost).
@@ -438,7 +449,7 @@ Transaksjons­modellen produserer urealistisk lave totaler hvis predikerte trans
 4. **Anker estimatet** til empirisk medianpris (P50) per `(havn, size_category)` fra `HISTORICAL_RANGES`, og skaler proporsjonalt med modell-til-baseline-forholdet:
 
    $$
-   \widehat{\text{Total}} = \text{P50}_\text{historisk} \cdot \frac{\widehat{\text{Total}}_\text{modell}}{\text{Baseline}_\text{modell}}
+   \widehat{\text{Total}} = \text{P50}_\text{historisk} \cdot \frac{\widehat{\text{Total}}_\text{modell}}{\text{Baseline}_\text{modell}} \qquad (14)
    $$
 
 På landsnivå tas et trafikk­vektet gjennomsnitt over alle havner i landet.
@@ -502,6 +513,10 @@ Stor-kategorien har en MAE som er ca. 3× høyere enn de to andre, hvilket refle
 ---
 
 ## 8. Resultat
+
+Dette kapittelet rapporterer resultatene på tre nivåer, og det er verdt å lese dem i den rekkefølgen: (i) hvilken modell som velges og hvor presis den er på *transaksjonsnivå* (§ 8.1 på valideringssettet, § 8.1.1 på det reelle testsettet), (ii) hvor godt usikkerhets­båndene treffer (§ 8.2), og (iii) hvor presise de aggregerte *anløps­estimatene* er — som er det tallet agent­koordinator faktisk bruker (§ 8.3). Alle feilmetrikker (MAE, RMSE, MAPE, wMAPE) er definert i § 3.4; som en rask huskeregel ved lesing av tabellene: **MAE** = gjennomsnittlig bom i EUR (lavere er bedre), **RMSE** = som MAE, men straffer store enkeltbom hardt, **MAPE** = gjennomsnittlig prosentfeil (overdrives av småfakturaer), og **wMAPE** = total bom i prosent av total kostnad (den mest rettferdige relative metrikken her).
+
+**Hovedresultat i klartekst.** Den valgte produksjons­modellen (LightGBM + CatBoost-ensemble) bommer på det reelle 2025-testsettet i snitt med **19 051 EUR per transaksjon** (MAE), tilsvarende **74,3 % av gjennomsnitts­kostnaden** (wMAPE). Dette er **18 %** bedre enn en naiv median­baseline (MAE 23 157 EUR / wMAPE 90,3 %) — altså lærer modellen et reelt og målbart signal utover «gjett medianen». Tallene virker høye fordi de måles på enkelt­transaksjoner som spenner fra ~2 000 til over 90 000 EUR; den operasjonelt relevante presisjonen kommer først fram når transaksjonene aggregeres til et anløps­estimat (§ 8.3), der modell­estimatet lander **innenfor det historiske P25–P75-spennet i alle fem testede konfigurasjonene**. Resten av kapittelet underbygger og nyanserer denne konklusjonen.
 
 ### 8.1 Sammenligning av modeller på valideringssettet
 
@@ -692,7 +707,7 @@ For yachter med LOA > 70 m er los­tjeneste lovpålagt, men `PORT_TEMPLATES` har
 Drivstoffkostnaden er, som los, modellert som sannsynlighets­vektet linje uten distanse eller fart. Lange overfarter under­estimeres systematisk — samme funn som Su et al. (2024) for ro-ro-skip. Tiltak: API tar valgfri `cruising_speed_kn`, `diesel_price_per_l` og per-stopp `distance_nm` (eksponert for hvert stopp i frontend, commit `e24655a`). Når alle tre inputs er gitt, erstatter backend "Bunkering"-kategorien med en deterministisk beregning:
 
 $$
-\text{Bunkers} = \frac{\sum \text{distance\_nm}}{\text{cruising\_speed\_kn}} \cdot \text{fuel\_lph} \cdot \text{diesel\_price\_per\_l}
+\text{Bunkers} = \frac{\sum \text{distance\_nm}}{\text{cruising\_speed\_kn}} \cdot \text{fuel\_lph} \cdot \text{diesel\_price\_per\_l} \qquad (15)
 $$
 
 Dette er en operasjonell mitigation, ikke en modell­fix. Den korrekte løsningen er å inkludere `distance_nm` (og marsjfart) som features i en re-trent modell — flagges som videre arbeid i § 10.
@@ -740,6 +755,8 @@ Faktura­data inneholder yacht­identifikatorer, men ingen direkte person­data.
 ---
 
 ## 10. Konklusjon
+
+**Svar på problemstillingen.** Hovedspørsmålet (§ 1.1) var hvor *presist* og *forklarbart* totalkostnaden for et superyachthavne­anløp i Skandinavia kan estimeres ut fra yacht­spesifikasjoner, destinasjon og sesong. Svaret er todelt. *Presisjon:* på transaksjons­nivå bommer modellen i snitt med ≈ 19 000 EUR (wMAPE 74,3 % på reelle 2025-data), hvilket er 18 % bedre enn en naiv baseline og på linje med sammenlignbar litteratur (Jang et al., 2023; Su et al., 2024) til tross for et langt mindre datasett. Mer operasjonelt relevant: når transaksjonene aggregeres til et anløps­estimat, treffer estimatet innenfor det historiske P25–P75-spennet i alle fem testede konfigurasjoner — presist *nok* til å erstatte dagens manuelle magefølelses­anslag med et konsistent, spenn-basert estimat. *Forklarbarhet:* SHAP/gain-analysen (§ 7.3) viser at modellen lærer et tolkbart hierarki (tjenestetype setter prisnivå; yacht­størrelse og sesong modulerer det), og kvantil­modeller med CQR-kalibrering kommuniserer usikkerheten som et eksplisitt P10–P90-bånd i stedet for et villedende punkt­estimat. Konklusjonen er dermed at kostnaden kan estimeres **tilstrekkelig presist og forklarbart til operasjonell beslutningsstøtte hos SDK Shipping**, men ikke presist nok til å fungere som bindende pristilbud (jf. avgrensning i § 1.3).
 
 Studien har utviklet en datadreven kostnads­estimator for skandinaviske yacht­anløp som kombinerer LightGBM + CatBoost-ensemble på transaksjons­nivå med hybrid kalibrering mot empiriske persentiler på anløps­nivå. 2020–2024-trening (n = 977) er simulert og ankret i SDK Shipping sine reelle 2025-fakturaer; testsettet (n = 649) er reelt. Simulert val=2024: MAE = 17 350 EUR (wMAPE 71,4 %) — 20 % bedre enn median­baseline. Reell 2025-test: MAE = 19 051 EUR (wMAPE 74,3 %) — ≈ 10 % val→test-degradering med simulert→reell-overgang som en del. CQR-kalibrerte kvantil­modeller gir 80,0 % empirisk dekning, og aggregerte anløps­estimater plasserer seg innenfor P25–P75 i alle fem testede konfigurasjoner.
 

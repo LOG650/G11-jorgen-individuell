@@ -172,6 +172,7 @@ print(f"Stiler oppdatert i {DST_DOCX.name}")
 print()
 print("Oppdaterer TOC og eksporterer PDF via Word COM …")
 import win32com.client
+import win32com.client.dynamic
 import pythoncom
 
 tmpdir = tempfile.mkdtemp(prefix="nauticost_")
@@ -181,10 +182,40 @@ shutil.copy2(DST_DOCX, tmp_docx)
 
 try:
     pythoncom.CoInitialize()
-    word_app = win32com.client.Dispatch("Word.Application")
+    # Dynamisk (late) binding unngår en korrupt win32com gen_py-cache som
+    # ellers gir "CLSIDToClassMap"/"property can not be set"-feil.
+    word_app = win32com.client.dynamic.Dispatch("Word.Application")
     word_app.Visible = False
     word_app.DisplayAlerts = False
     wdoc = word_app.Documents.Open(str(tmp_docx))
+
+    # Sidetall: sentrert PAGE-felt i bunntekst på alle seksjoner.
+    # DifferentFirstPage gjør at forsiden (side 1) står uten tall.
+    # Isolert i egen try/except slik at en evt. feil her ikke stopper
+    # TOC-oppdatering og PDF-eksport.
+    WD_HEADER_FOOTER_PRIMARY = 1
+    WD_FIELD_PAGE = 33
+    WD_ALIGN_PARAGRAPH_CENTER = 1
+    try:
+        for section in wdoc.Sections:
+            footer = section.Footers(WD_HEADER_FOOTER_PRIMARY)
+            footer.LinkToPrevious = False
+            rng = footer.Range
+            rng.Text = ""
+            rng.ParagraphFormat.Alignment = WD_ALIGN_PARAGRAPH_CENTER
+            wdoc.Fields.Add(rng, WD_FIELD_PAGE)
+        # Forsiden (side 1) uten tall – best effort, riktig property­navn er
+        # DifferentFirstPageHeaderFooter (ikke DifferentFirstPage).
+        try:
+            for section in wdoc.Sections:
+                section.PageSetup.DifferentFirstPageHeaderFooter = True
+            print("  Sidetall lagt til i bunntekst (forside uten tall).")
+        except Exception as e2:
+            print(f"  Sidetall lagt til (også på forsiden; "
+                  f"forside-unntak feilet: {e2}).")
+    except Exception as e:
+        print(f"  Advarsel: kunne ikke legge til sidetall ({e}).")
+
     for toc in wdoc.TablesOfContents:
         toc.Update()
     wdoc.Fields.Update()
